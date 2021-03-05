@@ -3,14 +3,13 @@
 
 // TODO
 /**
- * TRAVELS
  *- img caption
  *- show/hide
  *- modify
  *- delete
  * confirm delete
- * change db posts => travels
- * 
+ *- change db posts => travels
+ * store nav in property
  */
 session_start();
 spl_autoload_register(function ($class)

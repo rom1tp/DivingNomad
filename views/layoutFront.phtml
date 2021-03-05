@@ -52,17 +52,31 @@
     </nav>
     <nav class="main-nav">
       <!-- <a href="//FIXME make it switch from front to back">&#8644;</a> -->
+
+      <?php if(isset($_SESSION["user"]) && $_SESSION["user"] == 'superadmin'): ?>
+      <a><a href="travels"><i class="fas fa-users"></i></a>
+        Travels
+        <a href="travelsBack"><i class="fas fa-user-edit"></i></a></a>
+      <a><a href="projects"><i class="fas fa-users"></i></a>
+        Projects
+        <a href="projectsBack"><i class="fas fa-user-edit"></i></a></a>
+      <a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a>
+      <a><a href="gallery"><i class="fas fa-users"></i></a>
+        Gallery
+        <a href="galleryBack"><i class="fas fa-user-edit"></i></a></a>
+      <a href="accounts">Dashboard</a>
+
+      <?php else: ?>
       <!-- <a href="aboutMe">About Me</a> -->
       <a href="travels">Travels</a>
       <a href="projects">Projects</a>
-      <a href="<?= (isset($_SESSION["user"]) && $_SESSION["user"] == 'superadmin')? 'dashboard': 'home' ?>"><img
-          src="assets/img/logo.jpg" alt="Logo" /></a>
+      <a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a>
       <!-- <a href="contactMe">Contact Me</a> -->
-      <?php if (isset($_SESSION["user"]) && $_SESSION["user"] == 'superadmin'): ?>
-      <a href="accounts">Dashboard</a>
-      <?php endif; ?>
+      <a href="gallery">Gallery</a>
       <a href="accounts">My Account</a>
+      <?php endif; ?>
       <a href="logout">Logout</a>
+
       <nav class="social-nav">
         <a href="https://www.facebook.com/romain.tangpavillard" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.instagram.com/rom1tp" target="_blank"><i class="fab fa-instagram"></i></a>
