@@ -4,7 +4,6 @@
     <?php foreach ($photos as $photo): ?>
     <?php if ($photo['display'] == 'show'): ?>
     <figure>
-
       <h2><?= htmlspecialchars($photo['name']) ?></h2>
       <img src="assets/img/<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>"
         width="500">

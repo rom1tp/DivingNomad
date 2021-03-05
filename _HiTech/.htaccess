@@ -1,0 +1,11 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteRule ^changeStatut-([a-zA-Z]+)-([0-9]{1,3})$ index.php?page=changeStatut&action=$1&ProductID=$2 [L]
+
+# static link
+RewriteRule ^([a-zA-Z]+)$ "index.php?page=$1" [L]
+
+# dynamic link with format: page-variableName-variableValue
+RewriteRule ^([a-zA-Z]+)-([a-zA-Z]+)-([0-9]{1,3})$ "index.php?page=$1&$2=$3"
+

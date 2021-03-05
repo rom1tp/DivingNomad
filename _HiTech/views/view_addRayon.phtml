@@ -1,0 +1,59 @@
+<main class="backOfficeForm">
+  <div class="body justify-content-between">
+    <button class="delmodif"><a href="rayons"><i class="fas fa-times pe-1"></i>
+        <?php if ($this->modifyMode) : ?>
+        Annuler les changements
+        <?php else : ?>
+        Annuler l'ajout
+        <?php endif; ?>
+      </a></button>
+    <h1 class="text-uppercase">
+      <?php if ($this->modifyMode) : ?>
+      <?= htmlspecialchars($this->rayon['Nom']) ?>
+      <?php else : ?>
+      Ajout de rayon
+      <?php endif; ?>
+    </h1>
+    <button class="btn btn-success rounded-pill shadow-none px-3" type="submit" form="addRayon">
+      <i class="fas fa-check"></i>
+      <?php if ($this->modifyMode) : ?>
+      Valider les changements
+      <?php else : ?>
+      Valider et enregistrer la fiche
+      <?php endif; ?>
+    </button>
+  </div>
+  <div class="body">
+    <form id="addRayon"
+      action=<?php if ($this->modifyMode) : ?> "validateChangesRayon-RayonID-<?= htmlspecialchars($this->rayon['RayonID']) ?>"
+      <?php else : ?> "validateRayon" <?php endif; ?> method="post">
+      <fieldset>
+        <legend>Rayon</legend>
+        <div class="field">
+          <p>Rayon</p>
+          <input type="text" name="nom" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->rayon['Nom']) ?>" <?php endif; ?>>
+        </div>
+
+        <div class="field">
+          <p>Boutique</p>
+          <select name="boutique">
+            <?php if (!$this->modifyMode) : ?>
+            <option value="" selected disabled hidden>Choisir un rayon...</option>
+            <?php endif; ?>
+            <?php foreach($boutiques as $boutique): ?>
+            <?php if($this->modifyMode && 
+              $boutique['BoutiqueID'] == $this -> rayon['BoutiqueID']) : ?>
+            <option value="<?= htmlspecialchars($boutique['BoutiqueID']) ?>" selected>
+              <?= htmlspecialchars($boutique['Nom']) ?></option>
+            <?php else: ?>
+            <option value="<?= htmlspecialchars($boutique['BoutiqueID']) ?>"><?= htmlspecialchars($boutique['Nom']) ?>
+            </option>
+            <?php endif; ?>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</main>

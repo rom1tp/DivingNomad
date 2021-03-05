@@ -1,0 +1,221 @@
+<main class="backOfficeForm">
+  <div class="body justify-content-between">
+    <button class="delmodif"><a href="products"><i class="fas fa-times pe-1"></i>
+        <?php if ($this->modifyMode) : ?>
+        Annuler les changements
+        <?php else : ?>
+        Annuler l'ajout
+        <?php endif; ?>
+      </a></button>
+    <h1 class="text-uppercase">
+      <?php if ($this->modifyMode) : ?>
+      <?= htmlspecialchars($this->product['Produit']) ?>
+      <?php else : ?>
+      Ajout de produit
+      <?php endif; ?>
+    </h1>
+    <button class="btn btn-success rounded-pill shadow-none px-3" type="submit" form="productModification"><i
+        class="fas fa-check pe-1"></i>
+      <?php if ($this->modifyMode) : ?>
+      Valider les changements
+      <?php else : ?>
+      Valider et enregistrer la fiche
+      <?php endif; ?>
+    </button>
+  </div>
+
+  <div class="body">
+    <form id="productModification"
+      action=<?php if ($this->modifyMode) : ?> "validateChangesProduct-ProductID-<?= htmlspecialchars($this->product['ProductID']) ?>"
+      <?php else : ?> "validateProduct" <?php endif; ?> method="post" enctype="multipart/form-data">
+
+      <!--//#   ///////////////  -->
+      <!--//*  ////GESTION////  -->
+      <!--//! ///////////////  -->
+      <fieldset>
+        <legend>Gestion</legend>
+        <div class="field">
+          <p>Statut</p>
+          <div class="radio">
+            <label class="grey"><input type="radio" name="statut" value="En attente"
+                <?= $this->modifyMode && $this->product['Statut']=='En attente' ? 'checked' : '' ?> />En attente de mise
+              en ligne</label>
+            <label class="green"><input type="radio" name="statut" value="En boutique"
+                <?= $this->modifyMode && $this->product['Statut']=='En boutique' ? 'checked' : '' ?> />En
+              boutique</label>
+            <label class="red"><input type="radio" name="statut" value="Retiré"
+                <?= $this->modifyMode && $this->product['Statut']=='Retiré' ? 'checked' : '' ?> />Retiré</label>
+          </div>
+        </div>
+        <div class="field">
+          <p>Boutique</p>
+          <select name="boutique">
+            <?php if (!$this->modifyMode) : ?>
+            <option value="" selected disabled hidden>Choisir une boutique...</option>
+            <?php endif; ?>
+            <?php foreach($boutiques as $boutique): ?>
+            <?php if($this->modifyMode && 
+                                $boutique['BoutiqueID'] == $this -> product['BoutiqueID']) : ?>
+            <option value="<?= htmlspecialchars($boutique['BoutiqueID']) ?>" selected>
+              <?= htmlspecialchars($boutique['Nom']) ?></option>
+            <?php else: ?>
+            <option value="<?= htmlspecialchars($boutique['BoutiqueID']) ?>"><?= htmlspecialchars($boutique['Nom']) ?>
+            </option>
+            <?php endif; ?>
+            <?php endforeach; ?>
+          </select>
+        </div>
+        <div class="field">
+          <p>Rayon</p>
+          <select name="rayon">
+            <?php if (!$this->modifyMode) : ?>
+            <option value="" selected disabled hidden>Choisir un rayon...</option>
+            <?php endif; ?>
+            <?php foreach($rayons as $rayon): ?>
+            <?php if($this->modifyMode && 
+                                $rayon['RayonID'] == $this -> product['RayonID']) : ?>
+            <option value="<?= htmlspecialchars($rayon['RayonID']) ?>" selected><?= htmlspecialchars($rayon['Nom']) ?>
+            </option>
+            <?php else: ?>
+            <option value="<?= htmlspecialchars($rayon['RayonID']) ?>"><?= htmlspecialchars($rayon['Nom']) ?></option>
+            <?php endif; ?>
+            <?php endforeach; ?>
+          </select>
+        </div>
+      </fieldset>
+
+      <!--//#   ////////////////////  -->
+      <!--//*  ////PRESENTATION////  -->
+      <!--//! ////////////////////  -->
+      <fieldset>
+        <legend>Présentation</legend>
+        <div class="field">
+          <p>Nom</p>
+          <input type="text" name="Nom" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Produit']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Marque</p>
+          <input type="text" name="Marque" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Marque']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Référence du produit</p>
+          <input type="text" name="Ref" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Ref']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Etiquettes</p>
+          <input type="text" name="Etiquette" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Etiquette']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Prix</p>
+          <strong>Prix</strong>
+          <input class="prix" type="number" name="Prix" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Prix']) ?>" <?php endif; ?> />
+          <strong>€</strong>
+          <strong>éco-participation</strong>
+          <input class="prix" type="number" name="Ecopart" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Ecopart']) ?>" <?php endif; ?> />
+          <strong>€</strong>
+        </div>
+        <div class="field">
+          <p>Description principale<br>(MarkDown)</p>
+          <textarea type="query" id="query"
+            name="DescPrincipale"><?php if ($this->modifyMode) : ?><?= htmlspecialchars($this->product['DescPrincipale']) ?><?php endif; ?></textarea>
+        </div>
+      </fieldset>
+
+      <!--//#   //////////////  -->
+      <!--//*  ////PHOTOS////  -->
+      <!--//! //////////////  -->
+      <fieldset>
+        <legend>Photos</legend>
+        <div class="field">
+          <p>Photo 1</p>
+          <input type="file" name="photo1" />
+        </div>
+        <div class="field">
+          <p>Photo 2</p>
+          <input type="file" name="photo2" />
+        </div>
+        <div class="field">
+          <p>Photo 3</p>
+          <input type="file" name="photo3" />
+        </div>
+        <div class="field">
+          <p>Photo 4</p>
+          <input type="file" name="photo4" />
+        </div>
+        <div class="field">
+          <p>Photo 5</p>
+          <input type="file" name="photo5" />
+        </div>
+      </fieldset>
+
+      <!--//#   /////////////////////  -->
+      <!--//*  ////DESCRIPTION 1////  -->
+      <!--//! /////////////////////  -->
+      <fieldset>
+        <legend>Descriptif 1</legend>
+        <div class="field">
+          <p>Titre</p>
+          <input type="text" name="Titre1" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Titre1']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Image</p>
+          <input type="file" name="Image1" />
+        </div>
+        <div class="field">
+          <p>Description principale<br>(MarkDown)</p>
+          <textarea type="query"
+            name="Desc1"><?php if ($this->modifyMode) : ?><?= htmlspecialchars($this->product['Desc1']) ?><?php endif; ?></textarea>
+        </div>
+      </fieldset>
+
+      <!--//#   /////////////////////  -->
+      <!--//*  ////DESCRIPTION 2////  -->
+      <!--//! /////////////////////  -->
+      <fieldset>
+        <legend>Descriptif 2</legend>
+        <div class="field">
+          <p>Titre</p>
+          <input type="text" name="Titre2" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Titre2']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Image</p>
+          <input type="file" name="Image2" />
+        </div>
+        <div class="field">
+          <p>Description principale<br>(MarkDown)</p>
+          <textarea type="query"
+            name="Desc2"><?php if ($this->modifyMode) : ?><?= htmlspecialchars($this->product['Desc2']) ?><?php endif; ?></textarea>
+        </div>
+      </fieldset>
+
+      <!--//#   /////////////////////  -->
+      <!--//*  ////DESCRIPTION 3////  -->
+      <!--//! /////////////////////  -->
+      <fieldset>
+        <legend>Descriptif 3</legend>
+        <div class="field">
+          <p>Titre</p>
+          <input type="text" name="Titre3" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->product['Titre3']) ?>" <?php endif; ?> />
+        </div>
+        <div class="field">
+          <p>Image</p>
+          <input type="file" name="Image3" />
+        </div>
+        <div class="field">
+          <p>Description principale<br>(MarkDown)</p>
+          <textarea type="query"
+            name="Desc3"><?php if ($this->modifyMode) : ?><?= htmlspecialchars($this->product['Desc3']) ?><?php endif; ?></textarea>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</main>

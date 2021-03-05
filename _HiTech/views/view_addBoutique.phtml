@@ -1,0 +1,40 @@
+<main class="backOfficeForm">
+  <div class="body justify-content-between">
+    <button class="delmodif"><a href="boutiques"><i class="fas fa-times pe-1"></i>
+        <?php if ($this->modifyMode) : ?>
+        Annuler les changements
+        <?php else : ?>
+        Annuler l'ajout
+        <?php endif; ?>
+      </a></button>
+    <h1 class="text-uppercase">
+      <?php if ($this->modifyMode) : ?>
+      <?= htmlspecialchars($this->boutique['Nom']) ?>
+      <?php else : ?>
+      Ajout de boutique
+      <?php endif; ?>
+    </h1>
+    <button class="btn btn-success rounded-pill shadow-none px-3" type="submit" form="addBoutique">
+      <i class="fas fa-check pe-1"></i>
+      <?php if ($this->modifyMode) : ?>
+      Valider les changements
+      <?php else : ?>
+      Valider l'ajout
+      <?php endif; ?>
+    </button>
+  </div>
+  <div class="body">
+    <form id="addBoutique"
+      action=<?php if ($this->modifyMode) : ?> "validateChangesBoutique-BoutiqueID-<?= htmlspecialchars($this->boutique['BoutiqueID']) ?>"
+      <?php else : ?> "validateBoutique" <?php endif; ?> method="post">
+      <fieldset>
+        <legend>Boutique</legend>
+        <div class="field">
+          <p>Boutique</p>
+          <input type="text" name="nomBoutique" <?php if ($this->modifyMode) : ?>
+            value="<?= htmlspecialchars($this->boutique['Nom']) ?>" <?php endif; ?>>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</main>

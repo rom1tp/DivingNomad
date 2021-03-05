@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--//*   /////////////////  -->
+  <!--//!  ////JS & CDNs////  -->
+  <!--//? ///////////////// -->
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+
+  <!-- jQuery.js CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+
+  <!-- Vue.js CDN : development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <script src="assets/js/script.js" defer></script>
+
+  <!-- //*   /////////// -->
+  <!-- //!  ////CSS////  -->
+  <!-- //? /////////// -->
+  <!-- Audiowide & Raleway Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>HiTech</title>
+</head>
+
+<body class="front-body">
+
+  <!--//* ////////////// -->
+  <!--//! ////HEADER//// -->
+  <!--//? ////////////// -->
+  <header>
+    <?php include $this->nav; ?>
+  </header>
+
+  <!--//* ////////////// -->
+  <!--//! /////MAIN///// -->
+  <!--//? ////////////// -->
+  <main>
+    <?php include $template; ?>
+  </main>
+
+  <!--//* ////////////// -->
+  <!--//! ////FOOTER//// -->
+  <!--//? ////////////// -->
+  <footer></footer>
+  <!--//* /////////////// -->
+  <!--//! ////COOKIES//// -->
+  <!--//? /////////////// -->
+  <?php if (!isset($_COOKIE['name'])) : ?>
+  <cookies class="text-light">
+    Veuillez accepter les <strong>cookies</strong> pour une meilleure expérience.
+    <a class="px-3">Accepter</a>
+  </cookies>
+  <?php endif; ?>
+
+  <!-- Bootstrap CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

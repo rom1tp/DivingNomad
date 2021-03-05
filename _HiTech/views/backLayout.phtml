@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--//*   /////////////////  -->
+  <!--//!  ////JS & CDNs////  -->
+  <!--//? ///////////////// -->
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+
+  <!-- jQuery.js CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+
+  <!-- Vue.js CDN : development version, includes helpful console warnings -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <script src="assets/js/script.js" defer></script>
+
+  <!-- //*   /////////// -->
+  <!-- //!  ////CSS////  -->
+  <!-- //? /////////// -->
+  <!-- Audiowide & Raleway Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>HiTech</title>
+</head>
+
+<body>
+
+  <!-- //*   //////////////  -->
+  <!-- //!  ////HEADER////  -->
+  <!-- //? ////////////// -->
+  <header>
+    <nav class="nav justify-content-center bg-secondary text-dark text-uppercase py-3">
+      <div class="backlogo">
+        <img class="logo" src="assets/img/logo.svg"></img>
+        <p>HiTech.NET/backOffice</p>
+      </div>
+
+      <a class="nav-link text-white" href="accueil">Accueil</a>
+      <a class="nav-link text-white" href="admin">Admin</a>
+      <a class="nav-link text-white" href="clients">Clients</a>
+      <a class="nav-link text-white" href="test">Test</a>
+      <div class="user">
+        <img
+          src="https://th.bing.com/th/id/Rb3e90dfeb6b3b2de52eddd2c94ab19ab?rik=60VSVFVovPfrDA&riu=http%3a%2f%2fwww.xlentdental.com%2fwp-content%2fuploads%2f2019%2f02%2f171-1717870_stockvader-predicted-cron-for-may-user-profile-icon-png.jpg&ehk=L5ovBzSjvOrRtZaLagGLbeHYgnK4oRcvwvD9%2f6JgCVc%3d&risl=&pid=ImgRaw"
+          alt="User Icon"></img>
+
+        <nav>
+          <ul>
+            <li>
+              <ul class="hide">
+                <li><a href="#">Mon compte</a></li>
+                <li><a href="#">Réglages</a></li>
+                <li><a href="logout">Déconnexion</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </nav>
+  </header>
+
+  <!-- //*   //////////// -->
+  <!-- //!  ////MAIN//// -->
+  <!-- //? //////////// -->
+  <main>
+    <div class="maxheight d-flex row-lg-12">
+      <nav class="nav flex-column p-4 col-2 bg-light">
+        <h3 class="text-secondary my-3"><i class="fas fa-home"></i> Accueil</h3>
+        <a class="nav-link active" aria-current="page" href="dashboard">Tableau de bord</a>
+        <h3 class="text-secondary my-3 "><i class="fas fa-globe-americas"></i> Site web</h3>
+        <a class="nav-link" href="boutiques">Gestion des boutiques</a>
+        <a class="nav-link" href="#">Gestion des actualités</a>
+        <h3 class="text-secondary my-3"><i class="fas fa-shopping-basket"></i> Boutique</h3>
+        <a class="nav-link" href="rayons">Gestion des rayons</a>
+        <a class="nav-link" href="products">Gestion des produits</a>
+        <a class="nav-link" href="#">Gestion des commandes</a>
+        <h3 class="text-secondary my-3"><i class="fas fa-users-cog"></i> Paramètres</h3>
+        <a class="nav-link" href="#">Gestion des utlisateurs</a>
+        <a class="nav-link" href="#">Gestion des rôles</a>
+        <a class="nav-link" href="#">Préférences</a>
+        <a class="btn btn-outline-danger mt-3 mx-1 shadow-none" href="logout">Se déconnecter</a>
+      </nav>
+      <?php include $template; ?>
+  </main>
+
+  <!-- //*   ////////////// -->
+  <!-- //!  ////FOOTER//// -->
+  <!-- //? ////////////// -->
+  <footer></footer>
+
+  <!-- Bootstrap CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

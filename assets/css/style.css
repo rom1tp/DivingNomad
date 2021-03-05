@@ -78,6 +78,10 @@ h1 {
 /*!  ////MAIN////  */
 /*? ////////////  */
 
+main {
+	max-width: 1400px;
+}
+
 /**   ////////////////  */
 /*!  ////ACCOUNTS////  */
 /*? ////////////////  */
@@ -110,10 +114,16 @@ h1 {
 /**   ///////////////  */
 /*!  ////GALLERY////  */
 /*? ///////////////  */
+
 .photos-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 	gap: 1rem;
+}
+.gallery .photos-container {
+	grid-template-columns: repeat(2, minmax(230px, 1fr));
+}
+.galleryBack .photos-container {
+	grid-template-columns: repeat(4, minmax(230px, 1fr));
 }
 
 .portrait {
@@ -124,4 +134,11 @@ h1 {
 	align-self: stretch;
 	justify-self: stretch;
 	object-fit: cover;
+}
+
+/**   /////////////  */
+/*!  ////ICONS////  */
+/*? /////////////  */
+.actions i {
+	font-size: 3rem;
 }

@@ -1,0 +1,167 @@
+<nav class="nav justify-content-center bg-secondary text-dark text-uppercase py-3">
+  <a class="nav-link text-white" href="accueil">Accueil</a>
+  <?php if(isset($_SESSION['user'])) : ?>
+  <a class="nav-link text-white" href="admin">Admin</a>
+  <?php else: ?>
+  <a class="nav-link text-white" href="admin">Login</a>
+  <?php endif; ?>
+  <a class="nav-link text-white" href="clients">Clients</a>
+  <a class="nav-link text-white" href="test">Test</a>
+  <div class="user">
+    <img
+      src="https://th.bing.com/th/id/Rb3e90dfeb6b3b2de52eddd2c94ab19ab?rik=60VSVFVovPfrDA&riu=http%3a%2f%2fwww.xlentdental.com%2fwp-content%2fuploads%2f2019%2f02%2f171-1717870_stockvader-predicted-cron-for-may-user-profile-icon-png.jpg&ehk=L5ovBzSjvOrRtZaLagGLbeHYgnK4oRcvwvD9%2f6JgCVc%3d&risl=&pid=ImgRaw"
+      alt="User Icon"></img>
+  </div>
+</nav>
+<div class="tophead">
+  <nav>
+    <ul>
+      <li><a class="black" href="#">Option d'affichage/accessibilité</a></li>
+      <li>Thème: <a href="#">Sombre contrasté</a> <a href="#">Clair</a></li>
+      <li>Interlignage: <a href="#">Simple</a> <a href="#">Augmenté</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="midhead">
+  <img class="logo" src="assets/img/logo.svg"></img>
+  <div class="block">
+    <h2>HiTech.NET</h2>
+    <p>Tout le matériel High-Tech</p>
+  </div>
+
+  <!--Modale Panier-->
+  <div>
+    <div class="backPanier"></div>
+    <div class="panier">
+      <h2>Mon panier</h2>
+    </div>
+  </div>
+
+  <a href="#">
+    <?php if(isset($_SESSION['basket'])): ?>
+    <div class="circle"><?= count($_SESSION['basket'])?></div>
+    <?php endif?>
+    <i class="fas fa-shopping-cart"></i>
+    <p>Mon Panier</p>
+  </a>
+</div>
+<div class="bothead">
+  <nav>
+    <ul>
+      <div class="Ordinateurs">
+        <li><i class="fas fa-desktop"></i><a href="#">Périphériques</a></li>
+        <ul id="ordinateurs">
+          <li>
+            <?php foreach($this -> boutiques as $boutique): ?>
+            <?php foreach($this -> rayons as $rayon): ?>
+            <?php if($boutique['Nom'] != "Boitier" && $boutique['Nom'] != "Imprimante" && $boutique['Nom'] != "Connectique"&& $boutique['Nom'] == $rayon['Boutique']):?>
+            <div class="boutique">
+              <h4>
+                <?= htmlspecialchars($rayon['Nom']) ?>
+              </h4>
+              <hr>
+              <?php foreach($this -> products as $products): ?>
+              <?php if($rayon['Nom'] == $products['Rayon'] && $boutique['Nom'] == $rayon['Boutique']):?>
+              <a href="article-<?= htmlspecialchars($products['ProductID']) ?>">
+                <h5>
+                  <?= htmlspecialchars($products['Produit']) ?>
+                </h5>
+              </a>
+              <?php endif;?>
+              <?php endforeach;?>
+            </div>
+            <?php endif;?>
+            <?php endforeach;?>
+            <?php endforeach; ?>
+          </li>
+        </ul>
+      </div>
+
+      <div class="Peripheriques">
+        <li><i class="fas fa-database"></i><a href="#">Boitier</a></li>
+        <ul id="peripheriques">
+          <li>
+            <?php foreach($this -> boutiques as $boutique): ?>
+            <?php foreach($this -> rayons as $rayon): ?>
+            <?php if($boutique['Nom'] == "Boitier" && $boutique['Nom'] == $rayon['Boutique']):?>
+            <div class="boutique">
+              <h4>
+                <?= htmlspecialchars($rayon['Nom']) ?>
+              </h4>
+              <hr>
+              <?php foreach($this -> products as $products): ?>
+              <?php if($rayon['Nom'] == $products['Rayon'] && $boutique['Nom'] == $rayon['Boutique']):?>
+              <a href="article-<?= htmlspecialchars($products['ProductID']) ?>">
+                <h5>
+                  <?= htmlspecialchars($products['Produit']) ?>
+                </h5>
+              </a>
+              <?php endif;?>
+              <?php endforeach;?>
+            </div>
+            <?php endif;?>
+            <?php endforeach;?>
+            <?php endforeach; ?>
+          </li>
+        </ul>
+      </div>
+      <div class="Telephones">
+        <li><i class="fas fa-mobile-alt"></i><a href="#">Imprimante</a></li>
+        <ul id="telephones">
+          <li>
+            <?php foreach($this -> boutiques as $boutique): ?>
+            <?php foreach($this -> rayons as $rayon): ?>
+            <?php if($boutique['Nom'] == "Imprimante" && $boutique['Nom'] == $rayon['Boutique']):?>
+            <div class="boutique">
+              <h4>
+                <?= htmlspecialchars($rayon['Nom']) ?>
+              </h4>
+              <hr>
+              <?php foreach($this -> products as $products): ?>
+              <?php if($rayon['Nom'] == $products['Rayon'] && $boutique['Nom'] == $rayon['Boutique']):?>
+              <a href="article-<?= $products['ProductID'] ?>">
+                <h5>
+                  <?= htmlspecialchars($products['Produit']) ?>
+                </h5>
+              </a>
+              <?php endif;?>
+              <?php endforeach;?>
+            </div>
+            <?php endif;?>
+            <?php endforeach;?>
+            <?php endforeach; ?>
+          </li>
+        </ul>
+      </div>
+      <div class="Objets-connectes">
+        <li><i class="fas fa-tablet-alt"></i><a href="#">Connectique</a></li>
+        <ul id="objets-connectes">
+          <li>
+            <?php foreach($this -> boutiques as $boutique): ?>
+            <?php foreach($this -> rayons as $rayon): ?>
+            <?php if($boutique['Nom'] == "Connectique" && $boutique['Nom'] == $rayon['Boutique']):?>
+            <div class="boutique">
+              <h4>
+                <?= htmlspecialchars($rayon['Nom']) ?>
+              </h4>
+              <hr>
+              <?php foreach($this -> products as $products): ?>
+              <?php if($rayon['Nom'] == $products['Rayon'] && $boutique['Nom'] == $rayon['Boutique']):?>
+              <a href="article-<?= $products['ProductID'] ?>">
+                <h5>
+                  <?= htmlspecialchars($products['Produit']) ?>
+                </h5>
+              </a>
+              <?php endif;?>
+              <?php endforeach;?>
+            </div>
+            <?php endif;?>
+            <?php endforeach;?>
+            <?php endforeach; ?>
+          </li>
+        </ul>
+      </div>
+    </ul>
+
+  </nav>
+</div>

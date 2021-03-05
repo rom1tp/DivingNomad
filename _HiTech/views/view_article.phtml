@@ -1,0 +1,130 @@
+<section class="presentation">
+  <h3>Présentation</h3>
+  <span></span>
+  <h2 class="text-center m-5 text-uppercase"><?= htmlspecialchars($product['Produit']) ?></h2>
+  <article class="tags">
+    <div class="tag">1920 x 1080 pixels</div>
+    <div class="tag">7 ms</div>
+    <div class="tag">Format large 16/9</div>
+    <div class="tag">Dalle IPS</div>
+    <div class="tag">HDMI</div>
+    <div class="tag">VGA</div>
+    <div class="tag">Noir</div>
+  </article>
+  <article class="photos">
+    <div class="carousel">
+      <img id="actual" src="<?= htmlspecialchars($this -> photos[0]['src']) ?>"></img>
+      <ul class="carouselList">
+        <!--Boucle foreach des photos-->
+        <?php foreach($this -> photos as $photo): ?>
+        <li class="carouselItem"><img alt="" src="<?= htmlspecialchars($photo['src']) ?>"></li>
+        <?php endforeach;?>
+      </ul>
+    </div>
+    </div>
+    <div class="details">Details
+      Logo du produit / Marque
+      <div class="price">
+        <a href="addToBasket-ProductID-<?= htmlspecialchars($product['ProductID']) ?>">Ajouter le produit</a>
+      </div>
+    </div>
+    </div>
+
+    <section>
+      <h2>Descriptif</h2>
+      <article>
+        <h3><?= htmlspecialchars($product['Titre1']) ?></h3>
+        <p><?= htmlspecialchars($product['Desc1']) ?></p>
+        <figure><img src="<?= htmlspecialchars($product['Image1']) ?>" alt="taille écran"></figure>
+      </article>
+
+      <article>
+        <h3><?= htmlspecialchars($product['Titre2']) ?></h3>
+        <p><?= htmlspecialchars($product['Desc2']) ?></p>
+        <figure><img src="<?= htmlspecialchars($product['Image2']) ?>" alt="3 moniteurs"></figure>
+      </article>
+
+      <article>
+        <h3><?= htmlspecialchars($product['Titre3']) ?></h3>
+        <p><?= htmlspecialchars($product['Desc3']) ?></p>
+        <figure><img src="<?= htmlspecialchars($product['Image3']) ?>" alt="moniteur"></figure>
+      </article>
+    </section>
+
+    <section>
+      <h2>Caractéristiques techniques</h2>
+
+      <article>
+        <h3>Affichage</h3>
+        <table>
+          <tr>
+            <td>Taille de l'écran</td>
+            <td>23.8 pouces</td>
+          </tr>
+          <tr>
+            <td>Format de l'écran</td>
+            <td>16/9</td>
+          </tr>
+          <tr>
+            <td>Type de Dalle</td>
+            <td>Dalle IPS</td>
+          </tr>
+          <tr>
+            <td>Technologie LCD</td>
+            <td>IPS</td>
+          </tr>
+          <tr>
+            <td>Résolution Max</td>
+            <td>1920 x 1080 pixels</td>
+          </tr>
+          <tr>
+            <td>Dot Pitch</td>
+            <td>0.2745 mm</td>
+          </tr>
+          <tr>
+            <td>Luminosité</td>
+            <td>250 cd/m²</td>
+          </tr>
+          <tr>
+            <td>Contraste</td>
+            <td>20000000 /1</td>
+          </tr>
+          <tr>
+            <td>Temps de réponse</td>
+            <td>7 ms</td>
+          </tr>
+          <tr>
+            <td>Angle de vision（horizontal）</td>
+            <td>178 Degré(s)</td>
+          </tr>
+          <tr>
+            <td>Angle de vision（vertical）</td>
+            <td>178 Degré(s)</td>
+          </tr>
+          <tr>
+            <td>Dalle mate/antireflets</td>
+            <td>Oui</td>
+          </tr>
+          <tr>
+            <td>NVIDIA G-SYNC</td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>Adaptive-Sync</td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>AMD FreeSync</td>
+            <td>Non</td>
+          </tr>
+          <tr>
+            <td>Flicker-Free</td>
+            <td>Oui</td>
+          </tr>
+          <tr>
+            <td>Anti lumière bleue</td>
+            <td>Oui</td>
+          </tr>
+        </table>
+      </article>
+    </section>

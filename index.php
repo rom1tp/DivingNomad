@@ -14,6 +14,9 @@
  * locations select in GalleryBack
  * make css for accounts form useable on all forms
  * htmlspecialchars peco modify or create snippet
+ * display => checkbox
+ * CRUD icons
+ * change submit button => icon
  */
 
 //  ! FINAL CHECKS
@@ -27,6 +30,7 @@
  * code commenting
  * README.md
  * .gitignore
+ * no <br>
  */
 
 session_start();

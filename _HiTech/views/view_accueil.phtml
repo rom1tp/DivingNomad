@@ -1,0 +1,23 @@
+<h2 class="text-center m-5 text-uppercase">Bienvenue sur HiTech.NET</h2>
+<ul>
+  <li class="liste">
+    <?php foreach($this -> boutiques as $boutique): ?>
+    <div class="boutique">
+      <h3><?= htmlspecialchars($boutique['Nom']) ?></h3>
+      <?php foreach($this -> rayons as $rayon): ?>
+      <?php if($boutique['Nom'] == $rayon['Boutique']):?>
+      <h4><?= htmlspecialchars($rayon['Nom']) ?></h4>
+      <hr>
+      <?php foreach($this -> products as $products): ?>
+      <?php if($rayon['Nom'] == $products['Rayon']):?>
+      <a href="article-articleNumber-<?= htmlspecialchars($products['ProductID']) ?>">
+        <h5><?= htmlspecialchars($products['Produit']) ?></h5>
+      </a>
+      <?php endif;?>
+      <?php endforeach;?>
+      <?php endif;?>
+      <?php endforeach;?>
+    </div>
+    <?php endforeach; ?>
+  </li>
+</ul>

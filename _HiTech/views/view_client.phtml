@@ -1,0 +1,23 @@
+<h2 class="text-center m-5 text-uppercase">Client <?= $customerNumber ?></h2>
+<div class="container-fluid py-3 px-5">
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <?php foreach ($orders[0] as $title => $value): ?>
+          <th scope="col" class="p-3 text-uppercase">
+            <?= $title ?>
+          </th>
+        <?php endforeach; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($orders as $order): ?>
+        <tr class="table-light">
+          <td class="py-3"><u><?= $order['Order #'] ?></u></td>
+          <td class="py-3"><?= $order['OrderDate'] ?></td>
+          <td class="py-3"><?= $order['Status'] ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>

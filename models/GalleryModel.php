@@ -37,19 +37,17 @@ class GalleryModel extends ModelManager
     return $this -> query($req, [$id]);
   }
 
-  public function modifyPhoto($name, $src, $caption, $date, $location_id, $display, $id)
+  public function modifyPhoto($name, $caption, $date, $display, $id)
   {
     $req =
     "UPDATE
     gallery
     SET
     name=?,
-    src=?,
     caption=?,
     date=?,
-    location_id=?,
     display=?
     WHERE id=?";
-    return $this -> query($req, [$name, $src, $caption, $date, $location_id, $display, $id]);
+    return $this -> query($req, [$name, $caption, $date, $display, $id]);
   }
 }

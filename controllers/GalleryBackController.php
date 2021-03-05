@@ -13,7 +13,6 @@ class GalleryBackController extends BackController
   {
 
     if (isset($_POST['submit']) && isset($_FILES['img'])) {
-    // if (false) {
       $img_name = $_FILES['img']['name'];
       $img_size = $_FILES['img']['size'];
       $tmp_name = $_FILES['img']['tmp_name'];
@@ -64,7 +63,7 @@ class GalleryBackController extends BackController
   {
     $id = $_GET["id"];
     $galleryModel = new GalleryModel();
-    $galleryModel->modifyPhoto($_POST["name"], $_POST["src"], $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display-$id"], $id);
+    $galleryModel->modifyPhoto($_POST["name"], $_POST["caption"], $_POST["date"], $_POST["display-$id"], $id);
     header('location:galleryBack');
   }
 }

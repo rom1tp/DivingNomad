@@ -11,26 +11,44 @@
     <textarea name="caption" cols="30" rows="3" placeholder="Caption"></textarea>
     <label>Date</label>
     <input name="date" type="date"></input>
-    <!-- <select name="location_id"> -->
-    <option selected disabled hidden>Choose a location</option>
-    <option value="1">Fuvahmulah Atoll</option>
-    <option value="1">Make this dynamic</option>
-    </select>
+    <!-- <select name="location_id">
+      <option selected disabled hidden>Choose a location</option>
+      <option value="">Fuvahmulah Atoll</option>
+      <option value="">Make this dynamic</option>
+    </select> -->
     <input type="file" name="img">
-    <button type="submit" name="submit">CONFIRM</button>
+    <button type="submit" name="submit">CONFIRM</i></button>
+
   </form>
 
 
   <div class="photos-container">
     <?php foreach ($photos as $photo): ?>
-    <figure>
+    <form action="confirmPhoto-id-<?= htmlspecialchars($photo['id']) ?>" method="post">
 
-      <h2><?= htmlspecialchars($photo['name']) ?></h2>
+      <input type="text" name="name" value="<?= htmlspecialchars($photo['name']) ?>">
+      <br>
       <img src="assets/img/<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>"
         width="300">
-      <h3><em><?= htmlspecialchars($photo['caption']) ?></em></h3>
-      <p><?= htmlspecialchars($photo['location_id']) ?>, <?= htmlspecialchars($photo['date']) ?></p>
-    </figure>
+      <br>
+      <p><?= htmlspecialchars($photo['location_id']) ?></p>
+      <input type="date" name="date" value="<?= htmlspecialchars($photo['date']) ?>">
+      <textarea type="text" name="caption" cols="35" rows="5"><?= htmlspecialchars($photo['caption']) ?></textarea>
+      <br>
+
+      <div class="actions">
+        <label>Show</label>
+        <input type="radio" value='show' name="display-<?= htmlspecialchars($photo['id']) ?>"
+          <?= ($photo['display'] == 'show')? 'checked': '' ?>>
+        <label>Hide</label>
+        <input type="radio" value='hide' name="display-<?= htmlspecialchars($photo['id']) ?>"
+          <?= ($photo['display'] == 'hide')? 'checked': '' ?>>
+        <i class="far fa-edit"></i>
+        <i class="far fa-eye-slash"></i>
+        <a href="deletePhoto-id-<?= htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
+        <button type="submit" name="submit"><i class="far fa-save"></i></button>
+      </div>
+    </form>
 
     <?php endforeach ?>
   </div>

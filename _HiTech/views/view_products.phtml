@@ -1,0 +1,92 @@
+<div class="container-fluid my-5 mx-3 row-lg-12">
+  <h2 class="text-center text-uppercase mb-5">Gestion des Produits</h2>
+  <div class="col-lg-12">
+    <div class="row g-3 d-flex flex-row">
+      <div class="col-5">
+        <input type="text" class="form-control shadow-none" id="search" />
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-outline-secondary mb-3 shadow-none">
+          Rechercher
+        </button>
+      </div>
+      <div class="col-auto ms-auto">
+        <a class="btn btn-primary shadow-none" href="addProduct"><i class="fas fa-plus pe-1"></i>Ajouter un produit</a>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex row-lg-12">
+    <div class="col m-1">
+      <table class="table table-stripped table-bordered">
+        <thead class="table-secondary">
+          <tr>
+            <th class="text-center col">Statut</th>
+            <th class="text-center col">Boutique</th>
+            <th class="text-center col">Rayon</th>
+            <th class="text-center col">Produit</th>
+            <th class="text-center col-5">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach($this->products as $key => $product): ?>
+          <tr>
+            <td class="fs-6 text-center fw-bold <?= $this -> setColor($product['Statut']); ?>">
+              <?= htmlspecialchars($product['Statut']) ?>
+            </td>
+            <td class="text-center"><?= htmlspecialchars($product['Boutique']) ?></td>
+            <td class="text-center"><?= htmlspecialchars($product['Rayon']) ?></td>
+            <td class="text-center"><?= htmlspecialchars($product['Produit']) ?></td>
+            <td class="actions d-flex justify-content-end">
+              <?= $this -> setButton($product['Statut'], $key); ?>
+              <a href="modifyProduct-ProductID-<?= htmlspecialchars($product['ProductID']) ?>"
+                class="btn btn-outline-secondary shadow-none mx-2">
+                <i class="fas fa-pencil-alt pe-1"></i>Modifier</a>
+              <a href="#" class="btn btn-outline-secondary shadow-none mx-2">
+                <i class="fas fa-tags pe-1"></i>Caractéristiques</a>
+            </td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <!--PAGINATION-->
+      <div class="d-flex justify-content-center">
+        <div aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Retrait d'une boutique</h5>
+        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Attention, la boutique ne sera plus visible sur le site.
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button class="btn btn-secondary shadow-none" data-bs-dismiss="modal">Annuler</button>
+        <button id="confirm" class="btn btn-danger shadow-none" data-bs-dismiss="modal">Retirer la boutique du
+          site</button>
+      </div>
+    </div>
+  </div>
+</div>

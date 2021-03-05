@@ -1,0 +1,27 @@
+<h2 class="text-center m-5 text-uppercase">Clients</h2>
+<div class="container-fluid py-3 px-5">
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <?php foreach ($clients[0] as $title => $value): ?>
+        <th scope="col" class="p-3 text-uppercase">
+          <?= $title ?>
+        </th>
+        <?php endforeach; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($clients as $client): ?>
+      <tr class="table-light">
+        <td class="py-3"><a class="text-dark" href="client-customerNumber-<?= $client['Number'] ?>">
+            <?= $client['Customer'] ?>
+          </a></td>
+        <td class="py-3"><?= $client['Number'] ?></td>
+        <td class="py-3"><?= $client['City'] ?></td>
+        <td class="py-3"><?= $client['Country'] ?></td>
+      </tr>
+      <?php endforeach; ?>
+
+    </tbody>
+  </table>
+</div>
