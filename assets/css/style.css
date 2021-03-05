@@ -77,3 +77,32 @@ h1 {
 /**   ////////////  */
 /*!  ////MAIN////  */
 /*? ////////////  */
+
+/**   ////////////////  */
+/*!  ////ACCOUNTS////  */
+/*? ////////////////  */
+.account form {
+	background: rebeccapurple;
+	padding: 2em;
+}
+.account form:nth-child(2) {
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	border-bottom: 6px double goldenrod;
+}
+.account form:nth-child(3) {
+	border-bottom-left-radius: 1em;
+	border-bottom-right-radius: 1em;
+}
+.account input,
+.account button {
+	outline: none;
+	background: white;
+	padding: 0.5em;
+	border-radius: 0.3em;
+}
+.account legend {
+	position: absolute;
+	color: white;
+	font-size: 1.5em;
+}
