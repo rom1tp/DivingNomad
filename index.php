@@ -24,6 +24,9 @@
  * file types
  * accessibility
  * image alts
+ * code commenting
+ * README.md
+ * .gitignore
  */
 
 session_start();

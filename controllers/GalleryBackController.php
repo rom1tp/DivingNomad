@@ -37,7 +37,7 @@ class GalleryBackController extends BackController
 
             $galleryModel = new GalleryModel();
             $galleryModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"]);
-            // header('location:galleryBack');
+            header('location:galleryBack');
 
           } else {
 
@@ -63,7 +63,6 @@ class GalleryBackController extends BackController
   public function confirm()
   {
     $id = $_GET["id"];
-    // echo $_POST["display-$id"];
     $galleryModel = new GalleryModel();
     $galleryModel->modifyPhoto($_POST["name"], $_POST["src"], $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display-$id"], $id);
     header('location:galleryBack');
