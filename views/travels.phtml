@@ -1,11 +1,16 @@
 <main class="travels">
   <h1>Travels page</h1>
-  <?php foreach ($photos as $photo): ?>
-  <?php if ($photo['display'] == 'show'): ?>
-  <figure>
-    <img src="assets/img/<?= $photo['src'] ?>" width="700">
-    <figcaption><?= $photo['caption'] ?></figcaption>
-  </figure>
+  <?php foreach ($posts as $post): ?>
+  <?php if ($post['display'] == 'show'): ?>
+  <!-- <figure>
+    <img src="assets/img/<?= $post['src'] ?>" width="700">
+    <figcaption><?= $post['caption'] ?></figcaption>
+  </figure> -->
+  <h2><?= $post['name'] ?></h2>
+  <h3><?= $post['title1'] ?></h3>
+  <p><?= $post['text1'] ?></p>
+  <h3><?= $post['title2'] ?></h3>
+  <p><?= $post['text2'] ?></p>
   <?php endif; ?>
   <?php endforeach; ?>
 </main>

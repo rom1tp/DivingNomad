@@ -3,8 +3,8 @@ class TravelsController extends FrontController
 {
   public function display()
   {
-    $photosModel = new PhotosModel();
-    $photos = $photosModel->getAllPhotos();
+    $postsModel = new PostsModel();
+    $posts = $postsModel->getAllPosts();
     $template = 'travels.phtml';
     include $this->layout;
   }  
