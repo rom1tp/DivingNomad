@@ -9,7 +9,7 @@
  *- modify
  *- delete
  * confirm delete
- * change db photos => travels
+ * change db posts => travels
  * 
  */
 session_start();
@@ -107,17 +107,17 @@ else {
       $controller -> display();
       break;
 
-    case 'uploadPhoto':
+    case 'uploadPost':
       $controller = new TravelsBackController();
       $controller -> upload();
       break;
 
-    case 'deletePhoto':
+    case 'deletePost':
       $controller = new TravelsBackController();
       $controller -> delete();
       break;
 
-    case 'confirmPhoto':
+    case 'confirmPost':
       $controller = new TravelsBackController();
       $controller -> confirm();
       break;

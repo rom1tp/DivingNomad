@@ -17,15 +17,15 @@ class PostsModel extends ModelManager
     return $this->queryFetchAll($req);
   }
 
-  public function addPost($src, $caption)
+  public function addPost($name, $title1, $text1, $title2, $text2)
   {
     $req =
     "INSERT
     INTO posts
-    (src, caption)
+    (name, title1, text1, title2, text2)
     VALUES
-    (?, ?)";
-    return $this->query($req, [$src, $caption]);
+    (?, ?, ?, ?, ?)";
+    return $this->query($req, [$name, $title1, $text1, $title2, $text2]);
   }
 
   public function deletePost($id)
@@ -37,15 +37,19 @@ class PostsModel extends ModelManager
     return $this -> query($req, [$id]);
   }
 
-  public function modifyPost($caption, $display, $id)
+  public function modifyPost($name, $title1, $text1, $title2, $text2, $display, $id)
   {
     $req =
     "UPDATE
     posts
     SET
-    caption=?,
+    name=?,
+    title1=?,
+    text1=?,
+    title2=?,
+    text2=?,
     display=?
     WHERE id=?";
-    return $this -> query($req, [$caption, $display, $id]);
+    return $this -> query($req, [$name, $title1, $text1, $title2, $text2, $display, $id]);
   }
 }
