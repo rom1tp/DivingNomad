@@ -1,0 +1,17 @@
+<main class="gallery">
+  <h1>Gallery</h1>
+  <div class="photos-container">
+    <?php foreach ($photos as $photo): ?>
+    <?php if ($photo['display'] == 'show'): ?>
+    <figure>
+
+      <h2><?= htmlspecialchars($photo['name']) ?></h2>
+      <img src="assets/img/<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>"
+        width="500">
+      <h3><em><?= htmlspecialchars($photo['caption']) ?></em></h3>
+      <p><?= htmlspecialchars($photo['location_id']) ?>, <?= htmlspecialchars($photo['date']) ?></p>
+    </figure>
+    <?php endif ?>
+    <?php endforeach ?>
+  </div>
+</main>

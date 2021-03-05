@@ -4,7 +4,7 @@ class GalleryBackController extends BackController
   public function display()
   {
     $galleryModel = new GalleryModel();
-    $posts = $galleryModel->getAllPosts();
+    $photos = $galleryModel->getAllPhotos();
     $template = 'galleryBack.phtml';
     include $this->layout;
   }
@@ -18,11 +18,11 @@ class GalleryBackController extends BackController
       $img_size = $_FILES['img']['size'];
       $tmp_name = $_FILES['img']['tmp_name'];
       $error = $_FILES['img']['error'];
-
+      
       if ($error == 0) {
         if ($img_size > 5000000) {
           $errorMsg = 'Sorry, your file is too large!';
-          header("location:travelsBack-errorMsg-$errorMsg");
+          header("location:galleryBack-errorMsg-$errorMsg");
         }
         else {
           $img_extension = pathinfo($img_name, PATHINFO_EXTENSION);
@@ -33,22 +33,22 @@ class GalleryBackController extends BackController
             $img_name = uniqid("IMG-", true).'.'.$img_extension;
             $img_upload_path = 'assets/img/'.$img_name;
             move_uploaded_file($tmp_name, $img_upload_path);
+            echo '<pre>' . var_export($_POST, true) . '</pre>';
 
             $galleryModel = new GalleryModel();
-            $galleryModel->addPhoto($img_name, $_POST["caption"]);
-            
-            header('location:travelsBack');
+            $galleryModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"]);
+            // header('location:galleryBack');
 
           } else {
 
             $errorMsg = 'You can\'t upload files of this type!';
-            header("location:travelsBack-errorMsg-$errorMsg");
+            header("location:galleryBack-errorMsg-$errorMsg");
           }
         }
       }
       else {
         $errorMsg = 'Unknown error occurred!';
-        header("location:travelsBack-errorMsg-$errorMsg");
+        header("location:galleryBack-errorMsg-$errorMsg");
       }
     }
   }
@@ -57,7 +57,7 @@ class GalleryBackController extends BackController
   {
     $galleryModel = new GalleryModel();
     $galleryModel->deletePhoto($_GET["id"]);
-    header('location:travelsBack');
+    header('location:galleryBack');
   }
 
   public function confirm()
@@ -65,7 +65,7 @@ class GalleryBackController extends BackController
     $id = $_GET["id"];
     // echo $_POST["display-$id"];
     $galleryModel = new GalleryModel();
-    $galleryModel->modifyPhoto($_POST["caption"], $_POST["display-$id"], $id);
-    header('location:travelsBack');
+    $galleryModel->modifyPhoto($_POST["name"], $_POST["src"], $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display-$id"], $id);
+    header('location:galleryBack');
   }
 }

@@ -5,14 +5,14 @@
   <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
   <?php endif; ?>
   <form action="uploadPost" method="post" enctype="multipart/form-data">
-    <legend>Upload an image</legend>
+    <legend>Create a post</legend>
     <!-- <input type="file" name="img"> -->
     <textarea name="name" cols="30" rows="3" placeholder="Name"></textarea>
     <textarea name="title1" cols="40" rows="5" placeholder="Title 1"></textarea>
     <textarea name="text1" cols="60" rows="10" placeholder="Text 1"></textarea>
     <textarea name="title2" cols="40" rows="5" placeholder="Title 2"></textarea>
     <textarea name="text2" cols="60" rows="10" placeholder="Text 2"></textarea>
-    <button type="submit" name="submit">UPLOAD</button>
+    <button type="submit" name="submit">CONFIRM</button>
   </form>
 
   <?php foreach ($posts as $post): ?>

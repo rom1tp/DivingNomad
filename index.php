@@ -9,8 +9,23 @@
  *- delete
  * confirm delete
  *- change db posts => travels
- * store nav in property
+ *- store nav in property
+ * check form enctype
+ * locations select in GalleryBack
+ * make css for accounts form useable on all forms
+ * htmlspecialchars peco modify or create snippet
  */
+
+//  ! FINAL CHECKS
+/**
+ * htmlspecialchars
+ * account shenanigans
+ * upload shenanigans
+ * file types
+ * accessibility
+ * image alts
+ */
+
 session_start();
 spl_autoload_register(function ($class)
 {
@@ -71,6 +86,12 @@ else {
       $controller -> display();
       break;
 
+    // # GALLERY
+    case 'gallery':
+      $controller = new GalleryController();
+      $controller -> display();
+      break;
+
     // #   ///////////////
     // *  ////BACKEND////
     // ! ///////////////
@@ -121,6 +142,32 @@ else {
       $controller -> confirm();
       break;
 
-      
+    // # GALLERY BACK
+    case 'galleryBack':
+      $controller = new GalleryBackController();
+      $controller -> display();
+      break;
+
+    case 'uploadPhoto':
+      $controller = new GalleryBackController();
+      $controller -> upload();
+      break;
+
+    case 'deletePhoto':
+      $controller = new GalleryBackController();
+      $controller -> delete();
+      break;
+
+    case 'confirmPhoto':
+      $controller = new GalleryBackController();
+      $controller -> confirm();
+      break;
+
+      // # TEST
+    case 'test':
+      $controller = new TestController();
+      $controller -> display();
+      break;
+
   }
 }

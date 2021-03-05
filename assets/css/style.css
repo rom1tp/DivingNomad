@@ -82,13 +82,13 @@ h1 {
 /*!  ////ACCOUNTS////  */
 /*? ////////////////  */
 .account form {
-	background: rebeccapurple;
+	background: var(--oceanBlue);
 	padding: 2em;
 }
 .account form:nth-child(2) {
 	border-top-left-radius: 1em;
 	border-top-right-radius: 1em;
-	border-bottom: 6px double goldenrod;
+	border-bottom: 6px double var(--orange);
 }
 .account form:nth-child(3) {
 	border-bottom-left-radius: 1em;
@@ -105,4 +105,23 @@ h1 {
 	position: absolute;
 	color: white;
 	font-size: 1.5em;
+}
+
+/**   ///////////////  */
+/*!  ////GALLERY////  */
+/*? ///////////////  */
+.photos-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	gap: 1rem;
+}
+
+.portrait {
+	grid-row: span 2;
+}
+
+.photos-container img {
+	align-self: stretch;
+	justify-self: stretch;
+	object-fit: cover;
 }
