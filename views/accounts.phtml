@@ -1,0 +1,47 @@
+<main class="account">
+  <h1>Account page</h1>
+  <?php if (isset($_GET["errorMsg"])) : ?>
+  <h3><?= $_GET["errorMsg"] ?></h3>
+  <?php endif; ?>
+  <form action="login" method="post">
+    <legend>Log In</legend>
+    <input type="email" name="email" id="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <form action="signup" method="post" autocomplete="off">
+    <legend>Sign Up</legend>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="passwordConfirm" placeholder="Confirm Password" required>
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <!-- boucle pour titres de colonne -->
+        <?php foreach ($users[0] as $key => $user): ?>
+        <th><?= $key ?></th>
+        <?php endforeach; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($users as $key => $user): ?>
+      <tr>
+        <!-- premier td hors de la boucle pour rajouter des attributs -->
+        <td><a href="user-id-<?= htmlspecialchars($user['email']) ?>"><?= htmlspecialchars($user['email']) ?></a>
+        </td>
+
+        <!-- unset pour enlever la premiere valeur mais ça me paraît un peu brute -->
+        <?php unset($user['email'])?>
+        <!-- boucle sans la premiere valeur -->
+        <?php foreach ($user as $index => $info): ?>
+        <td><?= htmlspecialchars($info) ?></td>
+        <?php endforeach; ?>
+      </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</main>

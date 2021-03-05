@@ -1,0 +1,41 @@
+<main class="projectsBack">
+  <h1>Projects page</h1>
+
+  <?php if (isset($_GET["errorMsg"])) : ?>
+  <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
+  <?php endif; ?>
+  <form action="uploadProject" method="post">
+    <legend>Upload a project</legend>
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="url" placeholder="Url">
+    <button type="submit" name="submit">UPLOAD</button>
+    <br>
+    <textarea name="subtitle" cols="60" rows="3" placeholder="Subtitle"></textarea>
+    <br>
+    <textarea name="description" cols="60" rows="10" placeholder="Description"></textarea>
+  </form>
+
+
+  <?php foreach ($projects as $project): ?>
+
+  <form action="confirmProject-id-<?= htmlspecialchars($project['id']) ?>" method="post">
+    <input type="text" name="name" value="<?= htmlspecialchars($project['name']) ?>">
+    <br>
+    <textarea name="subtitle" cols="60" rows="3"><?= htmlspecialchars($project['subtitle']) ?></textarea>
+    <br>
+    <textarea name="description" cols="60" rows="10"><?= htmlspecialchars($project['description']) ?></textarea>
+    <br>
+    <input type="text" name="url" placeholder="Url" value="<?= htmlspecialchars($project['url']) ?>">
+
+    <label>Show</label>
+    <input type="radio" value='show' name="display-<?= htmlspecialchars($project['id']) ?>"
+      <?= ($project['display'] == 'show')? 'checked': '' ?>>
+    <label>Hide</label>
+    <input type="radio" value='hide' name="display-<?= htmlspecialchars($project['id']) ?>"
+      <?= ($project['display'] == 'hide')? 'checked': '' ?>>
+    <br>
+    <button type="submit">Confirm</button>
+  </form>
+  <a class="button" href="deleteProject-id-<?= htmlspecialchars($project['id']) ?>">Delete</a>
+  <?php endforeach; ?>
+</main>

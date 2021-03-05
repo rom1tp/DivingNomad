@@ -1,0 +1,38 @@
+<main class="travelsBack">
+  <h1>Travels page</h1>
+
+  <?php if (isset($_GET["errorMsg"])) : ?>
+  <h3><?= $_GET["errorMsg"] ?></h3>
+  <?php endif; ?>
+  <form action="uploadPost" method="post" enctype="multipart/form-data">
+    <legend>Upload an image</legend>
+    <!-- <input type="file" name="img"> -->
+    <textarea name="name" cols="30" rows="3" placeholder="Name"></textarea>
+    <textarea name="text1" cols="40" rows="5" placeholder="Title 1"></textarea>
+    <textarea name="text1" cols="60" rows="10" placeholder="Text 1"></textarea>
+    <button type="submit" name="submit">UPLOAD</button>
+  </form>
+
+  <?php foreach ($posts as $post): ?>
+  <!-- <figure>
+    <img src="assets/img/<?= $post['src'] ?>" width="150">
+  </figure> -->
+
+  <form action="confirmPost-id-<?= $post['id'] ?>" method="post">
+    <textarea name="name" cols="30" rows="3"><?= $post['name'] ?></textarea>
+    <textarea name="title1" cols="40" rows="5"><?= $post['title1'] ?></textarea>
+    <textarea name="text1" cols="60" rows="10"><?= $post['text1'] ?></textarea>
+    <textarea name="title2" cols="40" rows="5"><?= $post['title2'] ?></textarea>
+    <textarea name="text2" cols="60" rows="10"><?= $post['text2'] ?></textarea>
+    <label>Show</label>
+    <input type="radio" value='show' name="display-<?= $post['id'] ?>"
+      <?= ($post['display'] == 'show')? 'checked': '' ?>>
+    <label>Hide</label>
+    <input type="radio" value='hide' name="display-<?= $post['id'] ?>"
+      <?= ($post['display'] == 'hide')? 'checked': '' ?>>
+    <br>
+    <button type="submit">Confirm</button>
+  </form>
+  <a class="button" href="deletePost-id-<?= $post['id'] ?>">Delete</a>
+  <?php endforeach; ?>
+</main>

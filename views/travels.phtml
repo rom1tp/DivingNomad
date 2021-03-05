@@ -1,0 +1,11 @@
+<main class="travels">
+  <h1>Travels page</h1>
+  <?php foreach ($photos as $photo): ?>
+  <?php if ($photo['display'] == 'show'): ?>
+  <figure>
+    <img src="assets/img/<?= $photo['src'] ?>" width="700">
+    <figcaption><?= $photo['caption'] ?></figcaption>
+  </figure>
+  <?php endif; ?>
+  <?php endforeach; ?>
+</main>

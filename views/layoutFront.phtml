@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--//*   /////////////////  -->
+  <!--//!  ////JS & CDNs////  -->
+  <!--//? ///////////////// -->
+  <!-- Bootstrap CDN -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" /> -->
+
+  <!-- jQuery.js CDN-->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script> -->
+
+  <!-- Vue.js CDN : development version, includes helpful console warnings -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+
+  <script src="js/script.js" defer></script>
+
+  <!--//*   /////////////////  -->
+  <!--//!  ///////CSS///////  -->
+  <!--//? ///////////////// -->
+  <!-- Audiowide & Raleway Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Diving Nomad</title>
+</head>
+
+<body>
+  <header>
+    <nav class="language-nav">
+      <a href=""><img src="https://www.countryflags.io/us/shiny/64.png"></a>
+      <a href=""><img src="https://www.countryflags.io/fr/shiny/64.png"></a>
+      <a href=""><img src="https://www.countryflags.io/cn/shiny/64.png"></a>
+      <a href=""><img src="https://www.countryflags.io/es/shiny/64.png"></a>
+      <a href=""><img src="https://www.countryflags.io/it/shiny/64.png"></a>
+      <a href=""><img src="https://www.countryflags.io/br/shiny/64.png"></a>
+    </nav>
+    <nav class="main-nav">
+      <!-- <a href="//FIXME make it switch from front to back">&#8644;</a> -->
+      <!-- <a href="aboutMe">About Me</a> -->
+      <a href="travels">Travels</a>
+      <a href="projects">Projects</a>
+      <a href="<?= (isset($_SESSION["user"]) && $_SESSION["user"] == 'superadmin')? 'dashboard': 'home' ?>"><img
+          src="assets/img/logo.jpg" alt="Logo" /></a>
+      <!-- <a href="contactMe">Contact Me</a> -->
+      <?php if (isset($_SESSION["user"]) && $_SESSION["user"] == 'superadmin'): ?>
+      <a href="accounts">Dashboard</a>
+      <?php endif; ?>
+      <a href="accounts">My Account</a>
+      <a href="logout">Logout</a>
+      <nav class="social-nav">
+        <a href="https://www.facebook.com/romain.tangpavillard" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/rom1tp" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:romaintangpav@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+        <a href="https://github.com/rom1tp" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/romain-tang" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </nav>
+    </nav>
+  </header>
+  <?php include $template ?>
+  <footer>
+    <?php if (isset($_SESSION["user"])): ?>
+    <p>Logged in as <?= $_SESSION["email"] ?>.</p>
+    <?php endif; ?>
+  </footer>
+</body>
+
+</html>

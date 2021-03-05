@@ -1,0 +1,12 @@
+<main class="projects">
+  <h1>Projects page</h1>
+
+  <?php foreach ($projects as $project): ?>
+  <?php if ($project['display'] == 'show'): ?>
+  <h2><?= htmlspecialchars($project['name']) ?></h2>
+  <h3><?= htmlspecialchars($project['subtitle']) ?></h3>
+  <p><?= htmlspecialchars($project['description']) ?></p>
+  <a href="<?= htmlspecialchars($project['url']) ?>" target="_blank"><?= htmlspecialchars($project['url']) ?></a>
+  <?php endif; ?>
+  <?php endforeach; ?>
+</main>
