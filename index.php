@@ -1,22 +1,20 @@
 <?php
-// echo '<pre>' . var_export($variable, true) . '</pre>';
-
 // TODO
 /**
  *- img caption
  *- show/hide
  *- modify
  *- delete
- * confirm delete
  *- change db posts => travels
  *- store nav in property
- * check form enctype
  * locations select in GalleryBack
- * make css for accounts form useable on all forms
- * htmlspecialchars peco modify or create snippet
  * display => checkbox
+ * bootstrap forms
+ * htmlspecialchars peco modify or create snippet
  * CRUD icons
  * change submit button => icon
+ * confirm delete
+ * check form enctype
  */
 
 //  ! FINAL CHECKS

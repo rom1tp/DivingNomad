@@ -17,6 +17,7 @@ class GalleryModel extends ModelManager
     return $this->queryFetchAll($req);
   }
   
+  
   public function addPhoto($name, $src, $caption, $date)
   {
     $req =

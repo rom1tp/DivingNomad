@@ -1,6 +1,7 @@
 <?php
 class GalleryBackController extends BackController
 {
+  
   public function display()
   {
     $galleryModel = new GalleryModel();
@@ -37,9 +38,7 @@ class GalleryBackController extends BackController
             $galleryModel = new GalleryModel();
             $galleryModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"]);
             header('location:galleryBack');
-
           } else {
-
             $errorMsg = 'You can\'t upload files of this type!';
             header("location:galleryBack-errorMsg-$errorMsg");
           }

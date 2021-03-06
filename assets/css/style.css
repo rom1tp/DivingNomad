@@ -115,15 +115,10 @@ main {
 /*!  ////GALLERY////  */
 /*? ///////////////  */
 
+/* # COMMON */
 .photos-container {
 	display: grid;
 	gap: 1rem;
-}
-.gallery .photos-container {
-	grid-template-columns: repeat(2, minmax(230px, 1fr));
-}
-.galleryBack .photos-container {
-	grid-template-columns: repeat(4, minmax(230px, 1fr));
 }
 
 .portrait {
@@ -134,6 +129,16 @@ main {
 	align-self: stretch;
 	justify-self: stretch;
 	object-fit: cover;
+}
+
+/* # FRONT */
+.gallery .photos-container {
+	grid-template-columns: repeat(2, minmax(230px, 1fr));
+}
+
+/* # BACK */
+.galleryBack .photos-container {
+	grid-template-columns: repeat(4, minmax(230px, 1fr));
 }
 
 /**   /////////////  */

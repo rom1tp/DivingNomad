@@ -1,23 +1,23 @@
-<main class="galleryBack">
+<main class="galleryBack container">
   <h1>Gallery</h1>
 
   <?php if (isset($_GET["errorMsg"])) : ?>
   <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
-  <?php endif; ?>
-  <form action="uploadPhoto" method="post" enctype="multipart/form-data">
+  <?php endif ?>
+  <form action="uploadPhoto" method="post" enctype="multipart/form-data" class="photo-form col-6 mx-auto">
     <legend>Create a post</legend>
     <!-- <input type="file" name="img"> -->
-    <input name="name" placeholder="Name"></input>
-    <textarea name="caption" cols="30" rows="3" placeholder="Caption"></textarea>
-    <label>Date</label>
-    <input name="date" type="date"></input>
-    <!-- <select name="location_id">
+    <input name="name" placeholder="Name" class="form-control shadow-none"></input>
+    <textarea name="caption" placeholder="Caption" class="form-control shadow-none"></textarea>
+    <label class="form-label">Date</label>
+    <input name="date" type="date" class="form-control shadow-none"></input>
+    <select name="location_id" class="form-select shadow-none">
       <option selected disabled hidden>Choose a location</option>
       <option value="">Fuvahmulah Atoll</option>
       <option value="">Make this dynamic</option>
-    </select> -->
-    <input type="file" name="img">
-    <button type="submit" name="submit">CONFIRM</i></button>
+    </select>
+    <input type="file" name="img" class="form-control shadow-none">
+    <button type="submit" name="submit" class="btn btn-primary shadow-none">CONFIRM</i></button>
 
   </form>
 
