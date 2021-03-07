@@ -33,10 +33,9 @@ class GalleryBackController extends BackController
             $img_name = uniqid("IMG-", true).'.'.$img_extension;
             $img_upload_path = 'assets/img/'.$img_name;
             move_uploaded_file($tmp_name, $img_upload_path);
-            echo '<pre>' . var_export($_POST, true) . '</pre>';
 
             $galleryModel = new GalleryModel();
-            $galleryModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"]);
+            $galleryModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["display"]);
             header('location:galleryBack');
           } else {
             $errorMsg = 'You can\'t upload files of this type!';
@@ -60,9 +59,8 @@ class GalleryBackController extends BackController
 
   public function confirm()
   {
-    $id = $_GET["id"];
     $galleryModel = new GalleryModel();
-    $galleryModel->modifyPhoto($_POST["name"], $_POST["caption"], $_POST["date"], $_POST["display-$id"], $id);
+    $galleryModel->modifyPhoto($_POST["name"], $_POST["caption"], $_POST["date"], $_POST["display"], $_GET["id"]);
     header('location:galleryBack');
   }
 }

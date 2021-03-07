@@ -18,15 +18,15 @@ class GalleryModel extends ModelManager
   }
   
   
-  public function addPhoto($name, $src, $caption, $date)
+  public function addPhoto($name, $src, $caption, $date, $display)
   {
     $req =
     "INSERT
     INTO gallery
-    (name, src, caption, date)
+    (name, src, caption, date, display)
     VALUES
-    (?, ?, ?, ?)";
-    return $this->query($req, [$name, $src, $caption, $date]);
+    (?, ?, ?, ?, ?)";
+    return $this->query($req, [$name, $src, $caption, $date, $display]);
   }
 
   public function deletePhoto($id)

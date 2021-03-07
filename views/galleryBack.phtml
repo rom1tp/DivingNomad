@@ -17,6 +17,12 @@
       <option value="">Make this dynamic</option>
     </select>
     <input type="file" name="img" class="form-control shadow-none">
+    <label class="form-check-label">
+      Displayed
+    </label>
+    <input type="hidden" name="display" value="hide">
+    <input type="checkbox" name="display" value="show" class="form-check-input shadow-none">
+    <br>
     <button type="submit" name="submit" class="btn btn-primary shadow-none">CONFIRM</i></button>
 
   </form>
@@ -37,12 +43,16 @@
       <br>
 
       <div class="actions">
-        <label>Show</label>
-        <input type="radio" value='show' name="display-<?= htmlspecialchars($photo['id']) ?>"
-          <?= ($photo['display'] == 'show')? 'checked': '' ?>>
+        <!-- <label>Show</label>
+        <input type="radio" value='show' name="display" <?= ($photo['display'] == 'show')? 'checked': '' ?>>
         <label>Hide</label>
-        <input type="radio" value='hide' name="display-<?= htmlspecialchars($photo['id']) ?>"
-          <?= ($photo['display'] == 'hide')? 'checked': '' ?>>
+        <input type="radio" value='hide' name="display" <?= ($photo['display'] == 'hide')? 'checked': '' ?>> -->
+        <label class="form-check-label">
+          Displayed
+        </label>
+        <input type="hidden" name="display" value="hide">
+        <input type="checkbox" name="display" value="show" class="form-check-input shadow-none"
+          <?= ($photo['display'] == 'show')? 'checked': '' ?>>
         <i class="far fa-edit"></i>
         <i class="far fa-eye-slash"></i>
         <a href="deletePhoto-id-<?= htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>

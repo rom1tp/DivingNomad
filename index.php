@@ -7,10 +7,11 @@
  *- delete
  *- change db posts => travels
  *- store nav in property
- * locations select in GalleryBack
- * display => checkbox
+ *- htmlspecialchars peco modify or create snippet
+ *- display => checkbox
  * bootstrap forms
- * htmlspecialchars peco modify or create snippet
+ * fix table relationships
+ * locations select in GalleryBack
  * CRUD icons
  * change submit button => icon
  * confirm delete
