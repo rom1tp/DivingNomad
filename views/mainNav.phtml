@@ -1,7 +1,7 @@
 <nav class="main-nav">
   <!-- <a href="//FIXME make it switch from front to back">&#8644;</a> -->
 
-  <?php if(isset($_SESSION["user"]) && $_SESSION["user"] == 'superadmin'): ?>
+  <?php if(isset($_SESSION["user"]) && $_SESSION["user"] == 'owner'): ?>
   <a><a href="travels"><i class="fas fa-users"></i></a>
     Travels
     <a href="travelsBack"><i class="fas fa-user-edit"></i></a></a>
@@ -12,11 +12,12 @@
   <a><a href="gallery"><i class="fas fa-users"></i></a>
     Gallery
     <a href="galleryBack"><i class="fas fa-user-edit"></i></a></a>
-  <a href="accounts">Dashboard</a>
+  <a href="dashboard">Dashboard</a>
+  <a href="account">My Account</a>
   <a href="test">Test</a>
 
   <?php else: ?>
-  <!-- <a href="aboutMe">About Me</a> -->
+  <!-- <a href="about">About Me</a> -->
   <a href="travels">Travels</a>
   <a href="projects">Projects</a>
   <a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a>

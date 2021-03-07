@@ -1,7 +1,7 @@
 <?php
 class GalleryBackController extends BackController
 {
-  
+
   public function display()
   {
     $galleryModel = new GalleryModel();
@@ -9,7 +9,7 @@ class GalleryBackController extends BackController
     $template = 'galleryBack.phtml';
     include $this->layout;
   }
-  
+
   public function upload()
   {
 
@@ -18,20 +18,19 @@ class GalleryBackController extends BackController
       $img_size = $_FILES['img']['size'];
       $tmp_name = $_FILES['img']['tmp_name'];
       $error = $_FILES['img']['error'];
-      
+
       if ($error == 0) {
         if ($img_size > 5000000) {
           $errorMsg = 'Sorry, your file is too large!';
           header("location:galleryBack-errorMsg-$errorMsg");
-        }
-        else {
+        } else {
           $img_extension = pathinfo($img_name, PATHINFO_EXTENSION);
           $img_extension = strtolower($img_extension);
           $allowedExtensions = array('jpg', 'png', 'jpeg');
-          
+
           if (in_array($img_extension, $allowedExtensions)) {
-            $img_name = uniqid("IMG-", true).'.'.$img_extension;
-            $img_upload_path = 'assets/img/'.$img_name;
+            $img_name = uniqid("IMG-", true) . '.' . $img_extension;
+            $img_upload_path = 'assets/img/' . $img_name;
             move_uploaded_file($tmp_name, $img_upload_path);
 
             $galleryModel = new GalleryModel();
@@ -42,8 +41,7 @@ class GalleryBackController extends BackController
             header("location:galleryBack-errorMsg-$errorMsg");
           }
         }
-      }
-      else {
+      } else {
         $errorMsg = 'Unknown error occurred!';
         header("location:galleryBack-errorMsg-$errorMsg");
       }

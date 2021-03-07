@@ -1,0 +1,19 @@
+<main class="accountBack">
+  <h1>My account</h1>
+  <h2><?=htmlspecialchars($user['rank']) ?></h2>
+  <form>
+    <div class="">
+      <label class="form-label">Email address</label>
+      <input type="email" name="email" class="form-control shadow-none" value="<?=htmlspecialchars($user['email']) ?>">
+    </div>
+    <div class="">
+      <label class="form-label">Old password</label>
+      <input type="password" name="oldPassword" class="form-control shadow-none">
+      <label class="form-label">New password</label>
+      <input type="password" name="newPassword" class="form-control shadow-none">
+      <label class="form-label">Confirm password</label>
+      <input type="password" name="confirmPassword" class="form-control shadow-none">
+    </div>
+    <button type="submit" class="btn btn-primary shadow-none">Submit</button>
+  </form>
+</main>
