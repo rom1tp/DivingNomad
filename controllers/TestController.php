@@ -1,5 +1,5 @@
 <?php
-class TestController extends FrontController
+class TestController extends BackController
 {
  public function display()
  {

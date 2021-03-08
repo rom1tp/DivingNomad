@@ -9,8 +9,8 @@
  *- store nav in property
  *- htmlspecialchars peco modify or create snippet
  *- display => checkbox
- * locations select in GalleryBack
- * bootstrap forms
+ *- locations select in GalleryBack
+ *- bootstrap forms
  * confirm delete
  * check form enctype
  * social oAuth
@@ -30,11 +30,18 @@
  */// *
 
 /** // * USERS
- * AccountsController => SessionController
+ * AccountsController => SessionController // ? not sure if necessary
  */// *
 
 /** // * FORMS
  * show password button in login/sign-up
+ */// *
+
+/** // * GALLERY
+ * add continent / country / location
+ * disable countries with js
+ * view photo on map
+ * map marker CRUD
  */// *
 
 //  ! FINAL CHECKS

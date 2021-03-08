@@ -141,9 +141,62 @@ main {
 	grid-template-columns: repeat(4, minmax(230px, 1fr));
 }
 
-/**   /////////////  */
+.galleryBack #newContinent {
+	display: none;
+}
+
+.galleryBack #newContinent.active {
+	display: inline;
+}
+
+.galleryBack #countries {
+	display: none;
+}
+
+.galleryBack #countries.active {
+	display: inline;
+}
+
+.galleryBack #newCountry {
+	display: none;
+}
+
+.galleryBack #newCountry.active {
+	display: inline;
+}
+
+.galleryBack .location option[value="country"] {
+	background-color: rgba(0, 0, 0, 0.4);
+	color: #ddd;
+}
+
+.galleryBack .location option[value="continent"] {
+	background-color: rgba(0, 0, 0, 1);
+	color: #fff;
+}
+
+.galleryBack .location option:not([value="continent"]):not([value='country']) {
+	background-color: rebeccapurple;
+	color: #fff;
+}
+
+.galleryBack #countries option {
+	display: none;
+}
+
+.galleryBack #countries option.active {
+	display: block;
+}
+
+
+
+/*?   /////////////  */
 /*!  ////ICONS////  */
-/*? /////////////  */
+/** /////////////  */
 .actions i {
 	font-size: 3rem;
 }
+
+/*?   ///////////////  */
+/*!  ////ACCOUNT////  */
+/** ///////////////  */
