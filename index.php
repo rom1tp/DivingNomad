@@ -9,8 +9,8 @@
  *- store nav in property
  *- htmlspecialchars peco modify or create snippet
  *- display => checkbox
- * bootstrap forms
  * locations select in GalleryBack
+ * bootstrap forms
  * confirm delete
  * check form enctype
  * social oAuth
@@ -19,7 +19,7 @@
 
 /** // ? QUESTIONS
  * how to make multilingual website ? JSON ? db ?
- * fix table relationships
+ *- fix table relationships
  */// ?
 
 /** // * CRUD
@@ -34,7 +34,7 @@
  */// *
 
 /** // * FORMS
- * show password in login/sign-up
+ * show password button in login/sign-up
  */// *
 
 //  ! FINAL CHECKS

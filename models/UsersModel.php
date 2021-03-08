@@ -62,7 +62,7 @@ class UsersModel extends ModelManager
   return $this->query($req, [$email, $password, $id]);
  }
 
- public function modifyUser($firstName, $lastName, $dob, $email, $address, $password, $id)
+ public function modifyUser($firstName, $lastName, $dob, $email, $address, $id)
  {
   $req =
    "UPDATE
@@ -74,9 +74,19 @@ class UsersModel extends ModelManager
   lastName=?,
   dob=?,
   email=?,
-  address=?,
-  password=?
+  address=?
   WHERE users.id=?";
-  return $this->query($req, [$firstName, $lastName, $dob, $email, $address, $password, $id]);
+  return $this->query($req, [$firstName, $lastName, $dob, $email, $address, $id]);
+ }
+
+ public function modifyPassword($password, $id)
+ {
+  $req =
+   "UPDATE
+    users
+    SET
+    password=?
+    WHERE id=?";
+  return $this->query($req, [$password, $id]);
  }
 }

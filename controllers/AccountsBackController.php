@@ -13,18 +13,26 @@ class AccountsBackController extends BackController
  {
   $usersModel = new UsersModel();
   $user = $usersModel->getUser($_POST["email"]);
-  if ($_POST["newPassword"] == $_POST["confirmPassword"]) {
-   $password = password_hash($_POST["confirmPassword"], PASSWORD_DEFAULT);
-   if (password_verify($_POST["oldPassword"], $user["password"])) {
-    $usersModel->modifyUser($_POST["firstName"], $_POST["lastName"], $_POST["dob"], $_POST["email"], $_POST["address"], $password, $_SESSION["userId"]);
-    header('location:accountBack');
+
+  if (!empty($_POST["oldPassword"]) && !empty($_POST["newPassword"]) && !empty($_POST["confirmPassword"])) {
+   if ($_POST["newPassword"] == $_POST["confirmPassword"]) {
+    $password = password_hash($_POST["confirmPassword"], PASSWORD_DEFAULT);
+    if (password_verify($_POST["oldPassword"], $user["password"])) {
+     $usersModel->modifyPassword($password, $_SESSION["userId"]);
+     $usersModel->modifyUser($_POST["firstName"], $_POST["lastName"], $_POST["dob"], $_POST["email"], $_POST["address"], $_SESSION["userId"]);
+     header('location:accountBack');
+    } else {
+     $errorMsg = 'Old password is incorrect!';
+     header("location:accountBack-errorMsg-$errorMsg");
+    }
    } else {
-    $errorMsg = 'Old password is incorrect!';
+    $errorMsg = 'Passwords don\'t match!';
     header("location:accountBack-errorMsg-$errorMsg");
    }
   } else {
-   $errorMsg = 'Passwords don\'t match!';
-   header("location:accountBack-errorMsg-$errorMsg");
+   $usersModel = new UsersModel();
+   $usersModel->modifyUser($_POST["firstName"], $_POST["lastName"], $_POST["dob"], $_POST["email"], $_POST["address"], $_SESSION["userId"]);
+   header('location:accountBack');
   }
  }
 }
