@@ -6,26 +6,29 @@ class PhotosModel extends ModelManager
  {
   $req =
    "SELECT
-    id,
-    name,
+    photos.id AS id,
+    photos.name AS name,
     src,
     caption,
     date,
-    location_id,
+    locations.name AS location,
     display
-    FROM photos";
+    FROM photos
+    INNER JOIN locations
+    ON location_id = locations.id
+    ";
   return $this->queryFetchAll($req);
  }
 
- public function addPhoto($name, $src, $caption, $date, $display)
+ public function addPhoto($name, $src, $caption, $date, $locationId, $display)
  {
   $req =
    "INSERT
     INTO photos
-    (name, src, caption, date, display)
+    (name, src, caption, date, location_id, display)
     VALUES
-    (?, ?, ?, ?, ?)";
-  return $this->query($req, [$name, $src, $caption, $date, $display]);
+    (?, ?, ?, ?, ?, ?)";
+  return $this->query($req, [$name, $src, $caption, $date, $locationId, $display]);
  }
 
  public function deletePhoto($id)

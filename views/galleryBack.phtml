@@ -1,8 +1,8 @@
 <main class="galleryBack container">
   <h1>Gallery</h1>
 
-  <?php if (isset($_GET["errorMsg"])) : ?>
-  <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
+  <?php if (isset($_GET["errorMsg"])): ?>
+  <h3><?=htmlspecialchars($_GET["errorMsg"]) ?></h3>
   <?php endif ?>
   <form action="uploadPhoto" method="post" enctype="multipart/form-data" class="photo-form col-6 mx-auto">
     <legend>Create a post</legend>
@@ -13,8 +13,19 @@
     <input name="date" type="date" class="form-control shadow-none"></input>
     <select name="location_id" class="form-select shadow-none">
       <option selected disabled hidden>Choose a location</option>
-      <option value="">Fuvahmulah Atoll</option>
-      <option value="">Make this dynamic</option>
+      <?php foreach ($continents as $continent): ?>
+      <option><?=htmlspecialchars($continent['continent']) ?></option>
+      <?php foreach ($countries as $country): ?>
+      <?php if ($country['continent_id'] == $continent['id']): ?>
+      <option><?=htmlspecialchars($country['country']) ?></option>
+      <?php foreach ($locations as $location): ?>
+      <?php if ($location['country_id'] == $country['id']): ?>
+      <option value="<?=htmlspecialchars($location['id']) ?>"><?=htmlspecialchars($location['location']) ?></option>
+      <?php endif ?>
+      <?php endforeach ?>
+      <?php endif ?>
+      <?php endforeach ?>
+      <?php endforeach ?>
     </select>
     <input type="file" name="img" class="form-control shadow-none">
     <label class="form-check-label">
@@ -30,32 +41,32 @@
 
   <div class="photos-container">
     <?php foreach ($photos as $photo): ?>
-    <form action="confirmPhoto-id-<?= htmlspecialchars($photo['id']) ?>" method="post">
+    <form action="confirmPhoto-id-<?=htmlspecialchars($photo['id']) ?>" method="post">
 
-      <input type="text" name="name" value="<?= htmlspecialchars($photo['name']) ?>">
+      <input type="text" name="name" value="<?=htmlspecialchars($photo['name']) ?>">
       <br>
-      <img src="assets/img/<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>"
+      <img src="assets/img/<?=htmlspecialchars($photo['src']) ?>" alt="<?=htmlspecialchars($photo['name']) ?>"
         width="300">
       <br>
-      <p><?= htmlspecialchars($photo['location_id']) ?></p>
-      <input type="date" name="date" value="<?= htmlspecialchars($photo['date']) ?>">
-      <textarea type="text" name="caption" cols="35" rows="5"><?= htmlspecialchars($photo['caption']) ?></textarea>
+      <p><?=htmlspecialchars($photo['location']) ?></p>
+      <input type="date" name="date" value="<?=htmlspecialchars($photo['date']) ?>">
+      <textarea type="text" name="caption" cols="35" rows="5"><?=htmlspecialchars($photo['caption']) ?></textarea>
       <br>
 
       <div class="actions">
         <!-- <label>Show</label>
-        <input type="radio" value='show' name="display" <?= ($photo['display'] == 'show')? 'checked': '' ?>>
+        <input type="radio" value='show' name="display" <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
         <label>Hide</label>
-        <input type="radio" value='hide' name="display" <?= ($photo['display'] == 'hide')? 'checked': '' ?>> -->
+        <input type="radio" value='hide' name="display" <?=($photo['display'] == 'hide') ? 'checked' : '' ?>> -->
         <label class="form-check-label">
           Displayed
         </label>
         <input type="hidden" name="display" value="hide">
         <input type="checkbox" name="display" value="show" class="form-check-input shadow-none"
-          <?= ($photo['display'] == 'show')? 'checked': '' ?>>
+          <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
         <i class="far fa-edit"></i>
         <i class="far fa-eye-slash"></i>
-        <a href="deletePhoto-id-<?= htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
+        <a href="deletePhoto-id-<?=htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
         <button type="submit" name="submit"><i class="far fa-save"></i></button>
       </div>
     </form>

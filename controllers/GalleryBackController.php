@@ -6,6 +6,12 @@ class GalleryBackController extends BackController
  {
   $photosModel = new PhotosModel();
   $photos = $photosModel->getAllPhotos();
+  $locationsModel = new LocationsModel();
+  $locations = $locationsModel->getAllLocations();
+  $countriesModel = new CountriesModel();
+  $countries = $countriesModel->getAllCountries();
+  $continentsModel = new ContinentsModel();
+  $continents = $continentsModel->getAllContinents();
   $template = 'galleryBack.phtml';
   include $this->layout;
  }
@@ -34,7 +40,8 @@ class GalleryBackController extends BackController
       move_uploaded_file($tmp_name, $img_upload_path);
 
       $photosModel = new PhotosModel();
-      $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["display"]);
+      $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display"]);
+      echo '<pre>' . var_export($_POST, true) . '</pre>';
       header('location:galleryBack');
      } else {
       $errorMsg = 'You can\'t upload files of this type!';
