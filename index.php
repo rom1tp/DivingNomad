@@ -33,6 +33,10 @@
  * AccountsController => SessionController
  */// *
 
+/** // * FORMS
+ * show password in login/sign-up
+ */// *
+
 //  ! FINAL CHECKS
 /**
  * htmlspecialchars
@@ -176,7 +180,7 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
    break;
 
   // # ACCOUNT BACK
-  case 'account':
+  case 'accountBack':
    $controller = new AccountsBackController();
    $controller->display();
    break;

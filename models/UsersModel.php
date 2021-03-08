@@ -7,12 +7,22 @@ class UsersModel extends ModelManager
   $req =
    "SELECT
     users.id AS id,
-    email AS email,
+    firstName,
+    lastName,
+    dob,
+    address,
+    zip,
+    city,
+    country,
+    telephone,
+    email,
     password,
     rank
     FROM users
     INNER JOIN ranks
     ON users.rank_id = ranks.id
+    INNER JOIN profiles
+    ON users.id = profiles.user_id
     ";
   return $this->queryFetchAll($req);
  }
@@ -22,12 +32,22 @@ class UsersModel extends ModelManager
   $req =
    "SELECT
     users.id AS id,
+    firstName,
+    lastName,
+    dob,
+    address,
+    zip,
+    city,
+    country,
+    telephone,
     email,
     password,
     rank
     FROM users
     INNER JOIN ranks
     ON users.rank_id = ranks.id
+    INNER JOIN profiles
+    ON users.id = profiles.user_id
     WHERE email = ?";
   return $this->queryFetch($req, [$email]);
  }
@@ -42,8 +62,21 @@ class UsersModel extends ModelManager
   return $this->query($req, [$email, $password, $id]);
  }
 
- public function modifyUser()
+ public function modifyUser($firstName, $lastName, $dob, $email, $address, $password, $id)
  {
-
+  $req =
+   "UPDATE
+  users
+  INNER JOIN profiles
+  ON users.id = user_id
+  SET
+  firstName=?,
+  lastName=?,
+  dob=?,
+  email=?,
+  address=?,
+  password=?
+  WHERE users.id=?";
+  return $this->query($req, [$firstName, $lastName, $dob, $email, $address, $password, $id]);
  }
 }

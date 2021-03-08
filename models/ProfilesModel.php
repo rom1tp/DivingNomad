@@ -32,18 +32,13 @@ class ProfilesModel extends ModelManager
   return $this->queryFetch($req, [$email]);
  }
 
- public function addProfile($userId)
+ public function addProfile($id)
  {
   $req = "INSERT
     INTO
     profiles
     (user_id)
     VALUES (?)";
-  return $this->query($req, [$userId]);
- }
-
- public function modifyProfile()
- {
-
+  return $this->query($req, [$id]);
  }
 }
