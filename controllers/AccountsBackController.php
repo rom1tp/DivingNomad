@@ -18,7 +18,13 @@ class AccountsBackController extends BackController
    if (password_verify($_POST["oldPassword"], $user["password"])) {
     $usersModel->modifyUser($_POST["firstName"], $_POST["lastName"], $_POST["dob"], $_POST["email"], $_POST["address"], $password, $_SESSION["userId"]);
     header('location:accountBack');
+   } else {
+    $errorMsg = 'Old password is incorrect!';
+    header("location:accountBack-errorMsg-$errorMsg");
    }
+  } else {
+   $errorMsg = 'Passwords don\'t match!';
+   header("location:accountBack-errorMsg-$errorMsg");
   }
  }
 }

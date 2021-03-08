@@ -1,6 +1,9 @@
 <main class="accountBack">
   <h1>My account</h1>
   <h2><?=htmlspecialchars($user['rank']) ?></h2>
+  <?php if (isset($_GET["errorMsg"])): ?>
+  <h3><?=$_GET["errorMsg"] ?></h3>
+  <?php endif; ?>
   <form action="confirmProfile" method="post">
     <h3>Personal Information</h3>
     <label class="form-label">First name</label>
