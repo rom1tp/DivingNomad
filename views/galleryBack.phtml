@@ -33,7 +33,7 @@
       <br>
       <select id="continents" name="continent" class="shadow-none btn btn-secondary">
         <option selected disabled hidden>Choose a continent</option>
-        <option value="0">New continent</option>
+        <option value="new">New continent</option>
         <?php foreach ($continents as $continent): ?>
         <option data-continent="<?=htmlspecialchars($continent['continent']) ?>"
           value="<?=htmlspecialchars($continent['id']) ?>">
@@ -45,7 +45,7 @@
       <br>
       <select id="countries" name="country" class="shadow-none btn btn-secondary">
         <option selected disabled hidden>Choose a country</option>
-        <option value="0">New country</option>
+        <option value="new">New country</option>
         <?php foreach ($countries as $country): ?>
         <option data-continent="<?=htmlspecialchars($country['continent']) ?>"
           value="<?=htmlspecialchars($country['id']) ?>">

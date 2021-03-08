@@ -52,15 +52,12 @@ class GalleryBackController extends BackController
        }
       } else {
        if (isset($_POST["newLocation"])) {
-        var_dump($_POST["newLocation"]);
         $countryId = (isset($_POST["country"])) ? $_POST["country"] : $_POST["newCountry"];
-        echo '<pre>' . var_export($countryId, true) . '</pre>';
         $locationsModel = new LocationsModel();
         $locationsModel->addLocation($_POST["newLocation"], $countryId);
         $locationId = $locationsModel->getLastId();
         $photosModel = new PhotosModel();
         $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
-        // echo '<pre>' . var_export($_POST, true) . '</pre>';
         header('location:galleryBack');
        } else {
         $errorMsg = 'No location selected!';
