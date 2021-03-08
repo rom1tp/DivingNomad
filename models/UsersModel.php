@@ -17,7 +17,7 @@ class UsersModel extends ModelManager
   return $this->queryFetchAll($req);
  }
 
- public function getUser($id)
+ public function getUser($email)
  {
   $req =
    "SELECT
@@ -28,8 +28,8 @@ class UsersModel extends ModelManager
     FROM users
     INNER JOIN ranks
     ON users.rank_id = ranks.id
-    WHERE users.id = ?";
-  return $this->queryFetch($req, [$id]);
+    WHERE email = ?";
+  return $this->queryFetch($req, [$email]);
  }
 
  public function addUser($email, $password, $id = 5)
@@ -40,5 +40,10 @@ class UsersModel extends ModelManager
     (email, password, rank_id)
     VALUES (?, ?, ?)";
   return $this->query($req, [$email, $password, $id]);
+ }
+
+ public function modifyUser()
+ {
+
  }
 }

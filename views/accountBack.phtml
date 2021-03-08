@@ -1,7 +1,7 @@
 <main class="accountBack">
   <h1>My account</h1>
   <h2><?=htmlspecialchars($user['rank']) ?></h2>
-  <form>
+  <form action="confirmProfile" method="post">
     <div class="">
       <label class="form-label">Email address</label>
       <input type="email" name="email" class="form-control shadow-none" value="<?=htmlspecialchars($user['email']) ?>">
@@ -14,6 +14,6 @@
       <label class="form-label">Confirm password</label>
       <input type="password" name="confirmPassword" class="form-control shadow-none">
     </div>
-    <button type="submit" class="btn btn-primary shadow-none">Submit</button>
+    <button type="submit" class="btn btn-primary shadow-none">Confirm</button>
   </form>
 </main>

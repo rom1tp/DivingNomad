@@ -3,16 +3,18 @@ class AccountsBackController extends BackController
 {
  public function display()
  {
+  $usersModel = new UsersModel();
+  $user = $usersModel->getUser($_SESSION["email"]);
   $template = 'accountBack.phtml';
   include $this->layout;
  }
 
- public function getAccount()
+ public function confirmProfile()
  {
   $usersModel = new UsersModel();
-  $user = $usersModel->getUser($_SESSION["userId"]);
+  // TODO add all user and profile info
+  $usersModel->modifyUser($_POST["key"]);
 
-  $template = 'accountBack.phtml';
-  include $this->layout;
+  // instantiate users AND profiles Model
  }
 }

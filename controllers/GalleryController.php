@@ -1,11 +1,11 @@
 <?php
 class GalleryController extends FrontController
 {
-  public function display()
-  {
-    $galleryModel = new GalleryModel();
-    $photos = $galleryModel->getAllPhotos();
-    $template = 'gallery.phtml';
-    include $this->layout;
-  }
+ public function display()
+ {
+  $photosModel = new PhotosModel();
+  $photos = $photosModel->getAllPhotos();
+  $template = 'gallery.phtml';
+  include $this->layout;
+ }
 }

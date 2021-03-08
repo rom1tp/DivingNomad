@@ -27,7 +27,6 @@ class AccountsController extends FrontController
 
    $usersModel = new UsersModel();
    $user = $usersModel->getUser($_POST["email"]);
-   echo '<pre>' . var_export($user, true) . '</pre>';
    if ($user) {
     if (password_verify($_POST["password"], $user["password"])) {
      if ($user['rank'] == 'owner') {
@@ -53,12 +52,15 @@ class AccountsController extends FrontController
 
  public function signup()
  {
-  $usersModel = new UsersModel();
 
   if (isset($_POST)) {
    if ($_POST["password"] == $_POST["confirmPassword"]) {
+    $usersModel = new UsersModel();
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $usersModel->addUser($_POST["email"], $password);
+    $user = $usersModel->getUser($_POST["email"]);
+    $profilesModel = new ProfilesModel();
+    $profilesModel->addProfile($user['id']);
     header("location:accounts");
    } else {
     $errorMsg = 'Passwords don\'t match!';

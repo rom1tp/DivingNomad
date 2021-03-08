@@ -178,9 +178,13 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
   // # ACCOUNT BACK
   case 'account':
    $controller = new AccountsBackController();
-   $controller->getAccount();
+   $controller->display();
    break;
 
+  case 'confirmProfile':
+   $controller = new AccountsBackController();
+   $controller->confirmProfile();
+   break;
   // # TEST
   case 'test':
    $controller = new TestController();
