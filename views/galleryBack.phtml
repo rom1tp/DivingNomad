@@ -21,7 +21,7 @@
       <option value="country"><?=htmlspecialchars($country['country']) ?></option>
       <?php foreach ($locations as $location): ?>
       <?php if ($location['country_id'] == $country['id']): ?>
-      <option value="<?=htmlspecialchars($location['id']) ?>"><?=htmlspecialchars($location['location']) ?></option>
+      <option value="<?=htmlspecialchars($location['id']) ?>">- <?=htmlspecialchars($location['location']) ?></option>
       <?php endif ?>
       <?php endforeach ?>
       <?php endif ?>
@@ -29,7 +29,7 @@
       <?php endforeach ?>
     </select>
     <div>
-      <label>New location</label>
+      <label>New location <i class="fas fa-map-marker-alt"></i></label>
       <br>
       <select id="continents" name="continent" class="shadow-none btn btn-secondary">
         <option selected disabled hidden>Choose a continent</option>
