@@ -52,7 +52,7 @@ class UsersModel extends ModelManager
   return $this->queryFetch($req, [$email]);
  }
 
- public function addUser($email, $password, $id = 5)
+ public function addUser($email, $password, $id = 1)
  {
   $req = "INSERT
     INTO

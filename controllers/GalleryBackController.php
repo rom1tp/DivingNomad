@@ -43,8 +43,7 @@ class GalleryBackController extends BackController
        if (ctype_digit($_POST["location_id"])) {
         $photosModel = new PhotosModel();
         $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display"]);
-        echo '<pre>' . var_export($_POST, true) . '</pre>';
-        // header('location:galleryBack');
+        header('location:galleryBack');
 
        } else {
         $errorMsg = 'Continent or country selected!';
@@ -52,13 +51,26 @@ class GalleryBackController extends BackController
        }
       } else {
        if (isset($_POST["newLocation"])) {
-        $countryId = (isset($_POST["country"])) ? $_POST["country"] : $_POST["newCountry"];
-        $locationsModel = new LocationsModel();
-        $locationsModel->addLocation($_POST["newLocation"], $countryId);
-        $locationId = $locationsModel->getLastId();
-        $photosModel = new PhotosModel();
-        $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
-        header('location:galleryBack');
+        if ($_POST["country"] == 'new') {
+         $countriesModel = new CountriesModel();
+         $countriesModel->addCountry($_POST["newCountry"], $_POST["continent"]);
+         $countryId = $countriesModel->getLastId();
+         $locationsModel = new LocationsModel();
+         $locationsModel->addLocation($_POST["newLocation"], $countryId);
+         $locationId = $locationsModel->getLastId();
+         $photosModel = new PhotosModel();
+         $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+         header('location:galleryBack');
+        } else {
+         $locationsModel = new LocationsModel();
+         $locationsModel->addLocation($_POST["newLocation"], $_POST["country"]);
+         $locationId = $locationsModel->getLastId();
+         $photosModel = new PhotosModel();
+         $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+         header('location:galleryBack');
+
+        }
+
        } else {
         $errorMsg = 'No location selected!';
         header("location:galleryBack-errorMsg-$errorMsg");

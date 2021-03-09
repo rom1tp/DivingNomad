@@ -6,6 +6,7 @@ const newContinentInput = document.getElementById('newContinent')
 const newCountryInput = document.getElementById('newCountry')
 
 function displayCountries() {
+  newCountryInput.classList.remove('active')
   locationsSelect.selectedIndex = 0
   countriesSelect.selectedIndex = 0
   if (this.value == 'new') {
@@ -42,5 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
     continentsSelect.selectedIndex = 0
     countriesSelect.selectedIndex = 0
     countriesSelect.classList.remove('active')
+    newContinentInput.classList.remove('active')
+    newCountryInput.classList.remove('active')
   })
 })

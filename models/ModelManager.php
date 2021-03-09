@@ -11,6 +11,9 @@ class ModelManager
    // * LOCAL BLOG
    $this->bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
 
+   // * IDE BLOG
+   // $this -> bdd = new PDO('mysql:host=localhost;dbname=live-44_romaintan_blog;charset=utf8','romaintan','93edfa6fMjZjNzk4NDk5Y2NjYjRhNWRlNzg0Zjlk2712ff64');
+
    // VOIR ERREURES MYSQL
    $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
   } catch (Exception $e) {

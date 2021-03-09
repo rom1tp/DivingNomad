@@ -58,9 +58,9 @@ class AccountsController extends FrontController
     $usersModel = new UsersModel();
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $usersModel->addUser($_POST["email"], $password);
-    $user = $usersModel->getUser($_POST["email"]);
+    $id = $usersModel->getLastId();
     $profilesModel = new ProfilesModel();
-    $profilesModel->addProfile($user['id']);
+    $profilesModel->addProfile($id);
     header("location:accounts");
    } else {
     $errorMsg = 'Passwords don\'t match!';

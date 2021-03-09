@@ -12,6 +12,16 @@ class ContinentsModel extends ModelManager
   return $this->queryFetchAll($req);
  }
 
+ public function getContinent($id)
+ {
+  $req =
+   "SELECT
+    name AS continent
+    FROM continents
+    WHERE id=?";
+  return $this->queryFetchAll($req, [$id]);
+ }
+
  public function addContinent($name)
  {
   $req =

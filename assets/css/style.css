@@ -180,7 +180,7 @@ main {
 	color: #fff;
 }
 
-.galleryBack #countries option {
+.galleryBack #countries option:not([value="new"]) {
 	display: none;
 }
 

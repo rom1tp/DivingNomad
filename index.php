@@ -11,6 +11,8 @@
  *- display => checkbox
  *- locations select in GalleryBack
  *- bootstrap forms
+ * new models as properties
+ * thmg thms => this->Model->get/set
  * confirm delete
  * check form enctype
  * social oAuth
