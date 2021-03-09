@@ -35,34 +35,58 @@ class GalleryBackController extends BackController
       $img_upload_path = 'assets/img/' . $img_name;
       move_uploaded_file($tmp_name, $img_upload_path);
 
-      if (isset($_POST["location_id"])) {
+      if (!empty($_POST["location_id"])) {
        if (ctype_digit($_POST["location_id"])) {
         $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display"]);
-        header('location:galleryBack');
+        echo '<pre>' . var_export($_POST, true) . '</pre>';
+        echo 'location chosen';
+        // header('location:galleryBack');
 
        } else {
-        $errorMsg = 'Continent or country selected!';
+        $errorMsg = 'No continent or country selected!';
         header("location:galleryBack-errorMsg-$errorMsg");
        }
       } else {
-       if (isset($_POST["newLocation"])) {
-        if ($_POST["country"] == 'new') {
+       if (!empty($_POST["newLocation"])) {
+        if ( // new continent
+         $_POST["continent"] == 'new' &&
+         !empty($_POST["newContinent"]) &&
+         $_POST["country"] == 'new' &&
+         !empty($_POST["newCountry"])
+        ) {
+         $this->_continentsModel->addContinent($_POST["newContinent"]);
+         $continentId = $this->_continentsModel->getLastId();
+         $this->_countriesModel->addCountry($_POST["newCountry"], $continentId);
+         $countryId = $this->_countriesModel->getLastId();
+         $this->_locationsModel->addLocation($_POST["newLocation"], $countryId);
+         $locationId = $this->_locationsModel->getLastId();
+         $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+         header('location:galleryBack');
+        } elseif ( // new country
+         ctype_digit($_POST["continent"]) &&
+         $_POST["country"] == 'new' &&
+         !empty($_POST["newCountry"])
+        ) {
          $this->_countriesModel->addCountry($_POST["newCountry"], $_POST["continent"]);
          $countryId = $this->_countriesModel->getLastId();
          $this->_locationsModel->addLocation($_POST["newLocation"], $countryId);
          $locationId = $this->_locationsModel->getLastId();
          $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
          header('location:galleryBack');
-        } else {
+        } elseif ( // new location
+         ctype_digit($_POST["continent"]) &&
+         ctype_digit($_POST["country"])
+        ) {
          $this->_locationsModel->addLocation($_POST["newLocation"], $_POST["country"]);
          $locationId = $this->_locationsModel->getLastId();
          $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
          header('location:galleryBack');
-
+        } else {
+         $errorMsg = 'An input is missing!';
+         header("location:galleryBack-errorMsg-$errorMsg");
         }
-
        } else {
-        $errorMsg = 'No location selected!';
+        $errorMsg = 'Select a location!';
         header("location:galleryBack-errorMsg-$errorMsg");
        }
       }

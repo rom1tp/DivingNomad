@@ -5,13 +5,23 @@ const countriesOptions = document.querySelectorAll('#countries option')
 const newContinentInput = document.getElementById('newContinent')
 const newCountryInput = document.getElementById('newCountry')
 
-function displayCountries() {
+function ContinentsOnChange() {
   newCountryInput.classList.remove('active')
   locationsSelect.selectedIndex = 0
   countriesSelect.selectedIndex = 0
   if (this.value == 'new') {
     newContinentInput.classList.add('active')
-    countriesSelect.classList.remove('active')
+    newCountryInput.classList.add('active')
+    countriesSelect.classList.add('active')
+    countriesSelect.selectedIndex = 1
+    countriesOptions.forEach((option) => {
+      let value = option.getAttribute('value')
+      if (value == 'new') {
+        option.classList.add('active')
+      } else {
+        option.classList.remove('active')
+      }
+    })
   } else {
     newContinentInput.classList.remove('active')
     countriesSelect.classList.add('active')
@@ -29,7 +39,7 @@ function displayCountries() {
   }}
 
 window.addEventListener('DOMContentLoaded', () => {
-	continentsSelect.addEventListener('change', displayCountries)
+	continentsSelect.addEventListener('change', ContinentsOnChange)
 
 	countriesSelect.addEventListener('change', function () {
 		if (this.value == 'new') {

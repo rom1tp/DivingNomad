@@ -1,6 +1,8 @@
 <?php
 class PagesController
 {
+ protected $_errors;
+ protected $_errorMsg;
  protected $_layout;
  protected $_mainNav;
  protected $_usersModel;
@@ -14,6 +16,7 @@ class PagesController
 
  public function __construct()
  {
+  $this->errors = false;
   $this->_usersModel = new UsersModel();
   $this->_profilesModel = new ProfilesModel();
   $this->_photosModel = new PhotosModel();
