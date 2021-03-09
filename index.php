@@ -13,7 +13,7 @@
  *- bootstrap forms
  *- new models as properties
  *- back and front extend pageController
- * thmg thms => this->Model->get/set
+ *- thmg thms => this->Model->get/set
  * confirm delete
  * check form enctype
  * social oAuth
@@ -43,7 +43,7 @@
  */// *
 
 /** // * GALLERY
- * add continent / country / location
+ *- add continent / country / location
  *- disable countries with js
  * view photo on map
  * map marker CRUD
