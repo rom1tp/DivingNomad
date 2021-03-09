@@ -20,8 +20,9 @@
  */// #
 
 /** // ? QUESTIONS
- * how to make multilingual website ? JSON ? db ?
  *- fix table relationships
+ * IDE problem with img uploads
+ * how to make multilingual website ? JSON ? db ?
  */// ?
 
 /** // * CRUD
@@ -41,7 +42,7 @@
 
 /** // * GALLERY
  * add continent / country / location
- * disable countries with js
+ *- disable countries with js
  * view photo on map
  * map marker CRUD
  */// *
