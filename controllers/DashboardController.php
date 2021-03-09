@@ -1,10 +1,10 @@
 <?php
 class DashboardController extends BackController
 {
-  public function display()
-  {
-    $template = 'dashboard.phtml';
-    include $this->layout;
-  }
+ public function display()
+ {
+  $template = 'dashboard.phtml';
+  include $this->_layout;
+ }
 
 }

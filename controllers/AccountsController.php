@@ -3,19 +3,18 @@ class AccountsController extends FrontController
 {
  public function display()
  {
-  $usersModel = new UsersModel();
-  $users = $usersModel->getAllUsers();
+  $users = $this->_usersModel->getAllUsers();
 
   if (isset($_SESSION["user"])) {
    if ($_SESSION["user"] == 'owner') {
     header('location:dashboard');
    } else {
     $template = 'accounts.phtml';
-    include $this->layout;
+    include $this->_layout;
    }
   } else {
    $template = 'accounts.phtml';
-   include $this->layout;
+   include $this->_layout;
   }
  }
 
@@ -25,8 +24,7 @@ class AccountsController extends FrontController
    $_POST["email"];
    $_POST["password"];
 
-   $usersModel = new UsersModel();
-   $user = $usersModel->getUser($_POST["email"]);
+   $user = $this->_usersModel->getUser($_POST["email"]);
    if ($user) {
     if (password_verify($_POST["password"], $user["password"])) {
      if ($user['rank'] == 'owner') {
@@ -55,12 +53,10 @@ class AccountsController extends FrontController
 
   if (isset($_POST)) {
    if ($_POST["password"] == $_POST["confirmPassword"]) {
-    $usersModel = new UsersModel();
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-    $usersModel->addUser($_POST["email"], $password);
-    $id = $usersModel->getLastId();
-    $profilesModel = new ProfilesModel();
-    $profilesModel->addProfile($id);
+    $this->_usersModel->addUser($_POST["email"], $password);
+    $id = $this->_usersModel->getLastId();
+    $this->_profilesModel->addProfile($id);
     header("location:accounts");
    } else {
     $errorMsg = 'Passwords don\'t match!';

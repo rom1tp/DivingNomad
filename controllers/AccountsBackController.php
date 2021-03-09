@@ -11,7 +11,6 @@ class AccountsBackController extends BackController
  public function confirmProfile()
  {
   $user = $this->_usersModel->getUser($_POST["email"]);
-
   if (!empty($_POST["oldPassword"]) && !empty($_POST["newPassword"]) && !empty($_POST["confirmPassword"])) {
    if ($_POST["newPassword"] == $_POST["confirmPassword"]) {
     $password = password_hash($_POST["confirmPassword"], PASSWORD_DEFAULT);

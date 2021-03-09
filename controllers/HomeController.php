@@ -1,10 +1,10 @@
 <?php
 class HomeController extends FrontController
 {
-  public function display()
-  {
-    
-    $template = 'home.phtml';
-    include $this->layout;
-  }
+ public function display()
+ {
+
+  $template = 'home.phtml';
+  include $this->_layout;
+ }
 }

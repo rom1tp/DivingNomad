@@ -7,6 +7,10 @@
 	padding: 0;
 }
 
+* + * {
+	margin: 1em 0 0;
+}
+
 html {
 	font-size: 62.5%;
 }

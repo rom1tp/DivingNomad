@@ -3,9 +3,8 @@ class GalleryController extends FrontController
 {
  public function display()
  {
-  $photosModel = new PhotosModel();
-  $photos = $photosModel->getAllPhotos();
+  $photos = $this->_photosModel->getAllPhotos();
   $template = 'gallery.phtml';
-  include $this->layout;
+  include $this->_layout;
  }
 }

@@ -35,6 +35,7 @@
 
 /** // * USERS
  * AccountsController => SessionController // ? not sure if necessary
+ * delete account
  */// *
 
 /** // * FORMS

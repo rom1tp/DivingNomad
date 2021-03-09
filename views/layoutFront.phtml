@@ -50,12 +50,12 @@
       <a href=""><img src="https://www.countryflags.io/it/shiny/64.png"></a>
       <a href=""><img src="https://www.countryflags.io/br/shiny/64.png"></a>
     </nav>
-    <?php include $this->mainNav ?>
+    <?php include $this->_mainNav ?>
   </header>
   <?php include $template ?>
   <footer>
     <?php if (isset($_SESSION["user"])): ?>
-    <p>Logged in as <?= $_SESSION["email"] ?>.</p>
+    <p>Logged in as <?=$_SESSION["email"] ?>.</p>
     <?php endif; ?>
   </footer>
 </body>

@@ -4,16 +4,12 @@ class GalleryBackController extends BackController
 
  public function display()
  {
-  $photosModel = new PhotosModel();
-  $photos = $photosModel->getAllPhotos();
-  $locationsModel = new LocationsModel();
-  $locations = $locationsModel->getAllLocations();
-  $countriesModel = new CountriesModel();
-  $countries = $countriesModel->getAllCountries();
-  $continentsModel = new ContinentsModel();
-  $continents = $continentsModel->getAllContinents();
+  $photos = $this->_photosModel->getAllPhotos();
+  $locations = $this->_locationsModel->getAllLocations();
+  $countries = $this->_countriesModel->getAllCountries();
+  $continents = $this->_continentsModel->getAllContinents();
   $template = 'galleryBack.phtml';
-  include $this->layout;
+  include $this->_layout;
  }
 
  public function upload()
@@ -41,8 +37,7 @@ class GalleryBackController extends BackController
 
       if (isset($_POST["location_id"])) {
        if (ctype_digit($_POST["location_id"])) {
-        $photosModel = new PhotosModel();
-        $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display"]);
+        $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $_POST["location_id"], $_POST["display"]);
         header('location:galleryBack');
 
        } else {
@@ -52,21 +47,16 @@ class GalleryBackController extends BackController
       } else {
        if (isset($_POST["newLocation"])) {
         if ($_POST["country"] == 'new') {
-         $countriesModel = new CountriesModel();
-         $countriesModel->addCountry($_POST["newCountry"], $_POST["continent"]);
-         $countryId = $countriesModel->getLastId();
-         $locationsModel = new LocationsModel();
-         $locationsModel->addLocation($_POST["newLocation"], $countryId);
-         $locationId = $locationsModel->getLastId();
-         $photosModel = new PhotosModel();
-         $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+         $this->_countriesModel->addCountry($_POST["newCountry"], $_POST["continent"]);
+         $countryId = $this->_countriesModel->getLastId();
+         $this->_locationsModel->addLocation($_POST["newLocation"], $countryId);
+         $locationId = $this->_locationsModel->getLastId();
+         $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
          header('location:galleryBack');
         } else {
-         $locationsModel = new LocationsModel();
-         $locationsModel->addLocation($_POST["newLocation"], $_POST["country"]);
-         $locationId = $locationsModel->getLastId();
-         $photosModel = new PhotosModel();
-         $photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+         $this->_locationsModel->addLocation($_POST["newLocation"], $_POST["country"]);
+         $locationId = $this->_locationsModel->getLastId();
+         $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
          header('location:galleryBack');
 
         }
@@ -90,15 +80,13 @@ class GalleryBackController extends BackController
 
  public function delete()
  {
-  $photosModel = new PhotosModel();
-  $photosModel->deletePhoto($_GET["id"]);
+  $this->_photosModel->deletePhoto($_GET["id"]);
   header('location:galleryBack');
  }
 
  public function confirm()
  {
-  $photosModel = new PhotosModel();
-  $photosModel->modifyPhoto($_POST["name"], $_POST["caption"], $_POST["date"], $_POST["display"], $_GET["id"]);
+  $this->_photosModel->modifyPhoto($_POST["name"], $_POST["caption"], $_POST["date"], $_POST["display"], $_GET["id"]);
   header('location:galleryBack');
  }
 }
