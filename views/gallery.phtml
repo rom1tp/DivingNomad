@@ -1,10 +1,20 @@
 <main class="gallery">
   <h1>Gallery</h1>
-  <article class="filters">
+  <article class="filters continent-filters">
     <div class="filter" data-filter="all">All</div>
     <?php foreach ($continents as $continent): ?>
-    <div class="filter" data-filter="<?= htmlspecialchars($continent['continent']) ?>">
+    <div class="filter" data-continent="<?= htmlspecialchars($country['continent']) ?>"
+      data-filter="<?= htmlspecialchars($continent['continent']) ?>">
       <?= htmlspecialchars($continent['continent']) ?></div>
+    <?php endforeach ?>
+  </article>
+  <br>
+  <article class="filters country-filters">
+    <?php foreach ($countries as $country): ?>
+    <div class="filter" data-continent="<?= htmlspecialchars($country['continent']) ?>"
+      data-country="<?= htmlspecialchars($photo['country']) ?>"
+      data-filter="<?= htmlspecialchars($country['country']) ?>">
+      <?= htmlspecialchars($country['country']) ?></div>
     <?php endforeach ?>
   </article>
   <article class="photos-container">

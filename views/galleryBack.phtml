@@ -1,4 +1,4 @@
-<main class="galleryBack container">
+<main class="galleryBack">
   <h1>Gallery</h1>
 
   <?php if (isset($_GET["errorMsg"])): ?>
@@ -80,7 +80,7 @@
         width="300">
       <br>
       <p><?=htmlspecialchars($photo['location']) ?></p>
-      <input type="date" name="date" value="<?=htmlspecialchars($photo['date']) ?>">
+      <!-- <input type="date" name="date" value="<?=htmlspecialchars($photo['date']) ?>"> -->
       <textarea type="text" name="caption" cols="35" rows="5"><?=htmlspecialchars($photo['caption']) ?></textarea>
       <br>
 

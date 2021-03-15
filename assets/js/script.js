@@ -63,19 +63,37 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'gallery':
-			function filterPhotos() {
-				$('.filter').removeClass('active')
+			$('figure').addClass('visible')
+			function filterContinent() {
+				$('.continent-filters .filter').removeClass('active')
 				$(this).addClass('active')
 				const filter = $(this).data('filter')
-				const transitionSpeed = 500
 				if (filter == 'all') {
-					$('figure').show(transitionSpeed)
+					$('figure').addClass('visible')
+					$('.country-filters .filter').addClass('visible')
 				} else {
-					$('figure').not(`[data-continent=${filter}]`).hide(transitionSpeed)
-					$('figure').filter(`[data-continent=${filter}]`).show(transitionSpeed)
+					$('.country-filters .filter')
+						.not(`[data-continent="${filter}"]`)
+						.removeClass('visible')
+					$('.country-filters .filter')
+						.filter(`[data-continent="${filter}"]`)
+						.addClass('visible')
+
+					$('figure').not(`[data-continent="${filter}"]`).removeClass('visible')
+					$('figure').filter(`[data-continent="${filter}"]`).addClass('visible')
 				}
 			}
-			$('.filter').on('click', filterPhotos)
+
+			function filterCountry() {
+				$('.country-filters .filter').removeClass('active')
+				$(this).addClass('active')
+				const filter = $(this).data('filter')
+				$('figure').not(`[data-country="${filter}"]`).removeClass('visible')
+				$('figure').filter(`[data-country="${filter}"]`).addClass('visible')
+			}
+
+			$('.continent-filters .filter').on('click', filterContinent)
+			$('.country-filters .filter').on('click', filterCountry)
 
 			break
 

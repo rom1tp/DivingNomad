@@ -142,19 +142,14 @@ h1 {
 
 /* # COMMON */
 .photos-container {
-	max-width: 70%;
+	max-width: 80%;
 	margin: 0 auto;
 	display: grid;
 	gap: 1rem;
 }
 
-.portrait {
-	grid-row: span 2;
-}
-
 .photos-container img {
 	width: 100%;
-	height: 100%;
 	align-self: stretch;
 	justify-self: stretch;
 	object-fit: cover;
@@ -166,9 +161,18 @@ h1 {
 	gap: 3rem;
 }
 
+.gallery .photos-container img {
+	height: 100%;
+}
+
 .gallery figure {
 	position: relative;
 	transition: transform 0.5s;
+	display: none;
+}
+
+.gallery figure.visible {
+	display: block;
 }
 
 .gallery figcaption {
@@ -203,7 +207,7 @@ transform: scale(1.05);
 }
 
 .gallery .filter {
-	background-color: var(--orange);
+	background-color: var(--oceanBlue);
 	color: #eee;
 	padding: 1rem 1.5rem;
 	margin: 2rem;
@@ -213,12 +217,24 @@ transform: scale(1.05);
 }
 
 .gallery .filter:hover {
-	background-color: var(--oceanBlue);
+	background-color: var(--orange);
+}
+
+.gallery .filter.active {
+	background-color: var(--magenta);
+}
+
+.gallery .country-filters .filter {
+	display: none;
+}
+
+.gallery .country-filters .filter.visible {
+	display: block;
 }
 
 /* # BACK */
 .galleryBack .photos-container {
-	grid-template-columns: repeat(4, minmax(230px, 1fr));
+	grid-template-columns: repeat(3, minmax(230px, 1fr));
 }
 
 .galleryBack #newContinent {
