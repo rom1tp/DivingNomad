@@ -35,27 +35,33 @@
     <button type="submit" name="submit" class="btn btn-primary shadow-none">CONFIRM</button>
   </form>
 
-  <?php foreach ($posts as $post): ?>
+  <div class="container">
+    <div class="row">
+      <?php foreach ($posts as $post): ?>
+      <div class="col-5 mx-auto">
+        <form action="confirmPost-id-<?= htmlspecialchars($post['id']) ?>" method="post" class="post-form">
+          <textarea name="name" class="form-control shadow-none"><?= htmlspecialchars($post['name']) ?></textarea>
+          <textarea name="title1" class="form-control shadow-none"><?= htmlspecialchars($post['title1']) ?></textarea>
+          <textarea name="text1" class="form-control shadow-none"><?= htmlspecialchars($post['text1']) ?></textarea>
+          <textarea name="title2" class="form-control shadow-none"><?= htmlspecialchars($post['title2']) ?></textarea>
+          <textarea name="text2" class="form-control shadow-none"><?= htmlspecialchars($post['text2']) ?></textarea>
+          <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>" width="200" height="150">
+          <img src="assets/img/<?= htmlspecialchars($post['src2']) ?>" width="200" height="150">
+          <img src="assets/img/<?= htmlspecialchars($post['src3']) ?>" width="200" height="150">
+          <br>
+          <label>Show</label>
+          <input type="radio" value='show' name="display-<?= htmlspecialchars($post['id']) ?>"
+            <?= ($post['display'] == 'show')? 'checked': '' ?>>
+          <label>Hide</label>
+          <input type="radio" value='hide' name="display-<?= htmlspecialchars($post['id']) ?>"
+            <?= ($post['display'] == 'hide')? 'checked': '' ?>>
+          <br>
+          <button type="submit">Confirm</button>
+        </form>
+        <a class="button" href="deletePost-id-<?= htmlspecialchars($post['id']) ?>">Delete</a>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
 
-  <form action="confirmPost-id-<?= htmlspecialchars($post['id']) ?>" method="post" class="post-form col-3 mx-auto">
-    <textarea name="name" class="form-control shadow-none"><?= htmlspecialchars($post['name']) ?></textarea>
-    <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>" width="300">
-    <textarea name="title1" class="form-control shadow-none"><?= htmlspecialchars($post['title1']) ?></textarea>
-    <textarea name="text1" class="form-control shadow-none"><?= htmlspecialchars($post['text1']) ?></textarea>
-    <img src="assets/img/<?= htmlspecialchars($post['src2']) ?>" width="300">
-    <textarea name="title2" class="form-control shadow-none"><?= htmlspecialchars($post['title2']) ?></textarea>
-    <textarea name="text2" class="form-control shadow-none"><?= htmlspecialchars($post['text2']) ?></textarea>
-    <img src="assets/img/<?= htmlspecialchars($post['src3']) ?>" width="300">
-    <br>
-    <label>Show</label>
-    <input type="radio" value='show' name="display-<?= htmlspecialchars($post['id']) ?>"
-      <?= ($post['display'] == 'show')? 'checked': '' ?>>
-    <label>Hide</label>
-    <input type="radio" value='hide' name="display-<?= htmlspecialchars($post['id']) ?>"
-      <?= ($post['display'] == 'hide')? 'checked': '' ?>>
-    <br>
-    <button type="submit">Confirm</button>
-  </form>
-  <a class="button" href="deletePost-id-<?= htmlspecialchars($post['id']) ?>">Delete</a>
-  <?php endforeach; ?>
 </main>
