@@ -4,13 +4,14 @@ class TravelsBackController extends BackController
  public function display()
  {
   $posts = $this->_postsModel->getAllPosts();
+  $photos = $this->_photosModel->getAllPhotos();
   $template = 'travelsBack.phtml';
   include $this->_layout;
  }
 
  public function upload()
  {
-  $this->_postsModel->addPost($_POST["name"], $_POST["title1"], $_POST["text1"], $_POST["title2"], $_POST["text2"]);
+  $this->_postsModel->addPost($_POST["name"], $_POST["main_img_id"], $_POST["title1"], $_POST["text1"], $_POST["img1_id"], $_POST["title2"], $_POST["text2"], $_POST["img2_id"]);
   header('location:travelsBack');
  }
 

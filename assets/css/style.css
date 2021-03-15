@@ -7,10 +7,6 @@
 	padding: 0;
 }
 
-* + * {
-	margin: 1em 0 0;
-}
-
 html {
 	font-size: 62.5%;
 }
@@ -85,8 +81,6 @@ h1 {
 /*!  ////MAIN////  */
 /*? ////////////  */
 
-
-
 /*?   ////////////  */
 /*!  ////HOME////  */
 /** ////////////  */
@@ -100,20 +94,17 @@ h1 {
 
 .home .plx-1 {
 	background-image: var(--parallax-1);
-	min-height: 6
-	00px;
+	min-height: 600px;
 }
 
 .home .plx-2 {
 	background-image: var(--parallax-2);
-	min-height: 6
-	00px;
+	min-height: 600px;
 }
 
 .home .plx-3 {
 	background-image: var(--parallax-3);
-	min-height: 6
-	00px;
+	min-height: 600px;
 }
 
 /**   ////////////////  */
@@ -151,6 +142,8 @@ h1 {
 
 /* # COMMON */
 .photos-container {
+	max-width: 70%;
+	margin: 0 auto;
 	display: grid;
 	gap: 1rem;
 }
@@ -160,6 +153,8 @@ h1 {
 }
 
 .photos-container img {
+	width: 100%;
+	height: 100%;
 	align-self: stretch;
 	justify-self: stretch;
 	object-fit: cover;
@@ -167,7 +162,58 @@ h1 {
 
 /* # FRONT */
 .gallery .photos-container {
-	grid-template-columns: repeat(2, minmax(230px, 1fr));
+	grid-template-columns: repeat(4, minmax(300px, 1fr));
+	gap: 3rem;
+}
+
+.gallery figure {
+	position: relative;
+	transition: transform 0.5s;
+}
+
+.gallery figcaption {
+	width: 90%;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	bottom: 5%;
+	right: 5%;
+	border: 2px solid #fff;
+	color: #fff;
+	text-shadow: 1px 1px 0px black;
+	font-weight: bold;
+	opacity: 0;
+	transition: opacity 0.3s;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	justify-content: space-between;
+}
+
+.gallery figure:hover {
+transform: scale(1.05);
+}
+
+.gallery figure:hover figcaption {
+	opacity: 1;
+}
+
+.gallery .filters {
+	display: inline-flex;
+}
+
+.gallery .filter {
+	background-color: var(--orange);
+	color: #eee;
+	padding: 1rem 1.5rem;
+	margin: 2rem;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+.gallery .filter:hover {
+	background-color: var(--oceanBlue);
 }
 
 /* # BACK */
@@ -199,30 +245,28 @@ h1 {
 	display: inline;
 }
 
-.galleryBack .location option[value="country"] {
+.galleryBack .location option[value='country'] {
 	background-color: rgba(0, 0, 0, 0.4);
 	color: #ddd;
 }
 
-.galleryBack .location option[value="continent"] {
+.galleryBack .location option[value='continent'] {
 	background-color: rgba(0, 0, 0, 1);
 	color: #fff;
 }
 
-.galleryBack .location option:not([value="continent"]):not([value='country']) {
+.galleryBack .location option:not([value='continent']):not([value='country']) {
 	background-color: rebeccapurple;
 	color: #fff;
 }
 
-.galleryBack #countries option:not([value="new"]) {
+.galleryBack #countries option:not([value='new']) {
 	display: none;
 }
 
 .galleryBack #countries option.active {
 	display: block;
 }
-
-
 
 /*?   /////////////  */
 /*!  ////ICONS////  */
@@ -234,3 +278,38 @@ h1 {
 /*?   ///////////////  */
 /*!  ////ACCOUNT////  */
 /** ///////////////  */
+
+/*?   /////////////  */
+/*!  ////TEST////  */
+/** /////////////  */
+.test .overlay {
+	position: fixed;
+	margin: 0;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.test .container {
+	background-color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.test .container .body {
+	display: grid;
+	gap: 1em;
+	max-height: 60vh;
+	grid-template-columns: repeat(4, minmax(230px, 1fr));
+	overflow: scroll;
+}
+
+.test .container .body img {
+	align-self: stretch;
+	justify-self: stretch;
+	object-fit: cover;
+}

@@ -4,28 +4,49 @@
   <?php if (isset($_GET["errorMsg"])) : ?>
   <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
   <?php endif; ?>
-  <form action="uploadPost" method="post" enctype="multipart/form-data">
+  <form action="uploadPost" method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
     <legend>Create a post</legend>
     <!-- <input type="file" name="img"> -->
-    <textarea name="name" cols="30" rows="3" placeholder="Name"></textarea>
-    <textarea name="title1" cols="40" rows="5" placeholder="Title 1"></textarea>
-    <textarea name="text1" cols="60" rows="10" placeholder="Text 1"></textarea>
-    <textarea name="title2" cols="40" rows="5" placeholder="Title 2"></textarea>
-    <textarea name="text2" cols="60" rows="10" placeholder="Text 2"></textarea>
-    <button type="submit" name="submit">CONFIRM</button>
+    <textarea name="name" placeholder="Name" class="form-control shadow-none"></textarea>
+    <select name="main_img_id">
+      <option selected disabled hidden>Main img</option>
+      <?php foreach ($photos as $photo): ?>
+      <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
+      <?php endforeach ?>
+    </select>
+
+    <textarea name="title1" placeholder="Title 1" class="form-control shadow-none"></textarea>
+    <textarea name="text1" placeholder="Text 1" class="form-control shadow-none"></textarea>
+    <select name="img1_id">
+      <option selected disabled hidden>Img 1</option>
+      <?php foreach ($photos as $photo): ?>
+      <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
+      <?php endforeach ?>
+    </select>
+    <textarea name="title2" placeholder="Title 2" class="form-control shadow-none"></textarea>
+    <textarea name="text2" placeholder="Text 2" class="form-control shadow-none"></textarea>
+    <select name="img2_id">
+      <option selected disabled hidden>Img 2</option>
+      <?php foreach ($photos as $photo): ?>
+      <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
+      <?php endforeach ?>
+    </select>
+    <br>
+    <button type="submit" name="submit" class="btn btn-primary shadow-none">CONFIRM</button>
   </form>
 
   <?php foreach ($posts as $post): ?>
-  <!-- <figure>
-    <img src="assets/img/<?= htmlspecialchars($post['src']) ?>" width="150">
-  </figure> -->
 
-  <form action="confirmPost-id-<?= htmlspecialchars($post['id']) ?>" method="post">
-    <textarea name="name" cols="30" rows="3"><?= htmlspecialchars($post['name']) ?></textarea>
-    <textarea name="title1" cols="40" rows="5"><?= htmlspecialchars($post['title1']) ?></textarea>
-    <textarea name="text1" cols="60" rows="10"><?= htmlspecialchars($post['text1']) ?></textarea>
-    <textarea name="title2" cols="40" rows="5"><?= htmlspecialchars($post['title2']) ?></textarea>
-    <textarea name="text2" cols="60" rows="10"><?= htmlspecialchars($post['text2']) ?></textarea>
+  <form action="confirmPost-id-<?= htmlspecialchars($post['id']) ?>" method="post" class="post-form col-3 mx-auto">
+    <textarea name="name" class="form-control shadow-none"><?= htmlspecialchars($post['name']) ?></textarea>
+    <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>" width="300">
+    <textarea name="title1" class="form-control shadow-none"><?= htmlspecialchars($post['title1']) ?></textarea>
+    <textarea name="text1" class="form-control shadow-none"><?= htmlspecialchars($post['text1']) ?></textarea>
+    <img src="assets/img/<?= htmlspecialchars($post['src2']) ?>" width="300">
+    <textarea name="title2" class="form-control shadow-none"><?= htmlspecialchars($post['title2']) ?></textarea>
+    <textarea name="text2" class="form-control shadow-none"><?= htmlspecialchars($post['text2']) ?></textarea>
+    <img src="assets/img/<?= htmlspecialchars($post['src3']) ?>" width="300">
+    <br>
     <label>Show</label>
     <input type="radio" value='show' name="display-<?= htmlspecialchars($post['id']) ?>"
       <?= ($post['display'] == 'show')? 'checked': '' ?>>

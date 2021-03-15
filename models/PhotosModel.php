@@ -12,10 +12,16 @@ class PhotosModel extends ModelManager
     caption,
     date,
     locations.name AS location,
+    countries.name AS country,
+    continents.name AS continent,
     display
     FROM photos
     INNER JOIN locations
     ON location_id = locations.id
+    INNER JOIN countries
+    ON country_id = countries.id
+    INNER JOIN continents
+    ON continent_id = continents.id
     ";
   return $this->queryFetchAll($req);
  }

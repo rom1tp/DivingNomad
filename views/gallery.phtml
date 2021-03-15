@@ -1,16 +1,26 @@
 <main class="gallery">
   <h1>Gallery</h1>
-  <div class="photos-container">
+  <article class="filters">
+    <div class="filter" data-filter="all">All</div>
+    <?php foreach ($continents as $continent): ?>
+    <div class="filter" data-filter="<?= htmlspecialchars($continent['continent']) ?>">
+      <?= htmlspecialchars($continent['continent']) ?></div>
+    <?php endforeach ?>
+  </article>
+  <article class="photos-container">
     <?php foreach ($photos as $photo): ?>
     <?php if ($photo['display'] == 'show'): ?>
-    <figure>
-      <h2><?=htmlspecialchars($photo['name']) ?></h2>
-      <img src="assets/img/<?=htmlspecialchars($photo['src']) ?>" alt="<?=htmlspecialchars($photo['name']) ?>"
-        width="500">
-      <h3><em><?=htmlspecialchars($photo['caption']) ?></em></h3>
-      <p><?=htmlspecialchars($photo['location']) ?>, <?=htmlspecialchars($photo['date']) ?></p>
+    <figure data-continent="<?= htmlspecialchars($photo['continent']) ?>"
+      data-country="<?= htmlspecialchars($photo['country']) ?>">
+      <img src="assets/img/<?=htmlspecialchars($photo['src']) ?>" alt="<?=htmlspecialchars($photo['name']) ?>">
+      <figcaption>
+        <h2><?=htmlspecialchars($photo['name']) ?></h2>
+        <p><em><?=htmlspecialchars($photo['caption']) ?></em></p>
+        <p><i class="fas fa-map-marker-alt"></i> <?=htmlspecialchars($photo['location']) ?> /
+          <?=htmlspecialchars($photo['date']) ?></p>
+      </figcaption>
     </figure>
     <?php endif ?>
     <?php endforeach ?>
-  </div>
+  </article>
 </main>
