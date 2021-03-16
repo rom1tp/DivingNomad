@@ -24,10 +24,56 @@ html body {
 }
 
 html body main .readMore {
-  background-color: #06458f;
+  position: relative;
+  left: 5%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #eb6800;
+  -webkit-transition: -webkit-transform ease-in 0.25s;
+  transition: -webkit-transform ease-in 0.25s;
+  transition: transform ease-in 0.25s;
+  transition: transform ease-in 0.25s, -webkit-transform ease-in 0.25s;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+html body main .readMore a {
   color: #fff;
-  padding: 1rem 1.5rem;
-  border-radius: 6px;
+  display: block;
+  padding: 1.5rem 3.5rem;
+}
+
+html body main .readMore a i {
+  padding-right: 1.5rem;
+}
+
+html body main .readMore::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #06458f;
+  -webkit-transition: -webkit-transform ease-in 0.25s;
+  transition: -webkit-transform ease-in 0.25s;
+  transition: transform ease-in 0.25s;
+  transition: transform ease-in 0.25s, -webkit-transform ease-in 0.25s;
+  -webkit-transform: translate(-7%, -20%);
+          transform: translate(-7%, -20%);
+  z-index: -1;
+}
+
+html body main .readMore:hover {
+  -webkit-transform: translate(-7%, -20%);
+          transform: translate(-7%, -20%);
+}
+
+html body main .readMore:hover::before {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
 html body main h1 {
@@ -38,11 +84,11 @@ html body main h1 {
   margin: 0 auto;
 }
 
-html body main h1::after {
+html body main h1::before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
+  right: 0;
+  top: 0;
   width: 100%;
   height: 2px;
   background: currentColor;
@@ -56,11 +102,36 @@ html body main h1::after {
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
 
-html body main h1:hover::after {
+html body main h1:hover::before {
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
   -webkit-transform-origin: left;
           transform-origin: left;
+}
+
+html body main h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+html body main h1:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: right;
+          transform-origin: right;
 }
 
 .main-nav {
@@ -287,7 +358,7 @@ header .main-nav a img {
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   max-width: 40%;
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -325,6 +396,7 @@ header .main-nav a img {
   position: relative;
   min-height: 70vh;
   z-index: 5;
+  padding: 6rem;
 }
 
 .gallery .photos-container,

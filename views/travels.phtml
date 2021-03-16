@@ -10,7 +10,8 @@
       <div class="text">
         <h2><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['name']) ?></a></h2>
         <p><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['text1']) ?></a></p>
-        <p><a href="post-id-<?= htmlspecialchars($post['id']) ?>" class="readMore">Read More</a></p>
+        <p class="readMore"><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><i
+              class="fas fa-long-arrow-alt-right"></i>Dive Deeper</a></p>
       </div>
     </article>
     <?php endif; ?>
