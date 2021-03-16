@@ -1,6 +1,24 @@
 //*   //////////////  */
 //!  ////GLOBAL////  */
 //? //////////////  */
+// @use 'sass.map'
+
+$breakpoints: ("small": 576px, "medium": 768px, "large": 992px, "x-large": 1200px)
+
+@mixin mq($key)
+	$size: map-get($breakpoints, $key)
+	@media screen and ( min-width: #{$size} )
+		@content
+
+// @mixin mq($mq-breakpoint, $mq-breakpoints: $breakpoints) 
+//   @if map-has-key($mq-breakpoints, $mq-breakpoint) 
+//     $mq-breakpoint: map-get($mq-breakpoints, $mq-breakpoint)
+  
+//   @media screen and (min-width: #{$mq-breakpoint}) 
+//     @content
+  
+
+
 $magenta: #c200e3
 $oceanBlue: #06458f
 $orange: #eb6800
@@ -14,7 +32,7 @@ $plx3-width: 600px
 * 
 	box-sizing: border-box
 	margin: 0
-	padding: 0
+	padding: 0	
 
 html 
 	font-size: 62.5%
@@ -80,6 +98,37 @@ header
 		display: flex
 		justify-content: space-around
 
+		// FIXME
+		&::after
+			content: 'x-small'
+			background: red
+			padding: 1rem 1.5rem
+			color: #fff
+
+			@include mq(small)
+				content: 'small'
+				background: blue
+				padding: 1rem 1.5rem
+				color: #fff
+
+			@include mq(medium)
+				content: 'medium'
+				background: brown
+				padding: 1rem 1.5rem
+				color: #fff
+
+			@include mq(large)
+				content: 'large'
+				background: green
+				padding: 1rem 1.5rem
+				color: #fff
+
+			@include mq(x-large)
+				content: 'x-large'
+				background: purple
+				padding: 1rem 1.5rem
+				color: #fff
+
 		img
 			width: 3rem
 
@@ -90,7 +139,6 @@ header
 
 			img
 				width: 15rem
-
 
 //?   ////////////
 //!  ////HOME////

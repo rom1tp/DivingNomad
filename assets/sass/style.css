@@ -82,6 +82,49 @@ header .language-nav {
       justify-content: space-around;
 }
 
+header .language-nav::after {
+  content: 'x-small';
+  background: red;
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+
+@media screen and (min-width: 576px) {
+  header .language-nav::after {
+    content: 'small';
+    background: blue;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header .language-nav::after {
+    content: 'medium';
+    background: brown;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  header .language-nav::after {
+    content: 'large';
+    background: green;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  header .language-nav::after {
+    content: 'x-large';
+    background: purple;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
 header .language-nav img {
   width: 3rem;
 }
