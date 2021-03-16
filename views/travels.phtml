@@ -1,16 +1,16 @@
 <main class="travels">
   <h1>Travels page</h1>
-  <?php foreach ($posts as $post): ?>
-  <?php if ($post['display'] == 'show'): ?>
-  <h2><?= htmlspecialchars($post['name']) ?></h2>
-  <figure>
-    <img src="assets/img/<?= htmlspecialchars($post['src']) ?>" width="700">
-    <figcaption><em><?= htmlspecialchars($post['caption']) ?></em></figcaption>
-  </figure>
-  <h3><?= htmlspecialchars($post['title1']) ?></h3>
-  <p><?= htmlspecialchars($post['text1']) ?></p>
-  <h3><?= htmlspecialchars($post['title2']) ?></h3>
-  <p><?= htmlspecialchars($post['text2']) ?></p>
-  <?php endif; ?>
-  <?php endforeach; ?>
+  <div class="container">
+    <?php foreach ($posts as $post): ?>
+    <?php if ($post['display'] == 'show'): ?>
+    <article>
+      <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>">
+      <div class="text">
+        <h2><?= htmlspecialchars($post['name']) ?></h2>
+        <p><?= htmlspecialchars($post['text1']) ?></p>
+      </div>
+    </article>
+    <?php endif; ?>
+    <?php endforeach; ?>
+  </div>
 </main>
