@@ -51,8 +51,8 @@ html
 
 		main
 			.readMore
-				color: $oceanBlue
-				background-color: $orange
+				background-color: $oceanBlue
+				color: #fff
 				padding: 1rem 1.5rem
 				border-radius: 6px
 
@@ -265,6 +265,19 @@ header
 //!  ////POST////
 //* ////////////
 .post
+	h1
+		color: #fff
+		// color: red
+		text-transform: uppercase
+		font-size: 5rem
+		text-shadow: 0 1px 10px rgba(black, 0.2)
+		max-width: 40%
+		position: fixed
+		top: 40%
+		left: 50%
+		transform: translate(-50%, -50%)
+		z-index: 1
+
 	.plx-1,
 	.plx-2,
 	.plx-3
@@ -273,18 +286,25 @@ header
 		background-size: cover
 		background-repeat: no-repeat
 		background-attachment: fixed
+		z-index: 5
 
 	.plx-1
 		background-image: url('https://picsum.photos/1600/900')
-		min-height: 500px
+		min-height: 85vh
 
 	.plx-2
 		background-image: url('https://picsum.photos/1600/900')
-		min-height: 500px
+		min-height: 600px
 
 	.plx-3
 		background-image: url('https://picsum.photos/1600/900')
-		min-height: 500px
+		min-height: 70vh
+
+	section
+		background-color: #fff
+		position: relative
+		min-height: 70vh
+		z-index: 5
 
 
 //*   ///////////////

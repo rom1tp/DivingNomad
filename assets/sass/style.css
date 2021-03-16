@@ -24,8 +24,8 @@ html body {
 }
 
 html body main .readMore {
-  color: #06458f;
-  background-color: #eb6800;
+  background-color: #06458f;
+  color: #fff;
   padding: 1rem 1.5rem;
   border-radius: 6px;
 }
@@ -280,6 +280,20 @@ header .main-nav a img {
   width: 47%;
 }
 
+.post h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 5rem;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  max-width: 40%;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
 .post .plx-1,
 .post .plx-2,
 .post .plx-3 {
@@ -288,21 +302,29 @@ header .main-nav a img {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  z-index: 5;
 }
 
 .post .plx-1 {
   background-image: url("https://picsum.photos/1600/900");
-  min-height: 500px;
+  min-height: 85vh;
 }
 
 .post .plx-2 {
   background-image: url("https://picsum.photos/1600/900");
-  min-height: 500px;
+  min-height: 600px;
 }
 
 .post .plx-3 {
   background-image: url("https://picsum.photos/1600/900");
-  min-height: 500px;
+  min-height: 70vh;
+}
+
+.post section {
+  background-color: #fff;
+  position: relative;
+  min-height: 70vh;
+  z-index: 5;
 }
 
 .gallery .photos-container,
