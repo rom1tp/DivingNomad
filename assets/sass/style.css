@@ -30,10 +30,10 @@ html body main .readMore {
   width: -moz-fit-content;
   width: fit-content;
   background-color: #eb6800;
-  -webkit-transition: -webkit-transform ease-in 0.25s;
-  transition: -webkit-transform ease-in 0.25s;
-  transition: transform ease-in 0.25s;
-  transition: transform ease-in 0.25s, -webkit-transform ease-in 0.25s;
+  -webkit-transition: -webkit-transform ease-in-out 0.25s;
+  transition: -webkit-transform ease-in-out 0.25s;
+  transition: transform ease-in-out 0.25s;
+  transition: transform ease-in-out 0.25s, -webkit-transform ease-in-out 0.25s;
   z-index: 2;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -57,10 +57,10 @@ html body main .readMore::before {
   right: 0;
   bottom: 0;
   border: 2px solid #06458f;
-  -webkit-transition: -webkit-transform ease-in 0.25s;
-  transition: -webkit-transform ease-in 0.25s;
-  transition: transform ease-in 0.25s;
-  transition: transform ease-in 0.25s, -webkit-transform ease-in 0.25s;
+  -webkit-transition: -webkit-transform ease-in-out 0.25s;
+  transition: -webkit-transform ease-in-out 0.25s;
+  transition: transform ease-in-out 0.25s;
+  transition: transform ease-in-out 0.25s, -webkit-transform ease-in-out 0.25s;
   -webkit-transform: translate(-7%, -20%);
           transform: translate(-7%, -20%);
   z-index: -1;
@@ -293,10 +293,10 @@ header .main-nav a img {
 }
 
 .travels .container article > a {
-  -webkit-transition: -webkit-transform ease-in 0.25s;
-  transition: -webkit-transform ease-in 0.25s;
-  transition: transform ease-in 0.25s;
-  transition: transform ease-in 0.25s, -webkit-transform ease-in 0.25s;
+  -webkit-transition: -webkit-transform ease-in-out 0.25s;
+  transition: -webkit-transform ease-in-out 0.25s;
+  transition: transform ease-in-out 0.25s;
+  transition: transform ease-in-out 0.25s, -webkit-transform ease-in-out 0.25s;
 }
 
 .travels .container article > a:hover {
@@ -502,7 +502,6 @@ header .main-nav a img {
   left: 5%;
   bottom: 5%;
   right: 5%;
-  border: 2px solid #fff;
   color: #fff;
   text-shadow: 1px 1px 0px black;
   font-weight: bold;
@@ -520,6 +519,45 @@ header .main-nav a img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.gallery .photos-container figure figcaption::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  -webkit-transition: -webkit-transform ease-in-out 0.35s;
+  transition: -webkit-transform ease-in-out 0.35s;
+  transition: transform ease-in-out 0.35s;
+  transition: transform ease-in-out 0.35s, -webkit-transform ease-in-out 0.35s;
+  -webkit-transform: scaleX(0.1);
+          transform: scaleX(0.1);
+}
+
+.gallery .photos-container figure figcaption::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  -webkit-transition: -webkit-transform ease-in-out 0.35s;
+  transition: -webkit-transform ease-in-out 0.35s;
+  transition: transform ease-in-out 0.35s;
+  transition: transform ease-in-out 0.35s, -webkit-transform ease-in-out 0.35s;
+  -webkit-transform: scaleX(0.1);
+          transform: scaleX(0.1);
+}
+
+.gallery .photos-container figure figcaption:hover::before, .gallery .photos-container figure figcaption:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
 
 .gallery .photos-container figure.visible {
