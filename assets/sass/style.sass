@@ -10,7 +10,7 @@ $breakpoints: ("small": 576px, "medium": 768px, "large": 992px, "x-large": 1200p
 	@media screen and ( min-width: #{$size} )
 		@content
 
-
+ 
 //*   //////////////  */
 //!  ////GLOBAL////  */
 //? //////////////  */
@@ -254,7 +254,15 @@ header
 
 		article 
 			width: 30%
+			display: flex
+			flex-direction: column
+			align-items: center
 			margin: 3rem 0
+
+			> a
+				transition: transform ease-in 0.25s
+				&:hover
+					transform: scale(1.04)
 
 			img 
 				width: 100%
@@ -279,14 +287,13 @@ header
 
 		article:nth-of-type(6n-5) 
 			width: 100%
-			display: flex
+			flex-direction: row
 			align-items: center
 
 			> a
 				max-width: 47%
 				
 				img
-					width: 100%
 					aspect-ratio: 4/3
 
 			.text 
@@ -406,6 +413,7 @@ header
 			position: relative
 			transition: transform 0.5s
 			display: none
+			cursor: pointer
 	
 			img 
 				height: 100%

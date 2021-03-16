@@ -217,7 +217,16 @@ header .main-nav a img {
 }
 .travels .container article {
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 3rem 0;
+}
+.travels .container article > a {
+  transition: transform ease-in 0.25s;
+}
+.travels .container article > a:hover {
+  transform: scale(1.04);
 }
 .travels .container article img {
   width: 100%;
@@ -242,14 +251,13 @@ header .main-nav a img {
 }
 .travels .container article:nth-of-type(6n-5) {
   width: 100%;
-  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 .travels .container article:nth-of-type(6n-5) > a {
   max-width: 47%;
 }
 .travels .container article:nth-of-type(6n-5) > a img {
-  width: 100%;
   aspect-ratio: 4/3;
 }
 .travels .container article:nth-of-type(6n-5) .text {
@@ -357,6 +365,7 @@ header .main-nav a img {
   position: relative;
   transition: transform 0.5s;
   display: none;
+  cursor: pointer;
 }
 .gallery .photos-container figure img {
   height: 100%;
