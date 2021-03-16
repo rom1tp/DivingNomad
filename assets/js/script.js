@@ -97,6 +97,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			break
 
+		case 'post':
+			const img1 = document.querySelector('.post .plx-1 img').getAttribute('data-src')
+			const img2 = document.querySelector('.post .plx-2 img').getAttribute('data-src')
+			const img3 = document.querySelector('.post .plx-3 img').getAttribute('data-src')
+			document.querySelector('.post .plx-1').style.backgroundImage = `url('${img1}')`
+			document.querySelector('.post .plx-2').style.backgroundImage = `url('${img2}')`
+			document.querySelector('.post .plx-3').style.backgroundImage = `url('${img3}')`
+			break
+
 		case 'test':
 			const openPhotoPicker = document.getElementById('openPhotoPicker')
 			const closePhotoPicker = document.getElementById('closePhotoPicker')

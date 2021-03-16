@@ -33,6 +33,32 @@ h1 {
   font-size: 3rem;
 }
 
+h1 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+
+h1:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 header .language-nav {
   display: flex;
   justify-content: space-around;
@@ -96,29 +122,6 @@ header .main-nav a img {
   border-bottom-right-radius: 1em;
 }
 
-.travels h1 {
-  position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 0 auto;
-}
-.travels h1::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s;
-}
-.travels h1:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
 .travels .container {
   display: flex;
   flex-wrap: wrap;
