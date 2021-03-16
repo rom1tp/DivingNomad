@@ -1,5 +1,6 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -10,7 +11,7 @@ html {
 
 body {
   height: 100%;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   line-height: 1.5;
   font-size: 1.5rem;
   text-align: center;
@@ -23,27 +24,33 @@ a {
 }
 
 .main-nav {
-  font-family: "Audiowide", cursive;
+  font-family: 'Audiowide', cursive;
   text-transform: uppercase;
 }
 
 h1 {
-  font-family: "Audiowide", cursive;
+  font-family: 'Audiowide', cursive;
   text-transform: uppercase;
   font-size: 3rem;
 }
 
 header .language-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
+
 header .language-nav img {
   width: 3rem;
 }
+
 header .main-nav a {
   padding: 1.5rem;
   vertical-align: middle;
 }
+
 header .main-nav a img {
   width: 15rem;
 }
@@ -57,14 +64,17 @@ header .main-nav a img {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 .home .plx-1 {
   background-image: url("../img/IMG-604770d311b518.20675264.jpg");
   min-height: 600px;
 }
+
 .home .plx-2 {
   background-image: url("../img/IMG-6047845c15e4f5.35266445.jpg");
   min-height: 600px;
 }
+
 .home .plx-3 {
   background-image: url("../img/IMG-604770940727e4.96265034.jpeg");
   min-height: 600px;
@@ -74,6 +84,7 @@ header .main-nav a img {
   background: #06458f;
   padding: 2em;
 }
+
 .accounts form input,
 .accounts form button {
   outline: none;
@@ -81,16 +92,19 @@ header .main-nav a img {
   padding: 0.5em;
   border-radius: 0.3em;
 }
+
 .accounts form legend {
   position: absolute;
   color: white;
   font-size: 1.5em;
 }
+
 .accounts form:nth-child(2) {
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
   border-bottom: 6px double #eb6800;
 }
+
 .accounts form:nth-child(3) {
   border-bottom-left-radius: 1em;
   border-bottom-right-radius: 1em;
@@ -103,6 +117,7 @@ header .main-nav a img {
   width: fit-content;
   margin: 0 auto;
 }
+
 .travels h1::after {
   content: "";
   position: absolute;
@@ -111,58 +126,85 @@ header .main-nav a img {
   width: 100%;
   height: 2px;
   background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
 }
+
 .travels h1:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
+
 .travels .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   max-width: 1600px;
   margin: 0 auto;
 }
+
 .travels .container article {
   width: 30%;
   margin: 3rem 0;
 }
+
 .travels .container article img {
   width: 100%;
   height: auto;
   aspect-ratio: 18/9;
 }
+
 .travels .container article .text {
   text-align: left;
   margin-left: 2rem;
   padding: 1.5rem;
   max-width: 80%;
 }
+
 .travels .container article .text h2 {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
 .travels .container article:nth-of-type(6n-5) {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .travels .container article:nth-of-type(6n-5) img {
   width: 47%;
   aspect-ratio: 4/3;
 }
+
 .travels .container article:nth-of-type(6n-5) .text {
   max-width: 35%;
   margin: 0 auto;
 }
+
 .travels .container article:nth-of-type(6n-5) .text h2 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
   position: relative;
 }
+
 .travels .container article:nth-of-type(6n-5) .text::after {
   color: #06458f;
   background-color: #eb6800;
@@ -170,9 +212,10 @@ header .main-nav a img {
   position: relative;
   top: 3rem;
   left: 0;
-  content: "READ MORE";
+  content: 'READ MORE';
   border-radius: 6px;
 }
+
 .travels .container article:nth-of-type(6n-4),
 .travels .container article:nth-of-type(6n-3) {
   width: 47%;
@@ -182,20 +225,29 @@ header .main-nav a img {
 .galleryBack .photos-container {
   max-width: 80%;
   margin: 0 auto;
+  display: -ms-grid;
   display: grid;
   gap: 1rem;
 }
+
 .gallery .photos-container img,
 .galleryBack .photos-container img {
   width: 100%;
-  align-self: stretch;
-  justify-self: stretch;
-  object-fit: cover;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .gallery section .filters {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
 }
+
 .gallery section .filters .filter {
   background-color: #06458f;
   color: #eee;
@@ -203,32 +255,45 @@ header .main-nav a img {
   margin: 2rem;
   border-radius: 6px;
   cursor: pointer;
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
+
 .gallery section .filters .filter:hover {
   background-color: #eb6800;
 }
+
 .gallery section .filters .filter.active {
   background-color: #c200e3;
 }
+
 .gallery section .country-filters .filter {
   display: none;
 }
+
 .gallery section .country-filters .filter.visible {
   display: block;
 }
+
 .gallery .photos-container {
-  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  -ms-grid-columns: (minmax(300px, 1fr))[4];
+      grid-template-columns: repeat(4, minmax(300px, 1fr));
   gap: 3rem;
 }
+
 .gallery .photos-container figure {
   position: relative;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
   display: none;
 }
+
 .gallery .photos-container figure img {
   height: 100%;
 }
+
 .gallery .photos-container figure figcaption {
   width: 90%;
   position: absolute;
@@ -241,18 +306,30 @@ header .main-nav a img {
   text-shadow: 1px 1px 0px black;
   font-weight: bold;
   opacity: 0;
+  -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 2rem;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
+
 .gallery .photos-container figure.visible {
   display: block;
 }
+
 .gallery .photos-container figure:hover {
-  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
+
 .gallery .photos-container figure:hover figcaption {
   opacity: 1;
 }
@@ -260,41 +337,53 @@ header .main-nav a img {
 .galleryBack .photo-form #newContinent {
   display: none;
 }
+
 .galleryBack .photo-form #newContinent.active {
   display: inline;
 }
+
 .galleryBack .photo-form #countries {
   display: none;
 }
-.galleryBack .photo-form #countries option:not([value=new]) {
+
+.galleryBack .photo-form #countries option:not([value='new']) {
   display: none;
 }
+
 .galleryBack .photo-form #countries option.active {
   display: block;
 }
+
 .galleryBack .photo-form #countries.active {
   display: inline;
 }
+
 .galleryBack .photo-form #newCountry {
   display: none;
 }
+
 .galleryBack .photo-form #newCountry.active {
   display: inline;
 }
-.galleryBack .photo-form .location option[value=country] {
+
+.galleryBack .photo-form .location option[value='country'] {
   background-color: rgba(0, 0, 0, 0.4);
   color: #ddd;
 }
-.galleryBack .photo-form .location option[value=continent] {
+
+.galleryBack .photo-form .location option[value='continent'] {
   background-color: black;
   color: #fff;
 }
-.galleryBack .photo-form .location option:not([value=continent]):not([value=country]) {
+
+.galleryBack .photo-form .location option:not([value='continent']):not([value='country']) {
   background-color: rebeccapurple;
   color: #fff;
 }
+
 .galleryBack .photos-container {
-  grid-template-columns: repeat(3, minmax(230px, 1fr));
+  -ms-grid-columns: (minmax(230px, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(230px, 1fr));
 }
 
 .actions i {
@@ -310,22 +399,33 @@ header .main-nav a img {
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .test .overlay .container {
   background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
+
 .test .overlay .container .body {
+  display: -ms-grid;
   display: grid;
   gap: 1em;
   max-height: 60vh;
-  grid-template-columns: repeat(4, minmax(230px, 1fr));
+  -ms-grid-columns: (minmax(230px, 1fr))[4];
+      grid-template-columns: repeat(4, minmax(230px, 1fr));
   overflow: scroll;
 }
+
 .test .overlay .container .body img {
-  align-self: stretch;
-  justify-self: stretch;
-  object-fit: cover;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,382 @@
+//*   //////////////  */
+//!  ////GLOBAL////  */
+//? //////////////  */
+$magenta: #c200e3
+$oceanBlue: #06458f
+$orange: #eb6800
+$parallax-1: url('../img/IMG-604770d311b518.20675264.jpg')
+$plx1-width: 600px
+$parallax-2: url('../img/IMG-6047845c15e4f5.35266445.jpg')
+$plx2-width: 600px
+$parallax-3: url('../img/IMG-604770940727e4.96265034.jpeg')
+$plx3-width: 600px
+
+
+* 
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+
+
+html 
+	font-size: 62.5%
+
+
+body 
+	height: 100%
+	font-family: 'Raleway', sans-serif
+	line-height: 1.5
+	font-size: 1.5rem
+	text-align: center
+	margin: 0 auto
+
+a 
+	text-decoration: none
+	color: #000
+
+
+//*   /////////////
+//!  ////FONTS////
+//? /////////////
+.main-nav
+	font-family: 'Audiowide', cursive
+	text-transform: uppercase
+
+h1
+	font-family: 'Audiowide', cursive
+	text-transform: uppercase
+	font-size: 3rem
+
+
+
+//*   //////////////
+//!  ////HEADER////
+//? //////////////
+header
+	.language-nav
+		display: flex
+		justify-content: space-around
+
+		img
+			width: 3rem
+
+	.main-nav
+		a
+			padding: 1.5rem
+			vertical-align: middle
+
+			img
+				width: 15rem
+
+
+//?   ////////////
+//!  ////HOME////
+//* ////////////
+.home
+	.plx-1,
+	.plx-2,
+	.plx-3
+		position: relative
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+		background-attachment: fixed
+
+	.plx-1
+		background-image: $parallax-1
+		min-height: $plx1-width
+
+	.plx-2
+		background-image: $parallax-2
+		min-height: $plx2-width
+
+	.plx-3
+		background-image: $parallax-3
+		min-height: $plx3-width
+
+
+//*   ////////////////
+//!  ////ACCOUNTS////
+//? ////////////////
+.accounts
+	form
+		background: $oceanBlue
+		padding: 2em
+
+		input,
+		button
+			outline: none
+			background: white
+			padding: 0.5em
+			border-radius: 0.3em
+
+		legend
+			position: absolute
+			color: white
+			font-size: 1.5em
+
+	form:nth-child(2)
+		border-top-left-radius: 1em
+		border-top-right-radius: 1em
+		border-bottom: 6px double $orange
+
+	form:nth-child(3)
+		border-bottom-left-radius: 1em
+		border-bottom-right-radius: 1em
+
+
+//?   ///////////////
+//!  ////TRAVELS////
+//* ///////////////
+.travels
+	h1 
+		position: relative
+		width: fit-content
+		margin: 0 auto
+
+	h1::after 
+		content: ""
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		height: 2px
+		background: currentColor
+		transform: scaleX(0)
+		transform-origin: right
+		transition: transform 0.3s
+
+	h1:hover::after 
+		transform: scaleX(1)
+		transform-origin: left
+	
+	.container 
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		max-width: 1600px
+		margin: 0 auto
+
+
+		article 
+			width: 30%
+			margin: 3rem 0
+
+			img 
+				width: 100%
+				height: auto
+				aspect-ratio: 18/9
+
+			.text 
+				text-align: left
+				margin-left: 2rem
+				padding: 1.5rem
+				max-width: 80%
+
+				h2 
+					text-transform: uppercase
+					margin-bottom: 1rem
+
+		article:nth-of-type(6n-5) 
+			width: 100%
+			display: flex
+			align-items: center
+
+			img 
+				width: 47%
+				aspect-ratio: 4/3
+
+			.text 
+				max-width: 35%
+				margin: 0 auto
+
+				h2 
+					font-size: 3rem
+					margin-bottom: 1.5rem
+					position: relative
+
+			.text::after 
+				color: $oceanBlue
+				background-color: $orange
+				padding: 1rem 1.5rem
+				position: relative
+				top: 3rem
+				left: 0
+				content: 'READ MORE'
+				border-radius: 6px
+
+		article:nth-of-type(6n-4),
+		article:nth-of-type(6n-3)
+			width: 47%
+
+
+//*   ///////////////
+//!  ////GALLERY////
+//? ///////////////
+
+// # COMMON
+.gallery,
+.galleryBack
+	.photos-container 
+		max-width: 80%
+		margin: 0 auto
+		display: grid
+		gap: 1rem
+
+		img 
+			width: 100%
+			align-self: stretch
+			justify-self: stretch
+			object-fit: cover
+
+// # FRONT
+.gallery
+	section
+		.filters
+			display: inline-flex
+
+			.filter 
+				background-color: $oceanBlue
+				color: #eee
+				padding: 1rem 1.5rem
+				margin: 2rem
+				border-radius: 6px
+				cursor: pointer
+				transition: all 0.5s
+
+			.filter:hover 
+				background-color: $orange
+
+			.filter.active 
+				background-color: $magenta
+
+		.country-filters
+			.filter 
+				display: none
+
+			.filter.visible 
+				display: block
+
+	.photos-container 
+		grid-template-columns: repeat(4, minmax(300px, 1fr))
+		gap: 3rem
+
+		figure 
+			position: relative
+			transition: transform 0.5s
+			display: none
+	
+			img 
+				height: 100%
+
+			figcaption 
+				width: 90%
+				position: absolute
+				top: 5%
+				left: 5%
+				bottom: 5%
+				right: 5%
+				border: 2px solid #fff
+				color: #fff
+				text-shadow: 1px 1px 0px black
+				font-weight: bold
+				opacity: 0
+				transition: opacity 0.3s
+				display: flex
+				flex-direction: column
+				padding: 2rem
+				justify-content: space-between
+
+		figure.visible 
+			display: block
+
+		figure:hover 
+			transform: scale(1.05)
+
+			figcaption 
+				opacity: 1
+
+// # BACK
+.galleryBack
+	.photo-form
+		#newContinent 
+			display: none
+
+		#newContinent.active 
+			display: inline
+
+		#countries 
+			display: none
+
+			option:not([value='new']) 
+				display: none
+
+			option.active 
+				display: block
+
+		#countries.active 
+			display: inline
+
+		#newCountry 
+			display: none
+
+		#newCountry.active 
+			display: inline
+
+		.location
+			option[value='country'] 
+				background-color: rgba(0, 0, 0, 0.4)
+				color: #ddd
+
+			option[value='continent'] 
+				background-color: rgba(0, 0, 0, 1)
+				color: #fff
+
+			option:not([value='continent']):not([value='country']) 
+				background-color: rebeccapurple
+				color: #fff
+
+	.photos-container 
+		grid-template-columns: repeat(3, minmax(230px, 1fr))
+
+
+//?   /////////////
+//!  ////ICONS////
+//* /////////////
+.actions
+	i
+		font-size: 3rem
+
+
+
+//?   ////////////
+//!  ////TEST////
+//* ////////////
+.test
+	.overlay 
+		position: fixed
+		margin: 0
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		background-color: rgba(0, 0, 0, 0.4)
+
+		.container 
+			background-color: #fff
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+
+			.body 
+				display: grid
+				gap: 1em
+				max-height: 60vh
+				grid-template-columns: repeat(4, minmax(230px, 1fr))
+				overflow: scroll
+
+				img 
+					align-self: stretch
+					justify-self: stretch
+					object-fit: cover
