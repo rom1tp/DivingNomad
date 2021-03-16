@@ -7,4 +7,11 @@ class TravelsController extends FrontController
   $template = 'travels.phtml';
   include $this->_layout;
  }
+
+ public function displayPost()
+ {
+   $post = $this->_postsModel->getPost($_GET["id"]);
+   $template = 'post.phtml';
+   include $this->_layout;
+ }
 }

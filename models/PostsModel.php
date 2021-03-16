@@ -28,6 +28,33 @@ class PostsModel extends ModelManager
     return $this->queryFetchAll($req);
   }
 
+  public function getPost($id)
+  {
+    $req =
+    "SELECT
+    posts.id,
+    posts.name,
+    p1.src AS src1,
+    p2.src AS src2,
+    p3.src AS src3,
+    p1.caption,
+    title1,
+    text1,
+    title2,
+    text2,
+    posts.display
+    FROM posts
+    INNER JOIN photos AS p1
+    ON main_img_id = p1.id
+    INNER JOIN photos AS p2
+    ON img1_id = p2.id
+    INNER JOIN photos AS p3
+    ON img2_id = p3.id
+    WHERE posts.id = ?
+    ";
+    return $this->queryFetch($req, [$id]);
+  }
+
   public function addPost($name, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id)
   {
     $req =

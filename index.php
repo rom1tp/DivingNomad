@@ -121,6 +121,11 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller->display();
       break;
 
+    case 'post':
+      $controller = new TravelsController();
+      $controller->displayPost();
+      break;
+
     // # GALLERY
     case 'gallery':
       $controller = new GalleryController();

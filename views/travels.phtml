@@ -4,7 +4,9 @@
     <?php foreach ($posts as $post): ?>
     <?php if ($post['display'] == 'show'): ?>
     <article>
-      <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>">
+      <a href="post-id-<?= htmlspecialchars($post['id']) ?>">
+        <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>">
+      </a>
       <div class="text">
         <h2><?= htmlspecialchars($post['name']) ?></h2>
         <p><?= htmlspecialchars($post['text1']) ?></p>

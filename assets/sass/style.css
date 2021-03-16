@@ -189,8 +189,12 @@ header .main-nav a img {
           align-items: center;
 }
 
-.travels .container article:nth-of-type(6n-5) img {
-  width: 47%;
+.travels .container article:nth-of-type(6n-5) a {
+  max-width: 47%;
+}
+
+.travels .container article:nth-of-type(6n-5) a img {
+  width: 100%;
   aspect-ratio: 4/3;
 }
 
@@ -219,6 +223,31 @@ header .main-nav a img {
 .travels .container article:nth-of-type(6n-4),
 .travels .container article:nth-of-type(6n-3) {
   width: 47%;
+}
+
+.post .plx-1,
+.post .plx-2,
+.post .plx-3 {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.post .plx-1 {
+  background-image: url("https://picsum.photos/1600/900");
+  min-height: 500px;
+}
+
+.post .plx-2 {
+  background-image: url("https://picsum.photos/1600/900");
+  min-height: 500px;
+}
+
+.post .plx-3 {
+  background-image: url("https://picsum.photos/1600/900");
+  min-height: 500px;
 }
 
 .gallery .photos-container,

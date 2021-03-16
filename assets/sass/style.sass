@@ -182,9 +182,12 @@ header
 			display: flex
 			align-items: center
 
-			img 
-				width: 47%
-				aspect-ratio: 4/3
+			a
+				max-width: 47%
+				
+				img
+					width: 100%
+					aspect-ratio: 4/3
 
 			.text 
 				max-width: 35%
@@ -208,6 +211,32 @@ header
 		article:nth-of-type(6n-4),
 		article:nth-of-type(6n-3)
 			width: 47%
+
+
+//?   ////////////
+//!  ////POST////
+//* ////////////
+.post
+	.plx-1,
+	.plx-2,
+	.plx-3
+		position: relative
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+		background-attachment: fixed
+
+	.plx-1
+		background-image: url('https://picsum.photos/1600/900')
+		min-height: 500px
+
+	.plx-2
+		background-image: url('https://picsum.photos/1600/900')
+		min-height: 500px
+
+	.plx-3
+		background-image: url('https://picsum.photos/1600/900')
+		min-height: 500px
 
 
 //*   ///////////////
@@ -346,7 +375,6 @@ header
 .actions
 	i
 		font-size: 3rem
-
 
 
 //?   ////////////
