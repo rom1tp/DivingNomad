@@ -8,8 +8,9 @@
         <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>">
       </a>
       <div class="text">
-        <h2><?= htmlspecialchars($post['name']) ?></h2>
-        <p><?= htmlspecialchars($post['text1']) ?></p>
+        <h2><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['name']) ?></a></h2>
+        <p><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['text1']) ?></a></p>
+        <p><a href="post-id-<?= htmlspecialchars($post['id']) ?>" class="readMore">Read More</a></p>
       </div>
     </article>
     <?php endif; ?>
