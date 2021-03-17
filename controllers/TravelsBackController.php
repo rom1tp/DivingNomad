@@ -11,7 +11,7 @@ class TravelsBackController extends BackController
 
  public function upload()
  {
-  $this->_postsModel->addPost($_POST["name"], $_POST["main_img_id"], $_POST["title1"], $_POST["text1"], $_POST["img1_id"], $_POST["title2"], $_POST["text2"], $_POST["img2_id"]);
+  $this->_postsModel->addPost($_POST["name"], $_POST["date"], $_POST["main_img_id"], $_POST["title1"], $_POST["text1"], $_POST["img1_id"], $_POST["title2"], $_POST["text2"], $_POST["img2_id"]);
   header('location:travelsBack');
  }
 
@@ -24,7 +24,7 @@ class TravelsBackController extends BackController
  public function confirm()
  {
   $id = $_GET["id"];
-  $this->_postsModel->modifyPost($_POST["name"], $_POST["title1"], $_POST["text1"], $_POST["title2"], $_POST["text2"], $_POST["display-$id"], $id);
+  $this->_postsModel->modifyPost($_POST["name"], $_POST["date"], $_POST["title1"], $_POST["text1"], $_POST["title2"], $_POST["text2"], $_POST["display-$id"], $id);
   header('location:travelsBack');
  }
 }

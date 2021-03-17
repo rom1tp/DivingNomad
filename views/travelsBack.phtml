@@ -8,23 +8,23 @@
     <legend>Create a post</legend>
     <!-- <input type="file" name="img"> -->
     <textarea name="name" placeholder="Name" class="form-control shadow-none"></textarea>
+    <textarea name="title1" placeholder="Title 1" class="form-control shadow-none"></textarea>
+    <textarea name="text1" placeholder="Text 1" class="form-control shadow-none"></textarea>
+    <textarea name="title2" placeholder="Title 2" class="form-control shadow-none"></textarea>
+    <textarea name="text2" placeholder="Text 2" class="form-control shadow-none"></textarea>
+    <input name="date" type="date" class="form-control shadow-none"></input>
     <select name="main_img_id">
       <option selected disabled hidden>Main img</option>
       <?php foreach ($photos as $photo): ?>
       <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
       <?php endforeach ?>
     </select>
-
-    <textarea name="title1" placeholder="Title 1" class="form-control shadow-none"></textarea>
-    <textarea name="text1" placeholder="Text 1" class="form-control shadow-none"></textarea>
     <select name="img1_id">
       <option selected disabled hidden>Img 1</option>
       <?php foreach ($photos as $photo): ?>
       <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
       <?php endforeach ?>
     </select>
-    <textarea name="title2" placeholder="Title 2" class="form-control shadow-none"></textarea>
-    <textarea name="text2" placeholder="Text 2" class="form-control shadow-none"></textarea>
     <select name="img2_id">
       <option selected disabled hidden>Img 2</option>
       <?php foreach ($photos as $photo): ?>
@@ -49,6 +49,7 @@
           <img src="assets/img/<?= htmlspecialchars($post['src2']) ?>" width="200" height="150">
           <img src="assets/img/<?= htmlspecialchars($post['src3']) ?>" width="200" height="150">
           <br>
+          <input type="date" name="date" value="<?=htmlspecialchars($post['date']) ?>">
           <label>Show</label>
           <input type="radio" value='show' name="display-<?= htmlspecialchars($post['id']) ?>"
             <?= ($post['display'] == 'show')? 'checked': '' ?>>

@@ -8,6 +8,7 @@ class PostsModel extends ModelManager
     "SELECT
     posts.id,
     posts.name,
+    posts.date,
     p1.src AS src1,
     p2.src AS src2,
     p3.src AS src3,
@@ -24,6 +25,7 @@ class PostsModel extends ModelManager
     ON img1_id = p2.id
     INNER JOIN photos AS p3
     ON img2_id = p3.id
+    ORDER BY posts.date DESC
     ";
     return $this->queryFetchAll($req);
   }
@@ -34,6 +36,7 @@ class PostsModel extends ModelManager
     "SELECT
     posts.id,
     posts.name,
+    posts.date,
     p1.src AS src1,
     p2.src AS src2,
     p3.src AS src3,
@@ -55,15 +58,15 @@ class PostsModel extends ModelManager
     return $this->queryFetch($req, [$id]);
   }
 
-  public function addPost($name, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id)
+  public function addPost($name, $date, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id)
   {
     $req =
     "INSERT
     INTO posts
-    (name, main_img_id, title1, text1, img1_id, title2, text2, img2_id)
+    (name, date, main_img_id, title1, text1, img1_id, title2, text2, img2_id)
     VALUES
-    (?, ?, ?, ?, ?, ?, ?, ?)";
-    return $this->query($req, [$name, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id]);
+    (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    return $this->query($req, [$name, $date, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id]);
   }
 
   public function deletePost($id)
@@ -75,19 +78,20 @@ class PostsModel extends ModelManager
     return $this -> query($req, [$id]);
   }
 
-  public function modifyPost($name, $title1, $text1, $title2, $text2, $display, $id)
+  public function modifyPost($name, $date, $title1, $text1, $title2, $text2, $display, $id)
   {
     $req =
     "UPDATE
     posts
     SET
     name=?,
+    date=?,
     title1=?,
     text1=?,
     title2=?,
     text2=?,
     display=?
     WHERE id=?";
-    return $this -> query($req, [$name, $title1, $text1, $title2, $text2, $display, $id]);
+    return $this -> query($req, [$name, $date, $title1, $text1, $title2, $text2, $display, $id]);
   }
 }

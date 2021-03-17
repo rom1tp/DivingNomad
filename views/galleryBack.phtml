@@ -79,8 +79,8 @@
       <img src="assets/img/<?=htmlspecialchars($photo['src']) ?>" alt="<?=htmlspecialchars($photo['name']) ?>"
         width="300">
       <br>
+      <input type="date" name="date" value="<?=htmlspecialchars($photo['date']) ?>">
       <p><?=htmlspecialchars($photo['location']) ?></p>
-      <!-- <input type="date" name="date" value="<?=htmlspecialchars($photo['date']) ?>"> -->
       <textarea type="text" name="caption" cols="35" rows="5"><?=htmlspecialchars($photo['caption']) ?></textarea>
       <br>
 

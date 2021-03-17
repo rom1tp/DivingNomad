@@ -262,11 +262,13 @@ header .main-nav a img {
 }
 .travels .container article:nth-of-type(6n-5) .text {
   max-width: 35%;
-  min-height: 50%;
   margin: 0 auto;
 }
 .travels .container article:nth-of-type(6n-5) .text h2 {
   font-size: 3rem;
+}
+.travels .container article:nth-of-type(6n-5) .text p {
+  margin-top: 2.5rem;
 }
 .travels .container article:nth-of-type(6n-5) .text .readMore {
   display: unset;

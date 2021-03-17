@@ -14,6 +14,7 @@
  *- new models as properties
  *- back and front extend pageController
  *- thmg thms => this->Model->get/set
+ * Univers / Sabon W01 fonts
  * check form enctype
  * social oAuth
  * page redirections based on user
@@ -50,9 +51,10 @@
  */ // *
 
 /** // * TRAVELS
+ *- individual post page
+ * big image .text change spacing from flex to margin/padding
  * post date
  * add assets/img to img upload filepath
- * individual post page
  */ // *
 
 //  ! FINAL CHECKS
