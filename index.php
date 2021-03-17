@@ -46,6 +46,7 @@
 /** // * GALLERY
  *- add continent / country / location
  *- disable countries with js
+ * check if new continent/country/location already exists
  * view photo on map
  * map marker CRUD
  */ // *

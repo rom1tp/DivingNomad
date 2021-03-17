@@ -16,9 +16,9 @@ class GalleryBackController extends BackController
   {
     $img_name = uniqid($name . "-", true) . '.' . $extension;
     if (!file_exists("assets/img/gallery/$category/")) {
-      
+
       mkdir("assets/img/gallery/$category/", 0777, true);
-  }
+    }
     $img_upload_path = "assets/img/gallery/$category/$img_name";
     move_uploaded_file($tmp_name, $img_upload_path);
     return $img_upload_path;
@@ -64,41 +64,40 @@ class GalleryBackController extends BackController
                   $_POST["country"] == 'new' &&
                   !empty($_POST["newCountry"])
                 ) {
-                  $img_name = uniqid("IMG-", true) . '.' . $img_extension;
-                  $img_upload_path = 'assets/img/gallery/uploaded/' . $img_name;
-                  move_uploaded_file($tmp_name, $img_upload_path);
                   $this->_continentsModel->addContinent($_POST["newContinent"]);
                   $continentId = $this->_continentsModel->getLastId();
                   $this->_countriesModel->addCountry($_POST["newCountry"], $continentId);
                   $countryId = $this->_countriesModel->getLastId();
                   $this->_locationsModel->addLocation($_POST["newLocation"], $countryId);
                   $locationId = $this->_locationsModel->getLastId();
-                  $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+                  $country = $this->_locationsModel->getLocation($locationId)['country'];
+                  $src = $this->uploadFile($_POST["name"], $img_extension, $country, $tmp_name);
+                  $this->_photosModel->addPhoto($_POST["name"], $src, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
                   header('location:galleryBack');
                 } elseif ( // new country
                   ctype_digit($_POST["continent"]) &&
                   $_POST["country"] == 'new' &&
                   !empty($_POST["newCountry"])
                 ) {
-                  $img_name = uniqid("IMG-", true) . '.' . $img_extension;
-                  $img_upload_path = 'assets/img/gallery/uploaded/' . $img_name;
-                  move_uploaded_file($tmp_name, $img_upload_path);
+
                   $this->_countriesModel->addCountry($_POST["newCountry"], $_POST["continent"]);
                   $countryId = $this->_countriesModel->getLastId();
                   $this->_locationsModel->addLocation($_POST["newLocation"], $countryId);
                   $locationId = $this->_locationsModel->getLastId();
-                  $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+                  $country = $this->_locationsModel->getLocation($_POST["location_id"])['country'];
+                  $src = $this->uploadFile($_POST["name"], $img_extension, $country, $tmp_name);
+                  $this->_photosModel->addPhoto($_POST["name"], $src, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
                   header('location:galleryBack');
                 } elseif ( // new location
                   ctype_digit($_POST["continent"]) &&
                   ctype_digit($_POST["country"])
                 ) {
-                  $img_name = uniqid("IMG-", true) . '.' . $img_extension;
-                  $img_upload_path = 'assets/img/gallery/uploaded/' . $img_name;
-                  move_uploaded_file($tmp_name, $img_upload_path);
+
                   $this->_locationsModel->addLocation($_POST["newLocation"], $_POST["country"]);
                   $locationId = $this->_locationsModel->getLastId();
-                  $this->_photosModel->addPhoto($_POST["name"], $img_name, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
+                  $country = $this->_locationsModel->getLocation($_POST["location_id"])['country'];
+                  $src = $this->uploadFile($_POST["name"], $img_extension, $country, $tmp_name);
+                  $this->_photosModel->addPhoto($_POST["name"], $src, $_POST["caption"], $_POST["date"], $locationId, $_POST["display"]);
                   header('location:galleryBack');
                 } else {
                   $errorMsg = 'An input is missing!';
