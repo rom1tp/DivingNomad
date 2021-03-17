@@ -316,17 +316,29 @@ header
 //!  ////POST////
 //* ////////////
 .post
-	h1
-		color: #fff
-		text-transform: uppercase
-		font-size: 5rem
-		text-shadow: 0 1px 10px rgba(black, 0.2)
-		max-width: 40%
-		position: fixed
-		top: 50%
-		left: 50%
-		transform: translate(-50%, -50%)
-		z-index: 1
+	.banner
+			max-width: 40%
+			position: fixed
+			top: 65%
+			left: 50%
+			transform: translate(-50%, -50%)
+			z-index: 1
+			color: #fff
+
+			h1
+				text-transform: uppercase
+				font-size: 5rem
+				text-shadow: 0 1px 10px rgba(black, 0.2)
+				margin-bottom: 5rem
+
+			a
+				color: inherit
+				font-size: 4rem
+				cursor: pointer
+
+				i
+					transform: rotate(90deg)
+
 
 	.plx-1,
 	.plx-2,
@@ -345,17 +357,24 @@ header
 	.plx-2
 		background-image: url('https://picsum.photos/1600/900')
 		min-height: 600px
+		display: none
 
 	.plx-3
 		background-image: url('https://picsum.photos/1600/900')
 		min-height: 70vh
 
-	section
+	#container
 		background-color: #fff
 		position: relative
-		min-height: 70vh
 		z-index: 5
-		padding: 6rem
+
+		section
+			min-height: 100vh
+			padding: 6rem
+
+			&:nth-of-type(2)
+				display: none
+
 
 
 //*   ///////////////

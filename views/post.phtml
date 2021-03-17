@@ -2,24 +2,29 @@
 
   <div class="plx-1">
     <img data-src="assets/img/<?= htmlspecialchars($post['src1']) ?>">
-    <h1><?= htmlspecialchars($post['name']) ?></h1>
+    <div class="banner">
+      <h1><?= htmlspecialchars($post['name']) ?></h1>
+      <a href="#container"><i class="fas fa-chevron-right"></i></a>
+    </div>
   </div>
 
-  <section>
-    <h2><?= htmlspecialchars($post['title1']) ?></h2>
-    <p><?= htmlspecialchars($post['text1']) ?></p>
-  </section>
+  <div id="container">
+    <section>
+      <h2><?= htmlspecialchars($post['title1']) ?></h2>
+      <p><?= htmlspecialchars($post['text1']) ?></p>
+    </section>
 
-  <div class="plx-2">
-    <img data-src="assets/img/<?= htmlspecialchars($post['src2']) ?>">
-  </div>
+    <div class="plx-2">
+      <img data-src="assets/img/<?= htmlspecialchars($post['src2']) ?>">
+    </div>
 
-  <section>
-    <h2><?= htmlspecialchars($post['title2']) ?></h2>
-    <p><?= htmlspecialchars($post['text2']) ?></p>
-  </section>
+    <section>
+      <h2><?= htmlspecialchars($post['title2']) ?></h2>
+      <p><?= htmlspecialchars($post['text2']) ?></p>
+    </section>
 
-  <div class="plx-3">
-    <img data-src="assets/img/<?= htmlspecialchars($post['src3']) ?>">
+    <div class="plx-3">
+      <img data-src="assets/img/<?= htmlspecialchars($post['src3']) ?>">
+    </div>
   </div>
 </main>
