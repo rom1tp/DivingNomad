@@ -488,20 +488,38 @@ header .main-nav a img {
 .post #container section aside {
   position: absolute;
   top: 10%;
-  right: 10%;
   width: 10%;
+  z-index: 10;
 }
 
-.post #container section aside div {
+.post #container section aside.left {
+  left: 10%;
+}
+
+.post #container section aside.left div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.post #container section aside.right {
+  right: 10%;
+}
+
+.post #container section aside.right div {
   line-height: 1.5;
 }
 
-.post #container section aside div + div {
+.post #container section aside.right div + div {
   position: relative;
   margin-top: 3rem;
 }
 
-.post #container section aside div + div::before {
+.post #container section aside.right div + div::before {
   content: '';
   position: absolute;
   top: -1.5rem;
@@ -512,32 +530,32 @@ header .main-nav a img {
   border-top: 2px solid #000;
 }
 
-.post #container section aside div p {
+.post #container section aside.right div p {
   font-size: 1.5rem;
   font-style: italic;
   font-weight: bold;
 }
 
-.post #container section aside div p:first-of-type {
+.post #container section aside.right div p:first-of-type {
   color: #a0a0a0;
 }
 
-.post #container section aside .date p {
+.post #container section aside.right .date p {
   font-style: unset;
   font-weight: normal;
 }
 
-.post #container section aside .date p:nth-of-type(1) {
+.post #container section aside.right .date p:nth-of-type(1) {
   text-transform: uppercase;
   font-weight: bold;
   color: #a0a0a0;
 }
 
-.post #container section aside .date p:nth-of-type(2) {
+.post #container section aside.right .date p:nth-of-type(2) {
   font-size: 3rem;
 }
 
-.post #container section aside .date p:nth-of-type(3) {
+.post #container section aside.right .date p:nth-of-type(3) {
   font-weight: bold;
   color: #a0a0a0;
 }
