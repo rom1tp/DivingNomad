@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:wght@400;700&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,8 +15,8 @@ html a {
 html body {
   height: 100%;
   font-family: "Raleway", sans-serif;
-  line-height: 1.5;
-  font-size: 1.5rem;
+  line-height: 2;
+  font-size: 2rem;
   text-align: center;
   margin: 0 auto;
 }
@@ -26,10 +27,11 @@ html body main .readMore {
   width: -moz-fit-content;
   width: fit-content;
   background-color: #eb6800;
-  transition: transform ease-in-out 0.25s;
+  transition: all ease-in-out 0.25s;
   z-index: 2;
   text-transform: uppercase;
   letter-spacing: 3px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 html body main .readMore a {
   color: #fff;
@@ -53,6 +55,7 @@ html body main .readMore::before {
 }
 html body main .readMore:hover {
   transform: translate(-7%, -20%);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
 }
 html body main .readMore:hover::before {
   transform: translate(0, 0);
@@ -98,13 +101,19 @@ html body main h1:hover::after {
 }
 
 .main-nav {
-  font-family: "Audiowide", cursive;
+  font-family: "Bebas Neue", cursive;
   text-transform: uppercase;
 }
-.main-nav h1 {
-  font-family: "Audiowide", cursive;
-  text-transform: uppercase;
-  font-size: 3rem;
+
+h1,
+h2,
+h3 {
+  font-family: "Bebas Neue", cursive;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 5rem;
 }
 
 header .language-nav {
@@ -196,7 +205,6 @@ header .main-nav a img {
 .accounts form legend {
   position: absolute;
   color: white;
-  font-size: 1.5em;
 }
 .accounts form:nth-child(2) {
   border-top-left-radius: 1em;
@@ -223,23 +231,27 @@ header .main-nav a img {
   margin: 3rem 0;
 }
 .travels .container article > a {
-  transition: transform ease-in-out 0.25s;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out 0.25s;
 }
 .travels .container article > a:hover {
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
   transform: scale(1.04);
 }
 .travels .container article img {
+  display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 18/9;
 }
 .travels .container article .text {
   text-align: left;
-  margin-left: 2rem;
   padding: 1.5rem;
+  margin-left: 2rem;
   max-width: 80%;
   min-height: 30%;
   display: flex;
+  align-self: start;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -261,11 +273,9 @@ header .main-nav a img {
   aspect-ratio: 4/3;
 }
 .travels .container article:nth-of-type(6n-5) .text {
-  max-width: 35%;
+  align-self: unset;
+  max-width: 30%;
   margin: 0 auto;
-}
-.travels .container article:nth-of-type(6n-5) .text h2 {
-  font-size: 3rem;
 }
 .travels .container article:nth-of-type(6n-5) .text p {
   margin-top: 2.5rem;
@@ -289,7 +299,6 @@ header .main-nav a img {
 }
 .post .banner h1 {
   text-transform: uppercase;
-  font-size: 5rem;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 5rem;
 }
@@ -317,8 +326,9 @@ header .main-nav a img {
 }
 .post .plx-2 {
   background-image: url("https://picsum.photos/1600/900");
-  min-height: 600px;
-  display: none;
+  min-height: 80vh;
+  background-attachment: unset;
+  background-position: center 30%;
 }
 .post .plx-3 {
   background-image: url("https://picsum.photos/1600/900");
@@ -330,11 +340,80 @@ header .main-nav a img {
   z-index: 5;
 }
 .post #container section {
-  min-height: 100vh;
-  padding: 6rem;
+  position: relative;
+  padding: 8rem;
 }
-.post #container section:nth-of-type(2) {
-  display: none;
+.post #container section:nth-of-type(1) article:nth-of-type(1) p:nth-of-type(1)::first-letter {
+  text-transform: uppercase;
+  color: #06458f;
+  float: left;
+  font-size: 6rem;
+  margin: 0 2.5rem;
+}
+.post #container section article {
+  position: relative;
+  max-width: 90%;
+  margin: 0 auto;
+}
+.post #container section article p {
+  max-width: 45%;
+  margin: 0 auto;
+  text-align: left;
+  padding-bottom: 2rem;
+}
+.post #container section article .img-right {
+  float: right;
+  margin: 1rem 2rem 2rem 4rem;
+  width: 45%;
+}
+.post #container section article .img-right img {
+  width: 100%;
+}
+.post #container section aside {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 10%;
+}
+.post #container section aside div {
+  line-height: 1.5;
+}
+.post #container section aside div + div {
+  position: relative;
+  margin-top: 3rem;
+}
+.post #container section aside div + div::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  border-top: 2px solid #000;
+}
+.post #container section aside div p {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+}
+.post #container section aside div p:first-of-type {
+  color: #a0a0a0;
+}
+.post #container section aside .date p {
+  font-style: unset;
+  font-weight: normal;
+}
+.post #container section aside .date p:nth-of-type(1) {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #a0a0a0;
+}
+.post #container section aside .date p:nth-of-type(2) {
+  font-size: 3rem;
+}
+.post #container section aside .date p:nth-of-type(3) {
+  font-weight: bold;
+  color: #a0a0a0;
 }
 
 .gallery .photos-container,
@@ -385,6 +464,18 @@ header .main-nav a img {
   transition: transform 0.5s;
   display: none;
   cursor: pointer;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: all ease-in-out 0.25s;
+}
+.gallery .photos-container figure:hover {
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+.gallery .photos-container figure:hover figcaption {
+  opacity: 1;
+}
+.gallery .photos-container figure.visible {
+  display: block;
 }
 .gallery .photos-container figure img {
   height: 100%;
@@ -432,15 +523,6 @@ header .main-nav a img {
 }
 .gallery .photos-container figure figcaption:hover::before, .gallery .photos-container figure figcaption:hover::after {
   transform: scaleX(1);
-}
-.gallery .photos-container figure.visible {
-  display: block;
-}
-.gallery .photos-container figure:hover {
-  transform: scale(1.05);
-}
-.gallery .photos-container figure:hover figcaption {
-  opacity: 1;
 }
 
 .galleryBack .photo-form #newContinent {
