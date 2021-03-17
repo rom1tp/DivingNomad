@@ -45,9 +45,9 @@
           <textarea name="text1" class="form-control shadow-none"><?= htmlspecialchars($post['text1']) ?></textarea>
           <textarea name="title2" class="form-control shadow-none"><?= htmlspecialchars($post['title2']) ?></textarea>
           <textarea name="text2" class="form-control shadow-none"><?= htmlspecialchars($post['text2']) ?></textarea>
-          <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>" width="200" height="150">
-          <img src="assets/img/<?= htmlspecialchars($post['src2']) ?>" width="200" height="150">
-          <img src="assets/img/<?= htmlspecialchars($post['src3']) ?>" width="200" height="150">
+          <img src="<?= htmlspecialchars($post['src1']) ?>" width="200" height="150">
+          <img src="<?= htmlspecialchars($post['src2']) ?>" width="200" height="150">
+          <img src="<?= htmlspecialchars($post['src3']) ?>" width="200" height="150">
           <br>
           <input type="date" name="date" value="<?=htmlspecialchars($post['date']) ?>">
           <label>Show</label>

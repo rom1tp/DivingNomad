@@ -5,7 +5,7 @@
     <?php if ($post['display'] == 'show'): ?>
     <article>
       <a href="post-id-<?= htmlspecialchars($post['id']) ?>">
-        <img src="assets/img/<?= htmlspecialchars($post['src1']) ?>">
+        <img src="<?= htmlspecialchars($post['src1']) ?>">
       </a>
       <div class="text">
         <h2><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['name']) ?></a></h2>

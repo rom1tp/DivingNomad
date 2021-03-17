@@ -20,6 +20,25 @@ class LocationsModel extends ModelManager
   return $this->queryFetchAll($req);
  }
 
+ public function getLocation($id)
+ {
+  $req =
+   "SELECT
+    locations.id AS id,
+    locations.name AS location,
+    countries.name AS country,
+    country_id,
+    continents.name AS continent
+    FROM locations
+    INNER JOIN countries
+    ON country_id = countries.id
+    INNER JOIN continents
+    ON continent_id = continents.id
+    WHERE locations.id = ?
+    ";
+  return $this->queryFetch($req, [$id]);
+ }
+
  public function addLocation($name, $countryId)
  {
   $req =
