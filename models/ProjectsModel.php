@@ -11,6 +11,7 @@ class ProjectsModel extends ModelManager
     subtitle,
     description,
     url,
+    src,
     display
     FROM projects";
     return $this->queryFetchAll($req);
@@ -25,6 +26,7 @@ class ProjectsModel extends ModelManager
     subtitle,
     description,
     url,
+    src,
     display
     FROM projects
     WHERE id = ?
@@ -32,15 +34,15 @@ class ProjectsModel extends ModelManager
     return $this->queryFetch($req, [$id]);
   }
 
-  public function addProject($name, $subtitle, $description, $url)
+  public function addProject($name, $subtitle, $description, $url, $src)
   {
     $req =
       "INSERT
     INTO projects
-    (name, subtitle, description, url)
+    (name, subtitle, description, url, src)
     VALUES
-    (?, ?, ?, ?)";
-    return $this->query($req, [$name, $subtitle, $description, $url]);
+    (?, ?, ?, ?, ?)";
+    return $this->query($req, [$name, $subtitle, $description, $url, $src]);
   }
 
   public function deleteProject($id)

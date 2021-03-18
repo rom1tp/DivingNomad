@@ -824,6 +824,7 @@ header .main-nav a img {
 .projects .projects-container figure img {
   display: block;
   width: 100%;
+  aspect-ratio: 5/3;
 }
 
 .projects .projects-container figure figcaption {

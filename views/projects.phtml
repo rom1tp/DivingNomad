@@ -6,8 +6,7 @@
     <?php if ($project['display'] == 'show'): ?>
     <figure>
       <div class="overlay"></div>
-      <img src="https://picsum.photos/1600/900" alt="<?=htmlspecialchars($project['name']) ?>">
-      <!-- <img src="<?=htmlspecialchars($project['src']) ?>" alt="<?=htmlspecialchars($project['name']) ?>"> -->
+      <img src="<?=htmlspecialchars($project['src']) ?>" alt="<?=htmlspecialchars($project['name']) ?>">
       <figcaption>
         <a href="project-id-<?=htmlspecialchars($project['id']) ?>">
           <h3><?= htmlspecialchars($project['name']) ?></h3>

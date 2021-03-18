@@ -25,6 +25,8 @@
     <br>
     <textarea name="description" cols="60" rows="10"><?= htmlspecialchars($project['description']) ?></textarea>
     <br>
+    <img src="<?= htmlspecialchars($project['src']) ?>" width="300">
+    <br>
     <input type="text" name="url" placeholder="Url" value="<?= htmlspecialchars($project['url']) ?>">
 
     <label>Show</label>

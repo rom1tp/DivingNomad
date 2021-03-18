@@ -14,7 +14,7 @@ class PagesController
  protected $_countriesModel;
  protected $_continentsModel;
 
- public function __construct()
+ protected function __construct()
  {
   $this->errors = false;
   $this->_usersModel = new UsersModel();
