@@ -5,12 +5,15 @@
     <?php foreach ($projects as $project): ?>
     <?php if ($project['display'] == 'show'): ?>
     <figure>
+      <div class="overlay"></div>
       <img src="https://picsum.photos/1600/900" alt="<?=htmlspecialchars($project['name']) ?>">
       <!-- <img src="<?=htmlspecialchars($project['src']) ?>" alt="<?=htmlspecialchars($project['name']) ?>"> -->
       <figcaption>
-        <h3><?= htmlspecialchars($project['name']) ?></h3>
-        <p><?= htmlspecialchars($project['subtitle']) ?></p>
-        <p><a href="<?= htmlspecialchars($project['url']) ?>">See Project</a></p>
+        <a href="project-id-<?=htmlspecialchars($project['id']) ?>">
+          <h3><?= htmlspecialchars($project['name']) ?></h3>
+          <p><?= htmlspecialchars($project['subtitle']) ?></p>
+          <p><a href="<?= htmlspecialchars($project['url']) ?>">See Project</a></p>
+        </a>
       </figcaption>
     </figure>
     <?php endif ?>

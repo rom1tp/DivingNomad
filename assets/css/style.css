@@ -10,7 +10,7 @@ html {
 }
 html a {
   text-decoration: none;
-  color: #000;
+  color: inherit;
 }
 html body {
   height: 100%;
@@ -586,11 +586,27 @@ header .main-nav a img {
   transition: transform 0.5s;
   cursor: pointer;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  transition: all ease-in-out 0.25s;
+  transition: all ease-out 0.25s;
+}
+.projects .projects-container figure .overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  -webkit-backdrop-filter: blur(0px);
+          backdrop-filter: blur(0px);
 }
 .projects .projects-container figure:hover {
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
   transform: scale(1.05);
+}
+.projects .projects-container figure:hover .overlay {
+  z-index: 0;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
 }
 .projects .projects-container figure:hover figcaption {
   opacity: 1;

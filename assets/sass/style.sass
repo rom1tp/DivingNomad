@@ -45,7 +45,7 @@ html
 
 	a
 		text-decoration: none
-		color: #000
+		color: inherit
 
 	body
 		height: 100%
@@ -646,16 +646,35 @@ header
 		margin: 0 auto
 		display: grid
 
-		figure 
+		figure
 			position: relative
 			transition: transform 0.5s
 			cursor: pointer
 			box-shadow: 10px 10px 10px rgba(black, 0.1)
-			transition: all ease-in-out 0.25s
+			transition: all ease-out 0.25s
+
+			.overlay
+				content: ''
+				position: absolute
+				top: 0
+				right: 0
+				bottom: 0
+				left: 0
+				// background: #000
+				z-index: 100
+				// transition: all ease-in-out 0.25s
+				backdrop-filter: blur(0px)
+				// opacity: 0
 
 			&:hover
 				box-shadow: 10px 10px 50px rgba(black, 0.3)
 				transform: scale(1.05)
+
+				.overlay
+					// background: #000
+					// opacity: 0.4
+					z-index: 0
+					backdrop-filter: blur(4px)
 
 				figcaption 
 					opacity: 1

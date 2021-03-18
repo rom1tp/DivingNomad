@@ -127,6 +127,11 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller = new ProjectsController();
       $controller->display();
       break;
+    
+    case 'project':
+      $controller = new ProjectController();
+      $controller -> display();
+      break;
 
     // # TRAVELS
     case 'travels':
