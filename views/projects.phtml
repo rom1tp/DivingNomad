@@ -1,12 +1,19 @@
 <main class="projects">
-  <h1>Projects page</h1>
+  <h1>Projects</h1>
 
-  <?php foreach ($projects as $project): ?>
-  <?php if ($project['display'] == 'show'): ?>
-  <h2><?= htmlspecialchars($project['name']) ?></h2>
-  <h3><?= htmlspecialchars($project['subtitle']) ?></h3>
-  <p><?= htmlspecialchars($project['description']) ?></p>
-  <a href="<?= htmlspecialchars($project['url']) ?>" target="_blank"><?= htmlspecialchars($project['url']) ?></a>
-  <?php endif; ?>
-  <?php endforeach; ?>
+  <section class="projects-container">
+    <?php foreach ($projects as $project): ?>
+    <?php if ($project['display'] == 'show'): ?>
+    <figure>
+      <img src="https://picsum.photos/1600/900" alt="<?=htmlspecialchars($project['name']) ?>">
+      <!-- <img src="<?=htmlspecialchars($project['src']) ?>" alt="<?=htmlspecialchars($project['name']) ?>"> -->
+      <figcaption>
+        <h3><?= htmlspecialchars($project['name']) ?></h3>
+        <p><?= htmlspecialchars($project['subtitle']) ?></p>
+        <p><a href="<?= htmlspecialchars($project['url']) ?>">See Project</a></p>
+      </figcaption>
+    </figure>
+    <?php endif ?>
+    <?php endforeach ?>
+  </section>
 </main>

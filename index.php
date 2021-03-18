@@ -14,16 +14,17 @@
  *- new models as properties
  *- back and front extend pageController
  *- thmg thms => this->Model->get/set
- * Univers / Sabon W01 fonts
  * check form enctype
  * social oAuth
  * page redirections based on user
+ * 
  */ // #
 
 /** // ? QUESTIONS
  *- fix table relationships
  * IDE problem with img uploads
  * how to make multilingual website ? JSON ? db ?
+ * 
  */ // ?
 
 /** // * CRUD
@@ -37,10 +38,12 @@
 /** // * USERS
  * AccountsController => SessionController // ? not sure if necessary
  * delete account
+ * 
  */ // *
 
 /** // * FORMS
  * show password button in login/sign-up
+ * 
  */ // *
 
 /** // * GALLERY
@@ -49,13 +52,20 @@
  * check if new continent/country/location already exists
  * view photo on map
  * map marker CRUD
+ * 
  */ // *
 
 /** // * TRAVELS
  *- individual post page
- * big image .text change spacing from flex to margin/padding
- * post date
- * add assets/img to img upload filepath
+ *- big image .text change spacing from flex to margin/padding
+ * -add assets/img to img upload filepath
+ * 
+ */ // *
+
+/** // * POST
+ *- post date
+ * shadow on next icon
+ * 
  */ // *
 
 //  ! FINAL CHECKS
