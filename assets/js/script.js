@@ -98,12 +98,15 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'post':
-			const img1 = document.querySelector('.post .plx-1 img').getAttribute('data-src')
-			const img2 = document.querySelector('.post .plx-2 img').getAttribute('data-src')
-			const img3 = document.querySelector('.post .plx-3 img').getAttribute('data-src')
-			document.querySelector('.post .plx-1').style.backgroundImage = `url('${img1}')`
-			document.querySelector('.post .plx-2').style.backgroundImage = `url('${img2}')`
-			document.querySelector('.post .plx-3').style.backgroundImage = `url('${img3}')`
+			document.querySelector('.post .plx-1').style.backgroundImage = `url('${document.querySelector('.post .plx-1 img').getAttribute('data-src')}')`
+			document.querySelector('.post .plx-2').style.backgroundImage = `url('${document.querySelector('.post .plx-2 img').getAttribute('data-src')}')`
+			document.querySelector('.post .plx-3').style.backgroundImage = `url('${document.querySelector('.post .plx-3 img').getAttribute('data-src')}')`
+			break
+
+		case 'project':
+			document.querySelector('.project .plx-1').style.backgroundImage = `url('${document.querySelector('.project .plx-1 img').getAttribute('data-src')}')`
+			// document.querySelector('.project .plx-2').style.backgroundImage = `url('${document.querySelector('.project .plx-2 img').getAttribute('data-src')}')`
+			// document.querySelector('.project .plx-3').style.backgroundImage = `url('${document.querySelector('.project .plx-3 img').getAttribute('data-src')}')`
 			break
 
 		case 'test':

@@ -28,7 +28,9 @@ class ProjectsBackController extends BackController
   public function confirm()
   {
     $id = $_GET["id"];
-    $this->_projectsModel->modifyProject($_POST["name"], $_POST["subtitle"], $_POST["description"], $_POST["url"], '// FIXME src',  $_POST["display-$id"], $id);
+    $this->_projectsModel->modifyProject($_POST["name"], $_POST["subtitle"], $_POST["description"], $_POST["url"],  $_POST["display-$id"], $id);
     header('location:projectsBack');
+    
   }
+
 }

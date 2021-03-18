@@ -1,4 +1,82 @@
 <main class="project">
-  <h1><?= htmlspecialchars($project['name']) ?></h1>
-  <p><a href="<?= htmlspecialchars($project['url']) ?>">See Project</a></p>
+
+  <div class="plx-1">
+    <img data-src="<?= htmlspecialchars($project['src']) ?>">
+    <div class="banner">
+      <h1><?= htmlspecialchars($project['name']) ?></h1>
+      <a href="#container"><i class="fas fa-chevron-right"></i></a>
+    </div>
+  </div>
+
+  <div id="container">
+    <section>
+      <aside class="left">
+        <a class="share"><i class="fas fa-share-alt"></i></a>
+        <div class="social">
+          <a href="https://www.facebook.com/dialog/share"><i class="fab fa-facebook-f"></i></a>
+          <a href=""><i class="fab fa-twitter"></i></a>
+          <a href=""><i class="fab fa-linkedin-in"></i></a>
+          <a href=""></a>
+        </div>
+      </aside>
+      <aside class="right">
+        <div>
+          <p>Location :</p>
+          <p>Ari Atoll,</p>
+          <p>Maldives</p>
+        </div>
+        <div>
+          <p>Lorem, ipsum :</p>
+          <p>Impedit, eos.</p>
+          <p>Quasi, aspernatur.</p>
+        </div>
+        <div>
+          <p>Lorem, ipsum :</p>
+          <p>Impedit, eos.</p>
+          <p>Quasi, aspernatur.</p>
+        </div>
+      </aside>
+      <article>
+        <h2><?= htmlspecialchars($project['subtitle']) ?></h2>
+        <p><?= htmlspecialchars($project['description']) ?>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Earum sit
+          ratione nrojectrum beatae magni qui, harum accusantium praesentium, tempore voluptatum quibusdam! Natus
+          voluptatem, maiores non labore tenetur error, culpa enim perferendis, sapiente veniam dolor nisi impedit
+          corrupti tempore omnis quae nam sunt soluta animi veritatis aliquid fuga aperiam eligendi? Aspernatur.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem rerum molestias neque, mollitia, eius
+          facilis accusantium eaque quaerat ipsum quod iusto hic. Culpa illo architecto, ad iste rem, consequatur vel
+          tenetur ea velit ipsam ipsum minus facilis sed eligendi maiores nobis voluptates, veniam dicta non repellat
+          expedita? Impedit debitis deleniti dolores maxime expedita facere iure blanditiis error accusantium laboriosam
+          neque autem et quia, quod nobis officiis tempore nihil quo aut!</p>
+      </article>
+    </section>
+    <div class="plx-2">
+      <img data-src="<?= htmlspecialchars($project['src']) ?>">
+    </div>
+
+
+    <section>
+      <article>
+        <h2><?= htmlspecialchars($project['subtitle']) ?></h2>
+        <p><?= htmlspecialchars($project['description']) ?>Worem ipsum dolor sit amet consectetur, adipisicing elit.
+          Earum sit
+          ratione nrojectrum beatae magni qui, harum accusantium praesentium, tempore voluptatum quibusdam! Natus
+          voluptatem, maiores non labore tenetur error, culpa enim perferendis, sapiente veniam dolor nisi impedit
+          corrupti tempore omnis quae nam sunt soluta animi veritatis aliquid fuga aperiam eligendi? Aspernatur.</p>
+        <div class="img-right"><img src="<?= htmlspecialchars($project['src']) ?>"></div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, dolorum eum! Cupiditate autem, incidunt vel
+          culpa, consectetur accusantium magnam expedita est voluptas iste corporis sit necessitatibus nulla illo. Saepe
+          deleniti, nobis perspiciatis delectus sint officiis possimus. Minus ipsa voluptatem iste iure assumenda eius
+          impedit quo doloremque, in, necessitatibus vel molestiae tempore eos eaque architecto, vero rem dolores
+          veritatis neque repellendus eveniet recusandae? Aliquam repellat dolor ullam neque ad natus harum adipisci
+          aperiam numquam impedit! Sequi quidem, exercitationem labore nulla tenetur provident expedita recusandae
+          adipisci inventore molestiae. Quidem, iure! Tempora fugiat dolorum dicta, aliquam reiciendis maxime dolore
+          dolores delectus quam aut?</p>
+      </article>
+    </section>
+
+    <div class="plx-3">
+      <img data-src="<?= htmlspecialchars($project['src']) ?>">
+    </div>
+  </div>
 </main>

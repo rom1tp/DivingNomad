@@ -387,7 +387,8 @@ header .main-nav a img {
   width: 47%;
 }
 
-.post .banner {
+.post .banner,
+.project .banner {
   max-width: 40%;
   position: fixed;
   top: 65%;
@@ -398,26 +399,32 @@ header .main-nav a img {
   color: #fff;
 }
 
-.post .banner h1 {
+.post .banner h1,
+.project .banner h1 {
   text-transform: uppercase;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 5rem;
 }
 
-.post .banner a {
+.post .banner a,
+.project .banner a {
   color: inherit;
   font-size: 4rem;
   cursor: pointer;
 }
 
-.post .banner a i {
+.post .banner a i,
+.project .banner a i {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
 .post .plx-1,
 .post .plx-2,
-.post .plx-3 {
+.post .plx-3,
+.project .plx-1,
+.project .plx-2,
+.project .plx-3 {
   position: relative;
   background-position: center;
   background-size: cover;
@@ -426,34 +433,40 @@ header .main-nav a img {
   z-index: 5;
 }
 
-.post .plx-1 {
+.post .plx-1,
+.project .plx-1 {
   background-image: url("https://picsum.photos/1600/900");
   min-height: 85vh;
 }
 
-.post .plx-2 {
+.post .plx-2,
+.project .plx-2 {
   background-image: url("https://picsum.photos/1600/900");
   min-height: 80vh;
   background-attachment: unset;
 }
 
-.post .plx-3 {
+.post .plx-3,
+.project .plx-3 {
   background-image: url("https://picsum.photos/1600/900");
   min-height: 70vh;
 }
 
-.post #container {
+.post #container,
+.project #container {
   background-color: #fff;
   position: relative;
   z-index: 5;
 }
 
-.post #container section {
+.post #container section,
+.project #container section {
   position: relative;
   padding: 8rem;
 }
 
-.post #container section:nth-of-type(1) article:nth-of-type(1) p:nth-of-type(1)::first-letter {
+.post #container section:nth-of-type(1) article:nth-of-type(1) p:nth-of-type(1)::first-letter,
+.project #container section:nth-of-type(1) article:nth-of-type(1) p:nth-of-type(1)::first-letter {
   text-transform: uppercase;
   color: #06458f;
   float: left;
@@ -461,41 +474,48 @@ header .main-nav a img {
   margin: 0 2.5rem;
 }
 
-.post #container section article {
+.post #container section article,
+.project #container section article {
   position: relative;
   max-width: 90%;
   margin: 0 auto;
 }
 
-.post #container section article p {
+.post #container section article p,
+.project #container section article p {
   max-width: 45%;
   margin: 0 auto;
   text-align: left;
   padding-bottom: 2rem;
 }
 
-.post #container section article .img-right {
+.post #container section article .img-right,
+.project #container section article .img-right {
   float: right;
   margin: 1rem 2rem 2rem 4rem;
   width: 45%;
 }
 
-.post #container section article .img-right img {
+.post #container section article .img-right img,
+.project #container section article .img-right img {
   width: 100%;
 }
 
-.post #container section aside {
+.post #container section aside,
+.project #container section aside {
   position: absolute;
   top: 10%;
   width: 10%;
   z-index: 10;
 }
 
-.post #container section aside.left {
+.post #container section aside.left,
+.project #container section aside.left {
   left: 10%;
 }
 
-.post #container section aside.left div {
+.post #container section aside.left div,
+.project #container section aside.left div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,20 +525,24 @@ header .main-nav a img {
           flex-direction: column;
 }
 
-.post #container section aside.right {
+.post #container section aside.right,
+.project #container section aside.right {
   right: 10%;
 }
 
-.post #container section aside.right div {
+.post #container section aside.right div,
+.project #container section aside.right div {
   line-height: 1.5;
 }
 
-.post #container section aside.right div + div {
+.post #container section aside.right div + div,
+.project #container section aside.right div + div {
   position: relative;
   margin-top: 3rem;
 }
 
-.post #container section aside.right div + div::before {
+.post #container section aside.right div + div::before,
+.project #container section aside.right div + div::before {
   content: '';
   position: absolute;
   top: -1.5rem;
@@ -529,32 +553,38 @@ header .main-nav a img {
   border-top: 2px solid #000;
 }
 
-.post #container section aside.right div p {
+.post #container section aside.right div p,
+.project #container section aside.right div p {
   font-size: 1.5rem;
   font-style: italic;
   font-weight: bold;
 }
 
-.post #container section aside.right div p:first-of-type {
+.post #container section aside.right div p:first-of-type,
+.project #container section aside.right div p:first-of-type {
   color: #a0a0a0;
 }
 
-.post #container section aside.right .date p {
+.post #container section aside.right .date p,
+.project #container section aside.right .date p {
   font-style: unset;
   font-weight: normal;
 }
 
-.post #container section aside.right .date p:nth-of-type(1) {
+.post #container section aside.right .date p:nth-of-type(1),
+.project #container section aside.right .date p:nth-of-type(1) {
   text-transform: uppercase;
   font-weight: bold;
   color: #a0a0a0;
 }
 
-.post #container section aside.right .date p:nth-of-type(2) {
+.post #container section aside.right .date p:nth-of-type(2),
+.project #container section aside.right .date p:nth-of-type(2) {
   font-size: 2.5rem;
 }
 
-.post #container section aside.right .date p:nth-of-type(3) {
+.post #container section aside.right .date p:nth-of-type(3),
+.project #container section aside.right .date p:nth-of-type(3) {
   font-weight: bold;
   color: #a0a0a0;
 }
