@@ -225,6 +225,7 @@ footer
 			min-width: 25%
 			padding: 4rem
 			border-radius: 10px
+			z-index: 200
 
 			p
 				font-style: italic
@@ -821,6 +822,39 @@ footer
 						a
 							color: $magenta
 
+.projectsBack
+	.actions
+		i
+			cursor: pointer
+
+		.fa-eye-slash,
+		.fa-eye
+			display: none
+			transition: all ease .25s
+
+			&:hover
+				// transform: scale(1.1)
+				color: #ddd
+			
+			&.visible
+				display: inline-block
+
+//?   ///////////////
+//!  ////PROJECT////
+//* ///////////////
+.projectBack
+	.fa-eye-slash,
+	.fa-eye
+		cursor: pointer
+		display: none
+		transition: all ease .25s
+
+		&:hover
+			// transform: scale(1.1)
+			color: #ddd
+		
+		&.visible
+			display: inline-block
 
 //?   /////////////
 //!  ////ICONS////

@@ -246,6 +246,7 @@ footer .confirmOverlay .confirmBox {
   min-width: 25%;
   padding: 4rem;
   border-radius: 10px;
+  z-index: 200;
 }
 
 footer .confirmOverlay .confirmBox p {
@@ -1020,6 +1021,45 @@ footer .confirmOverlay .confirmBox .buttons .btn {
 
 .projects .projects-container figure figcaption p:hover a {
   color: #c200e3;
+}
+
+.projectsBack .actions i {
+  cursor: pointer;
+}
+
+.projectsBack .actions .fa-eye-slash,
+.projectsBack .actions .fa-eye {
+  display: none;
+  -webkit-transition: all ease .25s;
+  transition: all ease .25s;
+}
+
+.projectsBack .actions .fa-eye-slash:hover,
+.projectsBack .actions .fa-eye:hover {
+  color: #ddd;
+}
+
+.projectsBack .actions .fa-eye-slash.visible,
+.projectsBack .actions .fa-eye.visible {
+  display: inline-block;
+}
+
+.projectBack .fa-eye-slash,
+.projectBack .fa-eye {
+  cursor: pointer;
+  display: none;
+  -webkit-transition: all ease .25s;
+  transition: all ease .25s;
+}
+
+.projectBack .fa-eye-slash:hover,
+.projectBack .fa-eye:hover {
+  color: #ddd;
+}
+
+.projectBack .fa-eye-slash.visible,
+.projectBack .fa-eye.visible {
+  display: inline-block;
 }
 
 .actions i {

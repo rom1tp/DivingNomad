@@ -29,11 +29,15 @@
  */ // ?
 
 /** // * CRUD
- * confirm delete
+ *- confirm delete
+ * add Item as icon
+ * visibility icon ajax
+ * vue data bind visibility icon to text
+ * image picker popup
+ * multiple images default null
  * CRUD icons as buttons
  * change submit button => icon
  * CRUD as popup from anywhere on the website
- *
  */ // *
 
 /** // * USERS
@@ -66,6 +70,11 @@
 /** // * POST
  *- post date
  * shadow on next icon
+ * 
+ */ // *
+
+/** // * PROJECTS
+ * big image on hover
  * 
  */ // *
 
@@ -172,11 +181,6 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller->delete();
       break;
 
-    case 'confirmProject':
-      $controller = new ProjectsBackController();
-      $controller->confirm();
-      break;
-
     // # PROJECT BACK
     case 'addProject':
       $controller = new ProjectBackController();
@@ -187,6 +191,17 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller = new ProjectBackController();
       $controller->upload();
       break;
+
+    case 'modifyProject':
+      $controller = new ProjectBackController();
+      $controller -> display(true);
+      break;
+  
+    case 'confirmProject':
+      $controller = new ProjectBackController();
+      $controller->confirm();
+      break;
+    
 
     // # TRAVELS BACK
     case 'travelsBack':

@@ -2,6 +2,7 @@
 class BackController extends PagesController
 {
   protected $_layout;
+  protected $_modify;
 
   public function __construct()
   {

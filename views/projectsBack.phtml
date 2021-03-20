@@ -2,28 +2,39 @@
   <h1>Projects</h1>
   <a href="addProject" class="btn btn-outline-primary fs-1 shadow-none">Add Project</a>
 
-  <?php foreach ($projects as $project): ?>
-
-  <form action="confirmProject-id-<?= htmlspecialchars($project['id']) ?>" method="post">
-    <input type="text" name="name" value="<?= htmlspecialchars($project['name']) ?>">
-    <br>
-    <textarea name="subtitle" cols="60" rows="3"><?= htmlspecialchars($project['subtitle']) ?></textarea>
-    <br>
-    <textarea name="description" cols="60" rows="10"><?= htmlspecialchars($project['description']) ?></textarea>
-    <br>
-    <img src="<?= htmlspecialchars($project['src']) ?>" width="300">
-    <br>
-    <input type="text" name="url" placeholder="Url" value="<?= htmlspecialchars($project['url']) ?>">
-
-    <label>Show</label>
-    <input type="radio" value='show' name="display-<?= htmlspecialchars($project['id']) ?>"
-      <?= ($project['display'] == 'show')? 'checked': '' ?>>
-    <label>Hide</label>
-    <input type="radio" value='hide' name="display-<?= htmlspecialchars($project['id']) ?>"
-      <?= ($project['display'] == 'hide')? 'checked': '' ?>>
-    <br>
-    <button type="submit">Confirm</button>
-  </form>
-  <a class="button" href="deleteProject-id-<?= htmlspecialchars($project['id']) ?>">Delete</a>
-  <?php endforeach; ?>
+  <div class="container">
+    <table class="table col-8">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Visibility</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($projects as $project): ?>
+        <tr>
+          <td><?= htmlspecialchars($project['id']) ?></td>
+          <td><?= htmlspecialchars($project['name']) ?></td>
+          <td><img src="<?= htmlspecialchars($project['src']) ?>" width="80"></td>
+          <td><?= htmlspecialchars($project['display']) ?></td>
+          <td class="actions">
+            <input data-id="<?= htmlspecialchars($project['id']) ?>" type="hidden" name="display" value="hide">
+            <input data-id="<?= htmlspecialchars($project['id']) ?>" type="hidden" name="display" value="show"
+              class="form-check-input shadow-none" <?=($project['display'] == 'show') ? 'checked' : '' ?>>
+            <a href="modifyProject-id-<?= htmlspecialchars($project['id']) ?>"><i
+                data-id="<?= htmlspecialchars($project['id']) ?>" class="far fa-edit"></i></a>
+            <i data-id="<?= htmlspecialchars($project['id']) ?>"
+              class="far fa-eye <?=($project['display'] == 'show') ? 'visible' : '' ?>"></i>
+            <i data-id="<?= htmlspecialchars($project['id']) ?>"
+              class="far fa-eye-slash <?=($project['display'] != 'show') ? 'visible' : '' ?>"></i>
+            <a href="deleteProject-id-<?=htmlspecialchars($project['id']) ?>"><i class="far fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
+  </div>
 </main>

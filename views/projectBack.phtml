@@ -1,17 +1,58 @@
 <main class="projectBack">
-  <h1>Add project</h1>
+  <h1><?= ($this->_modify) ? 'Modify' : 'Add' ?> project</h1>
 
   <?php if (isset($_GET["errorMsg"])) : ?>
   <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
   <?php endif; ?>
-  <form action="uploadProject" method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
-    <legend>Upload a project</legend>
-    <input type="text" name="name" placeholder="Name" class="form-control shadow-none">
-    <input type="text" name="url" placeholder="Url" class="form-control shadow-none">
-    <textarea name="subtitle" cols="60" rows="3" placeholder="Subtitle" class="form-control shadow-none"></textarea>
+
+  <form action="
+  <?php if ($this->_modify) : ?>
+  confirmProject-id-<?= htmlspecialchars($project['id']) ?>
+  <?php else : ?>
+  uploadProject
+  <?php endif ?>
+  " method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
+    <legend><?= ($this->_modify) ? 'Modify' : 'Add' ?> a project</legend>
+
+    <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($project['name']) ?>" <?php endif ?>>
+
+    <input type="text" name="url" placeholder="Url" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($project['url']) ?> <?php endif ?>">
+
+    <textarea name="subtitle" cols="60" rows="3" placeholder="Subtitle"
+      class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($project['subtitle']) ?><?php endif ?></textarea>
+
     <textarea name="description" cols="60" rows="10" placeholder="Description"
-      class="form-control shadow-none"></textarea>
+      class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($project['description']) ?><?php endif ?></textarea>
+
+    <?php if ($this->_modify) : ?>
+    <p>change photo button</p>
+
+    <input data-id="<?= htmlspecialchars($project['id']) ?>" type="hidden" name="display" value="hide">
+    <input data-id="<?= htmlspecialchars($project['id']) ?>" type="checkbox" name="display" value="show"
+      class="form-check-input shadow-none" <?= ($this->_modify && $project['display'] == 'show') ? 'checked' : '' ?>>
+
+    <i data-id="<?= htmlspecialchars($project['id']) ?>"
+      class="far fa-eye <?=($project['display'] == 'show') ? 'visible' : '' ?>"></i>
+    <i data-id="<?= htmlspecialchars($project['id']) ?>"
+      class="far fa-eye-slash <?=($project['display'] != 'show') ? 'visible' : '' ?>"></i>
+
+    <a href="deleteProject-id-<?=htmlspecialchars($project['id']) ?>"><i class="far fa-trash-alt"></i></a>
+
+    <?php else : ?>
     <input type="file" name="img" class="form-control shadow-none" required>
-    <button type="submit" name="submit" class="btn btn-primary shadow-none">UPLOAD</button>
+    <input type="hidden" name="display" value="hide">
+    <input type="checkbox" name="display" value="show" class="form-check-input shadow-none" checked>
+    <i class="far fa-eye visible"></i>
+    <i class="far fa-eye-slash"></i>
+    <?php endif ?>
+
+
+
+    <br>
+    <button type="submit" name="submit"
+      class="btn btn-primary shadow-none"><?= ($this->_modify) ? 'Confirm' : 'Upload' ?></button>
+
   </form>
 </main>

@@ -25,12 +25,4 @@ class ProjectsBackController extends BackController
     header('location:projectsBack');
   }
 
-  public function confirm()
-  {
-    $id = $_GET["id"];
-    $this->_projectsModel->modifyProject($_POST["name"], $_POST["subtitle"], $_POST["description"], $_POST["url"],  $_POST["display-$id"], $id);
-    header('location:projectsBack');
-    
-  }
-
 }

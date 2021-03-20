@@ -2,7 +2,10 @@ window.addEventListener('DOMContentLoaded', () => {
 	const page = document.querySelector('main').className
 
 	if (page.endsWith('Back')) {
-		$('.confirmOverlay, #close, #cancel, #confirm').click(() => {
+		$(`input[name="display"][type='checkbox']`).each(function () {
+			$(this).css('display', 'none')
+		})
+		$('#close, #cancel, #confirm').click(() => {
 			$('.confirmOverlay').removeClass('visible')
 		})
 
@@ -15,25 +18,27 @@ window.addEventListener('DOMContentLoaded', () => {
 				window.location = $(this).attr('href')
 			})
 		})
+
+		$('.fa-eye').click(function () {
+			let id = $(this).data('id')
+			$(this).removeClass('visible')
+			$(`.fa-eye-slash[data-id="${id}"]`).addClass('visible')
+			let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
+			$(checkbox).removeAttr('checked')
+		})
+
+		$('.fa-eye-slash').click(function () {
+			let id = $(this).data('id')
+			$(`.fa-eye[data-id="${id}"]`).addClass('visible')
+			$(this).removeClass('visible')
+			let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
+			$(checkbox).attr('checked', '')
+		})
 	}
 
 	switch (page) {
 		case 'galleryBack':
-			$('.fa-eye').click(function () {
-				let id = $(this).data('id')
-				$(this).removeClass('visible')
-				$(`.fa-eye-slash[data-id="${id}"]`).addClass('visible')
-				let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
-				$(checkbox).removeAttr('checked')
-			})
-
-			$('.fa-eye-slash').click(function () {
-				let id = $(this).data('id')
-				$(`.fa-eye[data-id="${id}"]`).addClass('visible')
-				$(this).removeClass('visible')
-				let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
-				$(checkbox).attr('checked', '')
-			})
+			
 			break
 
 		case 'gallery':
@@ -159,6 +164,22 @@ window.addEventListener('DOMContentLoaded', () => {
 				.getAttribute('data-src')}')`
 			// document.querySelector('.project .plx-2').style.backgroundImage = `url('${document.querySelector('.project .plx-2 img').getAttribute('data-src')}')`
 			// document.querySelector('.project .plx-3').style.backgroundImage = `url('${document.querySelector('.project .plx-3 img').getAttribute('data-src')}')`
+			break
+
+		case 'projectBack':
+			$('.fa-eye').click(function () {
+				$(this).removeClass('visible')
+				$(`.fa-eye-slash`).addClass('visible')
+				let checkbox = $(`input[value="show"]`)[0]
+				$(checkbox).removeAttr('checked')
+			})
+	
+			$('.fa-eye-slash').click(function () {
+				$(`.fa-eye`).addClass('visible')
+				$(this).removeClass('visible')
+				let checkbox = $(`input[value="show"]`)[0]
+				$(checkbox).attr('checked', '')
+			})
 			break
 
 		case 'travelsBack':
