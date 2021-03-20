@@ -203,8 +203,6 @@ header
 //?   //////////////
 //!  ////MODALS////
 //* //////////////
-
-
 footer
 	.confirmOverlay
 		display: none
@@ -691,6 +689,23 @@ footer
 
 	.photos-container 
 		grid-template-columns: repeat(3, minmax(230px, 1fr))
+
+		.actions
+			i
+				cursor: pointer
+
+			.fa-eye-slash,
+			.fa-eye
+				display: none
+				transition: transform ease-in-out .25s
+
+				&:hover
+					transform: scale(1.15)
+				
+				&.visible
+					display: inline-block
+
+	
 
 //?   ////////////////
 //!  ////PROJECTS////

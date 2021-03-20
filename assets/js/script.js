@@ -81,6 +81,22 @@ window.addEventListener('DOMContentLoaded', () => {
 			})
 
 
+			
+			$('.fa-eye').click(function () {
+				let id = $(this).data('id')
+				$(this).removeClass('visible')
+				$(`.fa-eye-slash[data-id="${id}"]`).addClass('visible')
+				let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
+				$(checkbox).removeAttr('checked')
+			})
+			
+			$('.fa-eye-slash').click(function () {
+				let id = $(this).data('id')
+				$(`.fa-eye[data-id="${id}"]`).addClass('visible')
+				$(this).removeClass('visible')
+				let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
+				$(checkbox).attr('checked', '')
+			})
 			break
 
 		case 'gallery':

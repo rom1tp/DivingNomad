@@ -654,6 +654,22 @@ footer .confirmOverlay .confirmBox .buttons .btn {
 .galleryBack .photos-container {
   grid-template-columns: repeat(3, minmax(230px, 1fr));
 }
+.galleryBack .photos-container .actions i {
+  cursor: pointer;
+}
+.galleryBack .photos-container .actions .fa-eye-slash,
+.galleryBack .photos-container .actions .fa-eye {
+  display: none;
+  transition: transform ease-in-out 0.25s;
+}
+.galleryBack .photos-container .actions .fa-eye-slash:hover,
+.galleryBack .photos-container .actions .fa-eye:hover {
+  transform: scale(1.15);
+}
+.galleryBack .photos-container .actions .fa-eye-slash.visible,
+.galleryBack .photos-container .actions .fa-eye.visible {
+  display: inline-block;
+}
 
 .projects .projects-container {
   grid-template-columns: repeat(4, minmax(300px, 1fr));

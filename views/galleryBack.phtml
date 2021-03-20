@@ -83,18 +83,17 @@
       <br>
 
       <div class="actions">
-        <!-- <label>Show</label>
-        <input type="radio" value='show' name="display" <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
-        <label>Hide</label>
-        <input type="radio" value='hide' name="display" <?=($photo['display'] == 'hide') ? 'checked' : '' ?>> -->
-        <label class="form-check-label">
+        <!-- <label class="form-check-label">
           Displayed
-        </label>
-        <input type="hidden" name="display" value="hide">
-        <input type="checkbox" name="display" value="show" class="form-check-input shadow-none"
-          <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
-        <i class="far fa-edit"></i>
-        <i class="far fa-eye-slash"></i>
+        </label> -->
+        <input data-id="<?= htmlspecialchars($photo['id']) ?>" type="hidden" name="display" value="hide">
+        <input data-id="<?= htmlspecialchars($photo['id']) ?>" type="checkbox" name="display" value="show"
+          class="form-check-input shadow-none" <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
+        <i data-id="<?= htmlspecialchars($photo['id']) ?>" class="far fa-edit"></i>
+        <i data-id="<?= htmlspecialchars($photo['id']) ?>"
+          class="far fa-eye <?=($photo['display'] == 'show') ? 'visible' : '' ?>"></i>
+        <i data-id="<?= htmlspecialchars($photo['id']) ?>"
+          class="far fa-eye-slash <?=($photo['display'] != 'show') ? 'visible' : '' ?>"></i>
         <a href="deletePhoto-id-<?=htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
         <button type="submit" name="submit"><i class="far fa-save"></i></button>
       </div>
