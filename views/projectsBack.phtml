@@ -1,20 +1,6 @@
 <main class="projectsBack">
   <h1>Projects</h1>
-
-  <?php if (isset($_GET["errorMsg"])) : ?>
-  <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
-  <?php endif; ?>
-  <form action="uploadProject" method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
-    <legend>Upload a project</legend>
-    <input type="text" name="name" placeholder="Name" class="form-control shadow-none">
-    <input type="text" name="url" placeholder="Url" class="form-control shadow-none">
-    <textarea name="subtitle" cols="60" rows="3" placeholder="Subtitle" class="form-control shadow-none"></textarea>
-    <textarea name="description" cols="60" rows="10" placeholder="Description"
-      class="form-control shadow-none"></textarea>
-    <input type="file" name="img" class="form-control shadow-none" required>
-    <button type="submit" name="submit" class="btn btn-primary shadow-none">UPLOAD</button>
-  </form>
-
+  <a href="addProject" class="btn btn-outline-primary fs-1 shadow-none">Add Project</a>
 
   <?php foreach ($projects as $project): ?>
 

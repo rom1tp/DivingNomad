@@ -167,11 +167,6 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller->display();
       break;
 
-    case 'uploadProject':
-      $controller = new ProjectsBackController();
-      $controller->upload();
-      break;
-
     case 'deleteProject':
       $controller = new ProjectsBackController();
       $controller->delete();
@@ -180,6 +175,17 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
     case 'confirmProject':
       $controller = new ProjectsBackController();
       $controller->confirm();
+      break;
+
+    // # PROJECT BACK
+    case 'addProject':
+      $controller = new ProjectBackController();
+      $controller -> display();
+      break;
+
+    case 'uploadProject':
+      $controller = new ProjectBackController();
+      $controller->upload();
       break;
 
     // # TRAVELS BACK
