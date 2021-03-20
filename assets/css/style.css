@@ -615,42 +615,6 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   transform: scaleX(1);
 }
 
-.galleryBack .photo-form #newContinent {
-  display: none;
-}
-.galleryBack .photo-form #newContinent.active {
-  display: inline;
-}
-.galleryBack .photo-form #countries {
-  display: none;
-}
-.galleryBack .photo-form #countries option:not([value=new]) {
-  display: none;
-}
-.galleryBack .photo-form #countries option.active {
-  display: block;
-}
-.galleryBack .photo-form #countries.active {
-  display: inline;
-}
-.galleryBack .photo-form #newCountry {
-  display: none;
-}
-.galleryBack .photo-form #newCountry.active {
-  display: inline;
-}
-.galleryBack .photo-form .location option[value=country] {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #ddd;
-}
-.galleryBack .photo-form .location option[value=continent] {
-  background-color: black;
-  color: #fff;
-}
-.galleryBack .photo-form .location option:not([value=continent]):not([value=country]) {
-  background-color: rebeccapurple;
-  color: #fff;
-}
 .galleryBack .photos-container {
   grid-template-columns: repeat(3, minmax(230px, 1fr));
 }
@@ -660,15 +624,52 @@ footer .confirmOverlay .confirmBox .buttons .btn {
 .galleryBack .photos-container .actions .fa-eye-slash,
 .galleryBack .photos-container .actions .fa-eye {
   display: none;
-  transition: transform ease-in-out 0.25s;
+  transition: all ease 0.25s;
 }
 .galleryBack .photos-container .actions .fa-eye-slash:hover,
 .galleryBack .photos-container .actions .fa-eye:hover {
-  transform: scale(1.15);
+  color: #ddd;
 }
 .galleryBack .photos-container .actions .fa-eye-slash.visible,
 .galleryBack .photos-container .actions .fa-eye.visible {
   display: inline-block;
+}
+
+.photoBack .photo-form #newContinent {
+  display: none;
+}
+.photoBack .photo-form #newContinent.active {
+  display: inline;
+}
+.photoBack .photo-form #countries {
+  display: none;
+}
+.photoBack .photo-form #countries.active {
+  display: inline;
+}
+.photoBack .photo-form #countries option:not([value=new]) {
+  display: none;
+}
+.photoBack .photo-form #countries option.active {
+  display: block;
+}
+.photoBack .photo-form #newCountry {
+  display: none;
+}
+.photoBack .photo-form #newCountry.active {
+  display: inline;
+}
+.photoBack .photo-form .location option[value=country] {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ddd;
+}
+.photoBack .photo-form .location option[value=continent] {
+  background-color: black;
+  color: #fff;
+}
+.photoBack .photo-form .location option:not([value=continent]):not([value=country]) {
+  background-color: rebeccapurple;
+  color: #fff;
 }
 
 .projects .projects-container {

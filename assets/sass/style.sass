@@ -649,44 +649,6 @@ footer
 
 // # BACK
 .galleryBack
-	.photo-form
-		#newContinent 
-			display: none
-
-		#newContinent.active 
-			display: inline
-
-		#countries 
-			display: none
-
-			option:not([value='new']) 
-				display: none
-
-			option.active 
-				display: block
-
-		#countries.active 
-			display: inline
-
-		#newCountry 
-			display: none
-
-		#newCountry.active 
-			display: inline
-
-		.location
-			option[value='country'] 
-				background-color: rgba(0, 0, 0, 0.4)
-				color: #ddd
-
-			option[value='continent'] 
-				background-color: rgba(0, 0, 0, 1)
-				color: #fff
-
-			option:not([value='continent']):not([value='country']) 
-				background-color: rebeccapurple
-				color: #fff
-
 	.photos-container 
 		grid-template-columns: repeat(3, minmax(230px, 1fr))
 
@@ -697,15 +659,60 @@ footer
 			.fa-eye-slash,
 			.fa-eye
 				display: none
-				transition: transform ease-in-out .25s
+				transition: all ease .25s
 
 				&:hover
-					transform: scale(1.15)
+					// transform: scale(1.1)
+					color: #ddd
 				
 				&.visible
 					display: inline-block
 
-	
+
+//?   /////////////
+//!  ////PHOTO////
+//* /////////////
+// # BACK
+.photoBack
+	.photo-form
+		#newContinent 
+			display: none
+
+			&.active 
+				display: inline
+
+		#countries 
+			display: none
+
+			&.active 
+				display: inline
+
+			option
+				&:not([value='new']) 
+					display: none
+
+				&.active 
+					display: block
+
+		#newCountry 
+			display: none
+
+			&.active 
+				display: inline
+
+		.location
+			option
+				&[value='country'] 
+					background-color: rgba(0, 0, 0, 0.4)
+					color: #ddd
+
+				&[value='continent'] 
+					background-color: rgba(0, 0, 0, 1)
+					color: #fff
+
+				&:not([value='continent']):not([value='country']) 
+					background-color: rebeccapurple
+					color: #fff
 
 //?   ////////////////
 //!  ////PROJECTS////

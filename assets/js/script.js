@@ -1,8 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
 	const page = document.querySelector('main').className
 
-
-
 	if (page.endsWith('Back')) {
 		$('.confirmOverlay, #close, #cancel, #confirm').click(() => {
 			$('.confirmOverlay').removeClass('visible')
@@ -11,77 +9,16 @@ window.addEventListener('DOMContentLoaded', () => {
 		$('a[href^="delete"]').on('click', function (event) {
 			event.preventDefault()
 			$('.confirmOverlay').addClass('visible')
-			
+
 			$('#confirm').on('click', () => {
 				$('.confirmOverlay').removeClass('visible')
 				window.location = $(this).attr('href')
 			})
 		})
-	} 
+	}
 
 	switch (page) {
 		case 'galleryBack':
-			const locationsSelect = document.querySelector('.location')
-			const continentsSelect = document.getElementById('continents')
-			const countriesSelect = document.getElementById('countries')
-			const countriesOptions = document.querySelectorAll('#countries option')
-			const newContinentInput = document.getElementById('newContinent')
-			const newCountryInput = document.getElementById('newCountry')
-
-			function ContinentsOnChange() {
-				newCountryInput.classList.remove('active')
-				locationsSelect.selectedIndex = 0
-				countriesSelect.selectedIndex = 0
-				if (this.value == 'new') {
-					newContinentInput.classList.add('active')
-					newCountryInput.classList.add('active')
-					countriesSelect.classList.add('active')
-					countriesSelect.selectedIndex = 1
-					countriesOptions.forEach((option) => {
-						let value = option.getAttribute('value')
-						if (value == 'new') {
-							option.classList.add('active')
-						} else {
-							option.classList.remove('active')
-						}
-					})
-				} else {
-					newContinentInput.classList.remove('active')
-					countriesSelect.classList.add('active')
-					const continentSelected = $(
-						'#continents option:selected'
-					)[0].getAttribute('data-continent')
-					countriesOptions.forEach((option) => {
-						let continent = option.getAttribute('data-continent')
-						if (continentSelected == continent) {
-							option.classList.add('active')
-						} else {
-							option.classList.remove('active')
-						}
-					})
-				}
-			}
-
-			continentsSelect.addEventListener('change', ContinentsOnChange)
-
-			countriesSelect.addEventListener('change', function () {
-				if (this.value == 'new') {
-					newCountryInput.classList.add('active')
-				} else {
-					newCountryInput.classList.remove('active')
-				}
-			})
-
-			locationsSelect.addEventListener('change', () => {
-				continentsSelect.selectedIndex = 0
-				countriesSelect.selectedIndex = 0
-				countriesSelect.classList.remove('active')
-				newContinentInput.classList.remove('active')
-				newCountryInput.classList.remove('active')
-			})
-
-
-			
 			$('.fa-eye').click(function () {
 				let id = $(this).data('id')
 				$(this).removeClass('visible')
@@ -89,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
 				$(checkbox).removeAttr('checked')
 			})
-			
+
 			$('.fa-eye-slash').click(function () {
 				let id = $(this).data('id')
 				$(`.fa-eye[data-id="${id}"]`).addClass('visible')
@@ -134,6 +71,68 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			break
 
+		case 'photoBack':
+			const locationsSelect = document.querySelector('.location')
+			const continentsSelect = document.getElementById('continents')
+			const countriesSelect = document.getElementById('countries')
+			const countriesOptions = document.querySelectorAll('#countries option')
+			const newContinentInput = document.getElementById('newContinent')
+			const newCountryInput = document.getElementById('newCountry')
+			console.log(continentsSelect);
+
+			function ContinentsOnChange() {
+				newCountryInput.classList.remove('active')
+				locationsSelect.selectedIndex = 0
+				countriesSelect.selectedIndex = 0
+				if (this.value == 'new') {
+					newContinentInput.classList.add('active')
+					newCountryInput.classList.add('active')
+					countriesSelect.classList.add('active')
+					countriesSelect.selectedIndex = 1
+					countriesOptions.forEach((option) => {
+						let value = option.getAttribute('value')
+						if (value == 'new') {
+							option.classList.add('active')
+						} else {
+							option.classList.remove('active')
+						}
+					})
+				} else {
+					newContinentInput.classList.remove('active')
+					countriesSelect.classList.add('active')
+					const continentSelected = $(
+						'#continents option:selected'
+					)[0].getAttribute('data-continent')
+					countriesOptions.forEach((option) => {
+						let continent = option.getAttribute('data-continent')
+						if (continentSelected == continent) {
+							option.classList.add('active')
+						} else {
+							option.classList.remove('active')
+						}
+					})
+				}
+			}
+			console.log('hi');
+			continentsSelect.addEventListener('change', ContinentsOnChange)
+			console.log('hi');
+			countriesSelect.addEventListener('change', function () {
+				if (this.value == 'new') {
+					newCountryInput.classList.add('active')
+				} else {
+					newCountryInput.classList.remove('active')
+				}
+			})
+
+			locationsSelect.addEventListener('change', () => {
+				continentsSelect.selectedIndex = 0
+				countriesSelect.selectedIndex = 0
+				countriesSelect.classList.remove('active')
+				newContinentInput.classList.remove('active')
+				newCountryInput.classList.remove('active')
+			})
+			break
+
 		case 'post':
 			document.querySelector(
 				'.post .plx-1'
@@ -163,7 +162,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'travelsBack':
-
 			break
 
 		case 'test':

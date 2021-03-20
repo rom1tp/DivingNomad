@@ -209,11 +209,6 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller->display();
       break;
 
-    case 'uploadPhoto':
-      $controller = new GalleryBackController();
-      $controller->upload();
-      break;
-
     case 'deletePhoto':
       $controller = new GalleryBackController();
       $controller->delete();
@@ -224,6 +219,16 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller->confirm();
       break;
 
+    // # PHOTO BACK
+    case 'addPhoto':
+      $controller = new PhotoBackController();
+      $controller -> display();
+      break;
+
+    case 'uploadPhoto':
+      $controller = new PhotoBackController();
+      $controller->upload();
+      break;
     // # ACCOUNT BACK
     case 'accountBack':
       $controller = new AccountsBackController();
