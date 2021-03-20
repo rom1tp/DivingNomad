@@ -57,6 +57,18 @@
     <?php if (isset($_SESSION["user"])): ?>
     <p>Logged in as <?=$_SESSION["email"] ?>.</p>
     <?php endif; ?>
+    <div class="confirmOverlay">
+      <div class="confirmBox">
+        <h2>Are you sure ?</h2>
+        <i class="fas fa-times" id="close"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <p>This will permanently delete the item.</p>
+        <div class="buttons">
+          <button class="btn shadow-none btn-outline-secondary" id="cancel">Cancel</button>
+          <button class="btn shadow-none btn-outline-danger" id="confirm">Confirm</button>
+        </div>
+      </div>
+    </div>
   </footer>
   <script src="assets/js/script.js" defer></script>
 

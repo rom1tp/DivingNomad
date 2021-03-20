@@ -73,7 +73,6 @@
   <div class="photos-container">
     <?php foreach ($photos as $photo): ?>
     <form action="confirmPhoto-id-<?=htmlspecialchars($photo['id']) ?>" method="post">
-
       <input type="text" name="name" value="<?=htmlspecialchars($photo['name']) ?>">
       <br>
       <img src="<?=htmlspecialchars($photo['src']) ?>" alt="<?=htmlspecialchars($photo['name']) ?>" width="300">

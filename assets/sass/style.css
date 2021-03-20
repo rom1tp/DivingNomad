@@ -150,7 +150,7 @@ h3 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 6rem;
 }
 
 header .language-nav {
@@ -215,6 +215,77 @@ header .main-nav a {
 
 header .main-nav a img {
   width: 15rem;
+}
+
+footer .confirmOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+}
+
+footer .confirmOverlay.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .confirmOverlay .confirmBox {
+  position: relative;
+  background-color: #fff;
+  min-width: 25%;
+  padding: 4rem;
+  border-radius: 10px;
+}
+
+footer .confirmOverlay .confirmBox p {
+  font-style: italic;
+}
+
+footer .confirmOverlay .confirmBox .fa-exclamation-circle {
+  font-size: 5rem;
+  color: #EA0F1E;
+  margin: 1rem 0;
+}
+
+footer .confirmOverlay .confirmBox .fa-times {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  font-size: 3rem;
+  color: #000;
+  cursor: pointer;
+  -webkit-transition: all ease-in-out .35s;
+  transition: all ease-in-out .35s;
+}
+
+footer .confirmOverlay .confirmBox .fa-times:hover {
+  -webkit-transform: rotate(0.5turn);
+          transform: rotate(0.5turn);
+}
+
+footer .confirmOverlay .confirmBox .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer .confirmOverlay .confirmBox .buttons .btn {
+  font-size: inherit;
+  text-transform: uppercase;
 }
 
 .home .plx-1,
@@ -580,7 +651,7 @@ header .main-nav a img {
 
 .post #container section aside.right .date p:nth-of-type(2),
 .project #container section aside.right .date p:nth-of-type(2) {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .post #container section aside.right .date p:nth-of-type(3),

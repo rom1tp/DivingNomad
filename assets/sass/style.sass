@@ -3,7 +3,7 @@
 //!  ////MIXINS////
 //* //////////////
 $breakpoints: ("small": 576px, "medium": 768px, "large": 992px, "x-large": 1200px)
-$fontSizes: ("h1": 5rem, "h2": 3rem, "h3": 2.5rem, "text": 2rem, "small": 1.5rem)
+$fontSizes: ("h1": 6rem, "h2": 3.5rem, "h3": 3rem, "text": 2rem, "small": 1.5rem)
 
 @mixin mq($breakpoint)
 	$size: map-get($breakpoints, $breakpoint)
@@ -198,6 +198,63 @@ header
 
 			img
 				width: 15rem
+
+	
+//?   //////////////
+//!  ////MODALS////
+//* //////////////
+
+
+footer
+	.confirmOverlay
+		display: none
+		position: fixed
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		justify-content: center
+		align-items: center
+		background-color: rgba(black, 0.8)
+		z-index: 100
+
+		&.visible
+			display: flex
+
+		.confirmBox
+			position: relative
+			background-color: #fff
+			min-width: 25%
+			padding: 4rem
+			border-radius: 10px
+
+			p
+				font-style: italic
+
+			.fa-exclamation-circle
+				font-size: 5rem
+				color: $red
+				margin: 1rem 0
+			
+			.fa-times
+				position: absolute
+				top: 3%
+				right: 3%
+				font-size: 3rem
+				color: #000
+				cursor: pointer
+				transition: all ease-in-out .35s
+				
+				&:hover
+					transform: rotate(0.5turn)
+		
+			.buttons
+				display: flex
+				justify-content: space-between
+				.btn
+					font-size: inherit
+					text-transform: uppercase
+			
 
 //?   ////////////
 //!  ////HOME////

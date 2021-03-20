@@ -1,5 +1,24 @@
 window.addEventListener('DOMContentLoaded', () => {
 	const page = document.querySelector('main').className
+
+
+
+	if (page.endsWith('Back')) {
+		$('.confirmOverlay, #close, #cancel, #confirm').click(() => {
+			$('.confirmOverlay').removeClass('visible')
+		})
+
+		$('a[href^="delete"]').on('click', function (event) {
+			event.preventDefault()
+			$('.confirmOverlay').addClass('visible')
+			
+			$('#confirm').on('click', () => {
+				$('.confirmOverlay').removeClass('visible')
+				window.location = $(this).attr('href')
+			})
+		})
+	} 
+
 	switch (page) {
 		case 'galleryBack':
 			const locationsSelect = document.querySelector('.location')
@@ -60,6 +79,8 @@ window.addEventListener('DOMContentLoaded', () => {
 				newContinentInput.classList.remove('active')
 				newCountryInput.classList.remove('active')
 			})
+
+
 			break
 
 		case 'gallery':
@@ -98,15 +119,35 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'post':
-			document.querySelector('.post .plx-1').style.backgroundImage = `url('${document.querySelector('.post .plx-1 img').getAttribute('data-src')}')`
-			document.querySelector('.post .plx-2').style.backgroundImage = `url('${document.querySelector('.post .plx-2 img').getAttribute('data-src')}')`
-			document.querySelector('.post .plx-3').style.backgroundImage = `url('${document.querySelector('.post .plx-3 img').getAttribute('data-src')}')`
+			document.querySelector(
+				'.post .plx-1'
+			).style.backgroundImage = `url('${document
+				.querySelector('.post .plx-1 img')
+				.getAttribute('data-src')}')`
+			document.querySelector(
+				'.post .plx-2'
+			).style.backgroundImage = `url('${document
+				.querySelector('.post .plx-2 img')
+				.getAttribute('data-src')}')`
+			document.querySelector(
+				'.post .plx-3'
+			).style.backgroundImage = `url('${document
+				.querySelector('.post .plx-3 img')
+				.getAttribute('data-src')}')`
 			break
 
 		case 'project':
-			document.querySelector('.project .plx-1').style.backgroundImage = `url('${document.querySelector('.project .plx-1 img').getAttribute('data-src')}')`
+			document.querySelector(
+				'.project .plx-1'
+			).style.backgroundImage = `url('${document
+				.querySelector('.project .plx-1 img')
+				.getAttribute('data-src')}')`
 			// document.querySelector('.project .plx-2').style.backgroundImage = `url('${document.querySelector('.project .plx-2 img').getAttribute('data-src')}')`
 			// document.querySelector('.project .plx-3').style.backgroundImage = `url('${document.querySelector('.project .plx-3 img').getAttribute('data-src')}')`
+			break
+
+		case 'travelsBack':
+
 			break
 
 		case 'test':
