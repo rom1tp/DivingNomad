@@ -1,68 +1,46 @@
 <main class="travelsBack">
   <h1>Travels page</h1>
-
-  <?php if (isset($_GET["errorMsg"])) : ?>
-  <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
-  <?php endif; ?>
-  <form action="uploadPost" method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
-    <legend>Create a post</legend>
-    <!-- <input type="file" name="img"> -->
-    <textarea name="name" placeholder="Name" class="form-control shadow-none"></textarea>
-    <textarea name="title1" placeholder="Title 1" class="form-control shadow-none"></textarea>
-    <textarea name="text1" placeholder="Text 1" class="form-control shadow-none"></textarea>
-    <textarea name="title2" placeholder="Title 2" class="form-control shadow-none"></textarea>
-    <textarea name="text2" placeholder="Text 2" class="form-control shadow-none"></textarea>
-    <input name="date" type="date" class="form-control shadow-none"></input>
-    <select name="main_img_id">
-      <option selected disabled hidden>Main img</option>
-      <?php foreach ($photos as $photo): ?>
-      <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
-      <?php endforeach ?>
-    </select>
-    <select name="img1_id">
-      <option selected disabled hidden>Img 1</option>
-      <?php foreach ($photos as $photo): ?>
-      <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
-      <?php endforeach ?>
-    </select>
-    <select name="img2_id">
-      <option selected disabled hidden>Img 2</option>
-      <?php foreach ($photos as $photo): ?>
-      <option value="<?= htmlspecialchars($photo['id']) ?>"><?= htmlspecialchars($photo['id']) ?></option>
-      <?php endforeach ?>
-    </select>
-    <br>
-    <button type="submit" name="submit" class="btn btn-primary shadow-none">CONFIRM</button>
-  </form>
+  <a href="addPost" class="btn btn-outline-primary fs-1 shadow-none">Add Post</a>
 
   <div class="container">
-    <div class="row">
-      <?php foreach ($posts as $post): ?>
-      <div class="col-5 mx-auto">
-        <form action="confirmPost-id-<?= htmlspecialchars($post['id']) ?>" method="post" class="post-form">
-          <textarea name="name" class="form-control shadow-none"><?= htmlspecialchars($post['name']) ?></textarea>
-          <textarea name="title1" class="form-control shadow-none"><?= htmlspecialchars($post['title1']) ?></textarea>
-          <textarea name="text1" class="form-control shadow-none"><?= htmlspecialchars($post['text1']) ?></textarea>
-          <textarea name="title2" class="form-control shadow-none"><?= htmlspecialchars($post['title2']) ?></textarea>
-          <textarea name="text2" class="form-control shadow-none"><?= htmlspecialchars($post['text2']) ?></textarea>
-          <img src="<?= htmlspecialchars($post['src1']) ?>" width="200" height="150">
-          <img src="<?= htmlspecialchars($post['src2']) ?>" width="200" height="150">
-          <img src="<?= htmlspecialchars($post['src3']) ?>" width="200" height="150">
-          <br>
-          <input type="date" name="date" value="<?=htmlspecialchars($post['date']) ?>">
-          <label>Show</label>
-          <input type="radio" value='show' name="display-<?= htmlspecialchars($post['id']) ?>"
-            <?= ($post['display'] == 'show')? 'checked': '' ?>>
-          <label>Hide</label>
-          <input type="radio" value='hide' name="display-<?= htmlspecialchars($post['id']) ?>"
-            <?= ($post['display'] == 'hide')? 'checked': '' ?>>
-          <br>
-          <button type="submit">Confirm</button>
-        </form>
-        <a class="btn" href="deletePost-id-<?= htmlspecialchars($post['id']) ?>">Delete</a>
-      </div>
-      <?php endforeach; ?>
-    </div>
+    <table class="table col-8">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Image 1</th>
+          <th>Image 2</th>
+          <th>Image 3</th>
+          <th>Visibility</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($posts as $post): ?>
+        <tr>
+          <td><?= htmlspecialchars($post['id']) ?></td>
+          <td><?= htmlspecialchars($post['name']) ?></td>
+          <td><?= htmlspecialchars($post['date']) ?></td>
+          <td><img src="<?= htmlspecialchars($post['src1']) ?>" width="80"></td>
+          <td><img src="<?= htmlspecialchars($post['src2']) ?>" width="80"></td>
+          <td><img src="<?= htmlspecialchars($post['src3']) ?>" width="80"></td>
+          <td><?= htmlspecialchars($post['display']) ?></td>
+          <td class="actions">
+            <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">
+            <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="show"
+              class="form-check-input shadow-none" <?=($post['display'] == 'show') ? 'checked' : '' ?>>
+            <a href="modifyPost-id-<?= htmlspecialchars($post['id']) ?>"><i
+                data-id="<?= htmlspecialchars($post['id']) ?>" class="far fa-edit"></i></a>
+            <i data-id="<?= htmlspecialchars($post['id']) ?>"
+              class="far fa-eye <?=($post['display'] == 'show') ? 'visible' : '' ?>"></i>
+            <i data-id="<?= htmlspecialchars($post['id']) ?>"
+              class="far fa-eye-slash <?=($post['display'] != 'show') ? 'visible' : '' ?>"></i>
+            <a href="deletePost-id-<?=htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
-
 </main>

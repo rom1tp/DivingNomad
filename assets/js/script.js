@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		$(`input[name="display"][type='checkbox']`).each(function () {
 			$(this).css('display', 'none')
 		})
-		$('#close, #cancel, #confirm').click(() => {
+		$('.confirmOverlay #close, #cancel, #confirm').click(() => {
 			$('.confirmOverlay').removeClass('visible')
 		})
 
@@ -34,11 +34,48 @@ window.addEventListener('DOMContentLoaded', () => {
 			let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
 			$(checkbox).attr('checked', '')
 		})
+
+		$('#imgPickerOpen').click(function () {
+			$('#imgPickerOverlay').addClass('visible')
+		})
+
+		$('#imgPickerOverlay #cancel, #close').click(function () {
+			$('#imgPickerOverlay').removeClass('visible')
+		})
+
+		$('#imgPickerContent figure').click(function () {
+			$('#imgPickerContent figure').removeClass('active')
+			$(this).addClass('active')
+		})
+
+		$('#imgPickerOverlay #confirm').click(function () {
+			let id = $('#imgPickerContent figure.active').data('id')
+			console.log(id)
+			$('#imgPickerOverlay').removeClass('visible')
+			fetch(`getImgSrc-id-${id}`)
+				.then((response) => {
+					// FIXME json contains prepos.js for some reason
+					// return response.json()
+					return response.text()
+				})
+				.then((src) => {
+					src = src.slice(38)
+					console.log(src)
+					document.getElementById('img1').setAttribute('src', src)
+					document.getElementById('src1').setAttribute('value', id)
+				})
+
+			// $.get('assets/js/load-img.php', (src) => {
+			// 	console.log(src)
+			// 	console.log(JSON.parse(src))
+			// $('#img').load('assets/js/load-img.php')
+			// })
+			// $('#img').load('assets/js/load-img.php', { id: id })
+		})
 	}
 
 	switch (page) {
 		case 'galleryBack':
-			
 			break
 
 		case 'gallery':
@@ -83,7 +120,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			const countriesOptions = document.querySelectorAll('#countries option')
 			const newContinentInput = document.getElementById('newContinent')
 			const newCountryInput = document.getElementById('newCountry')
-			console.log(continentsSelect);
+			console.log(continentsSelect)
 
 			function ContinentsOnChange() {
 				newCountryInput.classList.remove('active')
@@ -118,9 +155,9 @@ window.addEventListener('DOMContentLoaded', () => {
 					})
 				}
 			}
-			console.log('hi');
+			console.log('hi')
 			continentsSelect.addEventListener('change', ContinentsOnChange)
-			console.log('hi');
+			console.log('hi')
 			countriesSelect.addEventListener('change', function () {
 				if (this.value == 'new') {
 					newCountryInput.classList.add('active')
@@ -173,7 +210,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				let checkbox = $(`input[value="show"]`)[0]
 				$(checkbox).removeAttr('checked')
 			})
-	
+
 			$('.fa-eye-slash').click(function () {
 				$(`.fa-eye`).addClass('visible')
 				$(this).removeClass('visible')

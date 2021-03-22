@@ -30,12 +30,13 @@
 
 /** // * CRUD
  *- confirm delete
+ * image picker popup
+ * CRUD icons as buttons
  * add Item as icon
+ * icon hover show action name
  * visibility icon ajax
  * vue data bind visibility icon to text
- * image picker popup
  * multiple images default null
- * CRUD icons as buttons
  * change submit button => icon
  * CRUD as popup from anywhere on the website
  */ // *
@@ -194,14 +195,13 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
 
     case 'modifyProject':
       $controller = new ProjectBackController();
-      $controller -> display(true);
+      $controller -> display('modify');
       break;
   
     case 'confirmProject':
       $controller = new ProjectBackController();
       $controller->confirm();
-      break;
-    
+      break;    
 
     // # TRAVELS BACK
     case 'travelsBack':
@@ -209,20 +209,32 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller->display();
       break;
 
-    case 'uploadPost':
-      $controller = new TravelsBackController();
-      $controller->upload();
-      break;
-
     case 'deletePost':
       $controller = new TravelsBackController();
       $controller->delete();
       break;
+  
+    // # POST BACK
+    case 'addPost':
+      $controller = new PostBackController();
+      $controller -> display();
+      break;
+  
+    case 'uploadPost':
+      $controller = new PostBackController();
+      $controller->upload();
+      break;
+      
+    case 'modifyPost':
+      $controller = new PostBackController();
+      $controller -> display('modify');
+      break;
 
     case 'confirmPost':
-      $controller = new TravelsBackController();
+      $controller = new PostBackController();
       $controller->confirm();
-      break;
+      break;  
+
 
     // # GALLERY BACK
     case 'galleryBack':
@@ -239,6 +251,12 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller = new GalleryBackController();
       $controller->confirm();
       break;
+  
+    case 'getImgSrc':
+      $controller = new GalleryBackController();
+      $controller -> getImgSrc();
+      break;
+  
 
     // # PHOTO BACK
     case 'addPhoto':

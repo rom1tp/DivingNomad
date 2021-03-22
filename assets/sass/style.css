@@ -289,6 +289,86 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   text-transform: uppercase;
 }
 
+#imgPickerOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#imgPickerOverlay.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#imgPickerOverlay #imgPickerContent {
+  position: relative;
+  width: 70%;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+#imgPickerOverlay #imgPickerContent .fa-times {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  font-size: 3rem;
+  color: #000;
+  cursor: pointer;
+  -webkit-transition: all ease-in-out .35s;
+  transition: all ease-in-out .35s;
+}
+
+#imgPickerOverlay #imgPickerContent .fa-times:hover {
+  -webkit-transform: rotate(0.5turn);
+          transform: rotate(0.5turn);
+}
+
+#imgPickerOverlay #imgPickerContent .body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: ()[auto];
+      grid-template-rows: repeat(auto);
+  grid-gap: 1rem 2rem;
+}
+
+#imgPickerOverlay #imgPickerContent .body figure {
+  cursor: pointer;
+  -webkit-transition: -webkit-transform ease 0.25s;
+  transition: -webkit-transform ease 0.25s;
+  transition: transform ease 0.25s;
+  transition: transform ease 0.25s, -webkit-transform ease 0.25s;
+  border: 4px solid #fff;
+}
+
+#imgPickerOverlay #imgPickerContent .body figure.active {
+  border: 4px solid #eb6800;
+}
+
+#imgPickerOverlay #imgPickerContent .body figure:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+#imgPickerOverlay #imgPickerContent .body figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 14/9;
+}
+
 .home .plx-1,
 .home .plx-2,
 .home .plx-3 {
@@ -1023,29 +1103,38 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   color: #c200e3;
 }
 
-.projectsBack .actions i {
+.projectsBack .actions i,
+.travelsBack .actions i {
   cursor: pointer;
 }
 
 .projectsBack .actions .fa-eye-slash,
-.projectsBack .actions .fa-eye {
+.projectsBack .actions .fa-eye,
+.travelsBack .actions .fa-eye-slash,
+.travelsBack .actions .fa-eye {
   display: none;
   -webkit-transition: all ease .25s;
   transition: all ease .25s;
 }
 
 .projectsBack .actions .fa-eye-slash:hover,
-.projectsBack .actions .fa-eye:hover {
+.projectsBack .actions .fa-eye:hover,
+.travelsBack .actions .fa-eye-slash:hover,
+.travelsBack .actions .fa-eye:hover {
   color: #ddd;
 }
 
 .projectsBack .actions .fa-eye-slash.visible,
-.projectsBack .actions .fa-eye.visible {
+.projectsBack .actions .fa-eye.visible,
+.travelsBack .actions .fa-eye-slash.visible,
+.travelsBack .actions .fa-eye.visible {
   display: inline-block;
 }
 
 .projectBack .fa-eye-slash,
-.projectBack .fa-eye {
+.projectBack .fa-eye,
+.postBack .fa-eye-slash,
+.postBack .fa-eye {
   cursor: pointer;
   display: none;
   -webkit-transition: all ease .25s;
@@ -1053,12 +1142,16 @@ footer .confirmOverlay .confirmBox .buttons .btn {
 }
 
 .projectBack .fa-eye-slash:hover,
-.projectBack .fa-eye:hover {
+.projectBack .fa-eye:hover,
+.postBack .fa-eye-slash:hover,
+.postBack .fa-eye:hover {
   color: #ddd;
 }
 
 .projectBack .fa-eye-slash.visible,
-.projectBack .fa-eye.visible {
+.projectBack .fa-eye.visible,
+.postBack .fa-eye-slash.visible,
+.postBack .fa-eye.visible {
   display: inline-block;
 }
 

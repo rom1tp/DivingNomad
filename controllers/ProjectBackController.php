@@ -3,8 +3,9 @@ class ProjectBackController extends BackController
 {
   public function display(bool $modify = false)
   {
-    $this->_modify = $modify;
+    $this->_modify = $modify == 'modify' ? true : false;
     $modify ? $project = $this->_projectsModel->getProject($_GET["id"]) : '';
+    $photos = $this->_photosModel->getAllPhotos();
     $template = 'projectBack.phtml';
     include $this->_layout;
   }
@@ -20,8 +21,8 @@ class ProjectBackController extends BackController
 
   public function confirm()
   {
-    echo '<pre>' . var_export($_POST, true) . '</pre>';
     $this->_projectsModel->modifyProject($_POST["name"], $_POST["subtitle"], $_POST["description"], $_POST["url"],  $_POST["display"], $_GET["id"]);
     header('location:projectsBack'); 
   }
+
 }

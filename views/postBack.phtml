@@ -1,0 +1,122 @@
+<main class="postBack">
+  <h1><?= ($this->_modify) ? 'Modify' : 'Add' ?> post</h1>
+
+  <?php if (isset($_GET["errorMsg"])) : ?>
+  <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
+  <?php endif; ?>
+
+  <form action="
+  <?php if ($this->_modify) : ?>
+  confirmPost-id-<?= htmlspecialchars($post['id']) ?>
+  <?php else : ?>
+  uploadPost
+  <?php endif ?>
+  " method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
+    <legend><?= ($this->_modify) ? 'Modify' : 'Add' ?> a post</legend>
+
+    <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($post['name']) ?>" <?php endif ?>>
+
+    <input type="date" name="date" placeholder="date" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($post['date']) ?> <?php endif ?>">
+
+    <textarea name="title1" rows="5" placeholder="title1"
+      class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['title1']) ?><?php endif ?></textarea>
+
+    <textarea name="text1" rows="5" placeholder="text1"
+      class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['text1']) ?><?php endif ?></textarea>
+
+    <textarea name="title2" rows="5" placeholder="title2"
+      class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['title2']) ?><?php endif ?></textarea>
+
+    <textarea name="text2" rows="5" placeholder="text2"
+      class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['text2']) ?><?php endif ?></textarea>
+
+    <?php if ($this->_modify) : ?>
+    <input id="src1" type="text" name="main_img_id" value="<?= htmlspecialchars($post['id1']) ?>">
+    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <br>
+    <img id="img1" src="<?= htmlspecialchars($post['src1']) ?>" width="400">
+    <br>
+
+    <input id="src2" type="text" name="img1_id" value="<?= htmlspecialchars($post['id2']) ?>">
+    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <br>
+    <img id="img2" src="<?= htmlspecialchars($post['src2']) ?>" width="400">
+    <br>
+
+    <input id="src3" type="text" name="img2_id" value="<?= htmlspecialchars($post['id3']) ?>">
+    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <br>
+    <img id="img3" src="<?= htmlspecialchars($post['src3']) ?>" width="400">
+    <br>
+
+
+    <div id="imgPickerOverlay">
+      <div id="imgPickerContent">
+        <div class="header">
+          <i class="fas fa-times" id="close"></i>
+          Choose an image
+        </div>
+
+        <div class="body">
+          <?php foreach ($photos as $photo): ?>
+
+          <figure data-id="<?= htmlspecialchars($photo['id']) ?>">
+            <img src="<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>">
+          </figure>
+          <?php endforeach ?>
+        </div>
+        <div class="footer">
+          <a id="cancel" class="btn btn-outline-secondary fs-3 shadow-none">Cancel</a>
+          <a id="confirm" class="btn btn-outline-success fs-3 shadow-none">Confirm</a>
+        </div>
+      </div>
+    </div>
+
+    <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">
+    <input data-id="<?= htmlspecialchars($post['id']) ?>" type="checkbox" name="display" value="show"
+      class="form-check-input shadow-none" <?= ($this->_modify && $post['display'] == 'show') ? 'checked' : '' ?>>
+
+    <i data-id="<?= htmlspecialchars($post['id']) ?>"
+      class="far fa-eye <?=($post['display'] == 'show') ? 'visible' : '' ?>"></i>
+    <i data-id="<?= htmlspecialchars($post['id']) ?>"
+      class="far fa-eye-slash <?=($post['display'] != 'show') ? 'visible' : '' ?>"></i>
+
+    <a href="deletePost-id-<?=htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
+
+    <?php else : ?>
+
+    <input id="src1" type="text" name="main_img_id">
+    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <br>
+    <img id="img1" width="400">
+    <br>
+
+    <input id="src2" type="text" name="img1_id">
+    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <br>
+    <img id="img2" width="400">
+    <br>
+
+    <input id="src3" type="text" name="img2_id">
+    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <br>
+    <img id="img3" width="400">
+    <br>
+
+
+    <input type="hidden" name="display" value="hide">
+    <input type="checkbox" name="display" value="show" class="form-check-input shadow-none" checked>
+    <i class="far fa-eye visible"></i>
+    <i class="far fa-eye-slash"></i>
+    <?php endif ?>
+
+
+
+    <br>
+    <button type="submit" name="submit"
+      class="btn btn-primary shadow-none"><?= ($this->_modify) ? 'Confirm' : 'Upload' ?></button>
+
+  </form>
+</main>

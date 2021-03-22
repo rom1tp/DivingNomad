@@ -10,8 +10,11 @@ class PostsModel extends ModelManager
     posts.name,
     posts.date,
     p1.src AS src1,
+    p1.id AS id1,
     p2.src AS src2,
+    p2.id AS id2,
     p3.src AS src3,
+    p3.id AS id3,
     p1.caption,
     title1,
     text1,
@@ -38,8 +41,11 @@ class PostsModel extends ModelManager
     posts.name,
     posts.date,
     p1.src AS src1,
+    p1.id AS id1,
     p2.src AS src2,
+    p2.id AS id2,
     p3.src AS src3,
+    p3.id AS id3,
     p1.caption,
     title1,
     text1,
@@ -78,7 +84,7 @@ class PostsModel extends ModelManager
     return $this -> query($req, [$id]);
   }
 
-  public function modifyPost($name, $date, $title1, $text1, $title2, $text2, $display, $id)
+  public function modifyPost($name, $date, $title1, $text1, $title2, $text2, $mainImgId, $img1Id, $img2Id, $display, $id)
   {
     $req =
     "UPDATE
@@ -90,8 +96,11 @@ class PostsModel extends ModelManager
     text1=?,
     title2=?,
     text2=?,
+    main_img_id=?,
+    img1_id=?,
+    img2_id=?,
     display=?
     WHERE id=?";
-    return $this -> query($req, [$name, $date, $title1, $text1, $title2, $text2, $display, $id]);
+    return $this -> query($req, [$name, $date, $title1, $text1, $title2, $text2, $mainImgId, $img1Id, $img2Id, $display, $id]);
   }
 }
