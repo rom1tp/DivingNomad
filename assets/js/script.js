@@ -39,6 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		$(
 			'#imgPickerOpen1, #imgPickerOpen2, #imgPickerOpen3, #src1, #src2, #src3'
 		).click(function () {
+			$('#imgPickerContent figure').removeClass('active')
 			imgPickerId = $(this)[0].id.slice(-1)
 			$('#imgPickerOverlay').addClass('visible')
 		})
@@ -52,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			$(this).addClass('active')
 		})
 
-		$('#imgPickerOverlay #confirm').click(function () {
+		function confirmImg() {
 			let chosenImgId = $('#imgPickerContent figure.active').data('id')
 			$('#imgPickerOverlay').removeClass('visible')
 			fetch(`getImgSrc-id-${chosenImgId}`)
@@ -69,7 +70,10 @@ window.addEventListener('DOMContentLoaded', () => {
 						.getElementById(`id${imgPickerId}`)
 						.setAttribute('value', chosenImgId)
 				})
-		})
+		}
+		$('#imgPickerContent figure').dblclick(confirmImg)
+
+		$('#imgPickerOverlay #confirm').click(confirmImg)
 	}
 
 	switch (page) {

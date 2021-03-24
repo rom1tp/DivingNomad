@@ -120,15 +120,15 @@ class PostsModel extends ModelManager
     return $this->queryFetch($req, [$id]);
   }
 
-  public function addPost($name, $date, $title1, $text1, $title2, $text2)
+  public function addPost($name, $date, $title1, $text1, $title2, $text2, $display)
   {
     $req =
     "INSERT
     INTO posts
-    (name, date, title1, text1, title2, text2)
+    (name, date, title1, text1, title2, text2, display)
     VALUES
-    (?, ?, ?, ?, ?, ?)";
-    return $this->query($req, [$name, $date, $title1, $text1, $title2, $text2]);
+    (?, ?, ?, ?, ?, ?, ?)";
+    return $this->query($req, [$name, $date, $title1, $text1, $title2, $text2, $display]);
   }
 
   public function deletePost($id)

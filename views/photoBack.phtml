@@ -1,70 +1,100 @@
 <main class="photoBack">
-  <h1>Photo</h1>
+  <h1><?= ($this->_modify) ? 'Modify' : 'Add' ?> photo</h1>
+  <a href="addPhoto" class="btn btn-outline-primary fs-1 shadow-none">Add Photo</a>
 
   <?php if (isset($_GET["errorMsg"])): ?>
   <h3><?=htmlspecialchars($_GET["errorMsg"]) ?></h3>
   <?php endif ?>
-  <form action="uploadPhoto" method="post" enctype="multipart/form-data" class="photo-form col-6 mx-auto">
-    <legend>Create a post</legend>
-    <input name="name" placeholder="Name" class="form-control shadow-none"></input>
-    <textarea name="caption" placeholder="Caption" class="form-control shadow-none"></textarea>
-    <label class="form-label">Date</label>
-    <input name="date" type="date" class="form-control shadow-none"></input>
+  <form action="
+  <?php if ($this->_modify) : ?>
+  confirmPhoto-id-<?= htmlspecialchars($photo['id']) ?>
+  <?php else : ?>
+  uploadPhoto
+  <?php endif ?>
+  " method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
+    <legend>Add a photo</legend>
+    <label>Name</label>
+    <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($photo['name']) ?>" <?php endif ?>>
 
-    <select class="location" name="location_id" class="shadow-none">
+    <label>Caption</label>
+    <input type="text" name="caption" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($photo['caption']) ?>" <?php endif ?>>
+
+    <label>Date</label>
+    <input type="date" name="date" placeholder="date" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($photo['date']) ?>" <?php endif ?>>
+
+    <label>Location</label>
+    <br>
+    <select class="location" name="location_id">
       <option selected disabled hidden>Choose a location</option>
       <?php foreach ($continents as $continent): ?>
-      <option value="continent"><?=htmlspecialchars($continent['continent']) ?></option>
-      <?php foreach ($countries as $country): ?>
-      <?php if ($country['continent_id'] == $continent['id']): ?>
-      <option value="country"><?=htmlspecialchars($country['country']) ?></option>
-      <?php foreach ($locations as $location): ?>
-      <?php if ($location['country_id'] == $country['id']): ?>
-      <option value="<?=htmlspecialchars($location['id']) ?>">- <?=htmlspecialchars($location['location']) ?></option>
-      <?php endif ?>
-      <?php endforeach ?>
-      <?php endif ?>
-      <?php endforeach ?>
+      <optgroup value="continent" label="<?=htmlspecialchars($continent['continent']) ?>">
+        <?php foreach ($countries as $country): ?>
+        <?php if ($country['continent_id'] == $continent['id']): ?>
+      <optgroup value="country" label="<?=htmlspecialchars($country['country']) ?>">
+        <?php foreach ($locations as $location): ?>
+        <?php if ($location['country_id'] == $country['id']): ?>
+        <option value="<?=htmlspecialchars($location['id']) ?>"
+          <?= ($this->_modify && $location['location'] == $photo['location']) ? 'selected' : '' ?>>-
+          <?=htmlspecialchars($location['location']) ?></option>
+        <?php endif ?>
+        <?php endforeach ?>
+        <?php endif ?>
+        <?php endforeach ?>
+      </optgroup>
+      </optgroup>
       <?php endforeach ?>
     </select>
-    <div>
-      <label>New location <i class="fas fa-map-marker-alt"></i></label>
-      <br>
-      <select id="continents" name="continent" class="shadow-none btn btn-secondary">
-        <option selected disabled hidden>Choose a continent</option>
-        <option value="new">New continent</option>
-        <?php foreach ($continents as $continent): ?>
-        <option data-continent="<?=htmlspecialchars($continent['continent']) ?>"
-          value="<?=htmlspecialchars($continent['id']) ?>">
-          <?=htmlspecialchars($continent['continent']) ?>
-        </option>
-        <?php endforeach ?>
-      </select>
-      <input id="newContinent" type="text" name="newContinent" placeholder="Continent name">
-      <br>
-      <select id="countries" name="country" class="shadow-none btn btn-secondary">
-        <option selected disabled hidden>Choose a country</option>
-        <option value="new">New country</option>
-        <?php foreach ($countries as $country): ?>
-        <option data-continent="<?=htmlspecialchars($country['continent']) ?>"
-          value="<?=htmlspecialchars($country['id']) ?>">
-          <?=htmlspecialchars($country['country']) ?>
-        </option>
-        <?php endforeach ?>
-      </select>
-      <input id="newCountry" type="text" name="newCountry" placeholder="Country name">
-      <br>
-      <input type="text" name="newLocation" placeholder="Location name">
-    </div>
-
-    <input type="file" name="img" class="form-control shadow-none" required>
-    <label class="form-check-label">
-      Displayed
-    </label>
-    <input type="hidden" name="display" value="hide">
-    <input type="checkbox" name="display" value="show" class="form-check-input shadow-none">
     <br>
-    <button type="submit" name="submit" class="btn btn-primary shadow-none">CONFIRM</i></button>
+    <label>New location <i class="fas fa-map-marker-alt"></i></label>
+    <br>
+    <select id="continents" name="continent" class="shadow-none btn btn-secondary">
+      <option selected disabled hidden>Choose a continent</option>
+      <option value="new">New continent</option>
+      <?php foreach ($continents as $continent): ?>
+      <option data-continent="<?=htmlspecialchars($continent['continent']) ?>"
+        value="<?=htmlspecialchars($continent['id']) ?>">
+        <?=htmlspecialchars($continent['continent']) ?>
+      </option>
+      <?php endforeach ?>
+    </select>
+    <input id="newContinent" type="text" name="newContinent" placeholder="Continent name">
+    <br>
+    <select id="countries" name="country" class="shadow-none btn btn-secondary">
+      <option selected disabled hidden>Choose a country</option>
+      <option value="new">New country</option>
+      <?php foreach ($countries as $country): ?>
+      <option data-continent="<?=htmlspecialchars($country['continent']) ?>"
+        value="<?=htmlspecialchars($country['id']) ?>">
+        <?=htmlspecialchars($country['country']) ?>
+      </option>
+      <?php endforeach ?>
+    </select>
+    <input id="newCountry" type="text" name="newCountry" placeholder="Country name">
+    <br>
+    <input type="text" name="newLocation" placeholder="Location name">
+    <br>
+
+    <?php if ($this->_modify) : ?>
+    <img src="<?= htmlspecialchars($photo['src']) ?>" width="300">
+    <?php else : ?>
+    <input type="file" name="img" class="form-control shadow-none" required>
+    <?php endif ?>
+    <br>
+    <input data-id="1" type="hidden" name="display" value="hide">
+    <input class="hidden" data-id="1" type="checkbox" name="display" value="show"
+      <?= ($this->_modify && $photo['display'] == 'show') ? 'checked' : '' ?>>
+
+    <i data-id="1" class="far fa-eye <?= ($photo['display'] == 'show') ? 'visible' : '' ?>"></i>
+    <i data-id="1" class="far fa-eye-slash <?= ($photo['display'] != 'show') ? 'visible' : '' ?>"></i>
+
+    <a href="deletePhoto-id-<?= htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
+    <br>
+    <br>
+    <button type="submit" name="submit"
+      class="btn btn-outline-success shadow-none fs-2"><?= ($this->_modify) ? 'Confirm' : 'Upload' ?></button>
 
   </form>
 

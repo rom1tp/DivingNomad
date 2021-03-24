@@ -20,12 +20,6 @@ class GalleryBackController extends BackController
     header('location:galleryBack');
   }
 
-  public function confirm()
-  {
-    $this->_photosModel->modifyPhoto($_POST["name"], $_POST["caption"], $_POST["date"], $_POST["display"], $_GET["id"]);
-    header('location:galleryBack');
-  }
-
   public function getImgSrc()
   {
     $photosModel = new PhotosModel();

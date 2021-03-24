@@ -503,7 +503,7 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   display: none;
 }
 
-.travels .container article:nth-of-type(6n-5) {
+.travels .container article:nth-of-type(9n-8) {
   width: 100%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -514,15 +514,15 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
           align-items: center;
 }
 
-.travels .container article:nth-of-type(6n-5) > a {
+.travels .container article:nth-of-type(9n-8) > a {
   max-width: 47%;
 }
 
-.travels .container article:nth-of-type(6n-5) > a img {
+.travels .container article:nth-of-type(9n-8) > a img {
   aspect-ratio: 4/3;
 }
 
-.travels .container article:nth-of-type(6n-5) .text {
+.travels .container article:nth-of-type(9n-8) .text {
   -ms-flex-item-align: unset;
       -ms-grid-row-align: unset;
       align-self: unset;
@@ -530,16 +530,16 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   margin: 0 auto;
 }
 
-.travels .container article:nth-of-type(6n-5) .text p {
+.travels .container article:nth-of-type(9n-8) .text p {
   margin-top: 2.5rem;
 }
 
-.travels .container article:nth-of-type(6n-5) .text .readMore {
+.travels .container article:nth-of-type(9n-8) .text .readMore {
   display: unset;
 }
 
-.travels .container article:nth-of-type(6n-4),
-.travels .container article:nth-of-type(6n-3) {
+.travels .container article:nth-of-type(9n-7),
+.travels .container article:nth-of-type(9n-6) {
   width: 47%;
 }
 
@@ -942,51 +942,52 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   display: inline-block;
 }
 
-.photoBack .photo-form #newContinent {
+.photoBack #newContinent {
   display: none;
 }
 
-.photoBack .photo-form #newContinent.active {
+.photoBack #newContinent.active {
   display: inline;
 }
 
-.photoBack .photo-form #countries {
+.photoBack #countries {
   display: none;
 }
 
-.photoBack .photo-form #countries.active {
+.photoBack #countries.active {
   display: inline;
 }
 
-.photoBack .photo-form #countries option:not([value='new']) {
+.photoBack #countries option:not([value='new']) {
   display: none;
 }
 
-.photoBack .photo-form #countries option.active {
+.photoBack #countries option.active {
   display: block;
 }
 
-.photoBack .photo-form #newCountry {
+.photoBack #newCountry {
   display: none;
 }
 
-.photoBack .photo-form #newCountry.active {
+.photoBack #newCountry.active {
   display: inline;
 }
 
-.photoBack .photo-form .location option[value='country'] {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #ddd;
+.photoBack .location option {
+  background-color: #fff;
+  color: #000;
 }
 
-.photoBack .photo-form .location option[value='continent'] {
+.photoBack .location optgroup[value='continent'] {
   background-color: black;
   color: #fff;
+  text-transform: uppercase;
 }
 
-.photoBack .photo-form .location option:not([value='continent']):not([value='country']) {
-  background-color: rebeccapurple;
-  color: #fff;
+.photoBack .location optgroup[value='country'] {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #ddd;
 }
 
 .projects .projects-container {
@@ -1148,27 +1149,21 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   display: inline-block;
 }
 
-.projectBack .fa-eye-slash,
-.projectBack .fa-eye,
-.postBack .fa-eye-slash,
-.postBack .fa-eye {
+.fa-eye-slash,
+.fa-eye {
   cursor: pointer;
   display: none;
   -webkit-transition: all ease .25s;
   transition: all ease .25s;
 }
 
-.projectBack .fa-eye-slash:hover,
-.projectBack .fa-eye:hover,
-.postBack .fa-eye-slash:hover,
-.postBack .fa-eye:hover {
+.fa-eye-slash:hover,
+.fa-eye:hover {
   color: #ddd;
 }
 
-.projectBack .fa-eye-slash.visible,
-.projectBack .fa-eye.visible,
-.postBack .fa-eye-slash.visible,
-.postBack .fa-eye.visible {
+.fa-eye-slash.visible,
+.fa-eye.visible {
   display: inline-block;
 }
 

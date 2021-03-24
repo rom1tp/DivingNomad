@@ -22,9 +22,9 @@
           <td><?= htmlspecialchars($post['id']) ?></td>
           <td><?= htmlspecialchars($post['name']) ?></td>
           <td><?= htmlspecialchars($post['date']) ?></td>
-          <td><img src="<?= htmlspecialchars($post['src1']) ?>" width="80"></td>
-          <td><img src="<?= htmlspecialchars($post['src2']) ?>" width="80"></td>
-          <td><img src="<?= htmlspecialchars($post['src3']) ?>" width="80"></td>
+          <td><img id="src1" src="<?= htmlspecialchars($post['src1']) ?>" width="80"></td>
+          <td><img id="src2" src="<?= htmlspecialchars($post['src2']) ?>" width="80"></td>
+          <td><img id="src3" src="<?= htmlspecialchars($post['src3']) ?>" width="80"></td>
           <td><?= htmlspecialchars($post['display']) ?></td>
           <td class="actions">
             <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">

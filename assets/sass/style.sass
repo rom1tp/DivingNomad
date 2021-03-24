@@ -417,7 +417,7 @@ footer
 				.readMore
 					display: none
 
-		article:nth-of-type(6n-5) 
+		article:nth-of-type(9n-8) 
 			width: 100%
 			flex-direction: row
 			align-items: center
@@ -439,8 +439,8 @@ footer
 				.readMore
 					display: unset
 
-		article:nth-of-type(6n-4),
-		article:nth-of-type(6n-3)
+		article:nth-of-type(9n-7),
+		article:nth-of-type(9n-6)
 			width: 47%
 
 //?   ////////////
@@ -740,45 +740,46 @@ footer
 //* /////////////
 // # BACK
 .photoBack
-	.photo-form
-		#newContinent 
-			display: none
+	#newContinent 
+		display: none
+
+		&.active 
+			display: inline
+
+	#countries 
+		display: none
+
+		&.active 
+			display: inline
+
+		option
+			&:not([value='new']) 
+				display: none
 
 			&.active 
-				display: inline
+				display: block
 
-		#countries 
-			display: none
+	#newCountry 
+		display: none
 
-			&.active 
-				display: inline
+		&.active 
+			display: inline
 
-			option
-				&:not([value='new']) 
-					display: none
+	.location
+		option
+			background-color: #fff
+			color: #000
+		optgroup
+			&[value='continent'] 
+				background-color: rgba(0, 0, 0, 1)
+				color: #fff
+				text-transform: uppercase
 
-				&.active 
-					display: block
+			&[value='country'] 
+				background-color: rgba(0, 0, 0, 0.4)
+				color: #ddd
 
-		#newCountry 
-			display: none
 
-			&.active 
-				display: inline
-
-		.location
-			option
-				&[value='country'] 
-					background-color: rgba(0, 0, 0, 0.4)
-					color: #ddd
-
-				&[value='continent'] 
-					background-color: rgba(0, 0, 0, 1)
-					color: #fff
-
-				&:not([value='continent']):not([value='country']) 
-					background-color: rebeccapurple
-					color: #fff
 
 //?   ////////////////
 //!  ////PROJECTS////
@@ -905,23 +906,20 @@ footer
 			&.visible
 				display: inline-block
 
-//?   ///////////////
-//!  ////PROJECT////
-//* ///////////////
-.projectBack,
-.postBack
-	.fa-eye-slash,
-	.fa-eye
-		cursor: pointer
-		display: none
-		transition: all ease .25s
+//?   ////////////
+//!  ////BACK////
+//* ////////////
+.fa-eye-slash,
+.fa-eye
+	cursor: pointer
+	display: none
+	transition: all ease .25s
 
-		&:hover
-			// transform: scale(1.1)
-			color: #ddd
-		
-		&.visible
-			display: inline-block
+	&:hover
+		color: #ddd
+	
+	&.visible
+		display: inline-block
 
 //?   /////////////
 //!  ////ICONS////

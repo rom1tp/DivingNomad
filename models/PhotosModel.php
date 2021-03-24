@@ -22,6 +22,7 @@ class PhotosModel extends ModelManager
     ON country_id = countries.id
     INNER JOIN continents
     ON continent_id = continents.id
+    ORDER BY continent, country, date DESC
     ";
     return $this->queryFetchAll($req);
   }
@@ -71,7 +72,7 @@ class PhotosModel extends ModelManager
     return $this->query($req, [$id]);
   }
 
-  public function modifyPhoto($name, $caption, $date, $display, $id)
+  public function modifyPhoto($name, $caption, $date, $location_id, $display, $id)
   {
     $req =
       "UPDATE
@@ -80,8 +81,9 @@ class PhotosModel extends ModelManager
     name=?,
     caption=?,
     date=?,
+    location_id=?,
     display=?
     WHERE id=?";
-    return $this->query($req, [$name, $caption, $date, $display, $id]);
+    return $this->query($req, [$name, $caption, $date, $location_id, $display, $id]);
   }
 }

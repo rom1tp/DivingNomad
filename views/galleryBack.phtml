@@ -1,36 +1,48 @@
 <main class="galleryBack">
   <h1>Gallery</h1>
   <a href="addPhoto" class="btn btn-outline-primary fs-1 shadow-none">Add Photo</a>
-
-  <div class="photos-container">
-    <?php foreach ($photos as $photo): ?>
-    <form action="confirmPhoto-id-<?=htmlspecialchars($photo['id']) ?>" method="post">
-      <input type="text" name="name" value="<?=htmlspecialchars($photo['name']) ?>">
-      <br>
-      <img src="<?=htmlspecialchars($photo['src']) ?>" alt="<?=htmlspecialchars($photo['name']) ?>" width="300">
-      <br>
-      <input type="date" name="date" value="<?=htmlspecialchars($photo['date']) ?>">
-      <p><?=htmlspecialchars($photo['location']) ?></p>
-      <textarea type="text" name="caption" cols="35" rows="5"><?=htmlspecialchars($photo['caption']) ?></textarea>
-      <br>
-
-      <div class="actions">
-        <!-- <label class="form-check-label">
-          Displayed
-        </label> -->
-        <input data-id="<?= htmlspecialchars($photo['id']) ?>" type="hidden" name="display" value="hide">
-        <input data-id="<?= htmlspecialchars($photo['id']) ?>" type="checkbox" name="display" value="show"
-          class="form-check-input shadow-none" <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
-        <i data-id="<?= htmlspecialchars($photo['id']) ?>" class="far fa-edit"></i>
-        <i data-id="<?= htmlspecialchars($photo['id']) ?>"
-          class="far fa-eye <?=($photo['display'] == 'show') ? 'visible' : '' ?>"></i>
-        <i data-id="<?= htmlspecialchars($photo['id']) ?>"
-          class="far fa-eye-slash <?=($photo['display'] != 'show') ? 'visible' : '' ?>"></i>
-        <a href="deletePhoto-id-<?=htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
-        <button type="submit" name="submit"><i class="far fa-save"></i></button>
-      </div>
-    </form>
-
-    <?php endforeach ?>
+  <div class="container">
+    <table class="table col-8">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Image</th>
+          <th>Location <i class="fas fa-sort-down"></i></th>
+          <th>Visibility</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($photos as $photo): ?>
+        <tr>
+          <td><?= htmlspecialchars($photo['id']) ?></td>
+          <td><?= htmlspecialchars($photo['name']) ?></td>
+          <?php 
+          $day = date("j", strtotime($photo['date']));
+          $month = date("M", strtotime($photo['date']));
+          $year = date("Y", strtotime($photo['date']));
+          ?>
+          <td><?= htmlspecialchars($month) ?> <?= htmlspecialchars($day) ?>, <?= htmlspecialchars($year) ?></td>
+          <td><img src="<?= htmlspecialchars($photo['src']) ?>" width="80"></td>
+          <td><em><?= htmlspecialchars($photo['location']) ?></em>, <?= htmlspecialchars($photo['country']) ?></td>
+          <td><?= htmlspecialchars($photo['display']) ?></td>
+          <td class="actions">
+            <input data-id="<?= htmlspecialchars($photo['id']) ?>" type="hidden" name="display" value="hide">
+            <input data-id="<?= htmlspecialchars($photo['id']) ?>" type="hidden" name="display" value="show"
+              class="form-check-input shadow-none" <?=($photo['display'] == 'show') ? 'checked' : '' ?>>
+            <a href="modifyPhoto-id-<?= htmlspecialchars($photo['id']) ?>"><i
+                data-id="<?= htmlspecialchars($photo['id']) ?>" class="far fa-edit"></i></a>
+            <i data-id="<?= htmlspecialchars($photo['id']) ?>"
+              class="far fa-eye <?=($photo['display'] == 'show') ? 'visible' : '' ?>"></i>
+            <i data-id="<?= htmlspecialchars($photo['id']) ?>"
+              class="far fa-eye-slash <?=($photo['display'] != 'show') ? 'visible' : '' ?>"></i>
+            <a href="deletePhoto-id-<?=htmlspecialchars($photo['id']) ?>"><i class="far fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
 </main>

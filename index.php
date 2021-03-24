@@ -32,7 +32,8 @@
 /** // * CRUD
  *- confirm delete
  *- image picker popup
- * imgPicker double click to confirm
+ *- imgPicker double click to confirm
+ *- reset active on open
  * click on overlay to close
  * click on column title to sort
  * CRUD icons as buttons
@@ -250,11 +251,6 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller = new GalleryBackController();
       $controller->delete();
       break;
-
-    case 'confirmPhoto':
-      $controller = new GalleryBackController();
-      $controller->confirm();
-      break;
   
     case 'getImgSrc':
       $controller = new GalleryBackController();
@@ -272,6 +268,18 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       $controller = new PhotoBackController();
       $controller->upload();
       break;
+
+    case 'modifyPhoto':
+      $controller = new PhotoBackController();
+      $controller->display('modify');
+      break;
+
+    case 'confirmPhoto':
+      $controller = new PhotoBackController();
+      $controller->confirm();
+      break;
+
+
     // # ACCOUNT BACK
     case 'accountBack':
       $controller = new AccountsBackController();

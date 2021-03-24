@@ -13,10 +13,10 @@ class PostBackController extends BackController
 
   public function upload()
   {
-   $this->_postsModel->addPost($_POST["name"], $_POST["date"], $_POST["title1"], $_POST["text1"], $_POST["title2"], $_POST["text2"]);
+   $this->_postsModel->addPost($_POST["name"], $_POST["date"], $_POST["title1"], $_POST["text1"], $_POST["title2"], $_POST["text2"], $_POST["display"]);
    $id = $this->_postsModel->getLastId();
    $this->_postsPhotosModel->addPhotos($id, $_POST["main_img_id"], $_POST["img1_id"], $_POST["img2_id"]);
-   header('location:travelsBack');
+  //  header('location:travelsBack');
   }
 
   public function confirm()

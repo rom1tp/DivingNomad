@@ -16,24 +16,32 @@
   " method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
     <legend><?= ($this->_modify) ? 'Modify' : 'Add' ?> a post</legend>
 
+    <label>Name</label>
     <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
       value="<?= htmlspecialchars($post['name']) ?>" <?php endif ?>>
+
+    <label>Date</label>
     <input type="date" name="date" placeholder="date" class="form-control shadow-none" <?php if ($this->_modify) : ?>
       value="<?= htmlspecialchars($post['date']) ?>">
     <?php endif ?>
 
+    <label>Title 1</label>
     <textarea name="title1" rows="5" placeholder="title1"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['title1']) ?><?php endif ?></textarea>
 
+    <label>Text 1</label>
     <textarea name="text1" rows="5" placeholder="text1"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['text1']) ?><?php endif ?></textarea>
 
+    <label>Title 2</label>
     <textarea name="title2" rows="5" placeholder="title2"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['title2']) ?><?php endif ?></textarea>
 
+    <label>Text 2</label>
     <textarea name="text2" rows="5" placeholder="text2"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['text2']) ?><?php endif ?></textarea>
 
+    <label>Main image</label>
     <input class="hidden" id="id1" type="text" name="main_img_id"
       <?php if ($this->_modify) : ?>value="<?= htmlspecialchars($post['id1']) ?>" <?php endif ?>>
     <a id="imgPickerOpen1" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
@@ -41,6 +49,7 @@
     <img id="src1" <?php if ($this->_modify) : ?>src="<?= htmlspecialchars($post['src1']) ?>" <?php endif ?>width="400">
     <br>
 
+    <label>Second image</label>
     <input class="hidden" id="id2" type="text" name="img1_id"
       <?php if ($this->_modify) : ?>value="<?= htmlspecialchars($post['id2']) ?>" <?php endif ?>>
     <a id="imgPickerOpen2" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
@@ -48,6 +57,7 @@
     <img id="src2" <?php if ($this->_modify) : ?>src="<?= htmlspecialchars($post['src2']) ?>" <?php endif ?>width="400">
     <br>
 
+    <label>Third image</label>
     <input class="hidden" id="id3" type="text" name="img2_id"
       <?php if ($this->_modify) : ?>value="<?= htmlspecialchars($post['id3']) ?>" <?php endif ?>>
     <a id="imgPickerOpen3" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
@@ -55,14 +65,12 @@
     <img id="src3" <?php if ($this->_modify) : ?>src="<?= htmlspecialchars($post['src3']) ?>" <?php endif ?>width="400">
     <br>
 
-    <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">
-    <input class="hidden" data-id="<?= htmlspecialchars($post['id']) ?>" type="checkbox" name="display" value="show"
+    <input data-id="1" type="hidden" name="display" value="hide">
+    <input class="hidden" data-id="1" type="checkbox" name="display" value="show"
       <?= ($this->_modify && $post['display'] == 'show') ? 'checked' : '' ?>>
 
-    <i data-id="<?= htmlspecialchars($post['id']) ?>"
-      class="far fa-eye <?= ($post['display'] == 'show') ? 'visible' : '' ?>"></i>
-    <i data-id="<?= htmlspecialchars($post['id']) ?>"
-      class="far fa-eye-slash <?= ($post['display'] != 'show') ? 'visible' : '' ?>"></i>
+    <i data-id="1" class="far fa-eye <?= ($post['display'] == 'show') ? 'visible' : '' ?>"></i>
+    <i data-id="1" class="far fa-eye-slash <?= ($post['display'] != 'show') ? 'visible' : '' ?>"></i>
 
     <a href="deletePost-id-<?= htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
     <br>
