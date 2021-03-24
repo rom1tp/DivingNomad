@@ -4,7 +4,9 @@
   <?php if (isset($_GET["errorMsg"])) : ?>
   <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
   <?php endif; ?>
-
+  <?php if ($this->_modify) : ?>
+  <a href="addPost" class="btn btn-outline-primary fs-1 shadow-none">Add Post</a>
+  <?php endif ?>
   <form action="
   <?php if ($this->_modify) : ?>
   confirmPost-id-<?= htmlspecialchars($post['id']) ?>
@@ -32,28 +34,30 @@
     <textarea name="text2" rows="5" placeholder="text2"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['text2']) ?><?php endif ?></textarea>
 
-    <?php if ($this->_modify) : ?>
-    <input id="id1" type="text" name="main_img_id" value="<?= htmlspecialchars($post['id1']) ?>">
+    <input class="hidden" id="id1" type="text" name="main_img_id"
+      <?php if ($this->_modify) : ?>value="<?= htmlspecialchars($post['id1']) ?>" <?php endif ?>>
     <a id="imgPickerOpen1" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="src1" src="<?= htmlspecialchars($post['src1']) ?>" width="400">
+    <img id="src1" <?php if ($this->_modify) : ?>src="<?= htmlspecialchars($post['src1']) ?>" <?php endif ?>width="400">
     <br>
 
-    <input id="id2" type="text" name="img1_id" value="<?= htmlspecialchars($post['id2']) ?>">
+    <input class="hidden" id="id2" type="text" name="img1_id"
+      <?php if ($this->_modify) : ?>value="<?= htmlspecialchars($post['id2']) ?>" <?php endif ?>>
     <a id="imgPickerOpen2" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="src2" src="<?= htmlspecialchars($post['src2']) ?>" width="400">
+    <img id="src2" <?php if ($this->_modify) : ?>src="<?= htmlspecialchars($post['src2']) ?>" <?php endif ?>width="400">
     <br>
 
-    <input id="id3" type="text" name="img2_id" value="<?= htmlspecialchars($post['id3']) ?>">
+    <input class="hidden" id="id3" type="text" name="img2_id"
+      <?php if ($this->_modify) : ?>value="<?= htmlspecialchars($post['id3']) ?>" <?php endif ?>>
     <a id="imgPickerOpen3" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="src3" src="<?= htmlspecialchars($post['src3']) ?>" width="400">
+    <img id="src3" <?php if ($this->_modify) : ?>src="<?= htmlspecialchars($post['src3']) ?>" <?php endif ?>width="400">
     <br>
 
     <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">
-    <input data-id="<?= htmlspecialchars($post['id']) ?>" type="checkbox" name="display" value="show"
-      class="form-check-input shadow-none" <?= ($this->_modify && $post['display'] == 'show') ? 'checked' : '' ?>>
+    <input class="hidden" data-id="<?= htmlspecialchars($post['id']) ?>" type="checkbox" name="display" value="show"
+      <?= ($this->_modify && $post['display'] == 'show') ? 'checked' : '' ?>>
 
     <i data-id="<?= htmlspecialchars($post['id']) ?>"
       class="far fa-eye <?= ($post['display'] == 'show') ? 'visible' : '' ?>"></i>
@@ -61,34 +65,6 @@
       class="far fa-eye-slash <?= ($post['display'] != 'show') ? 'visible' : '' ?>"></i>
 
     <a href="deletePost-id-<?= htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
-
-    <?php else : ?>
-
-    <input id="id1" type="text" name="main_img_id">
-    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
-    <br>
-    <img id="src1" width="400">
-    <br>
-
-    <input id="id2" type="text" name="img1_id" value="8">
-    <br>
-    <img id="src2" width="400">
-    <br>
-
-    <input id="id3" type="text" name="img2_id" value="9">
-    <br>
-    <img id="src3" width="400">
-    <br>
-
-
-    <input type="hidden" name="display" value="hide">
-    <input type="checkbox" name="display" value="show" class="form-check-input shadow-none" checked>
-    <i class="far fa-eye visible"></i>
-    <i class="far fa-eye-slash"></i>
-    <?php endif ?>
-
-
-
     <br>
     <button type="submit" name="submit"
       class="btn btn-primary shadow-none"><?= ($this->_modify) ? 'Confirm' : 'Upload' ?></button>

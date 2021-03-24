@@ -20,7 +20,8 @@ html body {
   text-align: center;
   margin: 0 auto;
 }
-html body main .readMore {
+
+main .readMore {
   position: relative;
   left: 5%;
   width: -webkit-fit-content;
@@ -33,15 +34,15 @@ html body main .readMore {
   letter-spacing: 3px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
-html body main .readMore a {
+main .readMore a {
   color: #fff;
   display: block;
   padding: 1.5rem 3.5rem;
 }
-html body main .readMore a i {
+main .readMore a i {
   padding-right: 1.5rem;
 }
-html body main .readMore::before {
+main .readMore::before {
   content: "";
   position: absolute;
   top: 0;
@@ -53,21 +54,21 @@ html body main .readMore::before {
   transform: translate(-7%, -20%);
   z-index: -1;
 }
-html body main .readMore:hover {
+main .readMore:hover {
   transform: translate(-7%, -20%);
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
 }
-html body main .readMore:hover::before {
+main .readMore:hover::before {
   transform: translate(0, 0);
 }
-html body main h1 {
+main h1 {
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
 }
-html body main h1::before {
+main h1::before {
   content: "";
   position: absolute;
   right: 0;
@@ -79,11 +80,11 @@ html body main h1::before {
   transform-origin: right;
   transition: transform 0.3s;
 }
-html body main h1:hover::before {
+main h1:hover::before {
   transform: scaleX(1);
   transform-origin: left;
 }
-html body main h1::after {
+main h1::after {
   content: "";
   position: absolute;
   left: 0;
@@ -95,9 +96,12 @@ html body main h1::after {
   transform-origin: left;
   transition: transform 0.3s;
 }
-html body main h1:hover::after {
+main h1:hover::after {
   transform: scaleX(1);
   transform-origin: right;
+}
+main input.hidden {
+  display: none;
 }
 
 .main-nav {
@@ -560,6 +564,14 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 .project #container section aside.right .date p:nth-of-type(3) {
   font-weight: bold;
   color: #a0a0a0;
+}
+
+.postBack img {
+  cursor: pointer;
+  transition: transform ease-in 200ms;
+}
+.postBack img:hover {
+  transform: scale(1.05);
 }
 
 .gallery .photos-container,

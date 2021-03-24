@@ -2,9 +2,9 @@ window.addEventListener('DOMContentLoaded', () => {
 	const page = document.querySelector('main').className
 
 	if (page.endsWith('Back')) {
-		let imgNumber
-		$(`input[name="display"][type='checkbox']`).each(function () {
-			// $(this).css('display', 'none')
+		$(`input[data-display="hidden"]`).each(function () {
+			console.log(this)
+			$(this).addClass('hidden')
 		})
 		$('.confirmOverlay #close, #cancel, #confirm').click(() => {
 			$('.confirmOverlay').removeClass('visible')
@@ -21,24 +21,25 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 
 		$('.fa-eye').click(function () {
-			let id = $(this).data('id')
+			let imgId = $(this).data('id')
 			$(this).removeClass('visible')
-			$(`.fa-eye-slash[data-id="${id}"]`).addClass('visible')
-			let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
+			$(`.fa-eye-slash[data-id="${imgId}"]`).addClass('visible')
+			let checkbox = $(`input[value="show"][data-id="${imgId}"]`)[0]
 			$(checkbox).removeAttr('checked')
 		})
 
 		$('.fa-eye-slash').click(function () {
-			let id = $(this).data('id')
-			$(`.fa-eye[data-id="${id}"]`).addClass('visible')
+			let imgId = $(this).data('id')
+			$(`.fa-eye[data-id="${imgId}"]`).addClass('visible')
 			$(this).removeClass('visible')
-			let checkbox = $(`input[value="show"][data-id="${id}"]`)[0]
+			let checkbox = $(`input[value="show"][data-id="${imgId}"]`)[0]
 			$(checkbox).attr('checked', '')
 		})
 
-		$('#imgPickerOpen1, #imgPickerOpen2, #imgPickerOpen3').click(function () {
+		$(
+			'#imgPickerOpen1, #imgPickerOpen2, #imgPickerOpen3, #src1, #src2, #src3'
+		).click(function () {
 			imgPickerId = $(this)[0].id.slice(-1)
-			console.log(imgPickerId)
 			$('#imgPickerOverlay').addClass('visible')
 		})
 
@@ -53,7 +54,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 		$('#imgPickerOverlay #confirm').click(function () {
 			let chosenImgId = $('#imgPickerContent figure.active').data('id')
-			console.log(imgPickerId)
 			$('#imgPickerOverlay').removeClass('visible')
 			fetch(`getImgSrc-id-${chosenImgId}`)
 				.then((response) => {
