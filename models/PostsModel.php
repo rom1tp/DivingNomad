@@ -20,7 +20,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph1
     ON pp1.photo_id = ph1.id
     WHERE pp1.post_id = po.id
-    ORDER BY pp1.photo_id LIMIT 0,1
+    ORDER BY pp1.photo_order LIMIT 0,1
     ) AS src1,
     
     (
@@ -29,7 +29,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph2
     ON pp2.photo_id = ph2.id
     WHERE pp2.post_id = po.id 
-    ORDER BY pp2.photo_id LIMIT 1,1
+    ORDER BY pp2.photo_order LIMIT 1,1
     ) AS src2,
     
     (
@@ -38,7 +38,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph3
     ON pp3.photo_id = ph3.id
     WHERE pp3.post_id = po.id 
-    ORDER BY pp3.photo_id LIMIT 2,1
+    ORDER BY pp3.photo_order LIMIT 2,1
     ) AS src3
     
     FROM posts po
@@ -65,7 +65,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph1
     ON pp1.photo_id = ph1.id
     WHERE pp1.post_id = po.id
-    ORDER BY pp1.photo_id LIMIT 0,1
+    ORDER BY pp1.photo_order LIMIT 0,1
     ) AS id1,
     
     (
@@ -74,7 +74,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph1
     ON pp1.photo_id = ph1.id
     WHERE pp1.post_id = po.id
-    ORDER BY pp1.photo_id LIMIT 0,1
+    ORDER BY pp1.photo_order LIMIT 0,1
     ) AS src1,
     
     (
@@ -83,7 +83,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph2
     ON pp2.photo_id = ph2.id
     WHERE pp2.post_id = po.id 
-    ORDER BY pp2.photo_id LIMIT 1,1
+    ORDER BY pp2.photo_order LIMIT 1,1
     ) AS id2,
     
     (
@@ -92,7 +92,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph2
     ON pp2.photo_id = ph2.id
     WHERE pp2.post_id = po.id 
-    ORDER BY pp2.photo_id LIMIT 1,1
+    ORDER BY pp2.photo_order LIMIT 1,1
     ) AS src2,
     
     (
@@ -101,7 +101,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph3
     ON pp3.photo_id = ph3.id
     WHERE pp3.post_id = po.id 
-    ORDER BY pp3.photo_id LIMIT 2,1
+    ORDER BY pp3.photo_order LIMIT 2,1
     ) AS id3,
     
     (
@@ -110,7 +110,7 @@ class PostsModel extends ModelManager
     INNER JOIN photos ph3
     ON pp3.photo_id = ph3.id
     WHERE pp3.post_id = po.id 
-    ORDER BY pp3.photo_id LIMIT 2,1
+    ORDER BY pp3.photo_order LIMIT 2,1
     ) AS src3
     
     FROM posts po

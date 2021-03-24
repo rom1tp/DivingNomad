@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	const page = document.querySelector('main').className
 
 	if (page.endsWith('Back')) {
+		let imgNumber
 		$(`input[name="display"][type='checkbox']`).each(function () {
 			// $(this).css('display', 'none')
 		})
@@ -35,7 +36,9 @@ window.addEventListener('DOMContentLoaded', () => {
 			$(checkbox).attr('checked', '')
 		})
 
-		$('#imgPickerOpen').click(function () {
+		$('#imgPickerOpen1, #imgPickerOpen2, #imgPickerOpen3').click(function () {
+			imgPickerId = $(this)[0].id.slice(-1)
+			console.log(imgPickerId)
 			$('#imgPickerOverlay').addClass('visible')
 		})
 
@@ -49,10 +52,10 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 
 		$('#imgPickerOverlay #confirm').click(function () {
-			let id = $('#imgPickerContent figure.active').data('id')
-			console.log(id)
+			let chosenImgId = $('#imgPickerContent figure.active').data('id')
+			console.log(imgPickerId)
 			$('#imgPickerOverlay').removeClass('visible')
-			fetch(`getImgSrc-id-${id}`)
+			fetch(`getImgSrc-id-${chosenImgId}`)
 				.then((response) => {
 					// FIXME json contains prepos.js for some reason
 					// return response.json()
@@ -61,16 +64,11 @@ window.addEventListener('DOMContentLoaded', () => {
 				.then((src) => {
 					// src = src.slice(38)
 					console.log(src)
-					document.getElementById('src1').setAttribute('src', src)
-					document.getElementById('id1').setAttribute('value', id)
+					document.getElementById(`src${imgPickerId}`).setAttribute('src', src)
+					document
+						.getElementById(`id${imgPickerId}`)
+						.setAttribute('value', chosenImgId)
 				})
-
-			// $.get('assets/js/load-img.php', (src) => {
-			// 	console.log(src)
-			// 	console.log(JSON.parse(src))
-			// $('#img').load('assets/js/load-img.php')
-			// })
-			// $('#img').load('assets/js/load-img.php', { id: id })
 		})
 	}
 

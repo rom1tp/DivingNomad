@@ -12,6 +12,7 @@ class PostsPhotosModel extends ModelManager
     INNER JOIN photos
     ON photo_id = photos.id
     WHERE post_id = ?
+    ORDER BY photo_order
     ";
     return $this->queryFetchAll($req, [$id]);
   }
@@ -31,12 +32,13 @@ class PostsPhotosModel extends ModelManager
     INTO posts_photos
     (
     post_id,
-    photo_id
+    photo_id,
+    photo_order
     )
     VALUES
-    (?, ?),
-    (?, ?),
-    (?, ?)
+    (?, ?, 1),
+    (?, ?, 2),
+    (?, ?, 3)
     ";
     return $this->query($req, [$post_id, $main_img_id, $post_id, $img1_id, $post_id, $img2_id]);
   }

@@ -40,6 +40,6 @@ class PostBackController extends BackController
     $photosModel = new PhotosModel();
     $photo = $photosModel->getPhoto($_GET["id"]);
     $id = $photo['id'];
-    echo $id;
+    echo json_encode($id);
   }
 }

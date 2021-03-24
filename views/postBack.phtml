@@ -16,9 +16,9 @@
 
     <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
       value="<?= htmlspecialchars($post['name']) ?>" <?php endif ?>>
-
     <input type="date" name="date" placeholder="date" class="form-control shadow-none" <?php if ($this->_modify) : ?>
-      value="<?= htmlspecialchars($post['date']) ?> <?php endif ?>">
+      value="<?= htmlspecialchars($post['date']) ?>">
+    <?php endif ?>
 
     <textarea name="title1" rows="5" placeholder="title1"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['title1']) ?><?php endif ?></textarea>
@@ -34,19 +34,21 @@
 
     <?php if ($this->_modify) : ?>
     <input id="id1" type="text" name="main_img_id" value="<?= htmlspecialchars($post['id1']) ?>">
-    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <a id="imgPickerOpen1" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
     <img id="src1" src="<?= htmlspecialchars($post['src1']) ?>" width="400">
     <br>
 
-    <input id="src2" type="text" name="img1_id" value="<?= htmlspecialchars($post['id2']) ?>">
+    <input id="id2" type="text" name="img1_id" value="<?= htmlspecialchars($post['id2']) ?>">
+    <a id="imgPickerOpen2" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="img2" src="<?= htmlspecialchars($post['src2']) ?>" width="400">
+    <img id="src2" src="<?= htmlspecialchars($post['src2']) ?>" width="400">
     <br>
 
-    <input id="src3" type="text" name="img2_id" value="<?= htmlspecialchars($post['id3']) ?>">
+    <input id="id3" type="text" name="img2_id" value="<?= htmlspecialchars($post['id3']) ?>">
+    <a id="imgPickerOpen3" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="img3" src="<?= htmlspecialchars($post['src3']) ?>" width="400">
+    <img id="src3" src="<?= htmlspecialchars($post['src3']) ?>" width="400">
     <br>
 
     <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">
@@ -54,11 +56,11 @@
       class="form-check-input shadow-none" <?= ($this->_modify && $post['display'] == 'show') ? 'checked' : '' ?>>
 
     <i data-id="<?= htmlspecialchars($post['id']) ?>"
-      class="far fa-eye <?=($post['display'] == 'show') ? 'visible' : '' ?>"></i>
+      class="far fa-eye <?= ($post['display'] == 'show') ? 'visible' : '' ?>"></i>
     <i data-id="<?= htmlspecialchars($post['id']) ?>"
-      class="far fa-eye-slash <?=($post['display'] != 'show') ? 'visible' : '' ?>"></i>
+      class="far fa-eye-slash <?= ($post['display'] != 'show') ? 'visible' : '' ?>"></i>
 
-    <a href="deletePost-id-<?=htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
+    <a href="deletePost-id-<?= htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
 
     <?php else : ?>
 

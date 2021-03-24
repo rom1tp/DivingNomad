@@ -14,6 +14,7 @@
  *- new models as properties
  *- back and front extend pageController
  *- thmg thms => this->Model->get/set
+ * display none all hidden inputs on page load with hidden class
  * add image as url or upload
  * check form enctype
  * social oAuth
