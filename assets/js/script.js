@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	if (page.endsWith('Back')) {
 		$(`input[name="display"][type='checkbox']`).each(function () {
-			$(this).css('display', 'none')
+			// $(this).css('display', 'none')
 		})
 		$('.confirmOverlay #close, #cancel, #confirm').click(() => {
 			$('.confirmOverlay').removeClass('visible')
@@ -59,10 +59,10 @@ window.addEventListener('DOMContentLoaded', () => {
 					return response.text()
 				})
 				.then((src) => {
-					src = src.slice(38)
+					// src = src.slice(38)
 					console.log(src)
-					document.getElementById('img1').setAttribute('src', src)
-					document.getElementById('src1').setAttribute('value', id)
+					document.getElementById('src1').setAttribute('src', src)
+					document.getElementById('id1').setAttribute('value', id)
 				})
 
 			// $.get('assets/js/load-img.php', (src) => {

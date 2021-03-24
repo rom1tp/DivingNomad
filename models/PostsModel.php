@@ -5,30 +5,44 @@ class PostsModel extends ModelManager
   public function getAllPosts()
   {
     $req =
-    "SELECT
-    posts.id,
-    posts.name,
-    posts.date,
-    p1.src AS src1,
-    p1.id AS id1,
-    p2.src AS src2,
-    p2.id AS id2,
-    p3.src AS src3,
-    p3.id AS id3,
-    p1.caption,
+    "SELECT 
+    po.id,
+    po.name,
+    po.date,
     title1,
     text1,
     title2,
     text2,
-    posts.display
-    FROM posts
-    INNER JOIN photos AS p1
-    ON main_img_id = p1.id
-    INNER JOIN photos AS p2
-    ON img1_id = p2.id
-    INNER JOIN photos AS p3
-    ON img2_id = p3.id
-    ORDER BY posts.date DESC
+    po.display,
+    (
+    SELECT ph1.src
+    FROM posts_photos pp1
+    INNER JOIN photos ph1
+    ON pp1.photo_id = ph1.id
+    WHERE pp1.post_id = po.id
+    ORDER BY pp1.photo_id LIMIT 0,1
+    ) AS src1,
+    
+    (
+    SELECT ph2.src
+    FROM posts_photos pp2
+    INNER JOIN photos ph2
+    ON pp2.photo_id = ph2.id
+    WHERE pp2.post_id = po.id 
+    ORDER BY pp2.photo_id LIMIT 1,1
+    ) AS src2,
+    
+    (
+    SELECT ph3.src
+    FROM posts_photos pp3
+    INNER JOIN photos ph3
+    ON pp3.photo_id = ph3.id
+    WHERE pp3.post_id = po.id 
+    ORDER BY pp3.photo_id LIMIT 2,1
+    ) AS src3
+    
+    FROM posts po
+    ORDER BY po.date DESC    
     ";
     return $this->queryFetchAll($req);
   }
@@ -36,43 +50,85 @@ class PostsModel extends ModelManager
   public function getPost($id)
   {
     $req =
-    "SELECT
-    posts.id,
-    posts.name,
-    posts.date,
-    p1.src AS src1,
-    p1.id AS id1,
-    p2.src AS src2,
-    p2.id AS id2,
-    p3.src AS src3,
-    p3.id AS id3,
-    p1.caption,
+    "SELECT 
+    po.id,
+    po.name,
+    po.date,
     title1,
     text1,
     title2,
     text2,
-    posts.display
-    FROM posts
-    INNER JOIN photos AS p1
-    ON main_img_id = p1.id
-    INNER JOIN photos AS p2
-    ON img1_id = p2.id
-    INNER JOIN photos AS p3
-    ON img2_id = p3.id
-    WHERE posts.id = ?
+    po.display,
+    (
+    SELECT ph1.id
+    FROM posts_photos pp1
+    INNER JOIN photos ph1
+    ON pp1.photo_id = ph1.id
+    WHERE pp1.post_id = po.id
+    ORDER BY pp1.photo_id LIMIT 0,1
+    ) AS id1,
+    
+    (
+    SELECT ph1.src
+    FROM posts_photos pp1
+    INNER JOIN photos ph1
+    ON pp1.photo_id = ph1.id
+    WHERE pp1.post_id = po.id
+    ORDER BY pp1.photo_id LIMIT 0,1
+    ) AS src1,
+    
+    (
+    SELECT ph2.id
+    FROM posts_photos pp2
+    INNER JOIN photos ph2
+    ON pp2.photo_id = ph2.id
+    WHERE pp2.post_id = po.id 
+    ORDER BY pp2.photo_id LIMIT 1,1
+    ) AS id2,
+    
+    (
+    SELECT ph2.src
+    FROM posts_photos pp2
+    INNER JOIN photos ph2
+    ON pp2.photo_id = ph2.id
+    WHERE pp2.post_id = po.id 
+    ORDER BY pp2.photo_id LIMIT 1,1
+    ) AS src2,
+    
+    (
+    SELECT ph3.id
+    FROM posts_photos pp3
+    INNER JOIN photos ph3
+    ON pp3.photo_id = ph3.id
+    WHERE pp3.post_id = po.id 
+    ORDER BY pp3.photo_id LIMIT 2,1
+    ) AS id3,
+    
+    (
+    SELECT ph3.src
+    FROM posts_photos pp3
+    INNER JOIN photos ph3
+    ON pp3.photo_id = ph3.id
+    WHERE pp3.post_id = po.id 
+    ORDER BY pp3.photo_id LIMIT 2,1
+    ) AS src3
+    
+    FROM posts po
+    WHERE po.id = ?
+    ORDER BY po.date DESC
     ";
     return $this->queryFetch($req, [$id]);
   }
 
-  public function addPost($name, $date, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id)
+  public function addPost($name, $date, $title1, $text1, $title2, $text2)
   {
     $req =
     "INSERT
     INTO posts
-    (name, date, main_img_id, title1, text1, img1_id, title2, text2, img2_id)
+    (name, date, title1, text1, title2, text2)
     VALUES
-    (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    return $this->query($req, [$name, $date, $main_img_id, $title1, $text1, $img1_id, $title2, $text2, $img2_id]);
+    (?, ?, ?, ?, ?, ?)";
+    return $this->query($req, [$name, $date, $title1, $text1, $title2, $text2]);
   }
 
   public function deletePost($id)
@@ -84,7 +140,7 @@ class PostsModel extends ModelManager
     return $this -> query($req, [$id]);
   }
 
-  public function modifyPost($name, $date, $title1, $text1, $title2, $text2, $mainImgId, $img1Id, $img2Id, $display, $id)
+  public function modifyPost($name, $date, $title1, $text1, $title2, $text2, $display, $id)
   {
     $req =
     "UPDATE
@@ -96,11 +152,8 @@ class PostsModel extends ModelManager
     text1=?,
     title2=?,
     text2=?,
-    main_img_id=?,
-    img1_id=?,
-    img2_id=?,
     display=?
     WHERE id=?";
-    return $this -> query($req, [$name, $date, $title1, $text1, $title2, $text2, $mainImgId, $img1Id, $img2Id, $display, $id]);
+    return $this -> query($req, [$name, $date, $title1, $text1, $title2, $text2, $display, $id]);
   }
 }

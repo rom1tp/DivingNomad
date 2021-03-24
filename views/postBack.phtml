@@ -33,46 +33,21 @@
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($post['text2']) ?><?php endif ?></textarea>
 
     <?php if ($this->_modify) : ?>
-    <input id="src1" type="text" name="main_img_id" value="<?= htmlspecialchars($post['id1']) ?>">
+    <input id="id1" type="text" name="main_img_id" value="<?= htmlspecialchars($post['id1']) ?>">
     <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="img1" src="<?= htmlspecialchars($post['src1']) ?>" width="400">
+    <img id="src1" src="<?= htmlspecialchars($post['src1']) ?>" width="400">
     <br>
 
     <input id="src2" type="text" name="img1_id" value="<?= htmlspecialchars($post['id2']) ?>">
-    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
     <img id="img2" src="<?= htmlspecialchars($post['src2']) ?>" width="400">
     <br>
 
     <input id="src3" type="text" name="img2_id" value="<?= htmlspecialchars($post['id3']) ?>">
-    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
     <img id="img3" src="<?= htmlspecialchars($post['src3']) ?>" width="400">
     <br>
-
-
-    <div id="imgPickerOverlay">
-      <div id="imgPickerContent">
-        <div class="header">
-          <i class="fas fa-times" id="close"></i>
-          Choose an image
-        </div>
-
-        <div class="body">
-          <?php foreach ($photos as $photo): ?>
-
-          <figure data-id="<?= htmlspecialchars($photo['id']) ?>">
-            <img src="<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>">
-          </figure>
-          <?php endforeach ?>
-        </div>
-        <div class="footer">
-          <a id="cancel" class="btn btn-outline-secondary fs-3 shadow-none">Cancel</a>
-          <a id="confirm" class="btn btn-outline-success fs-3 shadow-none">Confirm</a>
-        </div>
-      </div>
-    </div>
 
     <input data-id="<?= htmlspecialchars($post['id']) ?>" type="hidden" name="display" value="hide">
     <input data-id="<?= htmlspecialchars($post['id']) ?>" type="checkbox" name="display" value="show"
@@ -87,22 +62,20 @@
 
     <?php else : ?>
 
-    <input id="src1" type="text" name="main_img_id">
+    <input id="id1" type="text" name="main_img_id">
     <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
     <br>
-    <img id="img1" width="400">
+    <img id="src1" width="400">
     <br>
 
-    <input id="src2" type="text" name="img1_id">
-    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <input id="id2" type="text" name="img1_id" value="8">
     <br>
-    <img id="img2" width="400">
+    <img id="src2" width="400">
     <br>
 
-    <input id="src3" type="text" name="img2_id">
-    <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
+    <input id="id3" type="text" name="img2_id" value="9">
     <br>
-    <img id="img3" width="400">
+    <img id="src3" width="400">
     <br>
 
 

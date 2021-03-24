@@ -30,7 +30,10 @@
 
 /** // * CRUD
  *- confirm delete
- * image picker popup
+ *- image picker popup
+ * imgPicker double click to confirm
+ * click on overlay to close
+ * click on column title to sort
  * CRUD icons as buttons
  * add Item as icon
  * icon hover show action name

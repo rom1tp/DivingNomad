@@ -254,60 +254,60 @@ footer
 					font-size: inherit
 					text-transform: uppercase
 
-#imgPickerOverlay
-	display: none
-	position: fixed
-	top: 0
-	left: 0
-	right: 0
-	bottom: 0
-	justify-content: center
-	align-items: center
-	background: rgba(black, 0.8)
+	#imgPickerOverlay
+		display: none
+		position: fixed
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		justify-content: center
+		align-items: center
+		background: rgba(black, 0.8)
 
-	&.visible
-		display: flex
+		&.visible
+			display: flex
 
-	#imgPickerContent
-		position: relative
-		width: 70%
-		background-color: #fff
-		padding: 2rem
-		border-radius: 10px
+		#imgPickerContent
+			position: relative
+			width: 70%
+			background-color: #fff
+			padding: 2rem
+			border-radius: 10px
 
-		.fa-times
-			position: absolute
-			top: 3%
-			right: 3%
-			font-size: 3rem
-			color: #000
-			cursor: pointer
-			transition: all ease-in-out .35s
-
-			&:hover
-				transform: rotate(0.5turn)
-
-		.body
-			display: grid
-			grid-template-columns: repeat(4, 1fr)
-			grid-template-rows: repeat(auto)
-			grid-gap: 1rem 2rem
-
-			figure
+			.fa-times
+				position: absolute
+				top: 3%
+				right: 3%
+				font-size: 3rem
+				color: #000
 				cursor: pointer
-				transition: transform ease 0.25s
-				border: 4px solid #fff
-
-				&.active
-					border: 4px solid $orange
+				transition: all ease-in-out .35s
 
 				&:hover
-					transform: scale(1.05)
+					transform: rotate(0.5turn)
 
-				img
-					display: block
-					width: 100%
-					aspect-ratio: 14/9
+			.body
+				display: grid
+				grid-template-columns: repeat(4, 1fr)
+				grid-template-rows: repeat(auto)
+				grid-gap: 1rem 2rem
+
+				figure
+					cursor: pointer
+					transition: transform ease 0.25s
+					border: 4px solid #fff
+
+					&.active
+						border: 4px solid $orange
+
+					&:hover
+						transform: scale(1.05)
+
+					img
+						display: block
+						width: 100%
+						aspect-ratio: 14/9
 
 
 //?   ////////////

@@ -7,8 +7,9 @@ class PagesController
  protected $_mainNav;
  protected $_usersModel;
  protected $_profilesModel;
- protected $_photosModel;
  protected $_postsModel;
+ protected $_photosModel;
+ protected $_postsPhotosModel;
  protected $_projectsModel;
  protected $_locationsModel;
  protected $_countriesModel;
@@ -19,8 +20,9 @@ class PagesController
   $this->errors = false;
   $this->_usersModel = new UsersModel();
   $this->_profilesModel = new ProfilesModel();
-  $this->_photosModel = new PhotosModel();
   $this->_postsModel = new PostsModel();
+  $this->_photosModel = new PhotosModel();
+  $this->_postsPhotosModel = new PostsPhotosModel();
   $this->_projectsModel = new ProjectsModel();
   $this->_locationsModel = new LocationsModel();
   $this->_countriesModel = new CountriesModel();

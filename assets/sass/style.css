@@ -289,7 +289,7 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   text-transform: uppercase;
 }
 
-#imgPickerOverlay {
+footer #imgPickerOverlay {
   display: none;
   position: fixed;
   top: 0;
@@ -305,13 +305,13 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   background: rgba(0, 0, 0, 0.8);
 }
 
-#imgPickerOverlay.visible {
+footer #imgPickerOverlay.visible {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-#imgPickerOverlay #imgPickerContent {
+footer #imgPickerOverlay #imgPickerContent {
   position: relative;
   width: 70%;
   background-color: #fff;
@@ -319,7 +319,7 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   border-radius: 10px;
 }
 
-#imgPickerOverlay #imgPickerContent .fa-times {
+footer #imgPickerOverlay #imgPickerContent .fa-times {
   position: absolute;
   top: 3%;
   right: 3%;
@@ -330,12 +330,12 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   transition: all ease-in-out .35s;
 }
 
-#imgPickerOverlay #imgPickerContent .fa-times:hover {
+footer #imgPickerOverlay #imgPickerContent .fa-times:hover {
   -webkit-transform: rotate(0.5turn);
           transform: rotate(0.5turn);
 }
 
-#imgPickerOverlay #imgPickerContent .body {
+footer #imgPickerOverlay #imgPickerContent .body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
@@ -345,7 +345,7 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   grid-gap: 1rem 2rem;
 }
 
-#imgPickerOverlay #imgPickerContent .body figure {
+footer #imgPickerOverlay #imgPickerContent .body figure {
   cursor: pointer;
   -webkit-transition: -webkit-transform ease 0.25s;
   transition: -webkit-transform ease 0.25s;
@@ -354,16 +354,16 @@ footer .confirmOverlay .confirmBox .buttons .btn {
   border: 4px solid #fff;
 }
 
-#imgPickerOverlay #imgPickerContent .body figure.active {
+footer #imgPickerOverlay #imgPickerContent .body figure.active {
   border: 4px solid #eb6800;
 }
 
-#imgPickerOverlay #imgPickerContent .body figure:hover {
+footer #imgPickerOverlay #imgPickerContent .body figure:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
 
-#imgPickerOverlay #imgPickerContent .body figure img {
+footer #imgPickerOverlay #imgPickerContent .body figure img {
   display: block;
   width: 100%;
   aspect-ratio: 14/9;

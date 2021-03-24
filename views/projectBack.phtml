@@ -26,33 +26,11 @@
     <textarea name="description" cols="60" rows="10" placeholder="Description"
       class="form-control shadow-none"><?php if ($this->_modify) : ?><?= htmlspecialchars($project['description']) ?><?php endif ?></textarea>
     <?php if ($this->_modify) : ?>
-    <input id="imgId" type="text" name="imgId" value="<?= htmlspecialchars($project['id']) ?>">
-    <img id="img" src="<?= htmlspecialchars($project['src']) ?>" width="400">
+    <input id="id1" type="text" name="imgId" value="<?= htmlspecialchars($project['id']) ?>">
+    <img id="src1" src="<?= htmlspecialchars($project['src']) ?>" width="400">
     <br>
 
     <a id="imgPickerOpen" class="btn btn-outline-primary fs-2 shadow-none">change photo</a>
-
-    <div id="imgPickerOverlay">
-      <div id="imgPickerContent">
-        <div class="header">
-          <i class="fas fa-times" id="close"></i>
-          Choose an image
-        </div>
-
-        <div class="body">
-          <?php foreach ($photos as $photo): ?>
-
-          <figure data-id="<?= htmlspecialchars($photo['id']) ?>">
-            <img src="<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>">
-          </figure>
-          <?php endforeach ?>
-        </div>
-        <div class="footer">
-          <a id="cancel" class="btn btn-outline-secondary fs-3 shadow-none">Cancel</a>
-          <a id="confirm" class="btn btn-outline-success fs-3 shadow-none">Confirm</a>
-        </div>
-      </div>
-    </div>
 
     <input data-id="<?= htmlspecialchars($project['id']) ?>" type="hidden" name="display" value="hide">
     <input data-id="<?= htmlspecialchars($project['id']) ?>" type="checkbox" name="display" value="show"

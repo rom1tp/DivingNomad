@@ -69,6 +69,28 @@
         </div>
       </div>
     </div>
+
+    <div id="imgPickerOverlay">
+      <div id="imgPickerContent">
+        <div class="header">
+          <i class="fas fa-times" id="close"></i>
+          Choose an image
+        </div>
+
+        <div class="body">
+          <?php foreach ($photos as $photo): ?>
+
+          <figure data-id="<?= htmlspecialchars($photo['id']) ?>">
+            <img src="<?= htmlspecialchars($photo['src']) ?>" alt="<?= htmlspecialchars($photo['name']) ?>">
+          </figure>
+          <?php endforeach ?>
+        </div>
+        <div class="footer">
+          <a id="cancel" class="btn btn-outline-secondary fs-3 shadow-none">Cancel</a>
+          <a id="confirm" class="btn btn-outline-success fs-3 shadow-none">Confirm</a>
+        </div>
+      </div>
+    </div>
   </footer>
   <script src="assets/js/script.js" defer></script>
 
