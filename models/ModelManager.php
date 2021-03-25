@@ -6,7 +6,7 @@ class ModelManager
 
  public function __construct()
  {
-   // * LOCAL BLOG
+   // * PRODUCTION BLOG
   //  $host = 'localhost';
   //  $db = 'blog';
   //  $user = 'root';

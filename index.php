@@ -109,7 +109,7 @@ spl_autoload_register(function ($class) {
 });
 
 if (!isset($_GET['page']) || $_GET['page'] == 'home') {
-  $controller = new HomeController();
+  $controller = new TravelsController();
   $controller->display();
 } else {
   switch ($_GET['page']) {
