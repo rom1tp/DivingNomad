@@ -59,8 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
 			fetch(`getImgSrc-id-${chosenImgId}`)
 				.then((response) => {
 					// FIXME json contains prepos.js for some reason
-					// return response.json()
-					return response.text()
+					return response.json()
+					// return response.text()
 				})
 				.then((src) => {
 					// src = src.slice(38)

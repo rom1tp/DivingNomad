@@ -25,6 +25,6 @@ class GalleryBackController extends BackController
     $photosModel = new PhotosModel();
     $photo = $photosModel->getPhoto($_GET["id"]);
     $src = $photo['src'];
-    echo $src;
+    echo json_encode($src);
   }
 }
