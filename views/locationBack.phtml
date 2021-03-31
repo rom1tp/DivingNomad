@@ -1,0 +1,79 @@
+<main class="locationBack">
+  <h1><?= ($this->_modify) ? 'Modify' : 'Add' ?> location</h1>
+
+  <?php if (isset($_GET["errorMsg"])) : ?>
+  <h3><?= htmlspecialchars($_GET["errorMsg"]) ?></h3>
+  <?php endif; ?>
+  <?php if ($this->_modify) : ?>
+  <a href="addLocation" class="btn btn-outline-primary fs-1 shadow-none">Add Location</a>
+  <?php endif ?>
+  <form action="
+  <?php if ($this->_modify) : ?>
+  confirmLocation-id-<?= htmlspecialchars($post['id']) ?>
+  <?php else : ?>
+  uploadLocation
+  <?php endif ?>
+  " method="post" enctype="multipart/form-data" class="post-form col-6 mx-auto">
+    <legend><?= ($this->_modify) ? 'Modify' : 'Add' ?> a location</legend>
+
+    <label>Name</label>
+    <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
+      value="<?= htmlspecialchars($post['name']) ?>" <?php endif ?>>
+
+    <select class="location" name="location_id">
+      <option selected disabled hidden>Choose a location</option>
+      <?php foreach ($continents as $continent): ?>
+      <optgroup value="continent" label="<?=htmlspecialchars($continent['continent']) ?>">
+        <?php foreach ($countries as $country): ?>
+        <?php if ($country['continent_id'] == $continent['id']): ?>
+      <optgroup value="country" label="<?=htmlspecialchars($country['country']) ?>">
+        <?php foreach ($locations as $location): ?>
+        <?php if ($location['country_id'] == $country['id']): ?>
+        <option value="<?=htmlspecialchars($location['id']) ?>"
+          <?= ($this->_modify && $location['location'] == $photo['location']) ? 'selected' : '' ?>>-
+          <?=htmlspecialchars($location['location']) ?></option>
+        <?php endif ?>
+        <?php endforeach ?>
+        <?php endif ?>
+        <?php endforeach ?>
+      </optgroup>
+      </optgroup>
+      <?php endforeach ?>
+    </select>
+    <br>
+    <label>New location <i class="fas fa-map-marker-alt"></i></label>
+    <br>
+    <select id="continents" name="continent" class="shadow-none btn btn-secondary">
+      <option selected disabled hidden>Choose a continent</option>
+      <option value="new">New continent</option>
+      <?php foreach ($continents as $continent): ?>
+      <option data-continent="<?=htmlspecialchars($continent['continent']) ?>"
+        value="<?=htmlspecialchars($continent['id']) ?>">
+        <?=htmlspecialchars($continent['continent']) ?>
+      </option>
+      <?php endforeach ?>
+    </select>
+    <input id="newContinent" type="text" name="newContinent" placeholder="Continent name">
+    <br>
+    <select id="countries" name="country" class="shadow-none btn btn-secondary">
+      <option selected disabled hidden>Choose a country</option>
+      <option value="new">New country</option>
+      <?php foreach ($countries as $country): ?>
+      <option data-continent="<?=htmlspecialchars($country['continent']) ?>"
+        value="<?=htmlspecialchars($country['id']) ?>">
+        <?=htmlspecialchars($country['country']) ?>
+      </option>
+      <?php endforeach ?>
+    </select>
+    <input id="newCountry" type="text" name="newCountry" placeholder="Country name">
+    <br>
+    <input type="text" name="newLocation" placeholder="Location name">
+    <br>
+
+    <a href="deleteLocation-id-<?= htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
+    <br>
+    <button type="submit" name="submit"
+      class="btn btn-primary shadow-none"><?= ($this->_modify) ? 'Confirm' : 'Upload' ?></button>
+
+  </form>
+</main>

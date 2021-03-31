@@ -20,6 +20,7 @@
  * check form enctype
  * social oAuth
  * page redirections based on user
+ * page transitions
  * 
  */ // #
 
@@ -290,6 +291,33 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
     case 'confirmProfile':
       $controller = new AccountsBackController();
       $controller->confirmProfile();
+      break;
+      
+    // # LOCATIONS BACK
+    case 'locationsBack':
+      $controller = new LocationsBackController();
+      $controller->display();
+      break;
+
+    // # LOCATION BACK
+    case 'addLocation':
+      $controller = new LocationBackController();
+      $controller -> display();
+      break;
+
+    case 'uploadLocation':
+      $controller = new LocationBackController();
+      $controller->upload();
+      break;
+
+    case 'modifyLocation':
+      $controller = new LocationBackController();
+      $controller->display('modify');
+      break;
+
+    case 'confirmLocation':
+      $controller = new LocationBackController();
+      $controller->confirm();
       break;
       
     // # TEST

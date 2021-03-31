@@ -384,17 +384,17 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 }
 
 .home .plx-1 {
-  background-image: url("../img/IMG-604770d311b518.20675264.jpg");
+  background-image: url("https://picsum.photos/1600/900");
   min-height: 600px;
 }
 
 .home .plx-2 {
-  background-image: url("../img/IMG-6047845c15e4f5.35266445.jpg");
+  background-image: url("https://picsum.photos/1600/900");
   min-height: 600px;
 }
 
 .home .plx-3 {
-  background-image: url("../img/IMG-604770940727e4.96265034.jpeg");
+  background-image: url("https://picsum.photos/1600/900");
   min-height: 600px;
 }
 
@@ -942,50 +942,61 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   display: inline-block;
 }
 
-.photoBack #newContinent {
+.photoBack #newContinent,
+.locationBack #newContinent {
   display: none;
 }
 
-.photoBack #newContinent.active {
+.photoBack #newContinent.active,
+.locationBack #newContinent.active {
   display: inline;
 }
 
-.photoBack #countries {
+.photoBack #countries,
+.locationBack #countries {
   display: none;
 }
 
-.photoBack #countries.active {
+.photoBack #countries.active,
+.locationBack #countries.active {
   display: inline;
 }
 
-.photoBack #countries option:not([value='new']) {
+.photoBack #countries option:not([value='new']),
+.locationBack #countries option:not([value='new']) {
   display: none;
 }
 
-.photoBack #countries option.active {
+.photoBack #countries option.active,
+.locationBack #countries option.active {
   display: block;
 }
 
-.photoBack #newCountry {
+.photoBack #newCountry,
+.locationBack #newCountry {
   display: none;
 }
 
-.photoBack #newCountry.active {
+.photoBack #newCountry.active,
+.locationBack #newCountry.active {
   display: inline;
 }
 
-.photoBack .location option {
+.photoBack .location option,
+.locationBack .location option {
   background-color: #fff;
   color: #000;
 }
 
-.photoBack .location optgroup[value='continent'] {
+.photoBack .location optgroup[value='continent'],
+.locationBack .location optgroup[value='continent'] {
   background-color: black;
   color: #fff;
   text-transform: uppercase;
 }
 
-.photoBack .location optgroup[value='country'] {
+.photoBack .location optgroup[value='country'],
+.locationBack .location optgroup[value='country'] {
   background-color: rgba(0, 0, 0, 0.4);
   color: #ddd;
 }

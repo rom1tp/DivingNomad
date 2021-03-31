@@ -1,0 +1,32 @@
+<main class="locationsBack">
+  <h1>Locations</h1>
+  <a href="addLocation" class="btn btn-outline-primary fs-1 shadow-none">Add Location</a>
+  <div class="container">
+    <table class="table col-8">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Continent</th>
+          <th>Country</th>
+          <th>Location <i class="fas fa-sort-down"></i></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($locations as $location): ?>
+        <tr>
+          <td><?= htmlspecialchars($location['id']) ?></td>
+          <td><?= htmlspecialchars($location['continent']) ?></td>
+          <td><?= htmlspecialchars($location['country']) ?></td>
+          <td><?= htmlspecialchars($location['location']) ?></td>
+          <td class="actions">
+            <a href="modifyLocation-id-<?= htmlspecialchars($location['id']) ?>"><i
+                data-id="<?= htmlspecialchars($location['id']) ?>" class="far fa-edit"></i></a>
+            <a href="deleteLocation-id-<?=htmlspecialchars($location['id']) ?>"><i class="far fa-trash-alt"></i></a>
+          </td>
+        </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
+  </div>
+</main>

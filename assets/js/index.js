@@ -1,14 +1,16 @@
+import ImagePicker from './ImagePicker.js'
+
 window.addEventListener('DOMContentLoaded', () => {
 	const page = document.querySelector('main').className
 
 	if (page.endsWith('Back')) {
-		// hide inputs
 		$(`input[data-display="hidden"]`).each(function () {
 			$(this).addClass('hidden')
 		})
+		$('.confirmOverlay #close, #cancel, #confirm').click(() => {
+			$('.confirmOverlay').removeClass('visible')
+		})
 
-		// # CONFIRM OVERLAY
-		// open
 		$('a[href^="delete"]').on('click', function (event) {
 			event.preventDefault()
 			$('.confirmOverlay').addClass('visible')
@@ -18,69 +20,37 @@ window.addEventListener('DOMContentLoaded', () => {
 				window.location = $(this).attr('href')
 			})
 		})
-
-		// close
-		$('.confirmOverlay #close, #cancel, #confirm').click(() => {
-			$('.confirmOverlay').removeClass('visible')
-		})
-
-		// # VISIBILITY ICON
-		// uncheck
-		$('.fa-eye').click(function () {
+		// # items display toggle
+		function uncheckDisplay() {
 			let imgId = $(this).data('id')
 			$(this).removeClass('visible')
 			$(`.fa-eye-slash[data-id="${imgId}"]`).addClass('visible')
 			let checkbox = $(`input[value="show"][data-id="${imgId}"]`)[0]
 			$(checkbox).removeAttr('checked')
-		})
-
-		// check
-		$('.fa-eye-slash').click(function () {
+		}
+		function checkDisplay() {
 			let imgId = $(this).data('id')
 			$(`.fa-eye[data-id="${imgId}"]`).addClass('visible')
 			$(this).removeClass('visible')
 			let checkbox = $(`input[value="show"][data-id="${imgId}"]`)[0]
 			$(checkbox).attr('checked', '')
-		})
+		}
+		$('.fa-eye').click(uncheckDisplay)
+		$('.fa-eye-slash').click(checkDisplay)
 
-		// # IMG PICKER
-		// open
+		const imgPicker = new ImagePicker(
+			$('#imgPickerOverlay'),
+			$('#imgPickerContent figure')
+		)
+		console.log(imgPicker.overlay)
 		$(
 			'#imgPickerOpen1, #imgPickerOpen2, #imgPickerOpen3, #src1, #src2, #src3'
-		).click(function () {
-			$('#imgPickerContent figure').removeClass('active')
-			imgPickerId = $(this)[0].id.slice(-1)
-			$('#imgPickerOverlay').addClass('visible')
-		})
+		).click(imgPicker.openImgPicker)
 
-		// close
-		$('#imgPickerOverlay #cancel, #close').click(function () {
-			$('#imgPickerOverlay').removeClass('visible')
-		})
-
-		// select
-		$('#imgPickerContent figure').click(function () {
-			$('#imgPickerContent figure').removeClass('active')
-			$(this).addClass('active')
-		})
-
-		// confirm
-		function confirmImg() {
-			let chosenImgId = $('#imgPickerContent figure.active').data('id')
-			$('#imgPickerOverlay').removeClass('visible')
-			fetch(`getImgSrc-id-${chosenImgId}`)
-				.then((response) => {
-					return response.json()
-				})
-				.then((src) => {
-					document.getElementById(`src${imgPickerId}`).setAttribute('src', src)
-					document
-						.getElementById(`id${imgPickerId}`)
-						.setAttribute('value', chosenImgId)
-				})
-		}
-		$('#imgPickerContent figure').dblclick(confirmImg)
-		$('#imgPickerOverlay #confirm').click(confirmImg)
+		// $('#imgPickerOverlay #cancel, #close').click(closeImgPicker)
+		// $('#imgPickerContent figure').click(chooseImg)
+		// $('#imgPickerContent figure').dblclick(confirmImg)
+		// $('#imgPickerOverlay #confirm').click(confirmImg)
 	}
 
 	switch (page) {
@@ -229,8 +199,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'test':
-			const openPhotoPicker = document.getElementById('openPhotoPicker')
-			const closePhotoPicker = document.getElementById('closePhotoPicker')
 			break
 	}
 })
