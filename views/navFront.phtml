@@ -1,0 +1,57 @@
+<nav class="main-nav">
+
+  <?php if (isset($_SESSION["user"]) && $_SESSION["user"] == 'owner'): ?>
+  <a><a href="travels"><i class="fas fa-users"></i></a>
+    Travels
+    <a href="travelsBack"><i class="fas fa-user-edit"></i></a></a>
+  <a><a href="projects"><i class="fas fa-users"></i></a>
+    Projects
+    <a href="projectsBack"><i class="fas fa-user-edit"></i></a></a>
+  <a><a href="gallery"><i class="fas fa-users"></i></a>
+    Gallery
+    <a href="galleryBack"><i class="fas fa-user-edit"></i></a></a>
+  <a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a>
+  <a><a href="locations"><i class="fas fa-users"></i></a>
+    Locations
+    <a href="locationsBack"><i class="fas fa-user-edit"></i></a></a>
+  <a href="dashboard">Dashboard</a>
+  <a href="accountBack">My Account</a>
+  <a href="test">Test</a>
+
+  <?php else: ?>
+  <a href="about">About Me</a>
+  <a class="travels" href="travels">Travels
+    <div class="travels-dropdown">
+      <?php foreach ($this->_continents as $continent): ?>
+      <div class="continent">
+        <div class="content">
+          <h3><?= htmlspecialchars($continent['continent']) ?></h3>
+          <div class="countries">
+            <?php foreach ($this->_countries as $country): ?>
+            <?php if ($country['continent'] == $continent['continent']): ?>
+            <p><?= htmlspecialchars($country['country']) ?></p>
+            <?php endif ?>
+            <?php endforeach ?>
+          </div>
+        </div>
+      </div>
+      <?php endforeach ?>
+    </div>
+  </a>
+
+  <a href="projects">Projects</a>
+  <a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a>
+  <!-- <a href="contactMe">Contact Me</a> -->
+  <a href="gallery">Gallery</a>
+  <a href="accounts">My Account</a>
+  <?php endif; ?>
+  <a href="logout">Logout</a>
+
+  <nav class="social-nav">
+    <a href="https://www.facebook.com/romain.tangpavillard" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/rom1tp" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:romaintangpav@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+    <a href="https://github.com/rom1tp" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/romain-tang" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  </nav>
+</nav>

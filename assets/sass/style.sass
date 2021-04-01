@@ -13,6 +13,26 @@ $fontSizes: ("h1": 6rem, "h2": 3.5rem, "h3": 3rem, "text": 2rem, "small": 1.5rem
 @mixin fs($tag)
 	$size: map-get($fontSizes, $tag)
 	font-size: $size
+
+@mixin top-bot-border()
+	&::before,
+	&::after
+		content: ''
+		position: absolute
+		width: 100%
+		height: 2px
+		background: #fff
+		transition: transform ease-in-out 0.35s
+		transform: scaleX(0)
+	
+	&::before
+		top: 0
+		left: 0
+	
+	&::after
+		bottom: 0
+		right: 0
+
  
 //*   //////////////  */
 //!  ////GLOBAL////  */
@@ -46,8 +66,13 @@ html
 	a
 		text-decoration: none
 		color: inherit
+	
+	ul
+		list-style-type: none
 
 	body
+		background-color: #555
+		color: #fff
 		height: 100%
 		font-family: $secondary-font
 		line-height: 2
@@ -195,14 +220,63 @@ header
 			width: 3rem
 
 	.main-nav
+		position: relative
+		z-index: 100
 		a
 			padding: 1.5rem
 			vertical-align: middle
+			// z-index: 5
 
 			img
 				width: 15rem
-
 	
+		.travels
+			.travels-dropdown
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				height: auto
+				z-index: -1
+				display: flex
+				flex-direction: column
+				padding-top: 17rem
+				// justify-content: center
+				align-items: center
+				background-color: #2D2D33
+				color: #fff
+				font-family: $secondary-font
+				
+				transform: scaleY(0)
+				transform-origin: top
+				transition: transform 250ms ease-in
+
+				&.visible
+					transform: scaleY(1)
+
+				.continent
+					// border: 1px solid #fff
+					height: 5rem
+					overflow: hidden
+					.content
+						transition: all 500ms ease-in-out
+
+						.countries
+							display: inline-flex
+							@include fs(small)
+
+							p
+								margin: 1rem 2rem
+
+					&:hover .content
+						transform: translateY(-50%)
+					
+
+
+
+			
+			
+
 //?   //////////////
 //!  ////MODALS////
 //* //////////////
@@ -684,29 +758,7 @@ footer
 				padding: 2rem
 				justify-content: space-between
 
-				&::before
-					content: ''
-					position: absolute
-					top: 0
-					left: 0
-					bottom: 0
-					width: 100%
-					height: 2px
-					background: #fff
-					transition: transform ease-in-out 0.35s
-					transform: scaleX(0.1)
-				
-				&::after
-					content: ''
-					position: absolute
-					bottom: 0
-					left: 0
-					bottom: 0
-					width: 100%
-					height: 2px
-					background: #fff
-					transition: transform ease-in-out 0.35s
-					transform: scaleX(0.1)
+				@include top-bot-border()
 				
 				&:hover::before,
 				&:hover::after

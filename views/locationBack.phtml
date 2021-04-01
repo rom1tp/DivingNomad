@@ -9,7 +9,7 @@
   <?php endif ?>
   <form action="
   <?php if ($this->_modify) : ?>
-  confirmLocation-id-<?= htmlspecialchars($post['id']) ?>
+  confirmLocation-id-<?= htmlspecialchars($location['id']) ?>
   <?php else : ?>
   uploadLocation
   <?php endif ?>
@@ -18,31 +18,7 @@
 
     <label>Name</label>
     <input type="text" name="name" class="form-control shadow-none" <?php if ($this->_modify) : ?>
-      value="<?= htmlspecialchars($post['name']) ?>" <?php endif ?>>
-
-    <select class="location" name="location_id">
-      <option selected disabled hidden>Choose a location</option>
-      <?php foreach ($continents as $continent): ?>
-      <optgroup value="continent" label="<?=htmlspecialchars($continent['continent']) ?>">
-        <?php foreach ($countries as $country): ?>
-        <?php if ($country['continent_id'] == $continent['id']): ?>
-      <optgroup value="country" label="<?=htmlspecialchars($country['country']) ?>">
-        <?php foreach ($locations as $location): ?>
-        <?php if ($location['country_id'] == $country['id']): ?>
-        <option value="<?=htmlspecialchars($location['id']) ?>"
-          <?= ($this->_modify && $location['location'] == $photo['location']) ? 'selected' : '' ?>>-
-          <?=htmlspecialchars($location['location']) ?></option>
-        <?php endif ?>
-        <?php endforeach ?>
-        <?php endif ?>
-        <?php endforeach ?>
-      </optgroup>
-      </optgroup>
-      <?php endforeach ?>
-    </select>
-    <br>
-    <label>New location <i class="fas fa-map-marker-alt"></i></label>
-    <br>
+      value="<?= htmlspecialchars($location['location']) ?>" <?php endif ?>>
     <select id="continents" name="continent" class="shadow-none btn btn-secondary">
       <option selected disabled hidden>Choose a continent</option>
       <option value="new">New continent</option>
@@ -67,10 +43,8 @@
     </select>
     <input id="newCountry" type="text" name="newCountry" placeholder="Country name">
     <br>
-    <input type="text" name="newLocation" placeholder="Location name">
-    <br>
 
-    <a href="deleteLocation-id-<?= htmlspecialchars($post['id']) ?>"><i class="far fa-trash-alt"></i></a>
+    <a href="deleteLocation-id-<?= htmlspecialchars($location['id']) ?>"><i class="far fa-trash-alt"></i></a>
     <br>
     <button type="submit" name="submit"
       class="btn btn-primary shadow-none"><?= ($this->_modify) ? 'Confirm' : 'Upload' ?></button>

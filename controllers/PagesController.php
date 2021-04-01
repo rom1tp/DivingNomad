@@ -27,6 +27,15 @@ class PagesController
   $this->_locationsModel = new LocationsModel();
   $this->_countriesModel = new CountriesModel();
   $this->_continentsModel = new ContinentsModel();
-  $this->_mainNav = 'mainNav.phtml';
+  $this->_users = $this->_usersModel->getAllUsers();
+  $this->_profiles = $this->_profilesModel->getAllProfiles();
+  $this->_posts = $this->_postsModel->getAllPosts();
+  $this->_photos = $this->_photosModel->getAllPhotos();
+  $this->_projects = $this->_projectsModel->getAllProjects();
+  $this->_locations = $this->_locationsModel->getAllLocations();
+  $this->_countries = $this->_countriesModel->getAllCountries();
+  $this->_continents = $this->_continentsModel->getAllContinents();
+  // $this->_mainNav = 'mainNav.phtml';
+  $this->_mainNav = 'navFront.phtml';
  }
 }

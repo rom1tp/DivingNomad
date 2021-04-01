@@ -81,6 +81,24 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 		$('#imgPickerContent figure').dblclick(confirmImg)
 		$('#imgPickerOverlay #confirm').click(confirmImg)
+	} else {
+		$('.main-nav .travels').on('mouseenter', () => {
+			$('.main-nav .travels .travels-dropdown').addClass('visible')
+		})
+
+		$('.main-nav .travels .travels-dropdown').on('mouseleave', () => {
+			$('.main-nav .travels .travels-dropdown').removeClass('visible')
+		})
+
+		// $('.travels-dropdown .countries').hide()
+		// $('.travels-dropdown .continent').on('mouseenter', function () {
+		// 	content = $('.content', this)[0]
+		// 	$(content).addClass('hovered')
+		// })
+
+		// $('.travels-dropdown .continent').on('mouseleave', function () {
+		// 	$(content).removeClass('hovered')
+		// })
 	}
 
 	switch (page) {
@@ -123,6 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'photoBack':
+		case 'locationBack':
 			const locationsSelect = document.querySelector('.location')
 			const continentsSelect = document.getElementById('continents')
 			const countriesSelect = document.getElementById('countries')
@@ -223,9 +242,6 @@ window.addEventListener('DOMContentLoaded', () => {
 				let checkbox = $(`input[value="show"]`)[0]
 				$(checkbox).attr('checked', '')
 			})
-			break
-
-		case 'travelsBack':
 			break
 
 		case 'test':

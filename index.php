@@ -15,6 +15,7 @@
  *- back and front extend pageController
  *- thmg thms => this->Model->get/set
  * like comment img and posts
+ * change locations select js document selector to jquery
  * display none all hidden inputs on page load with hidden class
  * add image as url or upload
  * check form enctype
@@ -111,7 +112,7 @@ spl_autoload_register(function ($class) {
 });
 
 if (!isset($_GET['page']) || $_GET['page'] == 'home') {
-  $controller = new TravelsController();
+  $controller = new HomeController();
   $controller->display();
 } else {
   switch ($_GET['page']) {
