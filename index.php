@@ -120,6 +120,12 @@ if (!isset($_GET['page']) || $_GET['page'] == 'home') {
       // #   ////////////////
       // *  ////FRONTEND////
       // ! ////////////////
+      // # ABOUT
+    case 'about':
+      $controller = new AboutController();
+      $controller->display();
+      break;
+
       // # ACCOUNTS
     case 'accounts':
       $controller = new AccountsController();

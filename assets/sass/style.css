@@ -21,7 +21,6 @@ html li {
 }
 
 html body {
-  background-color: #555;
   color: #fff;
   height: 100%;
   font-family: "Raleway", sans-serif;
@@ -29,6 +28,11 @@ html body {
   font-size: 2rem;
   text-align: center;
   margin: 0 auto;
+}
+
+main {
+  overflow-x: hidden;
+  background-color: #555;
 }
 
 main .readMore {
@@ -164,6 +168,13 @@ h1 {
   font-size: 6rem;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 header .language-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -172,56 +183,13 @@ header .language-nav {
       justify-content: space-around;
 }
 
-header .language-nav::after {
-  content: 'x-small';
-  background: red;
-  padding: 1rem 1.5rem;
-  color: #fff;
-}
-
-@media screen and (min-width: 576px) {
-  header .language-nav::after {
-    content: 'small';
-    background: blue;
-    padding: 1rem 1.5rem;
-    color: #fff;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  header .language-nav::after {
-    content: 'medium';
-    background: brown;
-    padding: 1rem 1.5rem;
-    color: #fff;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  header .language-nav::after {
-    content: 'large';
-    background: green;
-    padding: 1rem 1.5rem;
-    color: #fff;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  header .language-nav::after {
-    content: 'x-large';
-    background: purple;
-    padding: 1rem 1.5rem;
-    color: #fff;
-  }
-}
-
 header .language-nav img {
   width: 3rem;
 }
 
 header .main-nav {
   position: relative;
-  z-index: 100;
+  z-index: 9999;
 }
 
 header .main-nav > li {
@@ -338,6 +306,49 @@ header .main-nav .travels .travels-dropdown .continent .content .countries a {
 header .main-nav .travels .travels-dropdown .continent:hover .content {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+
+header .main-nav::after {
+  content: 'x-small';
+  background: red;
+  padding: 1rem 1.5rem;
+  color: #fff;
+}
+
+@media screen and (min-width: 576px) {
+  header .main-nav::after {
+    content: 'small';
+    background: blue;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header .main-nav::after {
+    content: 'medium';
+    background: brown;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  header .main-nav::after {
+    content: 'large';
+    background: green;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  header .main-nav::after {
+    content: 'x-large';
+    background: purple;
+    padding: 1rem 1.5rem;
+    color: #fff;
+  }
 }
 
 footer .confirmOverlay {
@@ -515,6 +526,10 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 .home .plx-3 {
   background-image: url("https://picsum.photos/1600/900");
   min-height: 600px;
+}
+
+.about img {
+  width: 20%;
 }
 
 .accounts form {
@@ -729,7 +744,7 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 
 .post #container,
 .project #container {
-  background-color: #fff;
+  background-color: inherit;
   position: relative;
   z-index: 5;
 }
@@ -767,8 +782,20 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 .post #container section article .img-right,
 .project #container section article .img-right {
   float: right;
-  margin: 1rem 2rem 2rem 4rem;
+  margin: 1rem -2rem 2rem 4rem;
   width: 45%;
+  -webkit-transform: translateX(150%);
+          transform: translateX(150%);
+  -webkit-transition: -webkit-transform 1000ms ease-in-out;
+  transition: -webkit-transform 1000ms ease-in-out;
+  transition: transform 1000ms ease-in-out;
+  transition: transform 1000ms ease-in-out, -webkit-transform 1000ms ease-in-out;
+}
+
+.post #container section article .img-right.active,
+.project #container section article .img-right.active {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .post #container section article .img-right img,

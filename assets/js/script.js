@@ -82,12 +82,11 @@ window.addEventListener('DOMContentLoaded', () => {
 		$('#imgPickerContent figure').dblclick(confirmImg)
 		$('#imgPickerOverlay #confirm').click(confirmImg)
 	} else {
+		// # travels dropdown
 		$('.main-nav .travels').on('mouseenter', () => {
 			$('.main-nav .travels .travels-dropdown').addClass('visible')
 			$('.main-nav .travels i').css('transform', 'rotate(0deg)')
-			console.log(this)
 		})
-
 		$('.main-nav .travels .travels-dropdown').on('mouseleave', () => {
 			$('.main-nav .travels .travels-dropdown').removeClass('visible')
 			$('.main-nav .travels i').css('transform', 'rotate(180deg)')
@@ -194,6 +193,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			break
 
 		case 'post':
+			// # parallax imgs
 			document.querySelector(
 				'.post .plx-1'
 			).style.backgroundImage = `url('${document
@@ -209,6 +209,27 @@ window.addEventListener('DOMContentLoaded', () => {
 			).style.backgroundImage = `url('${document
 				.querySelector('.post .plx-3 img')
 				.getAttribute('data-src')}')`
+
+			// # intersection observer
+			const imgRightAnchor = document.querySelector('#img-right')
+			const imgRight = document.querySelector('.img-right')
+			const options = {
+				root: null,
+				threshold: 0,
+				rootMargin: '-100px'
+			}
+			const observer = new IntersectionObserver(function (entries, observer) {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) {
+						return
+					} else {
+						imgRight.classList.add('active')
+						observer.unobserve(imgRightAnchor)
+					}
+				})
+			}, options)
+
+			observer.observe(imgRightAnchor)
 			break
 
 		case 'project':

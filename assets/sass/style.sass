@@ -72,7 +72,7 @@ html
 		list-style-type: none
 
 	body
-		background-color: #555
+		// background-color: #555
 		color: #fff
 		height: 100%
 		font-family: $secondary-font
@@ -83,6 +83,9 @@ html
 		margin: 0 auto
 
 main
+	overflow-x: hidden
+	background-color: #555
+	// margin-top: 8%
 	.readMore
 		position: relative
 		left: 5%
@@ -182,47 +185,21 @@ h1
 //!  ////HEADER////
 //? //////////////
 header
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 1000
+	// background-color: inherit
 	.language-nav
 		display: flex
 		justify-content: space-around
-
-		// FIXME
-		&::after
-			content: 'x-small'
-			background: red
-			padding: 1rem 1.5rem
-			color: #fff
-
-			@include mq(small)
-				content: 'small'
-				background: blue
-				padding: 1rem 1.5rem
-				color: #fff
-
-			@include mq(medium)
-				content: 'medium'
-				background: brown
-				padding: 1rem 1.5rem
-				color: #fff
-
-			@include mq(large)
-				content: 'large'
-				background: green
-				padding: 1rem 1.5rem
-				color: #fff
-
-			@include mq(x-large)
-				content: 'x-large'
-				background: purple
-				padding: 1rem 1.5rem
-				color: #fff
 
 		img
 			width: 3rem
 
 	.main-nav
 		position: relative
-		z-index: 100
+		z-index: 9999
 
 		> li
 			display: inline-flex
@@ -300,12 +277,38 @@ header
 
 					&:hover .content
 						transform: translateY(-50%)
+
+		// FIXME
+		&::after
+			content: 'x-small'
+			background: red
+			padding: 1rem 1.5rem
+			color: #fff
+
+			@include mq(small)
+				content: 'small'
+				background: blue
+				padding: 1rem 1.5rem
+				color: #fff
+
+			@include mq(medium)
+				content: 'medium'
+				background: brown
+				padding: 1rem 1.5rem
+				color: #fff
+
+			@include mq(large)
+				content: 'large'
+				background: green
+				padding: 1rem 1.5rem
+				color: #fff
+
+			@include mq(x-large)
+				content: 'x-large'
+				background: purple
+				padding: 1rem 1.5rem
+				color: #fff
 					
-
-
-
-			
-			
 
 //?   //////////////
 //!  ////MODALS////
@@ -442,6 +445,12 @@ footer
 		background-image: $parallax-3
 		min-height: $plx3-width
 
+//?   /////////////
+//!  ////ABOUT////
+//* /////////////
+.about
+	img
+		width: 20%
 
 //*   ////////////////
 //!  ////ACCOUNTS////
@@ -600,7 +609,7 @@ footer
 		min-height: 70vh
 
 	#container
-		background-color: #fff
+		background-color: inherit
 		position: relative
 		z-index: 5
 
@@ -628,8 +637,13 @@ footer
 				
 				.img-right
 					float: right
-					margin: 1rem 2rem 2rem 4rem
+					margin: 1rem -2rem 2rem 4rem
 					width: 45%
+					transform: translateX(150%)
+					transition: transform 1000ms ease-in-out
+
+					&.active
+						transform: translateX(0%)
 
 					img
 						width: 100%
