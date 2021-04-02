@@ -132,7 +132,40 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			break
 
-		case 'photoBack':
+		case 'travels':
+			// # intersection observer
+			const sliders = document.querySelectorAll('.slide-in')
+			const faders = document.querySelectorAll('.fade-in')
+			const fromLeft = document.querySelectorAll('.from-left')
+			const fromRight = document.querySelectorAll('.from-right')
+			const appearOptions = {
+				root: null,
+				threshold: 0,
+				rootMargin: '-150px'
+			}
+			const appearOnScroll = new IntersectionObserver(function (
+				entries,
+				appearOnScroll
+			) {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) {
+						return
+					} else {
+						console.log(entry.target)
+						entry.target.classList.add('appear')
+						appearOnScroll.unobserve(entry.target)
+					}
+				})
+			},
+			appearOptions)
+			faders.forEach((fader) => {
+				appearOnScroll.observe(fader)
+			})
+			sliders.forEach((slider) => {
+				appearOnScroll.observe(slider)
+			})
+			break
+
 		case 'locationBack':
 			const locationsSelect = document.querySelector('.location')
 			const continentsSelect = document.getElementById('continents')

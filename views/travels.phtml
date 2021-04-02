@@ -1,13 +1,22 @@
 <main class="travels">
-  <h1>Travels</h1>
-  <div class="container">
-    <?php foreach ($posts as $post): ?>
-    <?php if ($post['display'] == 'show'): ?>
+  <div class="plx-1">
+    <div class="banner">
+      <h1>Travels</h1>
+      <a href="#container"><i class="fas fa-chevron-right"></i></a>
+    </div>
+  </div>
+
+  <div id="container" class="container">
+    <?php foreach ($posts as $index => $post) : ?>
+    <?php if ($post['display'] == 'show') : ?>
     <article>
-      <a href="post-id-<?= htmlspecialchars($post['id']) ?>">
+      <a href="post-id-<?= htmlspecialchars($post['id']) ?>"
+        class="fade-in<?php if ($index % 9 == 0) : ?> slide-in from-left<?php elseif (($index - 1) % 9 == 0 || ($index - 2) % 9 == 0) : ?> slide-in from-bottom<?php endif ?>">
         <img src="<?= htmlspecialchars($post['src1']) ?>">
       </a>
-      <div class="text">
+      <div
+        class="text fade-in
+      <?php if ($index % 9 == 0) : ?>slide-in from-right<?php elseif (($index - 1) % 9 == 0 || ($index - 2) % 9 == 0) : ?>slide-in from-bottom<?php endif ?>">
         <h2><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['name']) ?></a></h2>
         <p><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['title1']) ?></a></p>
         <p class="readMore"><a href="post-id-<?= htmlspecialchars($post['id']) ?>"><i

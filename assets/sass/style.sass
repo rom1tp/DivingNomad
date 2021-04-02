@@ -85,7 +85,6 @@ html
 main
 	overflow-x: hidden
 	background-color: #555
-	// margin-top: 8%
 	.readMore
 		position: relative
 		left: 5%
@@ -485,7 +484,42 @@ footer
 //!  ////TRAVELS////
 //* ///////////////
 .travels
+	.banner
+			max-width: 40%
+			position: fixed
+			top: 65%
+			left: 50%
+			transform: translate(-50%, -50%)
+			z-index: 1
+			color: #fff
+
+			h1
+				text-transform: uppercase
+				text-shadow: 0 1px 10px rgba(black, 0.2)
+				margin-bottom: 5rem
+
+			a
+				color: inherit
+				font-size: 4rem
+				cursor: pointer
+
+				i
+					transform: rotate(90deg)
+
+	.plx-1
+		position: relative
+		background-image: url('https://picsum.photos/1600/900')
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+		background-attachment: fixed
+		z-index: 5
+		min-height: 100vh
+
 	.container 
+		background-color: inherit
+		position: relative
+		z-index: 5
 		display: flex
 		flex-wrap: wrap
 		justify-content: space-between
@@ -500,18 +534,16 @@ footer
 			align-items: center
 			margin: 3rem 0
 
-			> a
-				box-shadow: 10px 10px 10px rgba(black, 0.1)
-				transition: all ease-in-out 0.25s
-				&:hover
-					box-shadow: 10px 10px 50px rgba(black, 0.3)
-					transform: scale(1.04)
-
 			img
 				display: block
 				width: 100%
 				height: auto
 				aspect-ratio: 18/9
+				box-shadow: 10px 10px 10px rgba(black, 0.1)
+				transition: ease-in-out 0.25s
+				&:hover
+					box-shadow: 10px 10px 50px rgba(black, 0.3)
+					transform: scale(1.04)
 
 			.text
 				text-align: left
@@ -556,6 +588,29 @@ footer
 		article:nth-of-type(9n-6)
 			width: 47%
 
+.fade-in
+	opacity: 0
+	transition: transform 1000ms ease-in-out, opacity 500ms ease-in
+	
+	&.appear
+		opacity: 1
+
+.slide-in
+
+	&.appear
+		opacity: 1
+		transform: translateX(0)
+		transform: translate(0)
+
+.from-left
+	transform: translateX(-90%)
+
+.from-right
+	transform: translateX(90%)
+
+.from-bottom
+	transform: translateY(90%)
+	
 //?   ////////////
 //!  ////POST////
 //* ////////////

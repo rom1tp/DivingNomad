@@ -416,7 +416,42 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   border-bottom-right-radius: 1em;
 }
 
+.travels .banner {
+  max-width: 40%;
+  position: fixed;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #fff;
+}
+.travels .banner h1 {
+  text-transform: uppercase;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5rem;
+}
+.travels .banner a {
+  color: inherit;
+  font-size: 4rem;
+  cursor: pointer;
+}
+.travels .banner a i {
+  transform: rotate(90deg);
+}
+.travels .plx-1 {
+  position: relative;
+  background-image: url("https://picsum.photos/1600/900");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 5;
+  min-height: 100vh;
+}
 .travels .container {
+  background-color: inherit;
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -430,19 +465,17 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   align-items: center;
   margin: 3rem 0;
 }
-.travels .container article > a {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-  transition: all ease-in-out 0.25s;
-}
-.travels .container article > a:hover {
-  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
-  transform: scale(1.04);
-}
 .travels .container article img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 18/9;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: ease-in-out 0.25s;
+}
+.travels .container article img:hover {
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.3);
+  transform: scale(1.04);
 }
 .travels .container article .text {
   text-align: left;
@@ -486,6 +519,32 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 .travels .container article:nth-of-type(9n-7),
 .travels .container article:nth-of-type(9n-6) {
   width: 47%;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: transform 1000ms ease-in-out, opacity 500ms ease-in;
+}
+.fade-in.appear {
+  opacity: 1;
+}
+
+.slide-in.appear {
+  opacity: 1;
+  transform: translateX(0);
+  transform: translate(0);
+}
+
+.from-left {
+  transform: translateX(-90%);
+}
+
+.from-right {
+  transform: translateX(90%);
+}
+
+.from-bottom {
+  transform: translateY(90%);
 }
 
 .post .banner,
