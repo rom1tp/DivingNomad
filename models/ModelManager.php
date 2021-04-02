@@ -7,12 +7,12 @@ class ModelManager
  public function __construct()
  {
    // * PRODUCTION BLOG
-  //  $host = 'localhost';
-  //  $db = 'blog';
-  //  $user = 'root';
-  //  $pwd = '';
-  //  $charset = 'utf8';
-  //  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+   $host = 'localhost';
+   $db = 'blog';
+   $user = 'root';
+   $pwd = '';
+   $charset = 'utf8';
+   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
    
    // * IDE BLOG
   //  $host = 'localhost';
@@ -23,12 +23,12 @@ class ModelManager
   //  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
   // * DEPLOYMENT BLOG
-  $host = 'freedb.tech';
-  $db = 'freedbtech_divingnomad';
-  $user = 'freedbtech_Aarkans';
-  $pwd = 'DivingNomad17';
-  $charset = 'utf8';
-  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+  // $host = 'freedb.tech';
+  // $db = 'freedbtech_divingnomad';
+  // $user = 'freedbtech_Aarkans';
+  // $pwd = 'DivingNomad17';
+  // $charset = 'utf8';
+  // $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
   
   try
   {
