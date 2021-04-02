@@ -67,7 +67,8 @@ html
 		text-decoration: none
 		color: inherit
 	
-	ul
+	ul,
+	li
 		list-style-type: none
 
 	body
@@ -222,15 +223,43 @@ header
 	.main-nav
 		position: relative
 		z-index: 100
-		a
+
+		> li
+			display: inline-flex
 			padding: 1.5rem
 			vertical-align: middle
-			// z-index: 5
+			cursor: pointer
+
+			> :first-child
+				position: relative
+
+				&::after
+					content: ""
+					position: absolute
+					bottom: 0
+					right: 0
+					width: 100%
+					height: 2px
+					background: currentColor
+					transform: scaleX(0)
+					transform-origin: right
+					transition: transform 0.3s
+
+				&:hover::after
+					transform: scaleX(1)
+					transform-origin: left
 
 			img
 				width: 15rem
 	
 		.travels
+			p
+				i
+					@include fs(small)
+					padding: .3rem .5rem
+					transform: rotate(180deg)
+					transition: transform 250ms ease-in
+				
 			.travels-dropdown
 				position: absolute
 				top: 0
@@ -240,7 +269,8 @@ header
 				z-index: -1
 				display: flex
 				flex-direction: column
-				padding-top: 17rem
+				padding-top: 13rem
+				padding-bottom: 2rem
 				// justify-content: center
 				align-items: center
 				background-color: #2D2D33
@@ -265,7 +295,7 @@ header
 							display: inline-flex
 							@include fs(small)
 
-							p
+							a
 								margin: 1rem 2rem
 
 					&:hover .content

@@ -19,8 +19,14 @@
   <a href="test">Test</a>
 
   <?php else: ?>
-  <a href="about">About Me</a>
-  <a class="travels" href="travels">Travels
+  <li>
+    <a href="about">About Me</a>
+  </li>
+  <li class="travels">
+    <p>
+      <a href="travels">Travels</a>
+      <i class="fas fa-angle-down"></i>
+    </p>
     <div class="travels-dropdown">
       <?php foreach ($this->_continents as $continent): ?>
       <div class="continent">
@@ -29,7 +35,7 @@
           <div class="countries">
             <?php foreach ($this->_countries as $country): ?>
             <?php if ($country['continent'] == $continent['continent']): ?>
-            <p><?= htmlspecialchars($country['country']) ?></p>
+            <a href="country"><?= htmlspecialchars($country['country']) ?></a>
             <?php endif ?>
             <?php endforeach ?>
           </div>
@@ -37,21 +43,30 @@
       </div>
       <?php endforeach ?>
     </div>
-  </a>
+  </li>
 
-  <a href="projects">Projects</a>
-  <a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a>
-  <!-- <a href="contactMe">Contact Me</a> -->
-  <a href="gallery">Gallery</a>
-  <a href="accounts">My Account</a>
+  <li>
+    <a href="projects">Projects</a>
+  </li>
+  <li><a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a></li>
+  <!-- <li href="contactMe">Contact Me</li> -->
+  <li>
+    <a href="gallery">Gallery</a>
+  </li>
+  <li>
+    <a href="accounts">My Account</a>
+  </li>
   <?php endif; ?>
-  <a href="logout">Logout</a>
+  <li>
+    <a href="logout">Logout</a>
+  </li>
 
-  <nav class="social-nav">
-    <a href="https://www.facebook.com/romain.tangpavillard" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/rom1tp" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="mailto:romaintangpav@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
-    <a href="https://github.com/rom1tp" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/romain-tang" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-  </nav>
+  <!-- <nav class="social-nav">
+    <li><a href="https://www.facebook.com/romain.tangpavillard" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </li>
+    <li><a href="https://www.instagram.com/rom1tp" target="_blank"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="mailto:romaintangpav@gmail.com" target="_blank"><i class="far fa-envelope"></i></a></li>
+    <li><a href="https://github.com/rom1tp" target="_blank"><i class="fab fa-github"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/romain-tang" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+  </nav> -->
 </nav>

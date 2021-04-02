@@ -12,7 +12,8 @@ html a {
   text-decoration: none;
   color: inherit;
 }
-html ul {
+html ul,
+html li {
   list-style-type: none;
 }
 html body {
@@ -174,12 +175,39 @@ header .main-nav {
   position: relative;
   z-index: 100;
 }
-header .main-nav a {
+header .main-nav > li {
+  display: inline-flex;
   padding: 1.5rem;
   vertical-align: middle;
+  cursor: pointer;
 }
-header .main-nav a img {
+header .main-nav > li > :first-child {
+  position: relative;
+}
+header .main-nav > li > :first-child::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+header .main-nav > li > :first-child:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+header .main-nav > li img {
   width: 15rem;
+}
+header .main-nav .travels p i {
+  font-size: 1.5rem;
+  padding: 0.3rem 0.5rem;
+  transform: rotate(180deg);
+  transition: transform 250ms ease-in;
 }
 header .main-nav .travels .travels-dropdown {
   position: absolute;
@@ -190,7 +218,8 @@ header .main-nav .travels .travels-dropdown {
   z-index: -1;
   display: flex;
   flex-direction: column;
-  padding-top: 17rem;
+  padding-top: 13rem;
+  padding-bottom: 2rem;
   align-items: center;
   background-color: #2D2D33;
   color: #fff;
@@ -213,7 +242,7 @@ header .main-nav .travels .travels-dropdown .continent .content .countries {
   display: inline-flex;
   font-size: 1.5rem;
 }
-header .main-nav .travels .travels-dropdown .continent .content .countries p {
+header .main-nav .travels .travels-dropdown .continent .content .countries a {
   margin: 1rem 2rem;
 }
 header .main-nav .travels .travels-dropdown .continent:hover .content {

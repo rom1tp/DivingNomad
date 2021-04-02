@@ -84,21 +84,14 @@ window.addEventListener('DOMContentLoaded', () => {
 	} else {
 		$('.main-nav .travels').on('mouseenter', () => {
 			$('.main-nav .travels .travels-dropdown').addClass('visible')
+			$('.main-nav .travels i').css('transform', 'rotate(0deg)')
+			console.log(this)
 		})
 
 		$('.main-nav .travels .travels-dropdown').on('mouseleave', () => {
 			$('.main-nav .travels .travels-dropdown').removeClass('visible')
+			$('.main-nav .travels i').css('transform', 'rotate(180deg)')
 		})
-
-		// $('.travels-dropdown .countries').hide()
-		// $('.travels-dropdown .continent').on('mouseenter', function () {
-		// 	content = $('.content', this)[0]
-		// 	$(content).addClass('hovered')
-		// })
-
-		// $('.travels-dropdown .continent').on('mouseleave', function () {
-		// 	$(content).removeClass('hovered')
-		// })
 	}
 
 	switch (page) {
