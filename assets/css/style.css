@@ -531,7 +531,6 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 
 .slide-in.appear {
   opacity: 1;
-  transform: translateX(0);
   transform: translate(0);
 }
 
