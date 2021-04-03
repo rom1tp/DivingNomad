@@ -35,7 +35,5 @@ class PagesController
   $this->_locations = $this->_locationsModel->getAllLocations();
   $this->_countries = $this->_countriesModel->getAllCountries();
   $this->_continents = $this->_continentsModel->getAllContinents();
-  // $this->_mainNav = 'mainNav.phtml';
-  $this->_mainNav = 'navFront.phtml';
  }
 }

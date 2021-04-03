@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
-	const page = document.querySelector('main').className
+	const pageClasses = document.querySelector('main').className
+	page = pageClasses.split(' ')[0]
 
 	if (page.endsWith('Back')) {
 		// hide inputs
@@ -83,13 +84,13 @@ window.addEventListener('DOMContentLoaded', () => {
 		$('#imgPickerOverlay #confirm').click(confirmImg)
 	} else {
 		// # travels dropdown
-		$('.main-nav .travels').on('mouseenter', () => {
-			$('.main-nav .travels .travels-dropdown').addClass('visible')
-			$('.main-nav .travels i').css('transform', 'rotate(0deg)')
+		$('.nav-front .travels').on('mouseenter', () => {
+			$('.nav-front .travels .travels-dropdown').addClass('visible')
+			$('.nav-front .travels i').css('transform', 'rotate(0deg)')
 		})
-		$('.main-nav .travels .travels-dropdown').on('mouseleave', () => {
-			$('.main-nav .travels .travels-dropdown').removeClass('visible')
-			$('.main-nav .travels i').css('transform', 'rotate(180deg)')
+		$('.nav-front .travels .travels-dropdown').on('mouseleave', () => {
+			$('.nav-front .travels .travels-dropdown').removeClass('visible')
+			$('.nav-front .travels i').css('transform', 'rotate(180deg)')
 		})
 	}
 

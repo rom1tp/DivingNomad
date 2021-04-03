@@ -2,11 +2,13 @@
 class BackController extends PagesController
 {
   protected $_layout;
+  protected $_navBack;
   protected $_modify;
 
   public function __construct()
   {
     parent::__construct();
+    $this->_navBack = 'navBack.phtml';
     $this->_layout = 'views/layoutBack.phtml';
   }
 

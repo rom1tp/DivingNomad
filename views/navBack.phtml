@@ -1,6 +1,12 @@
-<nav class="nav nav-front">
+<nav class="nav nav-back">
 
-  <?php if (isset($_SESSION["user"]) && $_SESSION["user"] == 'owner'): ?>
+  <li>
+    <a href="about"><i class="fas fa-users"></i></a>
+    About Me
+    <a href="aboutBack"><i class="fas fa-user-edit"></i></a>
+  </li>
+  <li>
+
   <li>
     <a href="travels"><i class="fas fa-users"></i></a>
     Travels
@@ -24,49 +30,17 @@
     Locations
     <a href="locationsBack"><i class="fas fa-user-edit"></i></a>
   </li>
-  <a href="dashboard">Dashboard</a>
-  <a href="accountBack">My Account</a>
-  <a href="test">Test</a>
-
-  <?php else: ?>
   <li>
-    <a href="about">About Me</a>
+    <a href="dashboard">Dashboard</a>
   </li>
-  <li class="travels">
-    <p>
-      <a href="travels">Travels</a>
-      <i class="fas fa-angle-down"></i>
-    </p>
-    <div class="travels-dropdown">
-      <?php foreach ($this->_continents as $continent): ?>
-      <div class="continent">
-        <div class="content">
-          <h3><?= htmlspecialchars($continent['continent']) ?></h3>
-          <div class="countries">
-            <?php foreach ($this->_countries as $country): ?>
-            <?php if ($country['continent'] == $continent['continent']): ?>
-            <a href="country"><?= htmlspecialchars($country['country']) ?></a>
-            <?php endif ?>
-            <?php endforeach ?>
-          </div>
-        </div>
-      </div>
-      <?php endforeach ?>
-    </div>
+  <li>
+    <a href="accountBack">My Account</a>
+  </li>
+  <li>
+    <a href="test">Test</a>
   </li>
 
-  <li>
-    <a href="projects">Projects</a>
-  </li>
-  <li><a href="home"><img src="assets/img/logo.jpg" alt="Logo" /></a></li>
-  <!-- <li href="contactMe">Contact Me</li> -->
-  <li>
-    <a href="gallery">Gallery</a>
-  </li>
-  <li>
-    <a href="accounts">My Account</a>
-  </li>
-  <?php endif; ?>
+
   <li>
     <a href="logout">Logout</a>
   </li>

@@ -83,9 +83,11 @@ html
 		text-align: center
 		margin: 0 auto
 
-main
-	overflow-x: hidden
+main:not(.back)
 	background-color: $backgroundColor
+	overflow-x: hidden
+	height: 100vh
+
 	.readMore
 		position: relative
 		left: 5%
@@ -167,7 +169,7 @@ main
 //*   /////////////
 //!  ////FONTS////
 //? /////////////
-.main-nav
+.nav
 	font-family: $primary-font
 	text-transform: uppercase
 		
@@ -190,16 +192,20 @@ header
 	width: 100%
 	z-index: 1000
 	// background-color: inherit
-	.language-nav
-		display: flex
-		justify-content: space-around
+	// .language-nav
+	// 	display: flex
+	// 	justify-content: space-around
 
-		img
-			width: 3rem
+	// 	img
+	// 		width: 3rem
 
-	.main-nav
+	.nav
+		display: block
 		position: relative
 		z-index: 9999
+
+		img
+			width: 15rem
 
 		> li
 			display: inline-flex
@@ -226,9 +232,7 @@ header
 					transform: scaleX(1)
 					transform-origin: left
 
-			img
-				width: 15rem
-	
+	.nav-front
 		.travels
 			p
 				i
@@ -308,7 +312,9 @@ header
 				background: purple
 				padding: 1rem 1.5rem
 				color: #fff
-					
+
+	.nav-back
+		color: #000
 
 //?   //////////////
 //!  ////MODALS////
