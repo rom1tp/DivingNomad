@@ -118,7 +118,26 @@ window.addEventListener('DOMContentLoaded', () => {
 		})
 	}
 
+	function copyToClipboard(element) {
+		var $temp = $('<input>')
+		$('body').append($temp)
+		$temp.val($(element).data('copy')).select()
+		document.execCommand('copy')
+		$temp.remove()
+	}
 	switch (page) {
+		case 'about':
+			$('#email, #whatsapp').click(function () {
+				copyToClipboard(this)
+				span = $('span', this)
+				$(span).text('Copied')
+				setTimeout(function () {
+					$(span).text('Copy')
+				}, 2000)
+			})
+
+			break
+
 		case 'galleryBack':
 			break
 

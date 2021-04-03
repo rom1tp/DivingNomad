@@ -26,6 +26,10 @@ html body {
   margin: 0 auto;
 }
 
+.back {
+  padding-top: 7rem;
+}
+
 main:not(.back) {
   color: #fff;
   background-color: #31326f;
@@ -172,7 +176,7 @@ header .nav > li > :first-child:hover::after {
 }
 header .nav-front {
   color: #fff;
-  text-shadow: 2px 2px 3px #555;
+  text-shadow: 1px 1px 3px #555;
   transition: background-color 300ms ease-in, padding 300ms ease-in-out;
   transform-origin: top;
 }
@@ -449,25 +453,30 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 }
 .about #container .title {
   position: absolute;
-  top: -5%;
+  top: -5rem;
   left: 35%;
-  font-size: 7rem;
   font-weight: bold;
   display: flex;
   flex-direction: column;
   z-index: 9999;
+  font-size: 7rem;
+  text-align: left;
+  line-height: 1.5;
+}
+.about #container .title aside {
+  position: absolute;
+  top: 0;
+  left: -45%;
 }
 .about #container .title span {
   text-shadow: 2px 2px 5px #555;
   width: 100%;
-  text-align: left;
 }
-.about #container .title span:nth-child(3) {
+.about #container .title span:nth-of-type(3) {
   text-align: right;
 }
 .about #container section:nth-of-type(1) {
   height: 100vh;
-  padding-top: 10%;
   position: relative;
   display: flex;
 }
@@ -478,15 +487,15 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   justify-content: center;
   align-items: center;
 }
-.about #container section:nth-of-type(1) article:nth-of-type(1) {
-  padding-right: 3rem;
+.about #container section:nth-of-type(1) article:nth-of-type(1) .bio {
+  padding-left: 5rem;
 }
-.about #container section:nth-of-type(1) article:nth-of-type(1) p {
+.about #container section:nth-of-type(1) article:nth-of-type(1) .bio p {
   line-height: 1.5;
   max-width: 80%;
   text-align: center;
 }
-.about #container section:nth-of-type(1) article:nth-of-type(1) p + p {
+.about #container section:nth-of-type(1) article:nth-of-type(1) .bio p + p {
   margin-top: 3rem;
 }
 .about #container section:nth-of-type(1) article:nth-of-type(2) {
@@ -508,11 +517,64 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   transform: rotate(-5deg);
 }
 .about #container section:nth-of-type(1) article:nth-of-type(2) .card:nth-of-type(2) {
-  top: 10%;
+  top: 20%;
   right: 10%;
   width: 40%;
   transform: rotate(5deg);
   z-index: 100;
+}
+
+.links {
+  margin-top: 4rem;
+  min-width: 45%;
+}
+.links .link {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+  padding-top: 0.5rem;
+  cursor: pointer;
+  transition: padding 300ms ease-in;
+}
+.links .link p:nth-of-type(1) {
+  font-weight: bold;
+}
+.links .link p:nth-of-type(2) {
+  color: #6e6f70;
+}
+.links .link p:nth-of-type(2) i {
+  padding-left: 0.7em;
+  font-size: 1.5rem;
+}
+.links .link p:nth-of-type(2) .fa-arrow-up {
+  transform: translateY(-1rem) rotate(45deg);
+}
+.links .link p:nth-of-type(2) .fa-copy {
+  transform: translateY(-1rem);
+}
+.links .link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: -1;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 200ms ease-in;
+}
+.links .link:hover {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.links .link:hover > * {
+  color: #000;
+}
+.links .link:hover::before {
+  transform: scaleY(1);
 }
 
 .accounts form {
@@ -820,7 +882,7 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 }
 .post #container section aside.right div p:first-of-type,
 .project #container section aside.right div p:first-of-type {
-  color: #a0a0a0;
+  color: #6e6f70;
 }
 .post #container section aside.right .date p,
 .project #container section aside.right .date p {
@@ -831,7 +893,7 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 .project #container section aside.right .date p:nth-of-type(1) {
   text-transform: uppercase;
   font-weight: bold;
-  color: #a0a0a0;
+  color: #6e6f70;
 }
 .post #container section aside.right .date p:nth-of-type(2),
 .project #container section aside.right .date p:nth-of-type(2) {
@@ -840,7 +902,7 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
 .post #container section aside.right .date p:nth-of-type(3),
 .project #container section aside.right .date p:nth-of-type(3) {
   font-weight: bold;
-  color: #a0a0a0;
+  color: #6e6f70;
 }
 
 .postBack img {
