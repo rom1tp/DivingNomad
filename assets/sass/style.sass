@@ -74,7 +74,7 @@ html
 
 	body
 		// background-color: #555
-		color: #fff
+		color: #000
 		height: 100%
 		font-family: $secondary-font
 		line-height: 2
@@ -84,9 +84,9 @@ html
 		margin: 0 auto
 
 main:not(.back)
+	color: #fff
 	background-color: $backgroundColor
 	overflow-x: hidden
-	height: 100vh
 
 	.readMore
 		position: relative
@@ -202,10 +202,11 @@ header
 	.nav
 		display: block
 		position: relative
-		z-index: 9999
+		z-index: 100
+		padding: 1rem 0
 
 		img
-			width: 15rem
+			width: 10rem
 
 		> li
 			display: inline-flex
@@ -233,6 +234,18 @@ header
 					transform-origin: left
 
 	.nav-front
+		color: #fff
+		text-shadow: 2px 2px 3px #555
+		transition: background-color 300ms ease-in, padding 300ms ease-in-out
+		transform-origin: top
+
+		&.sticky
+			background-color: $backgroundColor
+			box-shadow: 0 4px 10px -10px #fff
+
+		&.minimized
+			padding: 0
+
 		.travels
 			p
 				i
@@ -282,7 +295,7 @@ header
 					&:hover .content
 						transform: translateY(-50%)
 
-		// FIXME
+		// FIXME responsive marker
 		&::after
 			content: 'x-small'
 			background: red
@@ -330,7 +343,7 @@ footer
 		justify-content: center
 		align-items: center
 		background-color: rgba(black, 0.8)
-		z-index: 100
+		z-index: 9999
 
 		&.visible
 			display: flex
@@ -380,15 +393,16 @@ footer
 		justify-content: center
 		align-items: center
 		background: rgba(black, 0.8)
+		z-index: 9999
 
 		&.visible
 			display: flex
 
 		#imgPickerContent
 			position: relative
-			width: 70%
+			width: 60%
 			background-color: #fff
-			padding: 2rem
+			padding: 2rem 6rem
 			border-radius: 10px
 
 			.fa-times
@@ -408,6 +422,7 @@ footer
 				grid-template-columns: repeat(4, 1fr)
 				grid-template-rows: repeat(auto)
 				grid-gap: 1rem 2rem
+				margin: 1.5rem 0
 
 				figure
 					cursor: pointer
@@ -485,23 +500,26 @@ footer
 		background-repeat: no-repeat
 		background-attachment: fixed
 		z-index: 5
-		min-height: 120vh
+		min-height: 115vh
+
+	svg
+		position: absolute
+		bottom: -10px
+		left: 0
+		right: 0
+		transform-origin: bottom
+		transform: scaleY(0.3)
+		z-index: 10
 
 	#container
 		background-color: inherit
 		position: relative
 		z-index: 10
 
-		svg
-			position: absolute
-			top: -270px
-			left: 0
-			right: 0
-			transform: scaleY(0.3)
 		
 		.title
 			position: absolute
-			top: -10%
+			top: -5%
 			left: 35%
 			font-size: 7rem
 			font-weight: bold
@@ -519,16 +537,12 @@ footer
 
 		section
 			&:nth-of-type(1)
-				// transform: translateY(20%)
 				height: 100vh
 				padding-top: 10%
-				// border: 1px solid #fff
 				position: relative
 				display: flex
 
 				article
-					// overflow: hidden
-					// border: 1px solid #000	
 					width: 50%
 					display: flex
 					flex-direction: column
@@ -536,7 +550,6 @@ footer
 					align-items: center
 
 					&:nth-of-type(1)
-						// border: 1px solid #000
 						padding-right: 3rem
 
 						p
@@ -564,7 +577,6 @@ footer
 								left: -5%
 								width: 70%
 								transform: rotate(-5deg)
-								// z-index: 999
 
 							&:nth-of-type(2)
 								top: 10%

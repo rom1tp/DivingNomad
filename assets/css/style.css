@@ -17,7 +17,7 @@ html li {
   list-style-type: none;
 }
 html body {
-  color: #fff;
+  color: #000;
   height: 100%;
   font-family: "Raleway", sans-serif;
   line-height: 2;
@@ -27,9 +27,9 @@ html body {
 }
 
 main:not(.back) {
+  color: #fff;
   background-color: #31326f;
   overflow-x: hidden;
-  height: 100vh;
 }
 main:not(.back) .readMore {
   position: relative;
@@ -139,10 +139,11 @@ header {
 header .nav {
   display: block;
   position: relative;
-  z-index: 9999;
+  z-index: 100;
+  padding: 1rem 0;
 }
 header .nav img {
-  width: 15rem;
+  width: 10rem;
 }
 header .nav > li {
   display: inline-flex;
@@ -168,6 +169,19 @@ header .nav > li > :first-child::after {
 header .nav > li > :first-child:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+header .nav-front {
+  color: #fff;
+  text-shadow: 2px 2px 3px #555;
+  transition: background-color 300ms ease-in, padding 300ms ease-in-out;
+  transform-origin: top;
+}
+header .nav-front.sticky {
+  background-color: #31326f;
+  box-shadow: 0 4px 10px -10px #fff;
+}
+header .nav-front.minimized {
+  padding: 0;
 }
 header .nav-front .travels p i {
   font-size: 1.5rem;
@@ -266,7 +280,7 @@ footer .confirmOverlay {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 100;
+  z-index: 9999;
 }
 footer .confirmOverlay.visible {
   display: flex;
@@ -317,15 +331,16 @@ footer #imgPickerOverlay {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
 }
 footer #imgPickerOverlay.visible {
   display: flex;
 }
 footer #imgPickerOverlay #imgPickerContent {
   position: relative;
-  width: 70%;
+  width: 60%;
   background-color: #fff;
-  padding: 2rem;
+  padding: 2rem 6rem;
   border-radius: 10px;
 }
 footer #imgPickerOverlay #imgPickerContent .fa-times {
@@ -345,6 +360,7 @@ footer #imgPickerOverlay #imgPickerContent .body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto);
   grid-gap: 1rem 2rem;
+  margin: 1.5rem 0;
 }
 footer #imgPickerOverlay #imgPickerContent .body figure {
   cursor: pointer;
@@ -415,23 +431,25 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: 5;
-  min-height: 120vh;
+  min-height: 115vh;
+}
+.about svg {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  transform-origin: bottom;
+  transform: scaleY(0.3);
+  z-index: 10;
 }
 .about #container {
   background-color: inherit;
   position: relative;
   z-index: 10;
 }
-.about #container svg {
-  position: absolute;
-  top: -270px;
-  left: 0;
-  right: 0;
-  transform: scaleY(0.3);
-}
 .about #container .title {
   position: absolute;
-  top: -10%;
+  top: -5%;
   left: 35%;
   font-size: 7rem;
   font-weight: bold;

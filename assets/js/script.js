@@ -83,6 +83,30 @@ window.addEventListener('DOMContentLoaded', () => {
 		$('#imgPickerContent figure').dblclick(confirmImg)
 		$('#imgPickerOverlay #confirm').click(confirmImg)
 	} else {
+		// #minimize nav on scroll
+		var previousScrollPosition = window.pageYOffset
+		nav = document.querySelector('.nav-front')
+
+		window.onscroll = function () {
+			var currentScrollPosition = window.pageYOffset
+			// console.log(previousScrollPosition + ' -> ' + currentScrollPosition)
+			if (currentScrollPosition < 50) {
+				nav.classList.remove('sticky')
+				// nav.classList.remove('minimized')
+			} else {
+				nav.classList.add('sticky')
+				if (
+					currentScrollPosition > 50 &&
+					currentScrollPosition > previousScrollPosition
+				) {
+					nav.classList.add('minimized')
+				} else {
+					nav.classList.remove('minimized')
+				}
+			}
+			previousScrollPosition = currentScrollPosition
+		}
+
 		// # travels dropdown
 		$('.nav-front .travels').on('mouseenter', () => {
 			$('.nav-front .travels .travels-dropdown').addClass('visible')
