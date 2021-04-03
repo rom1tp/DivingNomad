@@ -28,7 +28,7 @@ html body {
 
 main {
   overflow-x: hidden;
-  background-color: #555;
+  background-color: #31326f;
 }
 main .readMore {
   position: relative;
@@ -387,8 +387,49 @@ footer #imgPickerOverlay #imgPickerContent .body figure img {
   min-height: 600px;
 }
 
-.about img {
-  width: 20%;
+.about .banner {
+  max-width: 40%;
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #fff;
+}
+.about .banner h1 {
+  text-transform: uppercase;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5rem;
+}
+.about .banner a {
+  color: inherit;
+  font-size: 4rem;
+  cursor: pointer;
+}
+.about .banner a i {
+  transform: rotate(90deg);
+}
+.about .plx-1 {
+  position: relative;
+  background-image: url("../img/aboutBanner.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 5;
+  min-height: 120vh;
+}
+.about #container {
+  background-color: inherit;
+  position: relative;
+  z-index: 10;
+}
+.about #container svg {
+  position: absolute;
+  top: -270px;
+  left: 0;
+  right: 0;
+  transform: scaleY(0.3);
 }
 
 .accounts form {

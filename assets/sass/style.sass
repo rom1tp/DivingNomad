@@ -47,6 +47,7 @@ $oceanBlue: #06458f
 $orange: #eb6800
 $red: #EA0F1E
 $grey: #a0a0a0
+$backgroundColor: #31326f
 
 $parallax-1: url('https://picsum.photos/1600/900')
 $parallax-2: url('https://picsum.photos/1600/900')
@@ -84,7 +85,7 @@ html
 
 main
 	overflow-x: hidden
-	background-color: #555
+	background-color: $backgroundColor
 	.readMore
 		position: relative
 		left: 5%
@@ -448,8 +449,53 @@ footer
 //!  ////ABOUT////
 //* /////////////
 .about
-	img
-		width: 20%
+	.banner
+		max-width: 40%
+		position: fixed
+		top: 80%
+		left: 50%
+		transform: translate(-50%, -50%)
+		z-index: 1
+		color: #fff
+
+		h1
+			text-transform: uppercase
+			text-shadow: 0 1px 10px rgba(black, 0.2)
+			margin-bottom: 5rem
+
+		a
+			color: inherit
+			font-size: 4rem
+			cursor: pointer
+
+			i
+				transform: rotate(90deg)
+
+	.plx-1
+		position: relative
+		background-image: url('../img/aboutBanner.jpg')
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+		background-attachment: fixed
+		z-index: 5
+		min-height: 120vh
+
+	#container
+		background-color: inherit
+		position: relative
+		// margin-top: rem
+		// top: 400px
+		z-index: 10
+		// border: 1px solid #fff
+		svg
+			position: absolute
+			top: -270px
+			left: 0
+			right: 0
+			transform: scaleY(0.3)
+			// width: 100%
+
 
 //*   ////////////////
 //!  ////ACCOUNTS////

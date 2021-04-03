@@ -141,7 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			const appearOptions = {
 				root: null,
 				threshold: 0,
-				rootMargin: '-150px'
+				rootMargin: '-250px 100px 0px 100px'
 			}
 			const appearOnScroll = new IntersectionObserver(function (
 				entries,
@@ -151,7 +151,6 @@ window.addEventListener('DOMContentLoaded', () => {
 					if (!entry.isIntersecting) {
 						return
 					} else {
-						console.log(entry.target)
 						entry.target.classList.add('appear')
 						appearOnScroll.unobserve(entry.target)
 					}
