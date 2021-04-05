@@ -130,9 +130,10 @@ window.addEventListener('DOMContentLoaded', () => {
 			$('#email, #whatsapp').click(function () {
 				copyToClipboard(this)
 				span = $('span', this)
+				text = $(span).text()
 				$(span).text('Copied')
 				setTimeout(function () {
-					$(span).text('Copy')
+					$(span).text(text)
 				}, 2000)
 			})
 
