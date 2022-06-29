@@ -2,6 +2,7 @@
 //!  ////STEPS////
 //? /////////////
 /**
+ * Set up online db
  * Fill image gallery
  * Mobile-first responsive
  * CSS
